@@ -1,0 +1,10 @@
+/* ------------------------------------------------------------------
+   Urban Decoders — Webfonts
+   Proprietary families are unavailable, so the closest open substitutes
+   are loaded from Google Fonts and flagged in readme.md:
+     Domaine Display  -> Newsreader      (editorial display serif)
+     ABC Favorit      -> Inter           (humanist UI/marketing sans)
+     Play             -> brand techno display (the ACTUAL UD logo font)
+     Geist Mono       -> JetBrains Mono  (code)
+   ------------------------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Play:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');

@@ -1,0 +1,66 @@
+/* ==================================================================
+   Urban Decoders — Typography tokens
+   Four lanes, kept strict:
+     Serif display  (Newsreader)     -> hero headlines, editorial voice
+     Techno display (Chakra Petch)   -> brand eyebrows, UD wordmark moments
+     Sans UI/body   (Inter)          -> UI labels + marketing body
+     Mono           (JetBrains Mono) -> code wells
+   ================================================================== */
+:root {
+  --ud-font-display: 'Newsreader', 'Tiempos Headline', Georgia, serif;
+  --ud-font-techno: 'Play', 'Chakra Petch', 'Rajdhani', sans-serif; /* the UD logo font */
+  --ud-font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --ud-font-mono: 'JetBrains Mono', 'Geist Mono', ui-monospace, monospace;
+
+  /* Feature settings */
+  --ud-feat-display: "liga" 1, "dlig" 1; /* @kind font */
+  --ud-feat-techno: "ss01" 1; /* @kind font */
+
+  /* --- Scale: font sizes ---------------------------------------- */
+  --ud-display-xxl: 96px;
+  --ud-display-xl: 76.8px;
+  --ud-display-lg: 56px;
+  --ud-heading-md: 24px;
+  --ud-heading-sm: 20px;
+  --ud-subtitle: 20px;
+  --ud-body-lg: 18px;
+  --ud-body-md: 16px;
+  --ud-body-sm: 14px;
+  --ud-button-md: 14px;
+  --ud-button-sm: 14px;
+  --ud-caption: 12px;
+  --ud-eyebrow: 13px;
+  --ud-code-md: 13px;
+
+  /* --- Line heights (unitless) --- @kind font ------------------- */
+  --ud-display-xxl-lh: 1.0;  /* @kind font */
+  --ud-display-xl-lh: 1.0;   /* @kind font */
+  --ud-display-lg-lh: 1.05;  /* @kind font */
+  --ud-heading-md-lh: 1.5;   /* @kind font */
+  --ud-heading-sm-lh: 1.3;   /* @kind font */
+  --ud-subtitle-lh: 1.3;     /* @kind font */
+  --ud-body-lg-lh: 1.5;      /* @kind font */
+  --ud-body-md-lh: 1.5;      /* @kind font */
+  --ud-body-sm-lh: 1.43;     /* @kind font */
+  --ud-button-md-lh: 1.43;   /* @kind font */
+  --ud-button-sm-lh: 1.43;   /* @kind font */
+  --ud-caption-lh: 1.5;      /* @kind font */
+  --ud-eyebrow-lh: 1.0;      /* @kind font */
+  --ud-code-md-lh: 1.6;      /* @kind font */
+
+  /* --- Letter spacing (tracking) --- @kind font ----------------- */
+  --ud-display-xxl-ls: -0.96px;  /* @kind font */
+  --ud-display-xl-ls: -0.768px;  /* @kind font */
+  --ud-display-lg-ls: -1.4px;    /* @kind font */
+  --ud-heading-md-ls: -0.4px;    /* @kind font */
+  --ud-heading-sm-ls: -0.3px;    /* @kind font */
+  --ud-subtitle-ls: 0;           /* @kind font */
+  --ud-body-lg-ls: 0;            /* @kind font */
+  --ud-body-md-ls: -0.2px;       /* @kind font */
+  --ud-body-sm-ls: 0;            /* @kind font */
+  --ud-button-md-ls: 0;          /* @kind font */
+  --ud-button-sm-ls: 0.35px;     /* @kind font */
+  --ud-caption-ls: 0;            /* @kind font */
+  --ud-eyebrow-ls: 2px;          /* @kind font */
+  --ud-code-md-ls: 0;            /* @kind font */
+}

@@ -1,0 +1,27 @@
+/* ==================================================================
+   Urban Decoders — Radius & elevation tokens
+   No drop-shadow language: elevation is translucent-white hairlines
+   plus low-opacity atmospheric glows.
+   ================================================================== */
+:root {
+  --ud-radius-none: 0px;
+  --ud-radius-xs: 4px;    /* inline tags in code wells */
+  --ud-radius-sm: 6px;    /* code tabs, mid chips */
+  --ud-radius-md: 8px;    /* buttons, inputs */
+  --ud-radius-lg: 12px;   /* cards, code wells, email mockups */
+  --ud-radius-xl: 16px;   /* larger feature panels */
+  --ud-radius-full: 9999px;
+
+  /* Elevation is expressed as border + surface, not shadow. */
+  --ud-elev-1-bg: var(--ud-surface-card);
+  --ud-elev-1-border: 1px solid var(--ud-hairline-strong);
+  --ud-elev-2-bg: var(--ud-surface-elevated);
+  --ud-elev-2-border: 1px solid var(--ud-hairline-strong);
+  --ud-elev-3-bg: var(--ud-surface-deep);
+  --ud-elev-3-border: 1px solid var(--ud-hairline-strong);
+
+  /* Signature atmospheric glow (teal). Anchor at a section's top edge. */
+  --ud-glow-brand: radial-gradient(60% 380px at 50% 0%, var(--ud-brand-glow) 0%, transparent 70%);
+  /* Emphasis glow (deep red). For the single highlighted element in a view. */
+  --ud-glow-emphasis: radial-gradient(70% 340px at 50% 0%, var(--ud-emphasis-red-glow) 0%, transparent 72%);
+}

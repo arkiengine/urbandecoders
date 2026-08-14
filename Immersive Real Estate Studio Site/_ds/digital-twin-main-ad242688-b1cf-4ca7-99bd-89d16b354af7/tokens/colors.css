@@ -1,0 +1,62 @@
+/* ==================================================================
+   Urban Decoders — Colour tokens
+   A dark-studio editorial system: pure-black canvas, off-white ink,
+   teal→blue brand gradient as the signature accent. Depth is built
+   from translucent-white hairlines and low-opacity atmospheric glows —
+   never drop shadows.
+   ================================================================== */
+:root {
+  /* --- Brand ------------------------------------------------------ */
+  --ud-brand-teal-deep: #1a5279;   /* gradient start (badge top-left)  */
+  --ud-brand-teal: #2a7b9b;        /* gradient mid                     */
+  --ud-brand-teal-light: #2f8aa9;  /* gradient end (badge bottom-right)*/
+  --ud-brand-blue: #3b9eff;        /* interactive / link accent        */
+  --ud-brand-gradient: linear-gradient(135deg, #1a5279 0%, #2a7b9b 55%, #2f8aa9 100%); /* @kind color */
+  --ud-brand-glow: rgba(47,138,169,0.30);   /* signature teal wash     */
+
+  /* --- Primary (white is the brand on black) --------------------- */
+  --ud-primary: #fcfdff;           /* white CTA / display headline     */
+  --ud-primary-on: #000000;        /* label on white surfaces          */
+  --ud-surface-light: #f1f7fe;     /* pressed state of white CTA       */
+
+  /* --- Surface / elevation --------------------------------------- */
+  --ud-canvas: #000000;            /* true-black page background        */
+  --ud-surface-card: #0a0a0c;      /* level 1 inset card               */
+  --ud-surface-elevated: #101012;  /* level 2 featured / ghost surface  */
+  --ud-surface-deep: #06060a;      /* level 3 code well (cooler/darker) */
+  --ud-hairline: rgba(255,255,255,0.06);        /* soft divider        */
+  --ud-hairline-strong: rgba(255,255,255,0.14); /* structural border   */
+  --ud-divider-soft: rgba(255,255,255,0.04);    /* footer dividers      */
+
+  /* --- Text ------------------------------------------------------- */
+  --ud-ink: #fcfdff;                    /* primary text                 */
+  --ud-body: rgba(252,253,255,0.86);    /* long-form body               */
+  --ud-charcoal: rgba(252,253,255,0.70);/* captions, secondary nav      */
+  --ud-mute: #a1a4a5;                   /* supporting / inactive         */
+  --ud-ash: #888e90;                    /* tertiary / footer             */
+  --ud-stone: #464a4d;                  /* disabled foreground           */
+  --ud-on-light: #000000;               /* text on white insets          */
+  --ud-on-light-mute: rgba(0,0,51,0.70);/* secondary on white insets     */
+
+  /* --- Semantic / atmospheric accents ---------------------------- */
+  --ud-accent-orange: #ff801f;
+  --ud-accent-orange-glow: rgba(255,89,0,0.22);
+  --ud-accent-yellow: #ffc53d;
+  --ud-accent-blue: #3b9eff;
+  --ud-accent-blue-glow: rgba(0,117,255,0.34);
+  --ud-accent-green: #11ff99;
+  --ud-accent-green-glow: rgba(34,255,153,0.18);
+  --ud-accent-red: #ff2047;
+  --ud-accent-red-glow: rgba(255,32,71,0.34);
+  --ud-link: #3b9eff;
+
+  /* --- Emphasis red ---------------------------------------------
+     A deep, glossy crimson (matches the 3D UD mark) used to call out
+     the single most important box on a view. Distinct from the pinkish
+     semantic error red above. Used as a border + low-opacity wash — a
+     highlight, not a fill. Reserve for one element per section. */
+  --ud-emphasis-red: #d81f2a;                    /* @kind color */
+  --ud-emphasis-red-bright: #ff3b3b;             /* @kind color */
+  --ud-emphasis-red-border: rgba(216,31,42,0.55);/* @kind color */
+  --ud-emphasis-red-glow: rgba(216,31,42,0.30);  /* @kind color */
+}

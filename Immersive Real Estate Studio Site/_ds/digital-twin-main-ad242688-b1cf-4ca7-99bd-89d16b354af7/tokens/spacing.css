@@ -1,0 +1,19 @@
+/* ==================================================================
+   Urban Decoders — Spacing tokens
+   Base unit 4px; working scale on 4 / 8 / 16 multiples.
+   ================================================================== */
+:root {
+  --ud-space-xxs: 2px;
+  --ud-space-xs: 4px;
+  --ud-space-sm: 8px;
+  --ud-space-md: 12px;
+  --ud-space-lg: 16px;
+  --ud-space-xl: 24px;
+  --ud-space-xxl: 32px;
+  --ud-space-xxxl: 48px;
+  --ud-space-section: 96px;   /* vertical rhythm between bands */
+  --ud-space-band: 128px;     /* hero + closing footer transition */
+
+  --ud-container: 1200px;     /* max content width */
+  --ud-container-narrow: 640px;/* email/inset column */
+}

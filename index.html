@@ -1,887 +1,1048 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Urban Decoders — AEC Technology for the Future of Cities</title>
-  <link rel="icon" type="image/png" href="Urban Decoder Resources/UD red.png">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --bg:       #060d12;
-      --bg2:      #0c1820;
-      --bg3:      #132530;
-      --accent:   #e60012;
-      --accent-bright: #ff2d3b;
-      --accent2:  #00d4ff;
-      --text:     #e2e8f0;
-      --muted:    #7a9aab;
-      --border:   rgba(0,212,255,.12);
-      --glow:     rgba(230,0,18,.08);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Space Grotesk', sans-serif;
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 0;
-      background-image:
-        linear-gradient(rgba(0,212,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,212,255,.025) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-    }
-
-    /* ── Nav ─────────────────────────────────────────────── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      display: flex; justify-content: space-between; align-items: center; position: relative;
-      padding: 0.8rem 4rem;
-      background: url('Urban Decoder Resources/gradient.jpg') center center / cover no-repeat;
-      backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(255,255,255,.15);
-    }
-
-    .nav-logo {
-      display: flex; align-items: center; gap: 0.75rem;
-      text-decoration: none;
-    }
-    .nav-logo img {
-      height: 4.5rem;
-    }
-    .nav-logo-text {
-      font-family: 'Orbitron', sans-serif;
-      font-size: .85rem; font-weight: 700;
-      color: var(--text); letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .nav-links { display: flex; gap: 2.25rem; list-style: none; align-items: center; position: absolute; left: 50%; transform: translateX(-50%); }
-    .nav-links a {
-      color: rgba(255,255,255,.85);
-      text-decoration: none;
-      font-size: .78rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      transition: color .2s;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute; left: 0; bottom: -4px;
-      width: 0; height: 1px;
-      background: #fff;
-      transition: width .25s;
-    }
-    .nav-links a:hover { color: #fff; }
-    .nav-links a:hover::after { width: 100%; }
-
-    .nav-yt {
-      font-family: 'Space Mono', monospace;
-      font-size: .7rem; padding: .45rem 1.2rem;
-      background: var(--accent); color: #fff;
-      text-decoration: none; text-transform: uppercase;
-      letter-spacing: .08em; transition: all .2s;
-      border: 1px solid var(--accent);
-    }
-    .nav-yt:hover { background: var(--accent-bright); border-color: var(--accent-bright); }
-
-    /* ── Section Wrapper ──────────────────────────────────── */
-    .section-wrap {
-      position: relative; z-index: 1;
-      max-width: 1200px; margin: 0 auto;
-      padding: 7rem 4rem;
-    }
-
-    .section-label {
-      display: flex; align-items: center; gap: .75rem;
-      font-family: 'Space Mono', monospace;
-      font-size: .72rem; color: var(--accent);
-      letter-spacing: .22em; text-transform: uppercase;
-      margin-bottom: .6rem;
-    }
-    .section-label::before {
-      content: '';
-      display: inline-block; width: 28px; height: 1px;
-      background: var(--accent);
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 5vw, 3.4rem);
-      font-weight: 700; line-height: 1.08;
-      margin-bottom: 3rem;
-    }
-    .section-title span { color: var(--accent); }
-
-    .section-border { border-top: 1px solid var(--border); }
-
-    /* ── HERO ────────────────────────────────────────────── */
-    #hero {
-      position: relative; z-index: 1;
-      min-height: 100vh;
-      display: flex; align-items: flex-start;
-      padding: 0 4rem;
-    }
-
-    #hero-canvas {
-      position: absolute; inset: 0; z-index: 0;
-    }
-
-    .hero-inner {
-      position: relative; z-index: 1;
-      max-width: 1200px; margin: 0 auto; width: 100%;
-      padding-top: 6.5rem;
-    }
-
-    .hero-eyebrow {
-      font-family: 'Space Mono', monospace;
-      font-size: .8rem; color: var(--accent2);
-      letter-spacing: .28em; text-transform: uppercase;
-      margin-bottom: 2rem;
-      opacity: 0; animation: fadeUp .8s .2s ease forwards;
-    }
-
-    .hero-name {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(3rem, 9vw, 7rem);
-      font-weight: 900; line-height: .92; letter-spacing: -.01em;
-      opacity: 0; animation: fadeUp .9s .4s ease forwards;
-    }
-    .hero-name .stroke {
-      -webkit-text-stroke: 1.5px rgba(255,255,255,.2);
-      color: transparent;
-    }
-    .hero-name .red { color: var(--accent); }
-
-    .hero-subtitle {
-      font-size: clamp(1rem, 2.2vw, 1.3rem);
-      color: var(--muted); font-weight: 300;
-      margin-top: 2.5rem; max-width: 700px;
-      line-height: 1.75;
-      opacity: 0; animation: fadeUp .8s .65s ease forwards;
-    }
-    .hero-subtitle strong { color: var(--text); font-weight: 600; }
-
-    .hero-meta {
-      display: flex; flex-wrap: wrap; gap: 1.75rem;
-      margin-top: 2.5rem;
-      opacity: 0; animation: fadeUp .8s .85s ease forwards;
-    }
-    .hero-meta-item {
-      display: flex; align-items: center; gap: .55rem;
-      font-size: .82rem; color: var(--muted);
-    }
-    .hero-meta-item .pip {
-      width: 6px; height: 6px;
-      background: var(--accent); border-radius: 50%;
-      box-shadow: 0 0 6px var(--accent);
-    }
-
-    .hero-cta {
-      display: flex; gap: 1rem; margin-top: 3rem; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp .8s 1.05s ease forwards;
-    }
-
-    .btn {
-      display: inline-flex; align-items: center; gap: .4rem;
-      padding: .85rem 2rem;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: .82rem; font-weight: 600;
-      letter-spacing: .07em; text-transform: uppercase;
-      text-decoration: none; transition: all .22s;
-    }
-    .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
-    .btn-primary:hover { background: var(--accent-bright); border-color: var(--accent-bright); }
-    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
-    .btn-outline:hover { border-color: var(--accent2); color: var(--accent2); }
-
-    .scroll-cue {
-      position: absolute; bottom: 2.5rem; left: 50%;
-      transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: .5rem;
-      font-family: 'Space Mono', monospace;
-      font-size: .65rem; color: var(--muted); letter-spacing: .15em; text-transform: uppercase;
-      opacity: 0; animation: fadeIn 1s 1.6s ease forwards;
-    }
-    .scroll-cue-line {
-      width: 1px; height: 56px;
-      background: linear-gradient(to bottom, var(--accent), transparent);
-      animation: pulse 2.2s ease-in-out infinite;
-    }
-
-    /* ── ABOUT ──────────────────────────────────────────── */
-    .about-grid {
-      display: grid; grid-template-columns: 1.2fr .8fr;
-      gap: 5rem; align-items: start;
-    }
-    .about-text p {
-      color: var(--muted); font-size: 1.05rem; line-height: 1.85;
-      margin-bottom: 1.3rem;
-    }
-    .about-text p strong { color: var(--text); }
-
-    .focus-stack { display: flex; flex-direction: column; gap: .7rem; }
-    .focus-row {
-      display: flex; align-items: center; gap: 1rem;
-      padding: .85rem 1.1rem;
-      background: var(--bg2); border: 1px solid var(--border);
-      font-size: .85rem; color: var(--muted);
-      transition: border-color .2s;
-    }
-    .focus-row:hover { border-color: var(--accent); }
-    .focus-tag {
-      font-family: 'Space Mono', monospace;
-      font-size: .65rem; padding: .2rem .55rem;
-      background: rgba(0,212,255,.08);
-      border: 1px solid rgba(0,212,255,.2);
-      color: var(--accent2); flex-shrink: 0;
-    }
-
-    /* ── ARKI ENGINE ───────────────────────────────────── */
-    .arki-hero {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center;
-    }
-    .arki-text p {
-      color: var(--muted); font-size: 1.05rem; line-height: 1.85;
-      margin-bottom: 1.5rem;
-    }
-    .arki-text p strong { color: var(--text); }
-    .arki-badge {
-      display: inline-flex; align-items: center; gap: .6rem;
-      margin-top: .5rem;
-      padding: .5rem 1rem;
-      border: 1px solid rgba(0,212,255,.2);
-      background: rgba(0,212,255,.05);
-    }
-    .arki-badge img {
-      height: 28px;
-      filter: brightness(0) invert(1); opacity: .6;
-    }
-    .arki-badge span {
-      font-family: 'Space Mono', monospace;
-      font-size: .65rem; color: var(--accent2);
-      text-transform: uppercase; letter-spacing: .08em;
-    }
-
-    .arki-video-wrap {
-      background: var(--bg2); border: 1px solid var(--border);
-      padding: 1rem; overflow: hidden;
-    }
-    .arki-video-wrap video {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 16 / 9;
-      display: block;
-      background: #000;
-      object-fit: contain;
-    }
-
-    .arki-gallery {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
-      margin-top: 3rem;
-    }
-    .arki-thumb {
-      overflow: hidden; border: 1px solid var(--border);
-      transition: border-color .25s, transform .25s;
-    }
-    .arki-thumb:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .arki-thumb img {
-      width: 100%; display: block; aspect-ratio: 16/10;
-      object-fit: cover; filter: brightness(.85);
-      transition: filter .3s;
-    }
-    .arki-thumb:hover img { filter: brightness(1); }
-
-    .arki-vid4 {
-      margin-top: 2rem;
-    }
-
-    /* ── VIDEOS ─────────────────────────────────────────── */
-    .videos-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem;
-    }
-
-    .video-card {
-      background: var(--bg2); border: 1px solid var(--border);
-      overflow: hidden;
-      transition: border-color .25s, transform .25s;
-    }
-    .video-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-
-    .video-card .vid-embed {
-      width: 100%; aspect-ratio: 16/9;
-      border: none; display: block;
-    }
-
-    .video-card-info {
-      padding: 1.25rem;
-    }
-    .video-tag {
-      font-family: 'Space Mono', monospace;
-      font-size: .6rem; padding: .18rem .5rem;
-      border: 1px solid rgba(0,212,255,.22);
-      background: rgba(0,212,255,.06); color: var(--accent2);
-      text-transform: uppercase;
-      display: inline-block; margin-bottom: .6rem;
-    }
-    .video-title {
-      font-size: .95rem; font-weight: 600; color: var(--text);
-      line-height: 1.4;
-    }
-    .video-desc {
-      font-size: .8rem; color: var(--muted); margin-top: .5rem;
-      line-height: 1.55;
-    }
-
-    .yt-cta {
-      text-align: center; margin-top: 3rem;
-    }
-
-    /* ── GRADIENT SECTION ──────────────────────────────── */
-    .section-gradient {
-      position: relative; z-index: 1;
-      background: url('Urban Decoder Resources/gradient.jpg') center center / cover no-repeat;
-    }
-    .section-gradient .section-wrap { border-top: none; }
-    .section-gradient .section-label { color: #fff; }
-    .section-gradient .section-label::before { background: #fff; }
-    .section-gradient .section-title { color: #fff; }
-    .section-gradient .section-title span { color: var(--accent); }
-
-    /* ── WHITE SECTION ─────────────────────────────────── */
-    .section-light {
-      position: relative; z-index: 1;
-      background: #f8f9fb;
-    }
-    .section-light .section-wrap { border-top: none; }
-    .section-light .section-label { color: var(--accent); }
-    .section-light .section-label::before { background: var(--accent); }
-    .section-light .section-title { color: #1a1a2e; }
-    .section-light .section-title span { color: var(--accent); }
-
-    .stats-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
-    }
-    .stat-card {
-      background: #fff; border: 1px solid #e5e7eb;
-      padding: 1.75rem 1.5rem; position: relative; overflow: hidden;
-      transition: border-color .25s, box-shadow .25s;
-      text-align: center;
-      box-shadow: 0 2px 12px rgba(0,0,0,.04);
-    }
-    .stat-card:hover { border-color: var(--accent); box-shadow: 0 8px 24px rgba(230,0,18,.08); }
-    .stat-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0;
-      width: 100%; height: 3px; background: var(--accent);
-    }
-    .stat-num {
-      font-family: 'Space Mono', monospace;
-      font-size: 2.4rem; font-weight: 700; color: var(--accent);
-      line-height: 1;
-    }
-    .stat-lbl {
-      font-size: .72rem; color: #64748b;
-      text-transform: uppercase; letter-spacing: .1em; margin-top: .5rem;
-    }
-
-    /* ── CONTACT (white) ───────────────────────────────── */
-    .section-light .contact-intro { color: #64748b; }
-    .section-light .contact-link {
-      border-color: #e5e7eb; background: #fff; color: #64748b;
-      box-shadow: 0 2px 8px rgba(0,0,0,.04);
-    }
-
-    .section-gradient .contact-intro { color: rgba(255,255,255,.75); }
-    .section-gradient .contact-link {
-      border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.1);
-      color: rgba(255,255,255,.75); backdrop-filter: blur(8px);
-      box-shadow: none;
-    }
-    .section-gradient .contact-link:hover {
-      border-color: #fff; color: #fff;
-    }
-
-    #contact-wrap { text-align: center; }
-    .contact-inner { max-width: 560px; margin: 0 auto; }
-    .contact-intro { color: var(--muted); margin-top: 1rem; font-size: 1rem; line-height: 1.7; }
-    .contact-links {
-      display: flex; justify-content: center; flex-wrap: wrap;
-      gap: 1rem; margin-top: 2.25rem;
-    }
-    .contact-link {
-      display: flex; align-items: center; gap: .55rem;
-      padding: .8rem 1.6rem;
-      border: 1px solid var(--border);
-      background: var(--bg2);
-      color: var(--muted); text-decoration: none;
-      font-size: .82rem; transition: all .22s;
-    }
-    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
-    .contact-link .ci { font-size: 1rem; }
-
-    /* ── Footer ──────────────────────────────────────────── */
-    footer {
-      position: relative; z-index: 1;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      padding: 2.5rem 2rem;
-      font-family: 'Space Mono', monospace;
-      font-size: .72rem; color: var(--muted);
-    }
-    footer .footer-logo {
-      display: flex; align-items: center; justify-content: center;
-      gap: .75rem; margin-bottom: 1rem;
-    }
-    footer .footer-logo img {
-      height: 32px; opacity: .7;
-    }
-    footer .footer-logo span {
-      font-family: 'Orbitron', sans-serif;
-      font-size: .7rem; font-weight: 700; color: var(--muted);
-      letter-spacing: .12em; text-transform: uppercase;
-    }
-    footer .accent { color: var(--accent); }
-
-    /* ── Scroll Animations ───────────────────────────────── */
-    .reveal {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity .65s ease, transform .65s ease;
-    }
-    .reveal.visible { opacity: 1; transform: none; }
-
-    .d1 { transition-delay: .1s; }
-    .d2 { transition-delay: .2s; }
-    .d3 { transition-delay: .3s; }
-    .d4 { transition-delay: .4s; }
-    .d5 { transition-delay: .5s; }
-    .d6 { transition-delay: .6s; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: none; }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; } to { opacity: 1; }
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: .25; }
-    }
-
-    /* ── Responsive ──────────────────────────────────────── */
-    @media (max-width: 1024px) {
-      .videos-grid { grid-template-columns: 1fr; }
-      .arki-gallery { grid-template-columns: repeat(2, 1fr); }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
-      nav { padding: .6rem 1.5rem; }
-      .nav-links { display: none; }
-      .nav-logo-text { display: none; }
-      .section-wrap { padding: 5rem 1.5rem; }
-      #hero { padding: 0 1.5rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .arki-hero { grid-template-columns: 1fr; gap: 2rem; }
-      .arki-gallery { grid-template-columns: 1fr 1fr; }
-      .videos-grid { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .hero-meta { flex-direction: column; gap: .75rem; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Decoders — City Engagement, Planning & Digital Twin Studio</title>
+<meta name="description" content="Urban Decoders builds living digital twins, planning visualisation and community engagement platforms — so buyers, residents and authorities can walk the city before it's built. Based in Stockport, Greater Manchester.">
+<meta name="keywords" content="digital twin studio, city engagement, community consultation platform, planning visualisation, masterplanning digital twin, immersive experiences, Stockport, Manchester">
+<link rel="canonical" href="https://www.urbandecoders.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Urban Decoders — City Engagement, Planning & Digital Twin Studio">
+<meta property="og:description" content="Walk the city before it's built. Digital twins, planning visualisation and community engagement — for buyers, residents and authorities alike.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-home.jpg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="assets/favicon-192.png">
+<link rel="stylesheet" href="styles.css">
+<template id="__bundler_thumbnail" data-bg-color="#000000">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#000000"/>
+    <circle cx="600" cy="400" r="210" fill="none" stroke="#2f8aa9" stroke-width="3" opacity="0.5"/>
+    <circle cx="600" cy="400" r="210" fill="url(#g)" opacity="0.12"/>
+    <circle cx="520" cy="330" r="7" fill="#ff5a5f"/>
+    <circle cx="690" cy="450" r="7" fill="#5acdff"/>
+    <circle cx="560" cy="500" r="7" fill="#5acdff"/>
+    <path d="M520 330 Q640 300 690 450" fill="none" stroke="#3b9eff" stroke-width="2.5" opacity="0.8"/>
+    <text x="600" y="690" font-family="Play, sans-serif" font-size="52" font-weight="700" letter-spacing="4" fill="#fcfdff" text-anchor="middle">URBAN DECODERS</text>
+    <defs><radialGradient id="g"><stop offset="0%" stop-color="#2f8aa9"/><stop offset="100%" stop-color="#000000"/></radialGradient></defs>
+  </svg>
+</template>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Urban Decoders",
+  "description": "City engagement, planning and digital twin studio: community consultation platforms, planning and masterplanning visualisation, city explorers, media tables, place management dashboards, immersive experiences, GIS and city data.",
+  "url": "https://www.urbandecoders.com/",
+  "email": "info@urbandecoders.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "45 Middle Hillgate",
+    "addressLocality": "Stockport",
+    "addressRegion": "Greater Manchester",
+    "postalCode": "SK1 3DG",
+    "addressCountry": "GB"
+  },
+  "areaServed": ["United Kingdom"],
+  "knowsAbout": ["digital twins", "city engagement", "planning visualisation", "masterplanning", "GIS and city data", "immersive experiences"],
+  "sameAs": ["https://www.linkedin.com/company/axonova", "https://www.instagram.com/axonova"]
+}
+</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<!-- ═══════════════════ NAV ═══════════════════ -->
-<nav>
-  <a class="nav-logo" href="#hero">
-    <img src="Urban Decoder Resources/UD red.png" alt="Urban Decoders">
-    <span class="nav-logo-text">Urban Decoders</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#arkiengine">Arki Engine</a></li>
-    <li><a href="#videos">Videos</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a class="nav-yt" href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener">Subscribe &rarr;</a>
-</nav>
-
-<!-- ═══════════════════ HERO ══════════════════ -->
-<section id="hero">
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-inner">
-    <p class="hero-eyebrow">// Digital Twins &middot; Artificial Intelligence &middot; Game Engines</p>
-    <h1 class="hero-name">
-      <span class="red">URBAN</span><br>
-      <span class="stroke">DECODERS</span>
-    </h1>
-    <p class="hero-subtitle">
-      AEC technology company developing <strong>emerging technologies</strong> for urban design
-      and architecture — with a focus on <strong>Digital Twins</strong>,
-      <strong>artificial intelligence</strong>, and <strong>real-time game engines</strong>.
-      Shaping the future of cities.
-    </p>
-    <div class="hero-meta">
-      <div class="hero-meta-item"><span class="pip"></span> Cities & Technology</div>
-      <div class="hero-meta-item"><span class="pip"></span> Digital Twins & AI</div>
-      <div class="hero-meta-item"><span class="pip"></span> 18K+ YouTube Subscribers</div>
-    </div>
-    <div class="hero-cta">
-      <a href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener" class="btn btn-primary">Watch on YouTube &rarr;</a>
-      <a href="#arkiengine" class="btn btn-outline">Explore Arki Engine</a>
+<!-- NAV -->
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="index.html" aria-current="page">Home</a>
+      <a class="nav__link" href="about.html">About</a>
+      <a class="nav__link" href="services.html">Services</a>
+      <a class="nav__link" href="industries.html">Industries</a>
+      <a class="nav__link" href="case-studies.html">Work</a>
+      <a class="nav__link" href="blog.html">Insights</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm" href="contact.html">Start Your Project</a>
     </div>
   </div>
-  <div class="scroll-cue">
-    <div class="scroll-cue-line"></div>
-    <span>Scroll</span>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero band glow-top">
+  <div class="wrap">
+    <div class="hero__grid">
+      <div class="stack">
+        <span class="eyebrow">Digital Twins · Planning · Engagement</span>
+        <h1 class="display display--xl">Walk the city<br>before it's <span class="text-grad">built.</span></h1>
+        <p class="lead">Urban Decoders turns plans and city data into living digital twins and immersive experiences — so buyers can walk the scheme, residents can have their say, and authorities can decide with evidence, years before the first crane arrives.</p>
+        <div class="wrap-btns mt-6">
+          <a class="btn btn--primary btn--lg" href="contact.html">Start Your Project</a>
+          <a class="btn btn--outline btn--lg" href="case-studies.html">See the work
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="badge-row mt-7">
+          <span class="pill"><span class="dot dot--green"></span> Salford city twin · live</span>
+          <span class="pill pill--brand">GIS &amp; city data · LOD 3</span>
+        </div>
+      </div>
+
+      <!-- Interactive 3D globe (canvas) -->
+      <div class="globe-scene">
+        <canvas id="ud-globe" class="globe-canvas" tabindex="0" role="img" aria-label="Interactive rotating 3D globe of the Earth showing Urban Decoders' hub cities — Manchester, London and Tokyo — connected by data arcs to project cities worldwide. Drag to rotate, click a city to focus it, use the buttons to zoom."></canvas>
+        <div class="globe-chip">
+          <div class="tag">Live network</div>
+          <div class="mono" style="font-size:22px; letter-spacing:-1px; margin-top:6px">Manchester <span style="color:var(--brand-teal-light)">· global reach</span></div>
+          <div class="muted" style="font-size:12px">drag to rotate · click a city</div>
+        </div>
+        <div class="globe-ctrls" role="group" aria-label="Globe controls">
+          <button class="globe-ctrl" id="globe-zin" type="button" aria-label="Zoom in" title="Zoom in">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+          </button>
+          <button class="globe-ctrl" id="globe-zout" type="button" aria-label="Zoom out" title="Zoom out">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14" stroke-linecap="round"/></svg>
+          </button>
+          <button class="globe-ctrl" id="globe-reset" type="button" aria-label="Reset view" title="Reset view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 12a8 8 0 1 1-2.4-5.7M20 3v4h-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="globe-ctrl" id="globe-spin" type="button" aria-pressed="true" aria-label="Pause rotation" title="Pause rotation">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5v14M15 5v14" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <div class="globe-hint" id="globe-hint" aria-hidden="true">Hold Ctrl and scroll to zoom</div>
+      </div>
+
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════════ ABOUT ═════════════════ -->
-<div class="section-wrap section-border" id="about">
-  <div class="section-label">01 / About</div>
-  <h2 class="section-title">Technology for <span>Tomorrow's Cities</span></h2>
-
-  <div class="about-grid">
-    <div class="about-text reveal">
-      <p>
-        <strong>Urban Decoders</strong> is an AEC technology company developing and providing
-        emerging technologies for urban design and architecture. We focus on
-        <strong>Digital Twins</strong>, <strong>artificial intelligence</strong>, and
-        <strong>game-engine technologies</strong> — and how these tools will shape the future of cities.
-      </p>
-      <p>
-        Founded by <strong>Michal Gryko</strong>, a chartered architect (RIBA/ARB) and
-        Design &amp; Urban Decoders bridges
-        the gap between architectural practice and cutting-edge technology.
-      </p>
-      <p>
-        Through our professional services, regular <strong>YouTube tutorials</strong>, and blog posts,
-        we aim to educate and inform the public about the potential of these technologies and
-        how they can be used to create better, smarter, more sustainable cities.
-      </p>
-    </div>
-
-    <div class="focus-stack reveal d2">
-      <div class="focus-row">
-        <span class="focus-tag">Core</span>
-        Digital Twins for masterplanning &amp; urban design
+<!-- DIGITAL TWIN — IN MOTION -->
+<section class="section glow-top" id="digital-twin">
+  <div class="wrap">
+    <div class="hero__grid">
+      <div class="stack">
+        <span class="eyebrow">Digital Twin</span>
+        <h2 class="section-title">Not a render. A model that responds.</h2>
+        <p class="lead">Watch a digital twin being worked, live: site dimensions, floor count and balconies rebuilt in seconds, with the areas and numbers recomputing as the sliders move. This is what every place we model can do.</p>
+        <a class="btn btn--outline mt-6" href="services.html#digital-twins" style="align-self:flex-start">Explore digital twins</a>
       </div>
-      <div class="focus-row">
-        <span class="focus-tag">AI</span>
-        ComfyUI, LLM fine-tuning, LoRA &amp; generative design
-      </div>
-      <div class="focus-row">
-        <span class="focus-tag">Engine</span>
-        Unreal Engine 5 &amp; real-time visualisation
-      </div>
-      <div class="focus-row">
-        <span class="focus-tag">Data</span>
-        GIS pipelines, FME &amp; spatial data analytics
-      </div>
-      <div class="focus-row">
-        <span class="focus-tag">Product</span>
-        Arki Engine — flagship design platform
-      </div>
-      <div class="focus-row">
-        <span class="focus-tag">Content</span>
-        YouTube tutorials &amp; educational resources
+      <div>
+        <button class="yt-facade" type="button" data-video="assets/arki/arki-vertical-garden.mp4" aria-label="Play: a digital twin being reconfigured live">
+          <img src="assets/img/poster-vertical-garden.jpg" alt="Vertical garden tower digital twin rising over a dense city, with its configuration panel" loading="lazy" width="720" height="405">
+          <span class="yt-play" aria-hidden="true"></span>
+          <span class="yt-facade__cap"><span class="tag">Play</span><span style="color:#fff; font-family:var(--font-display); font-size:17px">Digital Twin — in motion</span></span>
+        </button>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ═══════════════════ ARKI ENGINE ═══════════ -->
-<div class="section-wrap section-border" id="arkiengine">
-  <div class="section-label">02 / Flagship Product</div>
-  <h2 class="section-title">Arki <span>Engine</span></h2>
-
-  <div class="arki-hero">
-    <div class="arki-text reveal">
-      <p>
-        <strong>Arki Engine</strong> is the flagship product of Urban Decoders' research and development.
-        An <strong>Unreal Engine-powered</strong>, real-time design platform that brings architectural
-        and spatial ideas to life through advanced data-driven workflows, configurable design
-        systems, and complex geometric and analytical computation.
-      </p>
-      <p>
-        All wrapped in a <strong>high-fidelity visualisation environment</strong> that streamlines
-        material choices, configuration options, and overall design efficiency — from parametric
-        pavilions to giga-scale masterplans.
-      </p>
-      <div class="arki-badge">
-        <img src="Arki Engine Resources/Epic_MegaGrants_Recipient_logo.png" alt="Epic MegaGrant">
-        <span>Epic MegaGrant Recipient</span>
+<!-- SERVICES PREVIEW (3D tilt cards) -->
+<section class="section glow-top">
+  <div class="wrap">
+    <div class="flex items-center" style="justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:48px">
+      <div class="stack" style="max-width:46ch">
+        <span class="eyebrow">Capabilities</span>
+        <h2 class="section-title">City engagement and planning, built on a living twin.</h2>
       </div>
+      <a class="btn btn--outline" href="services.html">All services</a>
     </div>
-    <div class="reveal d2">
-      <div class="arki-video-wrap">
-        <video controls poster="Arki Engine Resources/pav2.png">
-          <source src="Arki Engine Resources/Arkiengine Promo.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-  </div>
+    <div class="grid grid--3">
 
-  <div class="arki-gallery">
-    <div class="arki-thumb reveal d1"><img src="Arki Engine Resources/pav1.png" alt="Pavilion design"></div>
-    <div class="arki-thumb reveal d2"><img src="Arki Engine Resources/tower1.png" alt="Tower design"></div>
-    <div class="arki-thumb reveal d3"><img src="Arki Engine Resources/plan2.png" alt="Masterplan"></div>
-    <div class="arki-thumb reveal d4"><img src="Arki Engine Resources/GH1.png" alt="Grasshopper integration"></div>
-    <div class="arki-thumb reveal d1"><img src="Arki Engine Resources/gh4.png" alt="Grasshopper workflow"></div>
-    <div class="arki-thumb reveal d2"><img src="Arki Engine Resources/Tower6.png" alt="Tower visualization"></div>
-    <div class="arki-thumb reveal d3"><img src="Arki Engine Resources/plan4.png" alt="Urban plan"></div>
-    <div class="arki-thumb reveal d4"><img src="Arki Engine Resources/GH3.png" alt="Grasshopper scripts"></div>
-  </div>
-
-  <div class="arki-vid4 reveal d3">
-    <div class="arki-video-wrap">
-      <video controls poster="Arki Engine Resources/Tower6.png">
-        <source src="Arki Engine Resources/Vid4.mp4" type="video/mp4">
-      </video>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════ STATS (WHITE) ════════════════ -->
-<div class="section-light">
-  <div class="section-wrap" id="stats">
-    <div class="section-label">03 / Impact</div>
-    <h2 class="section-title">By the <span>Numbers</span></h2>
-
-    <div class="stats-grid">
-      <div class="stat-card reveal d1">
-        <div class="stat-num" data-target="16" data-suffix="K+">0</div>
-        <div class="stat-lbl">YouTube Subscribers</div>
+      <div class="tilt-scene">
+        <article class="card card--glow card--pic tilt" tabindex="0">
+          <img class="card__img" src="assets/img/svc-twin-district.jpg" alt="" aria-hidden="true" loading="lazy" width="600" height="380">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l9 5-9 5-9-5 9-5Z"/><path d="M3 12l9 5 9-5M3 17l9 5 9-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Digital Twins</h3>
+          <p>Living, data-synced replicas of buildings, campuses and city districts — BIM, GIS and live feeds bound into one navigable model that stays current as the plan moves.</p>
+        </article>
       </div>
-      <div class="stat-card reveal d2">
-        <div class="stat-num" data-target="50" data-suffix="+">0</div>
-        <div class="stat-lbl">Video Tutorials</div>
-      </div>
-      <div class="stat-card reveal d3">
-        <div class="stat-num" data-target="1000" data-suffix="+">0</div>
-        <div class="stat-lbl">Design Configurations</div>
-      </div>
-      <div class="stat-card reveal d4">
-        <div class="stat-num" data-target="4000" data-suffix="+">0</div>
-        <div class="stat-lbl">Cities Supported</div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- ═══════════════════ VIDEOS ════════════════ -->
-<div class="section-wrap section-border" id="videos">
-  <div class="section-label">04 / Latest Content</div>
-  <h2 class="section-title">Featured <span>Videos</span></h2>
-
-  <div class="videos-grid">
-    <div class="video-card reveal d1">
-      <iframe class="vid-embed" src="https://www.youtube.com/embed/dEDtEmvwqyE" title="Urban Decoders Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-      <div class="video-card-info">
-        <span class="video-tag">Unreal &middot; Design</span>
-        <div class="video-title">Urban Decoders — Unreal Engine Workflow</div>
-        <div class="video-desc">Explore real-time design workflows and visualisation techniques powered by Unreal Engine.</div>
+      <div class="tilt-scene">
+        <article class="card card--glow card--pic tilt" tabindex="0">
+          <img class="card__img" src="assets/img/svc-exp-vr.jpg" alt="" aria-hidden="true" loading="lazy" width="600" height="380">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8.5h18v7H3z" stroke-linejoin="round"/><path d="M8.5 15.5 12 12l3.5 3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.2" cy="12" r="1.1"/><circle cx="17.8" cy="12" r="1.1"/></svg>
+          </div>
+          <h3>Immersive Experiences</h3>
+          <p>VR journeys, AR overlays and real-time walkthroughs built on game engines — headset, touch table or a link that opens in a browser on any device.</p>
+        </article>
       </div>
-    </div>
 
-    <div class="video-card reveal d2">
-      <iframe class="vid-embed" src="https://www.youtube.com/embed/p1tD3KiQc6g" title="Locate Anywhere in 3D" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-      <div class="video-card-info">
-        <span class="video-tag">Unreal &middot; GIS</span>
-        <div class="video-title">Accurately Locate Anywhere in the World in 3D! (Unreal Engine &amp; Google Maps)</div>
-        <div class="video-desc">Convert addresses to coordinates and visualise them in UE5 using Google Maps tiles and Cesium.</div>
+      <div class="tilt-scene">
+        <article class="card card--glow card--pic tilt" tabindex="0">
+          <img class="card__img" src="assets/img/poster-masterplans.jpg" alt="" aria-hidden="true" loading="lazy" width="600" height="380">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20V6l6-2 4 2 6-2v14l-6 2-4-2-6 2Z" stroke-linejoin="round"/><path d="M10 4v14M14 6v14"/></svg>
+          </div>
+          <h3>Planning &amp; Masterplanning</h3>
+          <p>Scenario testing in 3D — massing, density, phasing, daylight, views and transit. Compare options side by side and take the evidence into the committee room.</p>
+        </article>
       </div>
-    </div>
 
-    <div class="video-card reveal d1">
-      <iframe class="vid-embed" src="https://www.youtube.com/embed/JNVV4sQ_2dw" title="TOP Uses of Google Earth with AI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-      <div class="video-card-info">
-        <span class="video-tag">AI &middot; Google Earth</span>
-        <div class="video-title">TOP Uses of Google Earth with AI</div>
-        <div class="video-desc">Exploring the most impactful ways AI and Google Earth are transforming architecture, urban planning, and design.</div>
+      <div class="tilt-scene">
+        <article class="card card--emphasis card--pic tilt" tabindex="0">
+          <img class="card__img" src="assets/img/svc-eng-feedback.jpg" alt="" aria-hidden="true" loading="lazy" width="600" height="380">
+          <div class="feature__icon" style="color:var(--emphasis-red-bright); border-color:var(--emphasis-red-border)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0" stroke-linecap="round"/><circle cx="17.5" cy="9.5" r="2.2"/><path d="M15 20a5 5 0 0 1 6.5-4.4" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Community Engagement</h3>
+          <p>Public-facing consultation that lets residents explore the proposal, leave comments in place and be heard — turning objection into informed participation.</p>
+        </article>
       </div>
-    </div>
 
-    <div class="video-card reveal d2">
-      <iframe class="vid-embed" src="https://www.youtube.com/embed/qaeEWqyqxJg" title="Urban Decoders Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-      <div class="video-card-info">
-        <span class="video-tag">Unreal &middot; Tech</span>
-        <div class="video-title">Urban Decoders — Technology Showcase</div>
-        <div class="video-desc">A look at emerging technologies for urban design, architecture, and real-time visualisation.</div>
+      <div class="tilt-scene">
+        <article class="card card--glow card--pic tilt" tabindex="0">
+          <img class="card__img" src="assets/img/svc-twin-livedata.jpg" alt="" aria-hidden="true" loading="lazy" width="600" height="380">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5 13.2 13.2 8.5 15.5l2.3-4.7 4.7-2.3Z" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>City Explorer</h3>
+          <p>A web-based explorer for your place — layers, storylines and points of interest anyone can navigate from a link. No install, no training, no gatekeeping.</p>
+        </article>
       </div>
-    </div>
 
-    <div class="video-card reveal d1">
-      <iframe class="vid-embed" src="https://www.youtube.com/embed/Llt_w18k8Fs" title="PCG Surfaces UE5" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-      <div class="video-card-info">
-        <span class="video-tag">Unreal &middot; PCG</span>
-        <div class="video-title">Introduction to Surfaces for Procedural Content Generation (PCG) in Unreal 5</div>
-        <div class="video-desc">Use PCG surfaces in UE5 to procedurally generate landscapes, buildings, and vegetation for urban scenes.</div>
+      <div class="tilt-scene">
+        <article class="card card--glow card--pic tilt" tabindex="0">
+          <img class="card__img" src="assets/img/svc-gis-base.jpg" alt="" aria-hidden="true" loading="lazy" width="600" height="380">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg>
+          </div>
+          <h3>GIS, City Data &amp; Context</h3>
+          <p>Site and city context assembled from GIS layers, open data and survey records — georeferenced to a stated CRS and cleaned into the base every twin, application and visualisation is built on.</p>
+        </article>
       </div>
-    </div>
 
-    <div class="video-card reveal d2">
-      <iframe class="vid-embed" src="https://www.youtube.com/embed/uSiYXGUTyoo" title="Google Maps Web App" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-      <div class="video-card-info">
-        <span class="video-tag">Web &middot; Cesium</span>
-        <div class="video-title">Make Your Own Google Maps Web App (Cesium JS &amp; Rhino)</div>
-        <div class="video-desc">Build a custom web app combining Cesium JS with Google Maps API to geolocate and position 3D building models.</div>
+      <div class="tilt-scene">
+        <article class="card card--glow card--pic tilt" tabindex="0">
+          <img class="card__img" src="assets/img/svc-exp-table.jpg" alt="" aria-hidden="true" loading="lazy" width="600" height="380">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 16.5 12 12l9 4.5-9 4.5-9-4.5Z" stroke-linejoin="round"/><rect x="8" y="4" width="8" height="6" rx="1"/></svg>
+          </div>
+          <h3>Media Tables &amp; Installations</h3>
+          <p>Interactive touch tables, kiosks and projected installations that turn a model into something a room full of people can gather around and actually use.</p>
+        </article>
       </div>
+
+      <div class="tilt-scene">
+        <article class="card card--glow card--pic tilt" tabindex="0">
+          <img class="card__img" src="assets/img/card-place-mgmt.jpg" alt="" aria-hidden="true" loading="lazy" width="600" height="380">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 14l3-4 2.5 3L16 9l1.5 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Place Management Platform</h3>
+          <p>A live dashboard on top of the twin — assets, occupancy, environmental and footfall data — so the people running a place can see how it actually performs.</p>
+        </article>
+      </div>
+
+      <div class="tilt-scene">
+        <article class="card card--glow card--pic tilt" tabindex="0">
+          <img class="card__img" src="assets/img/poster-pavilions.jpg" alt="" aria-hidden="true" loading="lazy" width="600" height="380">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4 2.5 8.5 12 13l9.5-4.5L12 4Z" stroke-linejoin="round"/><path d="M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Gamified Learning</h3>
+          <p>Game-engine tools that teach a place — school programmes, public exhibitions and training that make planning and the built environment something people want to explore.</p>
+        </article>
+      </div>
+
     </div>
   </div>
+</section>
 
-  <div class="yt-cta reveal">
-    <a href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener" class="btn btn-primary">View All Videos on YouTube &rarr;</a>
+<!-- POINT-CLOUD CITY HOLOGRAM -->
+<section class="section" id="hologram">
+  <div class="wrap">
+    <div class="flex items-center" style="justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:40px">
+      <div class="stack" style="max-width:46ch">
+        <span class="eyebrow">The living model</span>
+        <h2 class="section-title">Our own town, as a living model.</h2>
+      </div>
+      <span class="pill pill--brand">Stockport SK1 · 899 real buildings</span>
+    </div>
+    <div class="holo-scene" id="holo-scene" tabindex="0" role="img" aria-label="Interactive point-cloud model of Stockport town centre built from real OpenStreetMap building footprints. The red beam marks the Urban Decoders studio on Middle Hillgate. Drag to orbit; hover or tap a building to see its name.">
+      <canvas class="holo-canvas" id="ud-holo"></canvas>
+      <div class="holo-chip">Stockport town centre · drag to orbit · tap a building · <span style="color:var(--emphasis-red-bright)">red beam = our studio</span></div>
+    </div>
+    <p class="muted mt-4" style="font-size:12px">Building footprints © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" style="color:var(--ash); text-decoration:underline">OpenStreetMap</a> contributors.</p>
   </div>
-</div>
+</section>
 
-<!-- ═══════════════════ CONTACT (WHITE) ══════════════ -->
-<div class="section-light">
-  <div class="section-wrap" id="contact">
-    <div id="contact-wrap">
-      <div class="section-label" style="justify-content:center;">05 / Contact</div>
-      <div class="contact-inner">
-        <h2 class="section-title" style="margin-bottom:1rem;">Let's <span>Connect</span></h2>
-        <p class="contact-intro">
-          Open to collaborations in Digital Twins, computational design,
-          AI-driven architecture, real-time visualisation, and educational content.
-        </p>
-        <div class="contact-links">
-          <a href="mailto:urbandecoders1@gmail.com" class="contact-link">
-            <span class="ci">&check;</span> urbandecoders1@gmail.com
-          </a>
-          <a href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener" class="contact-link">
-            <span class="ci">&#9655;</span> YouTube
-          </a>
-          <a href="https://www.instagram.com/urbandecoders/" target="_blank" rel="noopener" class="contact-link">
-            <span class="ci">&#9673;</span> Instagram
-          </a>
-          <a href="https://github.com/urbandecoders" target="_blank" rel="noopener" class="contact-link">
-            <span class="ci">&lt;/&gt;</span> GitHub
-          </a>
+<!-- ARKI ENGINE — FLAGSHIP PRODUCT -->
+<section class="section arki glow-top" id="arki-engine">
+  <div class="wrap">
+    <div class="arki__head">
+      <div class="stack">
+        <span class="eyebrow">02 / Flagship Product</span>
+        <h2 class="display" style="font-size:clamp(2.6rem,5vw,4rem)">Arki <span class="text-red">Engine</span></h2>
+        <p class="lead"><strong style="color:var(--ink)">Arki Engine</strong> is the flagship product of Urban Decoders' research and development. An <strong style="color:var(--ink)">Unreal Engine&ndash;powered</strong>, real-time design platform that brings architectural and spatial ideas to life through advanced data-driven workflows, configurable design systems, and complex geometric and analytical computation.</p>
+        <p class="lead">All wrapped in a <strong style="color:var(--ink)">high-fidelity visualisation environment</strong> that streamlines material choices, configuration options, and overall design efficiency &mdash; from parametric pavilions to city-scale masterplans.</p>
+        <div class="arki__badge">
+          <img src="assets/arki/epic-megagrant.png" alt="Epic MegaGrants Recipient logo" loading="lazy" width="34" height="34">
+          <span>Epic MegaGrant Recipient</span>
         </div>
       </div>
+      <div class="media">
+        <img src="assets/arki/tower1.png" alt="Arki Engine real-time parametric tower configurator running in Unreal Engine" loading="lazy" width="720" height="405">
+        <div class="media__cap"><span class="tag">Flagship</span><div style="font-family:var(--font-display); font-size:17px; margin-top:4px">Office T46 · live configurator</div></div>
+      </div>
+    </div>
+
+    <!-- 3D coverflow gallery -->
+    <div class="coverflow-wrap mt-8">
+      <div class="coverflow" id="cf-gallery" tabindex="0" role="group" aria-label="Arki Engine project gallery — scroll, drag or use the arrow keys to rotate through the renders">
+        <div class="coverflow__stage">
+        <figure class="cf-card"><img src="assets/arki/pav1.png" alt="Timber pavilion generated in the Arki Engine pavilion configurator" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Timber Pavilion</h4><p>755-component aggregation</p></figcaption></figure>
+        <figure class="cf-card"><img src="assets/arki/tower1.png" alt="Parametric office tower massing over the London skyline" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Office Tower T46</h4><p>Parametric massing study</p></figcaption></figure>
+        <figure class="cf-card"><img src="assets/arki/plan2.png" alt="Data-driven district masterplan in Arki Engine" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>District Masterplan</h4><p>Data-driven parcel layout</p></figcaption></figure>
+        <figure class="cf-card"><img src="assets/arki/tower5.png" alt="Residential tower facade study rendered in real time" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Residential Tower</h4><p>Real-time facade study</p></figcaption></figure>
+        <figure class="cf-card"><img src="assets/arki/pav3.png" alt="Generative canopy pavilion structure" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Canopy Pavilion</h4><p>Generative structure</p></figcaption></figure>
+        <figure class="cf-card"><img src="assets/arki/plan4.png" alt="Urban plan with context and zoning layers" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Urban Plan</h4><p>Context + zoning layers</p></figcaption></figure>
+        <figure class="cf-card"><img src="assets/arki/tower3.png" alt="Mixed-use tower with configurable geometry" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Mixed-Use Tower</h4><p>Configurable geometry</p></figcaption></figure>
+        <figure class="cf-card"><img src="assets/arki/pav4.png" alt="Waterfront pavilion material configurator" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Waterfront Pavilion</h4><p>Material configurator</p></figcaption></figure>
+        </div>
+      </div>
+      <button class="cf-nav cf-nav--prev" type="button" aria-controls="cf-gallery" aria-label="Previous render">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="cf-nav cf-nav--next" type="button" aria-controls="cf-gallery" aria-label="Next render">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <p class="coverflow-hint">Scroll to rotate the gallery</p>
+    </div>
+
+    <!-- Wide feature video -->
+    <a class="yt-facade mt-8" href="https://www.youtube.com/watch?v=dEDtEmvwqyE" target="_blank" rel="noopener" aria-label="Watch an Arki Engine walkthrough on YouTube" style="display:block; aspect-ratio:21/9">
+      <img src="assets/arki/pav3.png" alt="Arki Engine walkthrough of a vertical-garden tower in Unreal Engine" loading="lazy" width="1400" height="600">
+      <span class="yt-play" aria-hidden="true"></span>
+      <span class="yt-facade__cap"><span class="tag">Walkthrough</span><span style="color:#fff; font-family:var(--font-display); font-size:18px">Real-time design in Unreal Engine</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- PROCESS TIMELINE -->
+<section class="section">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:56px">
+      <span class="eyebrow">How we work</span>
+      <h2 class="section-title">From consultation to launch in four moves.</h2>
+    </div>
+    <div class="process">
+      <div class="step">
+        <div class="step__dot">01</div>
+        <div class="step__k">Discovery</div>
+        <h3>Understand the plan</h3>
+        <p>We audit your masterplan, sales goals and existing assets — CAD, GIS, brand — to scope the twin and the story.</p>
+      </div>
+      <div class="step">
+        <div class="step__dot">02</div>
+        <div class="step__k">Strategy</div>
+        <h3>Design the experience</h3>
+        <p>We map the journey — buyer, resident or authority — and choose the right mix: web explorer, VR journey, media table or consultation platform.</p>
+      </div>
+      <div class="step">
+        <div class="step__dot">03</div>
+        <div class="step__k">Build</div>
+        <h3>Model &amp; twin</h3>
+        <p>Context assembly, 3D modelling, rendering and real-time twin engineering — reviewed with you at every milestone.</p>
+      </div>
+      <div class="step">
+        <div class="step__dot">04</div>
+        <div class="step__k">Deploy</div>
+        <h3>Launch & support</h3>
+        <p>We install, train your sales team, and keep the twin synced to the plan long after opening day.</p>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ═══════════════════ FOOTER ══════════════ -->
-<footer>
-  <div class="footer-logo">
-    <img src="Urban Decoder Resources/UD red.png" alt="UD">
-    <span>Urban Decoders</span>
+<!-- COMPARISON TABLE (unique section 1) -->
+<section class="section glow-top">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">Why Urban Decoders</span>
+      <h2 class="section-title">Not a render farm. A spatial partner.</h2>
+    </div>
+    <table class="compare">
+      <thead>
+        <tr>
+          <th scope="col">Capability</th>
+          <th scope="col">Freelance visualiser</th>
+          <th scope="col">Marketing agency</th>
+          <th scope="col" class="is-us">Urban Decoders</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Data-synced digital twin</td><td class="no">—</td><td class="no">—</td><td class="is-us"><span class="yes">Included</span></td></tr>
+        <tr><td>Masterplanning digital twins</td><td class="no">—</td><td class="no">—</td><td class="is-us"><span class="yes">Whole plan, phased</span></td></tr>
+        <tr><td>GIS, city data &amp; context modelling</td><td class="no">—</td><td class="no">Outsourced</td><td class="is-us"><span class="yes">In-house</span></td></tr>
+        <tr><td>Planning &amp; consultation engagement</td><td class="no">—</td><td class="no">Comms only</td><td class="is-us"><span class="yes">Platform + evidence</span></td></tr>
+        <tr><td>Selling units off-plan</td><td class="no">Stills only</td><td class="no">Campaign only</td><td class="is-us"><span class="yes">Immersive + real-time</span></td></tr>
+        <tr><td>On-site VR &amp; media-table installs</td><td class="no">—</td><td class="no">—</td><td class="is-us"><span class="yes">Design + install</span></td></tr>
+        <tr><td>Web walkthrough, no headset needed</td><td>Sometimes</td><td class="yes">Yes</td><td class="is-us"><span class="yes">Yes, real-time</span></td></tr>
+        <tr><td>District &amp; city scale</td><td class="no">—</td><td class="no">Limited</td><td class="is-us"><span class="yes">Core focus</span></td></tr>
+        <tr><td>Post-launch twin maintenance</td><td class="no">—</td><td class="no">—</td><td class="is-us"><span class="yes">Managed</span></td></tr>
+      </tbody>
+    </table>
   </div>
-  <span class="accent">UD</span> &nbsp;&middot;&nbsp; URBAN DECODERS &nbsp;&middot;&nbsp; AEC TECHNOLOGY &nbsp;&middot;&nbsp; DIGITAL TWINS &middot; AI &middot; GAME ENGINES &nbsp;&middot;&nbsp; 2026
+</section>
+
+<!-- CTA BAND -->
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band">
+      <span class="eyebrow eyebrow--plain" style="justify-content:center; display:flex">Start your project</span>
+      <h2 class="section-title mt-6" style="max-width:20ch; margin-inline:auto">Let's make your project impossible to ignore.</h2>
+      <p class="lead mx-auto center mt-6" style="margin-inline:auto">Book a consultation and we'll map the fastest path from your masterplan to an immersive experience your buyers, residents and stakeholders can step inside.</p>
+      <div class="wrap-btns mt-7" style="justify-content:center">
+        <a class="btn btn--primary btn--lg" href="contact.html">Book a Consultation</a>
+        <a class="btn btn--outline btn--lg" href="services.html">Explore services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>City engagement, planning &amp; digital twin studio. Based in Stockport, Greater Manchester &mdash; working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="industries.html">Industries</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="blog.html">Insights</a></li>
+          <li><a href="contact.html">Start a project</a></li>
+          <li><a href="contact.html">Book a consultation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Urban Decoders. All rights reserved.</p>
+      <div class="social">
+        <a href="#" aria-label="Urban Decoders on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.57-2.3 3.2V21H9z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/urbandecoders/" target="_blank" rel="noopener" aria-label="Urban Decoders on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener" aria-label="Urban Decoders on YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.77-1.77C19.3 5.1 12 5.1 12 5.1s-7.3 0-8.83.43A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.77 1.77C4.7 18.9 12 18.9 12 18.9s7.3 0 8.83-.43a2.5 2.5 0 0 0 1.77-1.77C23 15.2 23 12 23 12ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z"/></svg>
+        </a>
+        <a href="https://github.com/arkiengine/urbandecoders" target="_blank" rel="noopener" aria-label="Urban Decoders on GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 8.84 21.5c.5.09.66-.22.66-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.9-1.29 2.74-1.02 2.74-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.16.58.67.48A10 10 0 0 0 12 2Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<!-- ═══════════════════ SCRIPTS ══════════════ -->
 <script>
+/* Click-to-play facades — the video files never load until asked for. */
 (function () {
-  const canvas = document.getElementById('hero-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, nodes = [], raf;
+  Array.prototype.forEach.call(document.querySelectorAll('.yt-facade[data-video]'), function (facade) {
+    facade.addEventListener('click', function () {
+      var v = document.createElement('video');
+      v.className = 'arki-video';
+      v.src = facade.dataset.video;
+      v.poster = facade.querySelector('img') ? facade.querySelector('img').src : '';
+      v.controls = true; v.autoplay = true; v.playsInline = true;
+      v.setAttribute('aria-label', facade.getAttribute('aria-label') || 'Video');
+      facade.replaceWith(v);
+      v.play && v.play().catch(function () {});
+    });
+  });
+})();
 
-  function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
+/* Point-cloud city hologram — procedural dotted district, orbit on drag.
+   Same vanilla-canvas approach as the globe; no libraries. */
+(function () {
+  var scene = document.getElementById('holo-scene');
+  var canvas = document.getElementById('ud-holo');
+  if (!scene || !canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext('2d');
+
+  // Deterministic city: seeded RNG so the skyline is identical every visit
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      var t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
   }
+  var rnd = mulberry32(20260814);
 
-  function spawn() {
-    nodes = [];
-    const n = Math.min(Math.floor((W * H) / 12000), 80);
-    for (let i = 0; i < n; i++) {
-      nodes.push({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        vx: (Math.random() - .5) * .45,
-        vy: (Math.random() - .5) * .45,
-        r:  Math.random() * 1.8 + .8,
-      });
+  /* Stockport town centre — 899 real building footprints from OpenStreetMap
+     (© OpenStreetMap contributors), centred on Hillgate/Underbank, extruded to
+     dotted columns and rings. Packed little-endian Int16 (x, y, z) in metres,
+     heights exaggerated x2.2 so the model reads at this scale. */
+  var STOCKPORT_B64 = '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';
+  var pts = [];
+  (function () {
+    var bin = atob(STOCKPORT_B64);
+    for (var i = 0; i + 5 < bin.length; i += 6) {
+      var x = bin.charCodeAt(i) | bin.charCodeAt(i + 1) << 8;
+      var y = bin.charCodeAt(i + 2) | bin.charCodeAt(i + 3) << 8;
+      var z = bin.charCodeAt(i + 4) | bin.charCodeAt(i + 5) << 8;
+      if (x > 32767) x -= 65536;
+      if (y > 32767) y -= 65536;
+      if (z > 32767) z -= 65536;
+      pts.push([x, y, z]);
     }
+  })();
+
+  /* Named buildings (OSM name tags) for hover/tap identification:
+     [name, x, z, roofHeight, radius] in model metres */
+  var NAMED = [["NCP Stockport Exchange Station",-382,270,17.6,60],["LifeLeisure Grand Central",-363,78,17.6,52],["Stockport Town Hall",-167,169,17.6,48],["Unicorn Brewery",65,-267,22.0,54],["Stopford House",-105,86,43.6,58],["Stockport Magistrates' & County Courts",-23,91,17.6,38],["The Mailbox",-361,-25,58.1,34],["Millennium House",-245,197,17.6,41],["Aldi",196,-356,8.8,43],["3 Stockport Exchange",-336,131,43.6,37],["Highbank Court",-226,-276,17.6,35],["Stockport Homes",-106,212,17.6,35],["Stockport Market",-45,-439,17.6,38],["2 Stockport Exchange",-362,152,17.6,39],["Archer House",-35,30,36.3,30],["1 Stockport Exchange",-373,189,17.6,34],["Fred Perry House",-88,145,43.6,37],["St Thomas' CofE Primary School",62,364,17.6,32],["Hilton House",-184,-18,14.5,42],["West Way Nissan",409,-81,17.6,25],["Saint Mary's Church",48,-414,44.0,33],["1 St Peters Square",-226,-249,17.6,35],["Dorchester Apartments",24,66,17.6,28],["Stockport Central Library",-311,-66,17.6,29],["The Plaza",-350,-188,17.6,26],["St Thomas's Church",58,437,17.6,26],["St Joseph's Catholic Church",-120,-232,17.6,22],["Wellington Mill",-416,-105,90.2,37],["Stockport County Court",-208,-92,72.6,33],["Old Rectory",192,-262,17.6,24],["Holiday Inn Express",-397,116,17.6,26],["Wellington House",-73,450,21.8,28],["Ratcliffe Towers",36,279,17.6,26],["Brook House",92,-158,17.6,30],["Homa House",19,387,17.6,28],["Mottram Towers",-38,229,108.9,27],["Stockport Railway Station",-425,195,17.6,24],["Textilis House",-248,-23,17.6,21],["Millbrook Towers",-55,324,108.9,24],["St. Peter's Church",-253,-214,17.6,29],["Lincoln Towers",119,324,116.2,24],["Arden Buildings",-266,253,29.0,26],["Applicon House",-419,-51,43.6,27],["Highbank House",-457,-36,17.6,24],["Mac Court",5,415,17.6,32],["Birchfield House",123,7,17.6,22],["Marsland House",-26,-216,17.6,23],["Artemis House",-266,314,17.6,17],["Regal House",-200,-157,72.6,22],["Renaissance House",-127,322,36.3,24],["Petersgate House",-316,-128,43.6,18],["Joseph Leigh House",9,-194,17.6,19],["Moorcroft House",320,-122,17.6,19],["The Town House",99,235,17.6,21],["Hempshaw House",107,-175,17.6,27],["Her Majesty's Coroners Court - Mancheste",-141,276,17.6,16],["Graylaw House",-291,-258,17.6,25],["The School House",-87,-62,17.6,17],["Stockport War Memorial Art Gallery",-194,304,17.6,16],["Premier Inn Stockport Central Hotel",214,-281,17.6,22]];
+  var namedScreen = [];   // per-frame projected [sx, sy] of each named roof
+  var hoverN = -1, selN = -1;
+
+  // Ground grid, clipped to the model's circular extent
+  for (var gx = -480; gx <= 480; gx += 24)
+    for (var gz = -480; gz <= 480; gz += 24)
+      if (rnd() > 0.3 && gx * gx + gz * gz < 230400) pts.push([gx, 0, gz]);
+
+  // Studio beacon — 45 Middle Hillgate, in the site's emphasis red
+  var beacon = [];
+  for (var by = 0; by <= 160; by += 4) beacon.push([53, by, 243]);
+  for (var ba = 0; ba < 22; ba++) {
+    var bang = ba / 22 * Math.PI * 2;
+    beacon.push([53 + Math.cos(bang) * 14, 2, 243 + Math.sin(bang) * 14]);
   }
+
+  var yaw = 0.7, pitch = 0.34, AUTO = 0.0016;
+  var drag = null, visible = true, raf = 0;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) AUTO = 0;
+
+  var BUCKETS = 8;
+  var buckets = [];
+  for (t = 0; t < BUCKETS; t++) buckets.push([]);
 
   function draw() {
-    ctx.clearRect(0, 0, W, H);
+    var dpr = window.devicePixelRatio || 1;
+    var w = canvas.clientWidth, h = canvas.clientHeight;
+    if (canvas.width !== w * dpr || canvas.height !== h * dpr) { canvas.width = w * dpr; canvas.height = h * dpr; }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    if (!drag) yaw += AUTO;
 
-    for (const n of nodes) {
-      n.x += n.vx; n.y += n.vy;
-      if (n.x < 0 || n.x > W) n.vx *= -1;
-      if (n.y < 0 || n.y > H) n.vy *= -1;
+    var cy = Math.cos(yaw), sy2 = Math.sin(yaw);
+    var cp = Math.cos(pitch), sp = Math.sin(pitch);
+    var scale = Math.min(w, h) / 640, fov = 900, camz = 560;
+    var m = scale * 1.55;
+    var cx0 = w / 2, cy0 = h * 0.66;
+
+    for (t = 0; t < BUCKETS; t++) buckets[t].length = 0;
+    for (var i = 0; i < pts.length; i++) {
+      var p = pts[i];
+      var x = p[0] * cy + p[2] * sy2, z = -p[0] * sy2 + p[2] * cy, y = p[1];
+      var y2 = y * cp - z * sp, z2 = y * sp + z * cp;
+      var s = fov / (fov + z2 + camz);
+      var sx = cx0 + x * s * m, syp = cy0 - y2 * s * m;
+      if (sx < -4 || sx > w + 4 || syp < -4 || syp > h + 4) continue;
+      var depth = Math.max(0, Math.min(1, 1 - (z2 + 480) / 960));   // near -> 1
+      var b = Math.min(BUCKETS - 1, Math.floor(depth * BUCKETS));
+      buckets[b].push(sx, syp, p[1] > 0 ? (depth > 0.55 ? 2.4 : 1.8) : 1.4);
+    }
+    ctx.fillStyle = 'rgb(205,232,255)';
+    for (t = 0; t < BUCKETS; t++) {
+      var arr = buckets[t];
+      if (!arr.length) continue;
+      ctx.globalAlpha = 0.22 + (t / (BUCKETS - 1)) * 0.78;
+      for (var j = 0; j < arr.length; j += 3) ctx.fillRect(arr[j], arr[j + 1], arr[j + 2], arr[j + 2]);
+    }
+    ctx.fillStyle = 'rgb(255,90,95)';
+    for (var k = 0; k < beacon.length; k++) {
+      var q = beacon[k];
+      var qx = q[0] * cy + q[2] * sy2, qz = -q[0] * sy2 + q[2] * cy;
+      var qy = q[1] * cp - qz * sp, qzz = q[1] * sp + qz * cp;
+      var qs = fov / (fov + qzz + camz);
+      ctx.globalAlpha = q[1] > 4 ? 0.38 + 0.5 * (q[1] / 160) : 0.85;
+      ctx.fillRect(cx0 + qx * qs * m, cy0 - qy * qs * m, 2, 2);
+    }
+    ctx.globalAlpha = 1;
+
+    // Project named-building roofs for hit-testing, then label hover/selection
+    for (var nI = 0; nI < NAMED.length; nI++) {
+      var nb = NAMED[nI];
+      var nx = nb[1] * cy + nb[2] * sy2, nz = -nb[1] * sy2 + nb[2] * cy;
+      var ny = nb[3] * cp - nz * sp, nzz = nb[3] * sp + nz * cp;
+      var ns = fov / (fov + nzz + camz);
+      namedScreen[nI] = [cx0 + nx * ns * m, cy0 - ny * ns * m];
+    }
+    var showN = hoverN >= 0 ? hoverN : selN;
+    if (showN >= 0) {
+      var sb = NAMED[showN], sp2 = namedScreen[showN];
+      ctx.strokeStyle = 'rgba(90,205,255,0.9)'; ctx.lineWidth = 1.4;
+      ctx.beginPath(); ctx.arc(sp2[0], sp2[1], 6, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(sp2[0], sp2[1] - 6); ctx.lineTo(sp2[0], sp2[1] - 22); ctx.stroke();
+      ctx.font = '11px "JetBrains Mono", ui-monospace, monospace';
+      var tw = ctx.measureText(sb[0]).width;
+      var lx = Math.max(6, Math.min(w - tw - 18, sp2[0] - tw / 2 - 6));
+      var ly = Math.max(8, sp2[1] - 42);
+      ctx.fillStyle = 'rgba(8,8,10,0.88)';
+      ctx.strokeStyle = 'rgba(255,255,255,0.16)'; ctx.lineWidth = 1;
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(lx, ly, tw + 14, 20, 5); else ctx.rect(lx, ly, tw + 14, 20);
+      ctx.fill(); ctx.stroke();
+      ctx.fillStyle = 'rgba(90,205,255,0.95)';
+      ctx.fillText(sb[0], lx + 7, ly + 14);
+    }
+    if (visible) raf = requestAnimationFrame(draw);
+  }
+
+  function nearestNamed(clientX, clientY) {
+    var r = canvas.getBoundingClientRect();
+    var px = clientX - r.left, py = clientY - r.top;
+    var best = -1, bd = 26;
+    for (var i = 0; i < namedScreen.length; i++) {
+      var q = namedScreen[i];
+      if (!q) continue;
+      var d = Math.hypot(q[0] - px, q[1] - py);
+      if (d < bd) { bd = d; best = i; }
+    }
+    return best;
+  }
+  scene.addEventListener('pointerdown', function (e) {
+    drag = { x: e.clientX, y: e.clientY, yaw: yaw, pitch: pitch, moved: false };
+    scene.setPointerCapture(e.pointerId);
+  });
+  scene.addEventListener('pointermove', function (e) {
+    if (!drag) {
+      hoverN = nearestNamed(e.clientX, e.clientY);
+      scene.style.cursor = hoverN >= 0 ? 'pointer' : '';
+      return;
+    }
+    if (Math.hypot(e.clientX - drag.x, e.clientY - drag.y) > 5) drag.moved = true;
+    yaw = drag.yaw + (e.clientX - drag.x) * 0.006;
+    pitch = Math.max(0.14, Math.min(0.95, drag.pitch + (e.clientY - drag.y) * 0.004));
+  });
+  scene.addEventListener('pointerup', function (e) {
+    var wasClick = drag && !drag.moved;
+    drag = null;
+    if (wasClick) selN = nearestNamed(e.clientX, e.clientY);
+  });
+  scene.addEventListener('pointerleave', function () { hoverN = -1; });
+  function end() { drag = null; }
+  scene.addEventListener('pointercancel', end);
+  scene.addEventListener('lostpointercapture', end);
+  scene.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { yaw -= 0.15; e.preventDefault(); }
+    else if (e.key === 'ArrowRight') { yaw += 0.15; e.preventDefault(); }
+  });
+
+  // Only render while on screen
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      var on = entries[0].isIntersecting;
+      if (on && !visible) { visible = true; raf = requestAnimationFrame(draw); }
+      else if (!on) { visible = false; cancelAnimationFrame(raf); }
+    }, { rootMargin: '120px' }).observe(scene);
+  }
+  raf = requestAnimationFrame(draw);
+})();
+
+/* Arki gallery — 3D coverflow. Cards are laid out on a ring around the
+   active index; scroll, drag, click, arrow keys and the nav buttons all
+   just move that index and re-lay the cards. */
+(function () {
+  var box = document.getElementById('cf-gallery');
+  if (!box) return;
+  var stage = box.querySelector('.coverflow__stage');
+  var cards = Array.prototype.slice.call(box.querySelectorAll('.cf-card'));
+  if (cards.length < 2) return;
+
+  var VISIBLE = 3;        // cards shown either side of centre
+  var ANGLE   = 45;       // deg of rotateY per step out
+  var DEPTH   = 190;      // px pushed back per step out
+  var active  = Math.floor(cards.length / 2);
+  var spacing = 0;
+
+  function measure() { spacing = cards[0].offsetWidth * 0.56; }
+
+  function layout() {
+    for (var i = 0; i < cards.length; i++) {
+      var c = cards[i], d = i - active, a = Math.abs(d), far = a > VISIBLE;
+      var clamped = far ? VISIBLE : a;
+      c.style.transform =
+        'translate(-50%,-50%)' +
+        ' translateX(' + (d * spacing) + 'px)' +
+        ' translateZ(' + (-clamped * DEPTH) + 'px)' +
+        ' rotateY(' + (-d * ANGLE / (1 + clamped * 0.35)) + 'deg)' +
+        ' scale(' + (1 - clamped * 0.05) + ')';
+      c.style.zIndex = String(100 - clamped);
+      c.style.opacity = far ? '0' : String(1 - clamped * 0.16);
+      c.style.filter = 'brightness(' + (1 - clamped * 0.16) + ')';
+      c.style.pointerEvents = far ? 'none' : 'auto';
+      c.classList.toggle('is-active', d === 0);
+      c.setAttribute('aria-hidden', far ? 'true' : 'false');
+    }
+  }
+
+  function go(n) {
+    active = Math.max(0, Math.min(cards.length - 1, n));
+    layout();
+  }
+
+  cards.forEach(function (c, i) {
+    c.addEventListener('click', function () { if (i !== active) go(i); });
+  });
+
+  var prev = document.querySelector('.cf-nav--prev');
+  var next = document.querySelector('.cf-nav--next');
+  if (prev) prev.addEventListener('click', function () { go(active - 1); });
+  if (next) next.addEventListener('click', function () { go(active + 1); });
+
+  box.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { go(active - 1); e.preventDefault(); }
+    else if (e.key === 'ArrowRight') { go(active + 1); e.preventDefault(); }
+  });
+
+  // Wheel: only claim the gesture while there are cards left to travel,
+  // so the page keeps scrolling normally at either end of the gallery.
+  var wheelLock = 0;
+  box.addEventListener('wheel', function (e) {
+    var d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    if (Math.abs(d) < 2) return;
+    var dir = d > 0 ? 1 : -1;
+    if ((dir < 0 && active === 0) || (dir > 0 && active === cards.length - 1)) return;
+    e.preventDefault();
+    var now = e.timeStamp;
+    if (now - wheelLock < 260) return;
+    wheelLock = now;
+    go(active + dir);
+  }, { passive: false });
+
+  var drag = null;
+  box.addEventListener('pointerdown', function (e) {
+    if (e.button) return;
+    drag = { x: e.clientX, from: active };
+    box.classList.add('is-dragging');
+    box.setPointerCapture(e.pointerId);
+  });
+  box.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    go(drag.from - Math.round((e.clientX - drag.x) / (spacing || 1)));
+  });
+  function endDrag() { drag = null; box.classList.remove('is-dragging'); }
+  box.addEventListener('pointerup', endDrag);
+  box.addEventListener('pointercancel', endDrag);
+
+  window.addEventListener('resize', function () { measure(); layout(); });
+
+  box.setAttribute('data-cf-ready', '');   // drops the no-JS flat-row fallback
+  measure();
+  layout();
+})();
+
+/* Interactive 3D globe — vanilla port, brand teal→blue palette. */
+(function () {
+  var canvas = document.getElementById('ud-globe');
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext('2d');
+
+  var DOT = 'rgba(47,138,169,ALPHA)';      // brand teal-light
+  var ARC = 'rgba(59,158,255,0.55)';       // brand blue
+  var MARK = 'rgba(90,205,255,1)';         // bright cyan
+  var HUB = 'rgba(255,90,95,1)';           // emphasis red for UD hubs
+  var AUTO = 0.0022;
+
+  var markers = [
+    { lat: 53.48, lng: -2.24, label: 'Manchester', hub: true },
+    { lat: 51.51, lng: -0.13, label: 'London', hub: true },
+    { lat: 35.68, lng: 139.69, label: 'Tokyo', hub: true },
+    { lat: 40.71, lng: -74.00, label: 'New York' },
+    { lat: 25.20, lng: 55.27, label: 'Dubai' },
+    { lat: 12.97, lng: 77.59, label: 'Bengaluru' },
+    { lat: 1.35, lng: 103.82, label: 'Singapore' },
+    { lat: -33.87, lng: 151.21, label: 'Sydney' },
+    { lat: 30.04, lng: 31.24, label: 'Cairo' }
+  ];
+  var connections = [
+    { from: [53.48, -2.24], to: [51.51, -0.13] },
+    { from: [53.48, -2.24], to: [40.71, -74.00] },
+    { from: [53.48, -2.24], to: [25.20, 55.27] },
+    { from: [53.48, -2.24], to: [35.68, 139.69] },
+    { from: [51.51, -0.13], to: [30.04, 31.24] },
+    { from: [25.20, 55.27], to: [12.97, 77.59] },
+    { from: [12.97, 77.59], to: [1.35, 103.82] },
+    { from: [1.35, 103.82], to: [35.68, 139.69] },
+    { from: [1.35, 103.82], to: [-33.87, 151.21] }
+  ];
+
+  var HOME_Y = 1.91, HOME_X = 0.55;     // Europe/Africa front, Manchester in frame
+  var rotY = HOME_Y, rotX = HOME_X, time = 0, raf = 0;
+  var zoom = 1, ZMIN = 0.6, ZMAX = 2.2;
+  var fly = null;            // {p, fy, ty, fx, tx, fz, tz} camera animation
+  var spinOn = true;
+  var drag = { active: false, x: 0, y: 0, ry: 0, rx: 0, moved: false };
+  /* Land bitmask: 360x180 @ 1 deg, row 0 = 90N, packed MSB-first.
+     Rasterized from Natural Earth countries (QGIS world_map.gpkg). */
+  var LAND_B64 = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/8AAAf///AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////+//////6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//////////////gAAAAAAAAAI//AAAB3gAAAAAAAAAAAAAAAAAAAAAAAAAAd/////////////8AAAAD/8cgP///AA4A/8AAAAAAAAAAAAAAAAAAAAAAAAAP9////3////////gAAAD//8gAAMDAADAA//4AAAAAAAAAAAAAAAAAAAAAAB+P//////////////gAAAD//PgAAAAAAAAAF//AAAAAAAAAAAAAAAAAAAAAB/+d/7//5/////////gAAAAfvgAAAAAAQAADZn/AAAAAAAAgAAAAAAAAAAAAP/3/////g/////////AAAAAHAwAAAAA/8AADP///AAAB+DIAAAAAAAAAAAAAH///////ADB///////gAAAAAAAAAAAf/gAHP////AAAH//gAAAAAAAAAAAAAf//wf//+AAAP//////gAAAAAwAAAAA/gAAT/////YAAH/HgAAAAAAAAAAAAAf/19////wAAH/////8AAAAAAAAAAAB+AHO///////v8GfAAAAAAAAAAAAAAA///9////8AAH/////4AAAAAAAAAAAH4APv////////8Af/AAAAA6AADwAAAA///8f9///wAD/////4AGAAAAB+AAAH4A//////////////74AADwAB///wA/wf//x+///+AD/////4AMAAAA//wAAB/g////////////////gsDAAD////////////////AB/////wAAAAAH///gA4j////////////////////8Af/////////////7//wA////+AAAAAA////+e///////////////////////wP/////////////4//8A///8AAAAAAA/////f///////////////////////+f/////////////4H/+A///4A/8AAAA////////////////////////////////////////////h//8A///gB/+AAAB////3///////////////////////Dxf/////////////9//4Af/wAB/+AAAH/9//////////////////////////APH/////////////9x/wAP/wAAfwAAAf////////////////////////////ACf////////////A///wAH/gAAAADAD//n//////////////////////////AAf///////////8AH/5wAD/AAAAABAD//H/////////////////////////wAw////////////wAB/+wAB/AAAAAAHD/////////////////////////n/+AAA///9v///////wAH/84AAGAAAAAAOB//7//////////////////////H+IAAAB/+AB///////8AB//8AAAAAAAAD8B//3///////////////////+AYf4AAAEAH8AAf///////gD//+AAAAAAAAH+Af/3///////////////////4AA/wAAACA/YAAP///////4H///AAAAAAAAD8AP+v///////////////////gAB/wAAAAD8gAAH////////3///wAAAAAAAH+AP8P///////////////////gAB/mAAAAfYAAAD////////7///4AAAAAAAf/Af/////////////////////7AB/jgAADwAAAAD////////////+AAAAAAAffj///////////////////////AB+ACAH/AAAAAB////////////+AAAAAAAf/z///////////////////////AA4AD1+AAAAAAAn///////////+AAAAAAAe/////////////////////////AA4AAHAAAAAAAAH///////////+AAAAAAAA////////////////////////7gBgAAAAAAAAAAAD//////////+fgAAAAAABn///////////////////////7gDAAAAAAAAAAAAA//////////w/wAAAAAAA////////////////////////+gGAAAAAAAAAAAAAf///////////wAAAAAAAf///////////////////////3AMAAAAAAAAAAAAAf//////////nwAAAAAAAH///////////////////////nB4AAAAAAAAAAAAAf//////////gAAAAAAAAD/////v//v//////////////OHgAAAAAAAAAAAAAf/////////+gAAAAAAAAD/////Hf/f/////////////+H8AAAAAAAAAAAAAAf////////5xgAAAAAAAP///3/+AH/P/////////////8P4AAAAAAAAAAAAAAf////////wAAAAAAAAAP/8v//+HD/n/////////////4fwAAAAAAAAAAAAAAf////////4AAAAAAAAAH/8M/f////z////////////+AdAAAAAAAAAAAAAAAf////////AAAAAAAAAAH/mMf/////7////////////8AcAAAAAAAAAAAAAAAf///////8AAAAAACYAAP/+MH/////z///////////fwAeAAAAAAAAAAAAAAAP///////8AAAAAAAYAAP/wM/P////x//////////+z4A8AAAAAAAAAAAAAAAP///////4AAAAAAACAAH/A/+P////5///////////7+D8AAAAAAAAAAAAAAAH///////4AAAAAAACAAD+//sH////////////////4834AAAAAAAAAAAAAAAD///////4AAAAAAAAAAB///oB8P//////////////g8/4AAAAAAAAAAAAAAAB///////wAAAAAAAAAAB///AA4P//////////////h//wAAAAAAAAAAAAAAAB///////gAAAAAAAAAQH///gAAB//////////////gn+QAAAAAAAAAAAAAAAAf/////+AAQAAAAAAAwP///8fgD//////////////wPwQAAAAAAAAAAAAAAAAH/////8AAAAAAAAAAAP////f////////////////wHAAAAAAAAAAAAAAAAAAH/////4AAAAAAAAAAIP/////////////////////4HAIAAAAAAAAAAAAAAAAT////z8AAAAAAAAAACf/////////v///////////4EAAAAAAAAIAAAAAAAAAT///ggcAAAAAAAAAB///////////v///////////wGAAAAAAAAAAAAAAAAAAD///AAcAAAAAAAAAB7//////////3///////////wcAKAAAAAAAAAAAAAAAAB7/+AAdgAAAAAAAAAH//////////9///////////g4ACAAAAAAAIAAAAAAAAAf/+AAPwAAAAAAAAAH///////+//8///////////cBAEAAAAAAAAAAAAAAAAAf/+AAd8AAAAAAAAAP////////f//8A//////////AAEAEAAAAAAAAAAAAAAAG/+AA++AAAAAAAAAf////////P///Af///////9wAAAAAAAAAAAAYAAAAAAAGf+Ah/vAAAAAAAAAf////////v///AP///////4wAAAAAAAAAAAAfAAAAAAAAf+B9/7gAAAAAAAA/////////////AH///////AgAAAAAAAAAAAADgAAAAAAAP/B8D/AAAAAAAAA/////////3//+AD//8P//YAYAAAwAAAAAAAABwAAAAAAEP/j4O/8AAAAAAAAf////////z//8AA//4P/+8AQAAAQAACAAAAAAgAAAAABMH//4B//8AAAAAAAf////////5//8AA//gH/+4A4AAAQAAAAAAAAAAAAAAAAAB//4gwj+AAAAADAf////////9//4AAf/AD//AA4AAAQAAAAAACAAAAAAAAAAAf/2AAAHAAAAADQf///////////gAAf+AD//gB4AAAQAAAAAAAAAAAAAAAAAADv/gAACAAAAABw/////////+/+AAAf8ADf/kB4AAAQAAAAAAAAAAAAAAAAAAAH/wAADAAAAABg///////////4AAAP4AEf/wA+AAAQAAAAAAAAAAAAAAAAAAAD/oAADgAAAAAAf//////////gAAAP4AOf/wA+AAAgAAAAAAAAAAAAAAAAAAAAPoB8CAAAAAAAf/////////8DgAAP4AMf/wB/AAAAAAAAAAAAAAAAAAAAAAAAHgH/ZAAAAAAAf/////////x8AAA3wAMc/wh/AAAAAACAAAAAAAAAAAAACAAADgP//AAAAAAAP//////////8AAA3wAIcfgz/gAAAAAAAAAAAAAAAAAAAAAAAD////AAAAAAAH//////////4AAAD4AIeOAHfgAoAAAAAAAAAAAAAAAAAAAAAA////gAAAAAAD//////////4AAAT8AEOOAOPgIABCABIAAAAAAAAAAAAAAAAAP///wAAAAAAB//////////wAAAAcAEOAAOfgIAAQAAkAAAAAAAAAAAAAAAAAA///8AAAAAAA//////////wAAAQcAEHgAO/gIABAIAWAAABAAAAAAAAAAAAIA////wAAAAAAf/z///////gAAAQIABzwA/zggAAEAwwAAAAQAAAAAAAAAAAAA////4AAAAAAPmB///////gAAAwAAB7xh/AwAAAAAAgAAAAIAAAAAAAAAAAAJ////4AAAAAAAAAP//////AAAAAAAA/3j8BhAAACAACAAAACAAAAAAAAAAAAB////8AAAAAAAAAH/////+AAAAQAAB//3+BZAAAAAABAAAACAAAAAAAAAAGAD////+AAAAAAAAAX/////8AAAAAAAAf5//75AAAAAADAAAAAAAAAAAAAAADgH////+AAAgAAAAAn/////wAAAAAAAAf5//+cIAACAADAAAAQAAAAAAAAAADgH/////wAAAAAAAAP/////gAAAAQAAAP8f98f+AAAACQgAAAAAAAAAAAAAADgH/////8AAAAAAABP/////AAAAAAAAAP+/9///yNgAAA4AIAAAAAAAAAAAAAAP//////4AAAAAAAH/////AAAAAAAAAH/v7///+N4AAAYAIAAAAAAAAAAAAAAP//////8EAAAAAAD////+AAQAAAAAAD/v79///geAAAABYAAwAAAAAAAAAAAP///////AAAAAAAB////8AAQAAAAAAA8A58F//5eAAAAAAAAgAAAAAAAAAAAP///////gAAAAAAB////8AAAAAAAAAA/KB+B5//7AAAIAAAAAAAAAAAAAAAAP///////wAAAAAAA////8AAAABAAAAAH/wiHI//zwAAEAAAAAAEAAAAAAAAAD///////wAAEAAAA////8AAIAAgAAAAD/wx/B/8B+AACAQAGAAGAAAAAAAAAD///////wAAAAAAAf///8AAAAAAAAAAAP///B/f4/gADAIAAAAHAAAAAAAAAB///////gAAAAAAA////8CAAAAAAAAAAAPngAPP8HBAAAAIwAADAAAAAAAAAB///////gAAAAAAAf///+AAIAAAAAAAEAB+AgCH4BmAAAIAACAAAAAAAAAAAA//////+AAAAAAAAf///+RQAAAAAAAAAAAAD+HAGGCAAAAAAAAAAAAAAAAAAA//////+AAAAAAAA////+cwAAAAAAAgAAAED+HAAAAgEEYAAAAAAAAAAAAAAAf/////8AAAAAAAA////+B4AAAAAAAAAAAB3+HAAADAAYOAAAXIAAAAAAAAAAf/////8AAAAAAAA////+B4AAAAAAAAAAAD/+HwAADgACgAAQfEAAAAAAAAAAP/////8AAAAAgAB////+H4AAAAAAAAAAAD//HwAADgAgAAAPnwAAAAAAAAAAH/////8AAAAAgAB////+P4AAAAAAAAAAAP///wAABgHwAAABi9AAAAAAAAAAB/////4AAAAAAAB////4/wAAAAAAAAAAAP///4AAAgHxiAIAAFwAAAAAAAAAAf////4AAAAAAAB////gPwAAAAAAAAAAAf///4AAAwHzCAGAAPAAAAAAAAAAAf////4AAAAAAAA////APwEEAAAAAAAAB////+AAQQHQAAGAABAAAAAAAAAAAf////wAgAAAAAAf///AfgUAAAAAAAAAf/////AAfQADAAKAAFYAAAAAAAAAAf////wAAAAAAAAf///AfgQAAAAAAAAB//////gAPggEAAACAAQAAAAAAAAAAf////wAAAAAAAAP///CfgAAAAAAAAAB//////gADAAAAAAAoAMAAAAAAAAAAf///+AAAAAAAAAP///AfAAAAAAAAAAB//////wAAAAAAAAAAAAEAAAAAAAAAf///wAAAAAAAAAP///AfAAAAAAAAAAB//////8AAAAAAAAAAAAQAAAAAAAAAf///gAAAAAAAAAP//+APAAAAAAAAAAD//////8AAAAAAAAAAAAAAAAAAAACAf///AAAAAAAAAAP//4AAAAAAAAAAAAB//////8AAAAAAAAABAAAAACAAAAAA////AAAAAAAAAAH//4AAAAAAAAAAAAB//////8AAAAAAAAAAAAAAAAAAAAAA////AAAAAAAAAAH//4AAAAAAAAAAAAB//////8ABAAIAAAAAAAAAAAAAAAAA///+AAAAAAAAAAD//wAAAAAAAAAAAAA//////8ABAAAAAAAAAAAAAAAAAAAA///8AAAAAAAAAAB//gAAAAAAAAAAAAA//////8AAAAAAAAAAAAAAAAAAAAAA///8AAAAAAAAAAB//gAAAAAAAAAAAAAf/////8EAAAAAAAAAAAAAAAAAAAAA///4AAAAAAAAAAB//AAAAAAAAAAAAAAf/4///4AAAAAAAAAAAAAAAAAAAAFA///wAAAAAAAAAAB/8AAAAAAAAAAAAAA/+AP//wAAAAAAAAAAAAAAAAAAAAAB///gAAAAAAAAAAA/wAAAAAAAAAAAAAA/MAH//wAADAAAAAAAAAAAAAAAAAAB//4AAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAH//gAABgAAAAAAAAAAAAAAAAAD//8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADf/gAABwAAAAAAAAAAAAAAAAAD//8AAAAAABAAAAAAAAAAAAAABAAAAAAAAAAf/gAAA+AAAAAAAAAAAAAAAAAD//4AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAP8AAAA+AAAAAAAAAAAAAAAAAD/+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABuAAAB8AAAAAAAAAAAAAAAAAD/8AAAAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAB+AAAD4AAAAAAAAAAAAAAAAAH/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+AAAH4AAAAAAAAAAAAAAAAAH/4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeAAAPgEAAAAAAAAAAAAAAAAH/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeAAA/AEAAAAAAAAAAAAAAAAP/gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAAAAAP/gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8AAAAAAAAAAAAAAAAAAP/AAAAAAAAAAAAAAAAAQAMAAAAAAAAAAAAAAAAAAD4AAAAAAAAAAAAAAAAAAP/gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAAAAAP/gAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAP+AAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAP+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAAAAAP8D4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8DwAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAH+AAABmAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/4AAAHwAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA/AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/gAAAAAAAAAAAAAAAAADwAAAAAID4HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH/AAAAAAAAAAAAAAAAAA/8AAAAf////4/3//AAAwAAAAAAAAAAAAAAAAAAAAPwAAAAAAAAAAAAAAAAAf///8AP//////////4AAIAAAAAAAAAAAAAAAABAABz/AAAAAAAAAAAAAAAOH////+B/////////////AAAAAAAAAAAAAAAAAAAAAN/+AAAAAAAAAAAAGAAP/////8//////////////+AAAAAAAAAAAAAAAAAAAAe//AAAAAAAAbs///////////9////////////////AAAAAAAAAAAAAAB/AAAf//AAAAAAAB//////////////////////////////4AAAAAAAAAAAAAP/7wGP//gAAAAAAX//////////////////////////////4AAAAAAAAAD/9gP///////gAAAAAMf//////////////////////////////wAAAAAAAAf///8A///////AAAAAAd//////////////////////////////8AAAAAAAH/////////////4AAAAAH///////////////////////////////gAAAAAAB//////////////AAAAAD////////////////////////////////iAAAAAH//////////////AAAD8A/////////////////////////////////7wAAAHn/////////////+/AAH+B//////////////////////////////////AAAAH8/////////////4/jgP/B/////////////////////////////////gAAAAAAb/////////////9/h/+P/////////////////////////////////AAAAAD////////////////8APz//////////////////////////////////wAAB8Dm////////////////P/////////////////////////////////////gAA//////////////////////////////////////////////////////////4////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////';
+  var landBits = atob(LAND_B64);
+  function isLand(lat, lng) {
+    var row = Math.min(179, Math.max(0, Math.floor(90 - lat)));
+    var col = Math.min(359, Math.max(0, Math.floor(lng + 180)));
+    var i = row * 360 + col;
+    return (landBits.charCodeAt(i >> 3) >> (7 - (i & 7))) & 1;
+  }
+
+  // Fibonacci sphere, keeping only points on landmass — a dotted Earth.
+  var dots = [];
+  var N = 16000, gr = (1 + Math.sqrt(5)) / 2;
+  for (var i = 0; i < N; i++) {
+    var th = (2 * Math.PI * i) / gr, ph = Math.acos(1 - (2 * (i + 0.5)) / N);
+    var vx = Math.cos(th) * Math.sin(ph), vy = Math.cos(ph), vz = Math.sin(th) * Math.sin(ph);
+    var lat = 90 - ph * 180 / Math.PI;
+    var lng = Math.atan2(vz, -vx) * 180 / Math.PI - 180;
+    if (lng < -180) lng += 360;
+    if (isLand(lat, lng)) dots.push([vx, vy, vz]);
+  }
+
+  function toXYZ(lat, lng, r) {
+    var phi = (90 - lat) * Math.PI / 180, theta = (lng + 180) * Math.PI / 180;
+    return [-(r * Math.sin(phi) * Math.cos(theta)), r * Math.cos(phi), r * Math.sin(phi) * Math.sin(theta)];
+  }
+  function rX(x, y, z, a) { var c = Math.cos(a), s = Math.sin(a); return [x, y * c - z * s, y * s + z * c]; }
+  function rY(x, y, z, a) { var c = Math.cos(a), s = Math.sin(a); return [x * c + z * s, y, -x * s + z * c]; }
+  // Flipped on both axes so the globe reads north-up, east-right.
+  function proj(x, y, z, cx, cy, f) { var s = f / (f + z); return [cx - x * s, cy - y * s, z]; }
+
+  function draw() {
+    var dpr = window.devicePixelRatio || 1;
+    var w = canvas.clientWidth, h = canvas.clientHeight;
+    if (canvas.width !== w * dpr || canvas.height !== h * dpr) { canvas.width = w * dpr; canvas.height = h * dpr; }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var cx = w / 2, cy = h / 2, r = Math.min(w, h) * 0.38 * zoom, fov = 620;
+    if (fly) {
+      fly.p = Math.min(1, fly.p + 0.028);
+      var k = fly.p < 0.5 ? 4 * fly.p * fly.p * fly.p : 1 - Math.pow(-2 * fly.p + 2, 3) / 2;
+      rotY = fly.fy + (fly.ty - fly.fy) * k;
+      rotX = fly.fx + (fly.tx - fly.fx) * k;
+      zoom = fly.fz + (fly.tz - fly.fz) * k;
+      r = Math.min(w, h) * 0.38 * zoom;
+      if (fly.p >= 1) fly = null;
+    } else if (!drag.active && spinOn) { rotY += AUTO; }
+    time += 0.015;
+    ctx.clearRect(0, 0, w, h);
+
+    // Globe body: faint shaded disc so the ocean reads as a sphere
+    var body = ctx.createRadialGradient(cx, cy - r * 0.35, r * 0.15, cx, cy, r);
+    body.addColorStop(0, 'rgba(47,138,169,0.10)');
+    body.addColorStop(1, 'rgba(47,138,169,0.025)');
+    ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.fillStyle = body; ctx.fill();
+    ctx.strokeStyle = 'rgba(47,138,169,0.14)'; ctx.lineWidth = 1; ctx.stroke();
+
+    for (var i = 0; i < dots.length; i++) {
+      var p = dots[i], x = p[0] * r, y = p[1] * r, z = p[2] * r, t;
+      t = rX(x, y, z, rotX); x = t[0]; y = t[1]; z = t[2];
+      t = rY(x, y, z, rotY); x = t[0]; y = t[1]; z = t[2];
+      if (z > 0) continue;
+      var sp = proj(x, y, z, cx, cy, fov);
+      var a = Math.max(0.08, 1 - (z + r) / (2 * r));
+      ctx.beginPath(); ctx.arc(sp[0], sp[1], 1 + a * 0.9, 0, Math.PI * 2);
+      ctx.fillStyle = DOT.replace('ALPHA', a.toFixed(2)); ctx.fill();
     }
 
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const dx = nodes[i].x - nodes[j].x;
-        const dy = nodes[i].y - nodes[j].y;
-        const d  = Math.sqrt(dx*dx + dy*dy);
-        if (d < 160) {
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(0,212,255,${(1 - d/160) * .14})`;
-          ctx.lineWidth = .6;
-          ctx.moveTo(nodes[i].x, nodes[i].y);
-          ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.stroke();
+    for (var c = 0; c < connections.length; c++) {
+      var f1 = connections[c].from, f2 = connections[c].to;
+      var a1 = toXYZ(f1[0], f1[1], r), a2 = toXYZ(f2[0], f2[1], r), q;
+      q = rX(a1[0], a1[1], a1[2], rotX); q = rY(q[0], q[1], q[2], rotY); a1 = q;
+      q = rX(a2[0], a2[1], a2[2], rotX); q = rY(q[0], q[1], q[2], rotY); a2 = q;
+      if (a1[2] > r * 0.3 && a2[2] > r * 0.3) continue;
+      var s1 = proj(a1[0], a1[1], a1[2], cx, cy, fov), s2 = proj(a2[0], a2[1], a2[2], cx, cy, fov);
+      var mx = (a1[0] + a2[0]) / 2, my = (a1[1] + a2[1]) / 2, mz = (a1[2] + a2[2]) / 2;
+      var ml = Math.sqrt(mx * mx + my * my + mz * mz), ah = r * 1.28;
+      var sc = proj(mx / ml * ah, my / ml * ah, mz / ml * ah, cx, cy, fov);
+      ctx.beginPath(); ctx.moveTo(s1[0], s1[1]); ctx.quadraticCurveTo(sc[0], sc[1], s2[0], s2[1]);
+      ctx.strokeStyle = ARC; ctx.lineWidth = 1.2; ctx.stroke();
+      var tt = (Math.sin(time * 1.2 + f1[0] * 0.1) + 1) / 2;
+      var bx = (1 - tt) * (1 - tt) * s1[0] + 2 * (1 - tt) * tt * sc[0] + tt * tt * s2[0];
+      var by = (1 - tt) * (1 - tt) * s1[1] + 2 * (1 - tt) * tt * sc[1] + tt * tt * s2[1];
+      ctx.beginPath(); ctx.arc(bx, by, 2, 0, Math.PI * 2); ctx.fillStyle = MARK; ctx.fill();
+    }
+
+    var placedLabels = [];   // label rects drawn this frame — hubs are first in the list, so they win
+    for (var m = 0; m < markers.length; m++) {
+      var mk = markers[m], v = toXYZ(mk.lat, mk.lng, r), u;
+      u = rX(v[0], v[1], v[2], rotX); u = rY(u[0], u[1], u[2], rotY);
+      mk._vis = u[2] <= r * 0.1;
+      if (!mk._vis) continue;
+      var s = proj(u[0], u[1], u[2], cx, cy, fov);
+      mk._sx = s[0]; mk._sy = s[1];
+      var col = mk.hub ? HUB : MARK;
+      var pulse = Math.sin(time * 2 + mk.lat) * 0.5 + 0.5;
+      ctx.beginPath(); ctx.arc(s[0], s[1], (mk.hub ? 5 : 4) + pulse * 4, 0, Math.PI * 2);
+      ctx.strokeStyle = col.replace('1)', (0.2 + pulse * 0.18).toFixed(2) + ')'); ctx.lineWidth = 1; ctx.stroke();
+      ctx.beginPath(); ctx.arc(s[0], s[1], mk.hub ? 3.2 : 2.4, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill();
+      if (mk.label) {
+        ctx.font = (mk.hub ? '600 ' : '') + '11px "JetBrains Mono", ui-monospace, monospace';
+        var lw = ctx.measureText(mk.label).width;
+        var lrect = [s[0] + 2, s[1] - 10, lw + 14, 18], clash = false;
+        for (var q = 0; q < placedLabels.length; q++) {
+          var o = placedLabels[q];
+          if (lrect[0] < o[0] + o[2] && lrect[0] + lrect[2] > o[0] &&
+              lrect[1] < o[1] + o[3] && lrect[1] + lrect[3] > o[1]) { clash = true; break; }
+        }
+        if (!clash) {
+          ctx.fillStyle = col.replace('1)', mk.hub ? '0.95)' : '0.6)');
+          ctx.fillText(mk.label, s[0] + 8, s[1] + 3);
+          placedLabels.push(lrect);
         }
       }
     }
-
-    for (const n of nodes) {
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
-      ctx.fillStyle = 'rgba(0,212,255,.45)';
-      ctx.fill();
-    }
-
     raf = requestAnimationFrame(draw);
   }
 
-  resize(); spawn(); draw();
-  window.addEventListener('resize', () => { resize(); spawn(); });
-})();
+  /* ---- controls: fly-to, zoom, reset, spin toggle ---------------- */
+  function normAngle(a) { return ((a + Math.PI) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI) - Math.PI; }
+  function clampZ(z) { return Math.max(ZMIN, Math.min(ZMAX, z)); }
 
-const revealObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.08 });
-
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-function countUp(el, target, suffix, duration) {
-  let start = null;
-  const step = ts => {
-    if (!start) start = ts;
-    const pct = Math.min((ts - start) / duration, 1);
-    el.textContent = Math.floor(pct * target) + suffix;
-    if (pct < 1) requestAnimationFrame(step);
-    else el.textContent = target + suffix;
-  };
-  requestAnimationFrame(step);
-}
-
-const statObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    e.target.querySelectorAll('.stat-num').forEach(el => {
-      countUp(el, +el.dataset.target, el.dataset.suffix, 1300);
+  // Rotate the globe so (lat,lng) faces the viewer, centred horizontally,
+  // tilting as close to vertical centre as the ±1 rad tilt range allows.
+  function flyTo(lat, lng, tz) {
+    var v = toXYZ(lat, lng, 1);
+    var raw = Math.atan2(v[1], v[2]), best = null, bestErr = Infinity;
+    [raw, raw - Math.PI, raw + Math.PI].forEach(function (c) {
+      var a = Math.max(-1, Math.min(1, normAngle(c)));
+      var err = Math.abs(v[1] * Math.cos(a) - v[2] * Math.sin(a));
+      if (err < bestErr) { bestErr = err; best = a; }
     });
-    statObs.unobserve(e.target);
-  });
-}, { threshold: 0.5 });
+    var zp = v[1] * Math.sin(best) + v[2] * Math.cos(best);
+    var ty = Math.atan2(v[0], -zp);
+    fly = { p: 0, fy: rotY, ty: rotY + normAngle(ty - rotY),
+            fx: rotX, tx: best, fz: zoom, tz: clampZ(tz || zoom) };
+    setSpin(false);   // hold the city in view; the spin button resumes
+  }
 
-const sg = document.querySelector('.stats-grid');
-if (sg) statObs.observe(sg);
+  function markerAt(x, y) {
+    var hit = null, hd = 18;
+    for (var i = 0; i < markers.length; i++) {
+      var mk = markers[i];
+      if (!mk._vis) continue;
+      var d = Math.hypot(mk._sx - x, mk._sy - y);
+      if (d < hd) { hd = d; hit = mk; }
+    }
+    return hit;
+  }
+  function localXY(e) {
+    var b = canvas.getBoundingClientRect();
+    return [e.clientX - b.left, e.clientY - b.top];
+  }
+
+  canvas.addEventListener('pointerdown', function (e) {
+    fly = null;
+    drag = { active: true, x: e.clientX, y: e.clientY, ry: rotY, rx: rotX, moved: false };
+    canvas.setPointerCapture(e.pointerId);
+  });
+  canvas.addEventListener('pointermove', function (e) {
+    if (!drag.active) {
+      var p = localXY(e);
+      canvas.style.cursor = markerAt(p[0], p[1]) ? 'pointer' : '';
+      return;
+    }
+    if (Math.hypot(e.clientX - drag.x, e.clientY - drag.y) > 5) drag.moved = true;
+    rotY = drag.ry + (e.clientX - drag.x) * 0.005;
+    rotX = Math.max(-1, Math.min(1, drag.rx - (e.clientY - drag.y) * 0.005));
+  });
+  canvas.addEventListener('pointerup', function (e) {
+    var wasClick = drag.active && !drag.moved;
+    drag.active = false;
+    if (!wasClick) return;
+    var p = localXY(e), mk = markerAt(p[0], p[1]);
+    if (mk) flyTo(mk.lat, mk.lng, Math.max(zoom, 1.25));
+  });
+  canvas.addEventListener('pointercancel', function () { drag.active = false; });
+  canvas.addEventListener('lostpointercapture', function () { drag.active = false; });
+
+  // Cooperative zoom (Ctrl/Cmd + wheel), so plain scrolling keeps moving the page.
+  var hint = document.getElementById('globe-hint'), hintT = 0;
+  canvas.addEventListener('wheel', function (e) {
+    if (e.ctrlKey || e.metaKey) {
+      e.preventDefault();
+      fly = null;
+      zoom = clampZ(zoom * (e.deltaY < 0 ? 1.12 : 0.89));
+    } else if (hint) {
+      hint.classList.add('is-on');
+      clearTimeout(hintT);
+      hintT = setTimeout(function () { hint.classList.remove('is-on'); }, 1400);
+    }
+  }, { passive: false });
+
+  canvas.addEventListener('keydown', function (e) {
+    var step = 0.12;
+    if (e.key === 'ArrowLeft') rotY -= step;
+    else if (e.key === 'ArrowRight') rotY += step;
+    else if (e.key === 'ArrowUp') rotX = Math.min(1, rotX + step);
+    else if (e.key === 'ArrowDown') rotX = Math.max(-1, rotX - step);
+    else if (e.key === '+' || e.key === '=') zoom = clampZ(zoom * 1.12);
+    else if (e.key === '-') zoom = clampZ(zoom * 0.89);
+    else return;
+    e.preventDefault();
+  });
+
+  function bindCtrl(id, fn) {
+    var b = document.getElementById(id);
+    if (b) b.addEventListener('click', fn);
+    return b;
+  }
+  bindCtrl('globe-zin', function () { fly = { p: 0, fy: rotY, ty: rotY, fx: rotX, tx: rotX, fz: zoom, tz: clampZ(zoom * 1.35) }; });
+  bindCtrl('globe-zout', function () { fly = { p: 0, fy: rotY, ty: rotY, fx: rotX, tx: rotX, fz: zoom, tz: clampZ(zoom / 1.35) }; });
+  bindCtrl('globe-reset', function () {
+    fly = { p: 0, fy: rotY, ty: rotY + normAngle(HOME_Y - rotY), fx: rotX, tx: HOME_X, fz: zoom, tz: 1 };
+    setSpin(true);
+  });
+  var spinBtn = bindCtrl('globe-spin', function () { setSpin(!spinOn); });
+  function setSpin(on) {
+    spinOn = on;
+    if (!spinBtn) return;
+    spinBtn.setAttribute('aria-pressed', String(on));
+    spinBtn.setAttribute('aria-label', on ? 'Pause rotation' : 'Resume rotation');
+    spinBtn.title = on ? 'Pause rotation' : 'Resume rotation';
+    spinBtn.innerHTML = on
+      ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5v14M15 5v14" stroke-linecap="round"/></svg>'
+      : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>';
+  }
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) AUTO = 0;
+  raf = requestAnimationFrame(draw);
+})();
 </script>
 </body>
 </html>
