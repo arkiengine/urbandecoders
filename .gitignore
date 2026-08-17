@@ -1,0 +1,26 @@
+# Build artefact — 52MB, regenerated wholesale from index.html + styles.css + assets.
+# Committing it would add ~52MB of unshareable binary diff to history on every rebuild.
+Urban Decoders - Home (standalone).html
+.thumbnail
+
+# Source originals. The web-sized derivatives the site actually serves live in
+# assets/img/, assets/arki/ and assets/team-*.jpg and ARE committed.
+uploads/
+assets/ArkiEngine/
+assets/0007_elvtr_michal_gryko.JPG
+assets/PyCon_1258_piotr.jpg
+
+# Working directories
+_ds/
+screenshots/
+
+# Local tool state
+.claude/settings.local.json
+
+# OS / editor
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+*~

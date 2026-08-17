@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Urban Decoders — City Engagement, Planning & Digital Twin Studio</title>
-<meta name="description" content="Urban Decoders builds living digital twins, planning visualisation and community engagement platforms — so buyers, residents and authorities can walk the city before it's built. Based in Stockport, Greater Manchester.">
+<meta name="description" content="Urban Decoders builds living digital twins — of places to come and of cities as they run today, wired to live traffic, transport, CCTV and sensor feeds — plus planning visualisation and community engagement platforms. Based in Stockport, Greater Manchester.">
 <meta name="keywords" content="digital twin studio, city engagement, community consultation platform, planning visualisation, masterplanning digital twin, immersive experiences, Stockport, Manchester">
-<link rel="canonical" href="https://urbandecoders.com/">
+<link rel="canonical" href="https://www.urbandecoders.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Urban Decoders — City Engagement, Planning & Digital Twin Studio">
 <meta property="og:description" content="Walk the city before it's built. Digital twins, planning visualisation and community engagement — for buyers, residents and authorities alike.">
-<meta property="og:image" content="https://urbandecoders.com/assets/img/og-home.jpg">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-home.jpg">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" sizes="192x192" href="assets/favicon-192.png">
@@ -34,7 +34,7 @@
   "@type": "ProfessionalService",
   "name": "Urban Decoders",
   "description": "City engagement, planning and digital twin studio: community consultation platforms, planning and masterplanning visualisation, city explorers, media tables, place management dashboards, immersive experiences, GIS and city data.",
-  "url": "https://urbandecoders.com/",
+  "url": "https://www.urbandecoders.com/",
   "email": "info@urbandecoders.com",
   "address": {
     "@type": "PostalAddress",
@@ -45,7 +45,7 @@
     "addressCountry": "GB"
   },
   "areaServed": ["United Kingdom"],
-  "knowsAbout": ["digital twins", "city engagement", "planning visualisation", "masterplanning", "GIS and city data", "immersive experiences"],
+  "knowsAbout": ["digital twins", "live city data", "smart city dashboards", "city engagement", "planning visualisation", "masterplanning", "GIS and city data", "immersive experiences"],
   "sameAs": ["https://www.linkedin.com/company/axonova", "https://www.instagram.com/axonova"]
 }
 </script>
@@ -82,7 +82,7 @@
       <div class="stack">
         <span class="eyebrow">Digital Twins · Planning · Engagement</span>
         <h1 class="display display--xl">Walk the city<br>before it's <span class="text-grad">built.</span></h1>
-        <p class="lead">Urban Decoders turns plans and city data into living digital twins and immersive experiences — so buyers can walk the scheme, residents can have their say, and authorities can decide with evidence, years before the first crane arrives.</p>
+        <p class="lead">Urban Decoders turns plans and city data into living digital twins and immersive experiences — so buyers can walk the scheme, residents can have their say, and authorities can decide with evidence. And for the city that already exists, we wire in the live feeds — traffic, transport, CCTV, air — so it can be seen as it runs.</p>
         <div class="wrap-btns mt-6">
           <a class="btn btn--primary btn--lg" href="contact.html">Start Your Project</a>
           <a class="btn btn--outline btn--lg" href="case-studies.html">See the work
@@ -164,7 +164,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l9 5-9 5-9-5 9-5Z"/><path d="M3 12l9 5 9-5M3 17l9 5 9-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h3>Digital Twins</h3>
-          <p>Living, data-synced replicas of buildings, campuses and city districts — BIM, GIS and live feeds bound into one navigable model that stays current as the plan moves.</p>
+          <p>Living replicas of buildings, districts and whole towns — BIM, GIS and live city feeds (traffic, transport, CCTV counts, sensors) bound into one navigable model, of the place as planned or as it runs today.</p>
         </article>
       </div>
 
@@ -278,6 +278,65 @@
   </div>
 </section>
 
+<!-- LIVE CITY — twins of the city as it is today -->
+<section class="section glow-top" id="live-city">
+  <div class="wrap">
+    <div class="flex items-center" style="justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:40px">
+      <div class="stack" style="max-width:50ch">
+        <span class="eyebrow">Live city twins</span>
+        <h2 class="section-title">Not just the city to come. The city right now.</h2>
+        <p class="lead">A twin doesn't have to wait for a scheme. We connect the feeds a city already publishes — traffic counters, CCTV, bus and rail APIs, air quality, footfall, energy — and visualise them on the real place, live, so the people running it can see it breathe.</p>
+      </div>
+      <a class="btn btn--outline" href="services.html#live-city">How live twins work</a>
+    </div>
+    <div class="live">
+      <div class="live__visual">
+        <img src="assets/img/live-control-room.jpg" alt="City operations room with live data feeds visualised over a 3D city model" loading="lazy" width="900" height="560">
+        <span class="live__badge"><span class="dot dot--green dot--live"></span> Live feeds · demo data</span>
+      </div>
+      <div class="live__feeds" id="live-feeds" aria-label="Example live city feeds — demo values">
+        <div class="feed">
+          <div class="feed__head"><span class="feed__name">Traffic flow</span><span class="feed__src">SCOOT · loop counters</span></div>
+          <div class="feed__val"><span data-feed="traffic">1,240</span><small>veh/hr</small></div>
+          <div class="feed__meta">A6 Wellington Rd · <span class="feed__ok">flowing</span></div>
+          <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="traffic" fill="none" stroke="rgba(47,138,169,0.9)" stroke-width="1.5" points=""/></svg>
+        </div>
+        <div class="feed">
+          <div class="feed__head"><span class="feed__name">CCTV</span><span class="feed__src">Council network</span></div>
+          <div class="feed__val"><span data-feed="cctv">38</span><small>of 42 online</small></div>
+          <div class="feed__meta">Anonymised counts only · <span class="feed__ok">no faces stored</span></div>
+          <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="cctv" fill="none" stroke="rgba(47,138,169,0.9)" stroke-width="1.5" points=""/></svg>
+        </div>
+        <div class="feed">
+          <div class="feed__head"><span class="feed__name">Buses</span><span class="feed__src">Bee Network · GTFS-RT</span></div>
+          <div class="feed__val"><span data-feed="bus">14</span><small>in view</small></div>
+          <div class="feed__meta">192 · 203 · 375 · <span class="feed__warn">1 running late</span></div>
+          <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="bus" fill="none" stroke="rgba(47,138,169,0.9)" stroke-width="1.5" points=""/></svg>
+        </div>
+        <div class="feed">
+          <div class="feed__head"><span class="feed__name">Air quality</span><span class="feed__src">DEFRA · AURN</span></div>
+          <div class="feed__val"><span data-feed="aqi">23</span><small>µg/m³ NO₂</small></div>
+          <div class="feed__meta">Stockport Shaw Heath · <span class="feed__ok">low</span></div>
+          <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="aqi" fill="none" stroke="rgba(47,138,169,0.9)" stroke-width="1.5" points=""/></svg>
+        </div>
+        <div class="feed">
+          <div class="feed__head"><span class="feed__name">Footfall</span><span class="feed__src">Wi-Fi &amp; sensor</span></div>
+          <div class="feed__val"><span data-feed="foot">2,860</span><small>/hr</small></div>
+          <div class="feed__meta">Merseyway · <span class="feed__ok">+12% vs last week</span></div>
+          <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="foot" fill="none" stroke="rgba(47,138,169,0.9)" stroke-width="1.5" points=""/></svg>
+        </div>
+        <div class="feed">
+          <div class="feed__head"><span class="feed__name">Rail</span><span class="feed__src">Darwin · Network Rail</span></div>
+          <div class="feed__val"><span data-feed="rail">6</span><small>next 30 min</small></div>
+          <div class="feed__meta">Stockport station · <span class="feed__ok">on time</span></div>
+          <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="rail" fill="none" stroke="rgba(47,138,169,0.9)" stroke-width="1.5" points=""/></svg>
+        </div>
+      </div>
+    </div>
+    <p class="muted mt-4" style="font-size:12px">Values above are simulated for illustration. Named sources are the kinds of public and operator feeds we integrate — TfGM / Bee Network, Network Rail Darwin, DEFRA AURN, council CCTV and traffic systems — always under the data owner's terms.</p>
+  </div>
+</section>
+
 <!-- ARKI ENGINE — FLAGSHIP PRODUCT -->
 <section class="section arki glow-top" id="arki-engine">
   <div class="wrap">
@@ -384,6 +443,7 @@
       </thead>
       <tbody>
         <tr><td>Data-synced digital twin</td><td class="no">—</td><td class="no">—</td><td class="is-us"><span class="yes">Included</span></td></tr>
+        <tr><td>Live city feeds (traffic, transport, CCTV, IoT)</td><td class="no">—</td><td class="no">—</td><td class="is-us"><span class="yes">Integrated</span></td></tr>
         <tr><td>Masterplanning digital twins</td><td class="no">—</td><td class="no">—</td><td class="is-us"><span class="yes">Whole plan, phased</span></td></tr>
         <tr><td>GIS, city data &amp; context modelling</td><td class="no">—</td><td class="no">Outsourced</td><td class="is-us"><span class="yes">In-house</span></td></tr>
         <tr><td>Planning &amp; consultation engagement</td><td class="no">—</td><td class="no">Comms only</td><td class="is-us"><span class="yes">Platform + evidence</span></td></tr>
@@ -461,12 +521,72 @@
         <a href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener" aria-label="Urban Decoders on YouTube">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.77-1.77C19.3 5.1 12 5.1 12 5.1s-7.3 0-8.83.43A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.77 1.77C4.7 18.9 12 18.9 12 18.9s7.3 0 8.83-.43a2.5 2.5 0 0 0 1.77-1.77C23 15.2 23 12 23 12ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z"/></svg>
         </a>
+        <a href="https://github.com/arkiengine/urbandecoders" target="_blank" rel="noopener" aria-label="Urban Decoders on GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 8.84 21.5c.5.09.66-.22.66-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.9-1.29 2.74-1.02 2.74-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.16.58.67.48A10 10 0 0 0 12 2Z"/></svg>
+        </a>
       </div>
     </div>
   </div>
 </footer>
 
 <script>
+/* Live-city feed tiles — simulated values that drift and sparklines that
+   scroll, so the section reads as live rather than a static claim.
+   Ticks only while on screen; static under reduced-motion. */
+(function () {
+  var host = document.getElementById('live-feeds');
+  if (!host) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var feeds = {
+    traffic: { v: 1240, min: 900, max: 1600, step: 60, fmt: function (n) { return Math.round(n).toLocaleString('en-GB'); } },
+    cctv:    { v: 38,   min: 36,  max: 42,   step: 1,  fmt: function (n) { return String(Math.round(n)); } },
+    bus:     { v: 14,   min: 9,   max: 19,   step: 1,  fmt: function (n) { return String(Math.round(n)); } },
+    aqi:     { v: 23,   min: 14,  max: 34,   step: 2,  fmt: function (n) { return String(Math.round(n)); } },
+    foot:    { v: 2860, min: 1900, max: 3600, step: 120, fmt: function (n) { return Math.round(n).toLocaleString('en-GB'); } },
+    rail:    { v: 6,    min: 3,   max: 9,    step: 1,  fmt: function (n) { return String(Math.round(n)); } }
+  };
+  var N = 24;
+  Object.keys(feeds).forEach(function (k) {
+    var f = feeds[k];
+    f.el = host.querySelector('[data-feed="' + k + '"]');
+    f.sp = host.querySelector('[data-spark="' + k + '"]');
+    f.hist = [];
+    var x = f.v;
+    for (var i = 0; i < N; i++) { x = clamp(f, x + (Math.random() - 0.5) * f.step * 2); f.hist.push(x); }
+    f.hist[N - 1] = f.v;
+    paint(f);
+  });
+  function clamp(f, x) { return Math.max(f.min, Math.min(f.max, x)); }
+  function paint(f) {
+    if (f.el) f.el.textContent = f.fmt(f.v);
+    if (!f.sp) return;
+    var lo = f.min, hi = f.max, pts = [];
+    for (var i = 0; i < f.hist.length; i++) {
+      var px = (i / (N - 1)) * 100, py = 24 - ((f.hist[i] - lo) / (hi - lo)) * 22;
+      pts.push(px.toFixed(1) + ',' + py.toFixed(1));
+    }
+    f.sp.setAttribute('points', pts.join(' '));
+  }
+  function tick() {
+    Object.keys(feeds).forEach(function (k) {
+      var f = feeds[k];
+      // mean-reverting drift keeps values plausible
+      var pull = (f.v - (f.min + f.max) / 2) * 0.08;
+      f.v = clamp(f, f.v + (Math.random() - 0.5) * f.step * 2 - pull);
+      f.hist.push(f.v); if (f.hist.length > N) f.hist.shift();
+      paint(f);
+    });
+  }
+  if (reduce) return;
+  var timer = null;
+  function start() { if (!timer) timer = setInterval(tick, 1800); }
+  function stop() { clearInterval(timer); timer = null; }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) { en[0].isIntersecting ? start() : stop(); }, { rootMargin: '80px' }).observe(host);
+  } else start();
+})();
+
 /* Click-to-play facades — the video files never load until asked for. */
 (function () {
   Array.prototype.forEach.call(document.querySelectorAll('.yt-facade[data-video]'), function (facade) {
