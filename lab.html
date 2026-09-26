@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab — Arki Engine and the Research Behind Urban Decoders' Twins</title>
+<meta name="description" content="Inside the Urban Decoders lab: Arki Engine, an Epic MegaGrant recipient, turns Grasshopper logic into real-time Unreal Engine configurators for pavilions, towers and masterplans. Videos, definitions and the tutorials we publish.">
+<meta name="keywords" content="Arki Engine, Unreal Engine architecture, Grasshopper to Unreal, parametric configurator, Epic MegaGrant, real-time design platform, digital twin research">
+<link rel="canonical" href="https://www.urbandecoders.com/lab.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lab — Arki Engine and the Research Behind Urban Decoders' Twins">
+<meta property="og:description" content="Grasshopper logic driving real-time geometry in Unreal Engine. The R&D behind every twin we build.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="assets/favicon-192.png">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Arki Engine",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Windows",
+  "description": "Real-time design platform built on Unreal Engine: Grasshopper definitions driving configurable pavilions, towers and masterplans with live schedules.",
+  "url": "https://www.urbandecoders.com/lab.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="platform.html">Platform</a>
+      <a class="nav__link" href="services.html">Services</a>
+      <a class="nav__link" href="case-studies.html">Work</a>
+      <a class="nav__link" href="lab.html" aria-current="page">Lab</a>
+      <a class="nav__link" href="blog.html">Insights</a>
+      <a class="nav__link" href="about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+<section class="page-head glow-top">
+  <div class="wrap stack">
+    <span class="eyebrow">Lab</span>
+    <h1 class="display">Arki <span class="text-red">Engine.</span><br>The research behind the twins.</h1>
+    <p class="lead">Arki Engine is our real-time design platform on Unreal Engine. Grasshopper logic drives the geometry, so a pavilion, a tower or a whole district regenerates as the parameters move, with the schedule attached. Everything we learn here goes into the twins.</p>
+    <div class="wrap-btns">
+      <div class="arki__badge">
+        <img src="assets/arki/epic-megagrant.png" alt="Epic MegaGrants Recipient logo" loading="lazy" width="34" height="34">
+        <span>Epic MegaGrant Recipient</span>
+      </div>
+      <a class="btn btn--outline btn--mono" href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener">Tutorials on YouTube</a>
+    </div>
+  </div>
+</section>
+
+<!-- THE TOOLS IN MOTION -->
+<section class="section" id="in-motion">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">In motion</span>
+      <h2 class="section-title">Watch the tools think.</h2>
+      <p class="lead">Four configurators, each recorded live. Sliders move, geometry regenerates, and the numbers on the panel recompute with it.</p>
+    </div>
+    <div class="grid grid--2">
+      <div>
+        <button class="yt-facade" type="button" data-video="assets/arki/arki-pavilions.mp4" aria-label="Play: pavilion configurator aggregating components">
+          <img src="assets/img/poster-pavilions.jpg" alt="Pavilion configurator still, generative timber structure by a lake" loading="lazy" width="720" height="405">
+          <span class="yt-play" aria-hidden="true"></span>
+          <span class="yt-facade__cap"><span class="tag">Play</span><span style="color:#fff; font-family:var(--font-display); font-size:16px">Pavilion configurator</span></span>
+        </button>
+        <p class="wcard__data mt-4">755 components · 2,257 m² · timber, stock or polycarbonate on one slider</p>
+      </div>
+      <div>
+        <button class="yt-facade" type="button" data-video="assets/arki/arki-buildings.mp4" aria-label="Play: tower configurator facade study">
+          <img src="assets/img/poster-buildings.jpg" alt="Tower configurator still, parametric facade study" loading="lazy" width="720" height="405">
+          <span class="yt-play" aria-hidden="true"></span>
+          <span class="yt-facade__cap"><span class="tag">Play</span><span style="color:#fff; font-family:var(--font-display); font-size:16px">Tower configurator</span></span>
+        </button>
+        <p class="wcard__data mt-4">Office T46 · 20 floors · 864 glazed panels · Westminster 3D Tiles</p>
+      </div>
+      <div>
+        <button class="yt-facade" type="button" data-video="assets/arki/arki-masterplans.mp4" aria-label="Play: masterplan configurator laying out parcels">
+          <img src="assets/img/poster-masterplans.jpg" alt="Masterplan configurator still, parcel layout on real city tiles" loading="lazy" width="720" height="405">
+          <span class="yt-play" aria-hidden="true"></span>
+          <span class="yt-facade__cap"><span class="tag">Play</span><span style="color:#fff; font-family:var(--font-display); font-size:16px">Masterplan configurator</span></span>
+        </button>
+        <p class="wcard__data mt-4">19,551 m² plot · FAR 1 to 6 · parking, set-backs, green ratio</p>
+      </div>
+      <div>
+        <button class="yt-facade" type="button" data-video="assets/arki/arki-vertical-garden.mp4" aria-label="Play: vertical garden tower reconfigured live">
+          <img src="assets/img/poster-vertical-garden.jpg" alt="Vertical garden tower with planted balconies rising over a dense city" loading="lazy" width="720" height="405">
+          <span class="yt-play" aria-hidden="true"></span>
+          <span class="yt-facade__cap"><span class="tag">Play</span><span style="color:#fff; font-family:var(--font-display); font-size:16px">Vertical garden tower</span></span>
+        </button>
+        <p class="wcard__data mt-4">30 levels · 330 planted balconies · 14,584 m² recomputed as you drag</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FROM GRASSHOPPER TO GAME ENGINE -->
+<section class="section glow-top" id="grasshopper">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:48px">
+      <span class="eyebrow">How the tools are built</span>
+      <h2 class="section-title">From Grasshopper to game engine.</h2>
+      <p class="lead">Every configurator starts life as a Grasshopper definition. The <span class="mono" style="font-size:0.9em">RH_IN</span> parameters on these canvases, component count, floor height, form curvature, material, become the live sliders in Unreal Engine, so the logic architects already trust drives the real-time model.</p>
+    </div>
+    <div class="grid grid--2">
+      <figure class="media"><img src="assets/img/gh-pavilion.jpg" alt="Grasshopper definition for the pavilion configurator, with RH_IN parameters for component number, shape type and material" loading="lazy" width="700" height="380"><figcaption class="media__cap"><div class="tag">Pavilion definition</div><div style="font-family:var(--font-display); font-size:16px; margin-top:4px">Component · shape · material</div></figcaption></figure>
+      <figure class="media"><img src="assets/img/gh-tower.jpg" alt="Grasshopper definition for the tower configurator, with parameters for floor height, radius, floor number, opening and curvature" loading="lazy" width="700" height="380"><figcaption class="media__cap"><div class="tag">Tower definition</div><div style="font-family:var(--font-display); font-size:16px; margin-top:4px">The Office T46 logic</div></figcaption></figure>
+      <figure class="media"><img src="assets/img/gh-masterplan.jpg" alt="Grasshopper definition for the masterplan configurator" loading="lazy" width="700" height="380"><figcaption class="media__cap"><div class="tag">Masterplan definition</div><div style="font-family:var(--font-display); font-size:16px; margin-top:4px">Parcels from parameters</div></figcaption></figure>
+      <figure class="media"><img src="assets/img/gh-vertical-garden.jpg" alt="Grasshopper definition for the vertical garden tower, with parameters for floor height, level count, site dimensions and balcony count" loading="lazy" width="700" height="380"><figcaption class="media__cap"><div class="tag">Vertical garden definition</div><div style="font-family:var(--font-display); font-size:16px; margin-top:4px">Site · levels · balconies</div></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section arki" id="gallery">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:24px">
+      <span class="eyebrow">Gallery</span>
+      <h2 class="section-title">Eight studies from the engine.</h2>
+    </div>
+    <div class="coverflow-wrap">
+      <div class="coverflow" id="cf-gallery" tabindex="0" role="group" aria-label="Arki Engine project gallery. Scroll, drag or use the arrow keys to rotate through the renders">
+        <div class="coverflow__stage">
+        <figure class="cf-card"><img src="assets/arki/pav1.png" alt="Timber pavilion generated in the Arki Engine pavilion configurator" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Timber Pavilion</h4><p>755-component aggregation</p></figcaption></figure>
+        <figure class="cf-card"><img src="assets/arki/tower1.png" alt="Parametric office tower massing over the London skyline" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Office Tower T46</h4><p>Parametric massing study</p></figcaption></figure>
+        <figure class="cf-card"><img src="assets/arki/plan2.png" alt="Data-driven district masterplan in Arki Engine" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>District Masterplan</h4><p>Data-driven parcel layout</p></figcaption></figure>
+        <figure class="cf-card"><img src="assets/arki/tower5.png" alt="Residential tower facade study rendered in real time" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Residential Tower</h4><p>Real-time facade study</p></figcaption></figure>
+        <figure class="cf-card"><img src="assets/arki/pav3.png" alt="Generative canopy pavilion structure" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Canopy Pavilion</h4><p>Generative structure</p></figcaption></figure>
+        <figure class="cf-card"><img src="assets/arki/plan4.png" alt="Urban plan with context and zoning layers" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Urban Plan</h4><p>Context + zoning layers</p></figcaption></figure>
+        <figure class="cf-card"><img src="assets/arki/tower3.png" alt="Mixed-use tower with configurable geometry" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Mixed-Use Tower</h4><p>Configurable geometry</p></figcaption></figure>
+        <figure class="cf-card"><img src="assets/arki/pav4.png" alt="Waterfront pavilion material configurator" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Waterfront Pavilion</h4><p>Material configurator</p></figcaption></figure>
+        </div>
+      </div>
+      <button class="cf-nav cf-nav--prev" type="button" aria-controls="cf-gallery" aria-label="Previous render">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="cf-nav cf-nav--next" type="button" aria-controls="cf-gallery" aria-label="Next render">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <p class="coverflow-hint">Scroll to rotate the gallery</p>
+    </div>
+
+    <a class="yt-facade mt-8" href="https://www.youtube.com/watch?v=dEDtEmvwqyE" target="_blank" rel="noopener" aria-label="Watch an Arki Engine walkthrough on YouTube" style="display:block; aspect-ratio:21/9">
+      <img src="assets/arki/pav3.png" alt="Arki Engine walkthrough of a vertical-garden tower in Unreal Engine" loading="lazy" width="1400" height="600">
+      <span class="yt-play" aria-hidden="true"></span>
+      <span class="yt-facade__cap"><span class="tag">Walkthrough</span><span style="color:#fff; font-family:var(--font-display); font-size:18px">Real-time design in Unreal Engine</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- STACK + NUMBERS -->
+<section class="section glow-top" id="stack">
+  <div class="wrap">
+    <div class="hero__grid" style="align-items:start">
+      <div class="stack">
+        <span class="eyebrow">The stack</span>
+        <h2 class="section-title">What the lab runs on.</h2>
+        <p class="lead">Parametric logic in Rhino and Grasshopper, BIM in Revit, GIS in QGIS, real-time in Unreal Engine 5 with Cesium and PLATEAU tiling, and a data layer of IFC, TopologicPy, graph databases and FastAPI bridges holding it together.</p>
+        <div class="stack-line">
+          <span>Rhino · Grasshopper</span><span>Revit · Dynamo</span><span>QGIS · GDAL</span><span>Unreal Engine 5</span><span>Cesium 3D Tiles</span><span>PLATEAU · CityGML</span><span>IFC · TopologicPy</span><span>Neo4j</span><span>FastAPI</span><span>ComfyUI</span>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat__num">Epic</div><div class="stat__label">MegaGrant awarded to Arki Engine</div></div>
+        <div class="stat"><div class="stat__num">20K<span class="unit">+</span></div><div class="stat__label">YouTube community learning twins, AI and Unreal with us</div></div>
+        <div class="stat"><div class="stat__num">50<span class="unit">+</span></div><div class="stat__label">Tutorials on real-time visualisation and spatial tech</div></div>
+        <div class="stat"><div class="stat__num">899</div><div class="stat__label">Real buildings in the browser-native Stockport model</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap"><div class="cta-band">
+    <span class="eyebrow eyebrow--plain" style="justify-content:center; display:flex">Work with the lab</span>
+    <h2 class="section-title mt-6" style="max-width:22ch; margin-inline:auto">Bring us the problem the standard tools can't hold.</h2>
+    <p class="lead mx-auto center mt-6" style="margin-inline:auto">Research partnerships, custom configurators and twin pipelines built around your data.</p>
+    <div class="wrap-btns mt-7" style="justify-content:center">
+      <a class="btn btn--primary btn--lg btn--mono" href="contact.html">Start a conversation <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+      <a class="btn btn--outline btn--lg btn--mono" href="case-studies.html">See the work</a>
+    </div>
+  </div></div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="platform.html">Platform</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="case-studies.html">Work</a></li>
+          <li><a href="lab.html">Lab</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="blog.html">Insights</a></li>
+          <li><a href="platform.html#scope">Scope estimator</a></li>
+          <li><a href="contact.html">Book a scoping call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+      <div class="social">
+        <a href="#" aria-label="Urban Decoders on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.57-2.3 3.2V21H9z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/urbandecoders/" target="_blank" rel="noopener" aria-label="Urban Decoders on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener" aria-label="Urban Decoders on YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.77-1.77C19.3 5.1 12 5.1 12 5.1s-7.3 0-8.83.43A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.77 1.77C4.7 18.9 12 18.9 12 18.9s7.3 0 8.83-.43a2.5 2.5 0 0 0 1.77-1.77C23 15.2 23 12 23 12ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="js/facade.js" defer></script>
+<script src="js/gallery.js" defer></script>
+</body>
+</html>
