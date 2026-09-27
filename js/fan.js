@@ -27,4 +27,20 @@
   update();
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
+
+  // Cursor tilt: the hovered card leans toward the pointer, with a sheen that follows it
+  Array.prototype.forEach.call(wrap.querySelectorAll('.fcard'), function (card) {
+    card.addEventListener('pointermove', function (e) {
+      if (mq.matches) return;
+      var r = card.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+      card.style.setProperty('--tx', ((px - 0.5) * 18).toFixed(1) + 'deg');
+      card.style.setProperty('--ty', ((0.5 - py) * 18).toFixed(1) + 'deg');
+      card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+      card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+    });
+    card.addEventListener('pointerleave', function () {
+      card.style.removeProperty('--tx'); card.style.removeProperty('--ty');
+    });
+  });
 })();

@@ -979,7 +979,7 @@ h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
 .fan-wrap { --fan: 1; padding-block: var(--space-6) var(--space-4); }
 .fan {
   display: flex; justify-content: center; align-items: flex-end;
-  min-height: 300px; padding-top: 40px;
+  min-height: 300px; padding-top: 40px; perspective: 900px;
 }
 .fcard {
   --c: var(--brand-teal);
@@ -993,9 +993,19 @@ h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
   text-decoration: none;
 }
 .fcard:hover, .fcard:focus-visible {
-  transform: rotate(0deg) translateY(-28px) scale(1.06); z-index: 5;
-  box-shadow: 0 0 36px color-mix(in srgb, var(--c) 55%, transparent); outline: none; color: var(--c);
+  transform: rotate(0deg) translateY(-30px) scale(1.1) rotateX(var(--ty, 0deg)) rotateY(var(--tx, 0deg)); z-index: 5;
+  box-shadow: 0 24px 50px rgba(0,0,0,0.6), 0 0 40px color-mix(in srgb, var(--c) 60%, transparent); outline: none; color: var(--c);
+  transition-duration: 120ms;
 }
+.fcard::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 40%), rgba(255,255,255,0.14), transparent 55%);
+  transition: opacity 200ms ease;
+}
+.fcard:hover::after, .fcard:focus-visible::after { opacity: 1; }
+.fan:hover .fcard:not(:hover):not(:focus-visible) { opacity: 0.6; }
+.fcard { transition: transform 380ms cubic-bezier(.2,.8,.2,1), box-shadow 380ms ease, opacity 300ms ease; transform-style: preserve-3d; }
+.fcard__cv { width: 100%; height: 132px; display: block; }
 .fcard__row { display: flex; justify-content: space-between; align-items: center; }
 .fcard__row--b { transform: rotate(180deg); }
 .fcard__ico { display: grid; place-items: center; }
