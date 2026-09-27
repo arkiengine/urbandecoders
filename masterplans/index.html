@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Greater Manchester Masterplans — Urban Decoders</title>
+<meta name="description" content="Interactive map of the major masterplan and regeneration schemes across Greater Manchester: boundaries, status, homes, jobs and lead partners.">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<link rel="stylesheet" href="css/app.css?v=3">
+</head>
+<body>
+<div id="app">
+  <header class="sitenav">
+    <div class="sitenav__inner">
+      <a class="sitenav__brand" href="../index.html" aria-label="Urban Decoders home">
+        <img src="../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+      </a>
+      <nav class="sitenav__links" aria-label="Primary">
+        <a href="../platform.html">Platform</a>
+        <a href="../services.html">Services</a>
+        <a href="../case-studies.html">Work</a>
+        <a href="./" aria-current="page">Masterplans</a>
+        <a href="../lab.html">Lab</a>
+        <a href="../blog.html">Insights</a>
+        <a href="../about.html">About</a>
+      </nav>
+      <a class="sitenav__cta" href="../contact.html">Start a twin <span aria-hidden="true">&#8599;</span></a>
+    </div>
+  </header>
+
+  <header id="topbar">
+    <div class="brand">
+      <span class="eyebrow">Greater Manchester masterplans</span>
+      <small id="asof">status as of —</small>
+    </div>
+    <div class="controls">
+      <label class="select" title="Basemap style">
+        <span>Map</span>
+        <select id="basemap">
+          <option value="liberty">Vector</option>
+          <option value="positron">Light</option>
+          <option value="dark">Dark</option>
+          <option value="black">Black</option>
+          <option value="fiord">Fiord</option>
+          <option value="blueprint">Blueprint</option>
+          <option value="satellite">Satellite</option>
+        </select>
+      </label>
+      <div class="seg" id="layers">
+        <label><input type="checkbox" id="lyr-polys" checked> Boundaries</label>
+        <label><input type="checkbox" id="lyr-points" checked> Markers</label>
+        <label><input type="checkbox" id="lyr-labels" checked> Labels</label>
+        <label><input type="checkbox" id="lyr-3d" checked> 3D</label>
+      </div>
+      <button id="btn-overview" title="Zoom to all">Overview</button>
+      <button id="btn-tour" title="Fly through every visible scheme">▶ Tour</button>
+    </div>
+  </header>
+
+  <aside id="sidebar">
+    <input id="search" type="search" placeholder="Search scheme, developer, architect…">
+    <div class="chips" id="chips-borough"></div>
+    <div class="chips" id="chips-status"></div>
+    <div class="chips" id="chips-cat"></div>
+    <div id="totals"></div>
+    <ol id="list"></ol>
+  </aside>
+
+  <main id="map"></main>
+
+  <section id="detail" class="hidden">
+    <button id="detail-close" title="Close (Esc)">×</button>
+    <div id="detail-body"></div>
+  </section>
+
+  <div id="legend">
+    <span><i style="background:var(--c-housing)"></i>Housing-led</span>
+    <span><i style="background:var(--c-mixed)"></i>Mixed use</span>
+    <span><i style="background:var(--c-employment)"></i>Employment</span>
+    <span><i style="background:var(--c-framework)"></i>Framework / MDC</span>
+    <span><i style="background:var(--c-infrastructure)"></i>Infrastructure</span>
+    <span><i style="background:var(--c-civic)"></i>Civic / health</span>
+  </div>
+  <div id="disclaimer">Solid = statutory / allocation / land-supply red-line or georeferenced plan · dashed = partial (open line or sub-areas only) · WGS84</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@7.1.0/turf.min.js"></script>
+<script src="js/app.js?v=2" type="module"></script>
+</body>
+</html>

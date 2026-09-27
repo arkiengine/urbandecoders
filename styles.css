@@ -994,7 +994,7 @@ h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
 
 /* ==================================================================
    Redesign components — hero stat strip, six-layer fan, demo panel,
-   uses, options catalogue, scope estimator, work cards, roles, foot bar
+   uses, scope estimator, work cards, roles, foot bar
    ================================================================== */
 
 /* Hero stat strip */
@@ -1116,20 +1116,6 @@ h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
 .use .yt-facade { aspect-ratio: 16/9; }
 @media (max-width: 860px) { .use { grid-template-columns: 1fr; gap: var(--space-5); } }
 
-/* Options catalogue */
-.opts { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
-.opt {
-  border: 1px solid var(--hairline); border-radius: var(--radius-card); padding: 18px;
-  background: var(--surface-card); display: grid; gap: 8px; align-content: start;
-  transition: border-color 160ms ease;
-}
-.opt:hover { border-color: var(--hairline-strong); }
-.opt__ey { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-teal-light); }
-.opt__ey.is-red { color: var(--emphasis-red-bright); }
-.opt__ey.is-base { color: var(--ink); }
-.opt h4 { font-family: var(--font-display); font-size: 17px; letter-spacing: -0.01em; }
-.opt p { font-size: 14px; color: var(--mute); line-height: 1.5; }
-.opt--base { background: var(--surface-elevated); border-color: var(--hairline-strong); }
 .pathways { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .pathway { border: 1px solid var(--hairline); border-radius: var(--radius-card); padding: 22px; background: var(--surface-card); display: grid; gap: 10px; }
 .pathway h4 { font-family: var(--font-display); font-size: 20px; letter-spacing: -0.01em; }
