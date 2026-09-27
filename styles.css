@@ -1265,3 +1265,9 @@ h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
   transform: rotate(-45deg);
 }
 .step.is-done h3 { color: var(--body); }
+
+/* Service sections: one feature tile over two small ones */
+.caps--feature { grid-template-columns: 1fr 1fr; gap: 10px; }
+.caps--feature .cap:first-child { grid-column: 1 / -1; }
+.caps--feature .cap:not(:first-child) .cap__body span:last-child { display: none; }
+@media (max-width: 480px) { .caps--feature { grid-template-columns: 1fr; } }

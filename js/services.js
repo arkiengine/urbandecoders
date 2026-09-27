@@ -8,7 +8,7 @@
   var input = document.getElementById('consult-input');
 
   var pins = [
-    { x: 27, y: 46, s: 'support', t: 'Love the riverside path — please keep the mature trees.' },
+    { x: 27, y: 46, s: 'support', t: 'Love the riverside path, please keep the mature trees.' },
     { x: 63, y: 58, s: 'concern', t: 'Worried about parking overspill on event days.' },
     { x: 47, y: 30, s: 'idea',    t: 'Could the corner by the bridge take a small playground?' }
   ];
