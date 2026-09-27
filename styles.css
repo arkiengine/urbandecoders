@@ -1318,3 +1318,8 @@ h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
 .orbit-list b { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-cyan); font-weight: 500; margin-right: 8px; }
 @media (max-width: 960px) { .orbit-scene { width: min(100%, 380px); } .orb__tile { width: 52px; height: 52px; border-radius: 12px; } .orb__mark { width: 32px; height: 32px; } .orb__mark span { font-size: 16px; } }
 @media (prefers-reduced-motion: reduce) { .orbit, .orb__tile, .orbit__core { animation: none; } }
+
+/* Key/value lists in service blocks */
+.kv-list { display: grid; gap: 8px; font-size: 14px; color: var(--charcoal); max-width: 60ch; }
+.kv-list li { display: grid; grid-template-columns: 72px 1fr; gap: 10px; align-items: baseline; }
+.kv-list b { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-cyan); font-weight: 500; }
