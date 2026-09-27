@@ -1256,3 +1256,12 @@ h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
 }
 .wcard.is-playing .wcard__img::after { background: var(--emphasis-red-bright); box-shadow: 0 0 10px var(--emphasis-red-bright); }
 .wcard.is-playing, .wcard[data-video]:focus-visible { border-color: var(--brand-teal-light); outline: none; }
+
+/* Scroll-driven process: passed steps show a tick */
+.step.is-done .step__dot { color: transparent; }
+.step.is-done .step__dot::after {
+  content: ""; position: absolute; width: 12px; height: 7px; left: 15px; top: 15px;
+  border-left: 2px solid var(--brand-cyan); border-bottom: 2px solid var(--brand-cyan);
+  transform: rotate(-45deg);
+}
+.step.is-done h3 { color: var(--body); }
