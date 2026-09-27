@@ -109,6 +109,79 @@
   </div>
 </section>
 
+<!-- DEMO PANEL — Stockport living model -->
+<section class="section glow-top" id="living-model">
+  <div class="wrap">
+    <div class="flex items-center" style="justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:32px">
+      <div class="stack" style="max-width:50ch">
+        <span class="eyebrow">Living model</span>
+        <h2 class="section-title">Our own town, as a living model.</h2>
+        <p class="lead">Stockport town centre from 899 real building footprints. Toggle the layers a twin carries: heights, landmarks, the live feeds a council already publishes, and the studio itself.</p>
+      </div>
+      <a class="btn btn--outline btn--mono" href="platform.html">What a twin consists of</a>
+    </div>
+
+    <div class="demo">
+      <div class="demo__panel">
+        <b>Stockport SK1</b>
+        <p>Drag to orbit, tap a building for its name. The red beam marks the studio at 45 Middle Hillgate.</p>
+        <div class="demo__kv"><span>CRS</span>EPSG:27700 <span>SRC</span>OSM <span>LOD</span>1 <span>N</span>899</div>
+      </div>
+      <div class="holo-scene" id="holo-scene" tabindex="0" role="img" aria-label="Interactive point-cloud model of Stockport town centre built from real OpenStreetMap building footprints. The red beam marks the Urban Decoders studio on Middle Hillgate. Drag to orbit; hover or tap a building to see its name. Use the layer buttons to add heights, landmarks and live feed markers.">
+        <canvas class="holo-canvas" id="ud-holo"></canvas>
+        <div class="holo-chip">Stockport town centre</div>
+      </div>
+      <div class="demo__chips" role="group" aria-label="Model layers">
+        <button class="chip" type="button" data-layer="buildings" aria-pressed="true"><i></i>Buildings</button>
+        <button class="chip" type="button" data-layer="heights" aria-pressed="false"><i></i>Heights</button>
+        <button class="chip" type="button" data-layer="landmarks" aria-pressed="false"><i></i>Landmarks</button>
+        <button class="chip chip--red" type="button" data-layer="feeds" aria-pressed="false"><i></i>Live feeds</button>
+        <button class="chip chip--red" type="button" data-layer="studio" aria-pressed="true"><i></i>Studio</button>
+      </div>
+    </div>
+
+    <div class="demo__feeds" id="live-feeds" aria-label="Example live city feeds, demo values">
+      <div class="feed">
+        <div class="feed__head"><span class="feed__name">Traffic</span><span class="feed__src">SCOOT</span></div>
+        <div class="feed__val"><span data-feed="traffic">1,240</span><small>veh/hr</small></div>
+        <div class="feed__meta">A6 Wellington Rd · <span class="feed__ok">flowing</span></div>
+        <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="traffic" fill="none" stroke="rgba(79,166,200,0.9)" stroke-width="1.5" points=""/></svg>
+      </div>
+      <div class="feed">
+        <div class="feed__head"><span class="feed__name">CCTV</span><span class="feed__src">Council</span></div>
+        <div class="feed__val"><span data-feed="cctv">38</span><small>of 42 online</small></div>
+        <div class="feed__meta">Counts only · <span class="feed__ok">no faces stored</span></div>
+        <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="cctv" fill="none" stroke="rgba(79,166,200,0.9)" stroke-width="1.5" points=""/></svg>
+      </div>
+      <div class="feed">
+        <div class="feed__head"><span class="feed__name">Buses</span><span class="feed__src">GTFS-RT</span></div>
+        <div class="feed__val"><span data-feed="bus">14</span><small>in view</small></div>
+        <div class="feed__meta">Bee Network · <span class="feed__warn">1 running late</span></div>
+        <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="bus" fill="none" stroke="rgba(79,166,200,0.9)" stroke-width="1.5" points=""/></svg>
+      </div>
+      <div class="feed">
+        <div class="feed__head"><span class="feed__name">Air</span><span class="feed__src">DEFRA AURN</span></div>
+        <div class="feed__val"><span data-feed="aqi">23</span><small>µg/m³ NO₂</small></div>
+        <div class="feed__meta">Shaw Heath · <span class="feed__ok">low</span></div>
+        <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="aqi" fill="none" stroke="rgba(79,166,200,0.9)" stroke-width="1.5" points=""/></svg>
+      </div>
+      <div class="feed">
+        <div class="feed__head"><span class="feed__name">Footfall</span><span class="feed__src">Sensor</span></div>
+        <div class="feed__val"><span data-feed="foot">2,860</span><small>/hr</small></div>
+        <div class="feed__meta">Merseyway · <span class="feed__ok">+12% vs last week</span></div>
+        <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="foot" fill="none" stroke="rgba(79,166,200,0.9)" stroke-width="1.5" points=""/></svg>
+      </div>
+      <div class="feed">
+        <div class="feed__head"><span class="feed__name">Rail</span><span class="feed__src">Darwin</span></div>
+        <div class="feed__val"><span data-feed="rail">6</span><small>next 30 min</small></div>
+        <div class="feed__meta">Stockport station · <span class="feed__ok">on time</span></div>
+        <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="rail" fill="none" stroke="rgba(79,166,200,0.9)" stroke-width="1.5" points=""/></svg>
+      </div>
+    </div>
+    <p class="muted mt-4" style="font-size:12px">Feed values are simulated for illustration. Named sources are the kinds of public and operator feeds we integrate, always under the data owner's terms. Building footprints © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" style="color:var(--ash); text-decoration:underline">OpenStreetMap</a> contributors, projected from EPSG:4326 to local metres.</p>
+  </div>
+</section>
+
 <!-- FROM GRASSHOPPER TO GAME ENGINE -->
 <section class="section glow-top" id="grasshopper">
   <div class="wrap">
@@ -250,6 +323,8 @@
     </div>
   </div>
 </footer>
+<script src="js/feeds.js?v=bd01771" defer></script>
+<script src="js/holo.js?v=bd01771" defer></script>
 <script src="js/facade.js?v=bd01771" defer></script>
 <script src="js/gallery.js?v=bd01771" defer></script>
 </body>
