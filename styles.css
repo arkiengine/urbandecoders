@@ -806,14 +806,25 @@ h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
 @media (prefers-reduced-motion: reduce) { .member__photo { transition: none; } }
 
 /* ------------------------------------------------------------------ */
-/* Trusted-by strip                                                   */
+/* Backed-by strip (NVIDIA Inception, Epic MegaGrants)                */
 /* ------------------------------------------------------------------ */
-.trusted { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-7) var(--space-8); }
-.trusted__logo {
-  font-family: var(--font-techno); font-weight: 700; font-size: 18px; letter-spacing: 1px;
-  color: var(--stone); transition: color 160ms ease;
+.backed {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--space-5);
+  padding-block: var(--space-6); border-block: 1px solid var(--hairline);
 }
-.trusted__logo:hover { color: var(--charcoal); }
+.backed__logos { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-5) var(--space-8); }
+.backed__logos img { display: block; width: auto; }
+.backed__nv { height: 96px; }
+.backed__epic { height: 124px; }
+.footer__badges { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-5); margin-top: var(--space-5); }
+.footer__badges img { display: block; width: auto; }
+.footer__badges .nv { height: 40px; }
+.footer__badges .epic { height: 48px; }
+@media (max-width: 640px) {
+  .backed { grid-template-columns: 1fr; justify-items: center; }
+  .backed__nv { height: 72px; }
+  .backed__epic { height: 94px; }
+}
 
 /* ------------------------------------------------------------------ */
 /* Comparison table                                                   */
