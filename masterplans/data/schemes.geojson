@@ -5,7 +5,8 @@
   "asOf": "2026-09-27",
   "crs": "EPSG:4326",
   "note": "Boundaries: PfE 2024 allocations and MDC boundaries from GMCA (OGL v3); MCC SRF areas from the council's illustrative My Maps layer; other sites from GMCA 2025 land supply plots; remainder hand-digitised indicative. See properties.boundary_source / confidence.",
-  "boundariesUpdated": "2026-09-27"
+  "boundariesUpdated": "2026-09-27",
+  "timelineNote": "timeline[] per scheme: dated stage events (framework | consent | start | delivery | complete | target) compiled from public sources; dates after asOf are targets / expected, month precision where known."
  },
  "features": [
   {
@@ -43,41 +44,86 @@
     "images": [
      {
       "src": "assets/images/victoria-north/01.jpg",
-      "caption": "Victoria Riverside - geograph.org.uk - 7821023",
-      "credit": "Peter McDermott",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Victoria_Riverside_-_geograph.org.uk_-_7821023.jpg",
-      "licence": "CC BY-SA 2.0",
-      "px": [
-       1600,
-       1600
-      ]
-     },
-     {
-      "src": "assets/images/victoria-north/02.jpg",
-      "caption": "New towns update: Adlington ditched as Manchester’s Victoria North makes the cut - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/new-towns-announced-adlington-ditched-as-manchesters-victoria-north-makes-the-cut/",
-      "licence": "all rights reserved — research use with attribution",
-      "px": [
-       1024,
-       721
-      ]
-     },
-     {
-      "src": "assets/images/victoria-north/03.jpg",
-      "caption": "FEC to launch 322 new homes in the next phase of Red Bank Riverside - FEC",
-      "credit": "FEC",
+      "kind": "render",
+      "caption": "Red Bank Riverside towers above the Irk Valley, next phase CGI",
+      "credit": "Far East Consortium",
       "source_url": "https://fecil.uk/latest-news/victoria-north-fec-to-launch-322-new-homes-in-the-next-phase-of-red-bank-riverside/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
        1067
       ]
+     },
+     {
+      "src": "assets/images/victoria-north/02.jpg",
+      "kind": "masterplan",
+      "caption": "Red Bank illustrative masterplan, 4,800 homes along the River Irk",
+      "credit": "Maccreanor Lavington / Schulze+Grassov (via Architects' Journal)",
+      "source_url": "https://www.architectsjournal.co.uk/news/maccreanor-lavington-and-hawkinsbrown-submit-plans-for-4800-manchester-homes",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1182
+      ]
+     },
+     {
+      "src": "assets/images/victoria-north/03.jpg",
+      "kind": "render",
+      "caption": "Red Bank 'wild urbanism' riverside street, approved masterplan CGI",
+      "credit": "Maccreanor Lavington / FEC",
+      "source_url": "https://www.maccreanorlavington.com/journal/detail/our-manchester-masterplan-has-won-planning-approval-by-manchester-city-council/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1508,
+       1600
+      ]
      }
     ],
     "confidence": "land-supply-plots",
     "boundary_source": "GMCA 2025 housing land supply plots (dissolved; not the SRF boundary)",
-    "boundary_features": 13
+    "boundary_features": 13,
+    "timeline": [
+     {
+      "date": "2017-10",
+      "stage": "framework",
+      "label": "MCC–Far East Consortium joint venture agreed (Northern Gateway)"
+     },
+     {
+      "date": "2019-03",
+      "stage": "framework",
+      "label": "Northern Gateway SRF approved by Manchester City Council"
+     },
+     {
+      "date": "2021-03",
+      "stage": "start",
+      "label": "Victoria Riverside (Red Bank) starts on site"
+     },
+     {
+      "date": "2024-01",
+      "stage": "delivery",
+      "label": "Victoria Riverside 634 homes complete; renamed Victoria North"
+     },
+     {
+      "date": "2026-07",
+      "stage": "delivery",
+      "label": "St Catherine's Wood delivered; 430 homes complete, 550 on site"
+     },
+     {
+      "date": "2026-11",
+      "stage": "consent",
+      "label": "Collyhurst Phase 2 (550 homes) application due"
+     },
+     {
+      "date": "2026-12",
+      "stage": "framework",
+      "label": "New Town final list due"
+     },
+     {
+      "date": "2040",
+      "stage": "target",
+      "label": "Build-out of 15,000 homes across seven neighbourhoods"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -1238,8 +1284,21 @@
     "images": [
      {
       "src": "assets/images/piccadilly-srf/01.jpg",
-      "caption": "Manchester on hunt for team to refresh Piccadilly vision on NPR opportunity - Place North West",
-      "credit": "Place North West",
+      "kind": "aerial-cgi",
+      "caption": "Aerial massing of Piccadilly SRF around the HS2 station (2018 SRF)",
+      "credit": "Manchester City Council / Bennetts Associates (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/gallery-piccadillys-overhaul-for-hs2-era-revealed/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1024,
+       577
+      ]
+     },
+     {
+      "src": "assets/images/piccadilly-srf/02.jpg",
+      "kind": "render",
+      "caption": "Station forecourt CGI of an underground Piccadilly station option",
+      "credit": "Manchester City Council / Bennetts Associates",
       "source_url": "https://www.placenorthwest.co.uk/manchester-on-hunt-for-team-to-refresh-piccadilly-vision-on-npr-opportunity/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
@@ -1248,31 +1307,53 @@
       ]
      },
      {
-      "src": "assets/images/piccadilly-srf/02.jpg",
-      "caption": "DfT says underground Manchester Piccadilly ‘needs testing further’ as NPR agreements signed | New Civil Engineer",
-      "credit": "New Civil Engineer",
-      "source_url": "https://www.newcivilengineer.com/latest/dft-says-underground-manchester-piccadilly-needs-testing-further-as-npr-agreements-signed-23-01-2026/",
+      "src": "assets/images/piccadilly-srf/03.jpg",
+      "kind": "render",
+      "caption": "Arrival plaza CGI at the new Piccadilly station entrance (2018 SRF)",
+      "credit": "Manchester City Council / Bennetts Associates (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/gallery-piccadillys-overhaul-for-hs2-era-revealed/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1600,
-       1066
-      ]
-     },
-     {
-      "src": "assets/images/piccadilly-srf/03.jpg",
-      "caption": "Manchester Piccadilly station MMB 24 185135",
-      "credit": "mattbuck (category)",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Manchester_Piccadilly_station_MMB_24_185135.jpg",
-      "licence": "CC BY-SA 3.0",
-      "px": [
-       1600,
-       1062
+       1024,
+       562
       ]
      }
     ],
     "confidence": "srf-georeferenced-partial",
     "boundary_source": "Manchester Piccadilly SRF Update Mar 2018 Appendix 1: union of study-scope sub-areas 04-11 (outer 150 ha scope line not closed on the plan)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2014-02",
+      "stage": "framework",
+      "label": "Manchester Piccadilly SRF adopted (HS2-led)"
+     },
+     {
+      "date": "2018-03",
+      "stage": "framework",
+      "label": "SRF update (Bennetts Associates)"
+     },
+     {
+      "date": "2023-10",
+      "stage": "framework",
+      "label": "HS2 Manchester leg cancelled"
+     },
+     {
+      "date": "2026-01",
+      "stage": "framework",
+      "label": "Northern Powerhouse Rail agreements signed"
+     },
+     {
+      "date": "2027-01",
+      "stage": "framework",
+      "label": "SRF refresh contract starts (Piccadilly, Mayfield, Sister, East Village)"
+     },
+     {
+      "date": "2035",
+      "stage": "target",
+      "label": "NPR Liverpool–Manchester line and station (2030s)"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -3791,41 +3872,76 @@
     "images": [
      {
       "src": "assets/images/mayfield/01.jpg",
-      "caption": "Landsec: no resi starts until 2027 at the earliest - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/landsec-no-resi-starts-until-2027-at-the-earliest/",
+      "kind": "aerial-cgi",
+      "caption": "Mayfield masterplan: offices and park along the Medlock, elevated CGI (2020 outline)",
+      "credit": "Studio Egret West / Mayfield Partnership",
+      "source_url": "https://www.architectsjournal.co.uk/news/manchester-city-council-approves-phase-1-of-studio-egret-wests-1-4bn-mayfield-scheme",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1024,
-       738
+       1600,
+       1032
       ]
      },
      {
       "src": "assets/images/mayfield/02.jpg",
-      "caption": "Manchester Mayfield Station 1",
-      "credit": "Gerald England",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Manchester_Mayfield_Station_1.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "masterplan",
+      "caption": "Illustrative axonometric masterplan of Mayfield beside Piccadilly station",
+      "credit": "Studio Egret West",
+      "source_url": "https://studioegretwest.com/projects/mayfield",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       463
+       1600,
+       940
       ]
      },
      {
       "src": "assets/images/mayfield/03.jpg",
-      "caption": "Manchester Mayfield Station 2",
-      "credit": "philld",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Manchester_Mayfield_Station_2.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "aerial-photo",
+      "caption": "Mayfield Park (opened 2022) from the air, Depot Mayfield beyond",
+      "credit": "Studio Egret West / Jarrell Goh",
+      "source_url": "https://studioegretwest.com/projects/mayfield",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       428
+       1600,
+       1199
       ]
      }
     ],
     "confidence": "srf-georeferenced",
     "boundary_source": "Manchester Piccadilly SRF Update Mar 2018 (MCC/Bennetts) Appendix 1 area 06 Mayfield SRF, aerial georeferenced (~1.6 m/px, ~30 m)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2018-11",
+      "stage": "framework",
+      "label": "Mayfield SRF approved (Studio Egret West)"
+     },
+     {
+      "date": "2020-07",
+      "stage": "consent",
+      "label": "Phase 1 outline consent incl. park, offices, hotel"
+     },
+     {
+      "date": "2022-09",
+      "stage": "delivery",
+      "label": "Mayfield Park opens"
+     },
+     {
+      "date": "2025-07",
+      "stage": "consent",
+      "label": "Phase 1 residential c.880 homes approved"
+     },
+     {
+      "date": "2027",
+      "stage": "start",
+      "label": "Earliest residential start (LandSec)"
+     },
+     {
+      "date": "2035",
+      "stage": "target",
+      "label": "1,500 homes, 1.6m sq ft offices build-out"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -4242,30 +4358,81 @@
     "images": [
      {
       "src": "assets/images/sister/01.jpg",
-      "caption": "Sister - Invest Manchester",
-      "credit": "Invest in Manchester",
-      "source_url": "https://www.investmanchester.co.uk/development/sister/",
+      "kind": "aerial-cgi",
+      "caption": "Illustrative masterplan axonometric of the Sister innovation district",
+      "credit": "SLA",
+      "source_url": "https://www.sla.dk/cases/sister-manchester/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1024,
-       993
+       1593,
+       897
       ]
      },
      {
       "src": "assets/images/sister/02.jpg",
-      "caption": "Bruntwood submits 38-storey student resi tower for Manchester’s Sister masterplan",
-      "credit": "Building",
-      "source_url": "https://www.building.co.uk/news/bruntwood-submits-38-storey-student-resi-tower-for-manchesters-sister-masterplan/5142556.article",
+      "kind": "aerial-cgi",
+      "caption": "Elevated view of the proposed civic square, Sister SRF",
+      "credit": "Allies and Morrison",
+      "source_url": "https://www.alliesandmorrison.com/projects/sister",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1024,
-       536
+       1600,
+       1006
+      ]
+     },
+     {
+      "src": "assets/images/sister/03.jpg",
+      "kind": "render",
+      "caption": "Plot C office buildings (Allies and Morrison), first new-build phase",
+      "credit": "Allies and Morrison / Sister (via Invest Manchester)",
+      "source_url": "https://www.investmanchester.co.uk/development/sister/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1088
       ]
      }
     ],
     "confidence": "srf-georeferenced",
     "boundary_source": "Manchester Piccadilly SRF Update Mar 2018 Appendix 1 area 07 North Campus SRF, aerial georeferenced (~30 m)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2021-03",
+      "stage": "framework",
+      "label": "ID Manchester partner: Bruntwood SciTech + University of Manchester"
+     },
+     {
+      "date": "2023-12",
+      "stage": "framework",
+      "label": "Sister SRF adopted; 15-year delivery"
+     },
+     {
+      "date": "2025-06",
+      "stage": "delivery",
+      "label": "Renold Building refurbishment complete"
+     },
+     {
+      "date": "2025-11",
+      "stage": "consent",
+      "label": "Plot C (585k sq ft) approved"
+     },
+     {
+      "date": "2026-04",
+      "stage": "start",
+      "label": "Plot C demolition starts"
+     },
+     {
+      "date": "2026-06",
+      "stage": "consent",
+      "label": "Plot H 38-storey student tower (1,041 beds) submitted"
+     },
+     {
+      "date": "2038",
+      "stage": "target",
+      "label": "Innovation district build-out (15 years from SRF)"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -4802,41 +4969,71 @@
     "images": [
      {
       "src": "assets/images/noma/01.jpg",
-      "caption": "NOMA gears up for next phase of development with new agents confirmed - Invest Manchester",
-      "credit": "Invest in Manchester",
+      "kind": "aerial-cgi",
+      "caption": "Aerial CGI of Angel Square with the next NOMA office plots, incl. 2 Angel Square",
+      "credit": "Federated Hermes MEPC (via Invest in Manchester)",
       "source_url": "https://www.investmanchester.co.uk/news/noma-gears-up-for-next-phase-of-development-with-new-agents-confirmed/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
        1500,
-       1000
+       1183
       ]
      },
      {
       "src": "assets/images/noma/02.jpg",
-      "caption": "NOMA - geograph.org.uk - 6717277",
-      "credit": "Peter McDermott",
-      "source_url": "https://commons.wikimedia.org/wiki/File:NOMA_-_geograph.org.uk_-_6717277.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "aerial-cgi",
+      "caption": "Indicative aerial of the revised NOMA masterplan (2020 framework)",
+      "credit": "Federated Hermes MEPC (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/manchester-moves-forward-with-noma-extension/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1600,
-       993
+       1024,
+       629
       ]
      },
      {
       "src": "assets/images/noma/03.jpg",
-      "caption": "NOMA - geograph.org.uk - 8065985",
-      "credit": "Peter McDermott",
-      "source_url": "https://commons.wikimedia.org/wiki/File:NOMA_-_geograph.org.uk_-_8065985.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "masterplan",
+      "caption": "NOMA masterplan plot plan, Victoria to Angel Meadow (2024)",
+      "credit": "NOMA / Federated Hermes MEPC",
+      "source_url": "https://noma-manchester.com/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1200
+       1333
       ]
      }
     ],
     "confidence": "srf-georeferenced",
     "boundary_source": "NOMA SRF Update 2020 (MCC) Appendix A plot plan red line, scaled to GMCA site MCC_EMP_01",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2009-10",
+      "stage": "framework",
+      "label": "NOMA masterplan launched by the Co-operative Group"
+     },
+     {
+      "date": "2013-02",
+      "stage": "delivery",
+      "label": "1 Angel Square (Co-op HQ) complete"
+     },
+     {
+      "date": "2020-01",
+      "stage": "delivery",
+      "label": "Angel Gardens 466 BTR homes complete"
+     },
+     {
+      "date": "2023-06",
+      "stage": "delivery",
+      "label": "4 Angel Square complete"
+     },
+     {
+      "date": "2026-04",
+      "stage": "delivery",
+      "label": "Agents appointed to let 2 Angel Square; BNY moving into 4 Angel Square"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -5137,19 +5334,71 @@
     "images": [
      {
       "src": "assets/images/st-johns/01.jpg",
-      "caption": "St John's Gardens Manchester April 2025",
-      "credit": "Valienne",
-      "source_url": "https://commons.wikimedia.org/wiki/File:St_John%27s_Gardens_Manchester_April_2025.jpg",
-      "licence": "CC BY 4.0",
+      "kind": "aerial-cgi",
+      "caption": "Aerial CGI of the St John’s masterplan on the former Granada Studios site",
+      "credit": "SimpsonHaugh",
+      "source_url": "https://www.simpsonhaugh.com/projects/st-johns-masterplan",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1371
+       1225
+      ]
+     },
+     {
+      "src": "assets/images/st-johns/02.jpg",
+      "kind": "aerial-cgi",
+      "caption": "Aerial CGI of St John’s with towers along the Irwell, final applications stage",
+      "credit": "Allied London (via Building)",
+      "source_url": "https://www.building.co.uk/news/final-plans-in-for-allied-londons-huge-manchester-scheme/5076994.article",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1342,
+       823
+      ]
+     },
+     {
+      "src": "assets/images/st-johns/03.jpg",
+      "kind": "render",
+      "caption": "Street-level CGI from the 2014 St John’s masterplan submission",
+      "credit": "Allied London / SimpsonHaugh (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/allied-submits-1bn-st-johns-masterplan/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1246,
+       1024
       ]
      }
     ],
     "confidence": "srf-georeferenced",
     "boundary_source": "St John's SRF Update Nov 2016 (MCC/Deloitte) extended SRF site plan red line, similarity on 3 OSM landmark GCPs (~20 m)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2016-11",
+      "stage": "framework",
+      "label": "St John's SRF approved (former Granada Studios)"
+     },
+     {
+      "date": "2019-03",
+      "stage": "start",
+      "label": "Factory International construction starts"
+     },
+     {
+      "date": "2023-10",
+      "stage": "delivery",
+      "label": "Aviva Studios (Factory International) opens"
+     },
+     {
+      "date": "2024-06",
+      "stage": "delivery",
+      "label": "Manchester Goods Yard and Enterprise City complete"
+     },
+     {
+      "date": "2026-09",
+      "stage": "delivery",
+      "label": "No new residential construction milestones"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -5670,41 +5919,81 @@
     "images": [
      {
       "src": "assets/images/great-jackson-st/01.jpg",
-      "caption": "Renaker strikes S106 deal for next five Manchester towers",
-      "credit": "Construction Enquirer",
-      "source_url": "https://www.constructionenquirer.com/2026/09/14/renaker-strikes-s106-deal-for-next-five-manchester-towers/",
+      "kind": "aerial-photo",
+      "caption": "Great Jackson Street cluster: Deansgate Square and Crown Street towers from above",
+      "credit": "SimpsonHaugh",
+      "source_url": "https://www.simpsonhaugh.com/projects/crown-street-phase-2",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1200,
-       828
+       1600,
+       1200
       ]
      },
      {
       "src": "assets/images/great-jackson-st/02.jpg",
-      "caption": "Deansgate Square & Elizabeth Tower Manchester Winter 2020",
-      "credit": "ChrisClarke88",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Deansgate_Square_%26_Elizabeth_Tower_Manchester_Winter_2020.jpg",
-      "licence": "CC BY-SA 4.0",
+      "kind": "render",
+      "caption": "Crown Street Phase 3 towers and public square, CGI",
+      "credit": "SimpsonHaugh / Renaker",
+      "source_url": "https://simpsonhaugh.com/projects/crown-street-phase-3",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1080,
-       721
+       1600,
+       1225
       ]
      },
      {
       "src": "assets/images/great-jackson-st/03.jpg",
-      "caption": "Great Jackson Street - geograph.org.uk - 5765438",
-      "credit": "Peter McDermott",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Great_Jackson_Street_-_geograph.org.uk_-_5765438.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "aerial-photo",
+      "caption": "Deansgate Square (complete), four towers from the south-west",
+      "credit": "SimpsonHaugh",
+      "source_url": "https://www.simpsonhaugh.com/projects/deansgate-square",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1055
+       994
       ]
      }
     ],
     "confidence": "srf-georeferenced",
     "boundary_source": "Great Jackson Street SRF May 2018 (MCC/Deloitte/SimpsonHaugh) site location plan red line (7.78 ha), north-up, scaled to stated area and anchored on GMCA land-supply plots",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2016-11",
+      "stage": "framework",
+      "label": "Great Jackson Street SRF approved"
+     },
+     {
+      "date": "2018-05",
+      "stage": "framework",
+      "label": "SRF update (Renaker)"
+     },
+     {
+      "date": "2021-06",
+      "stage": "delivery",
+      "label": "Deansgate Square 1,508 homes complete (South Tower 64 storeys)"
+     },
+     {
+      "date": "2022-12",
+      "stage": "delivery",
+      "label": "Crown Street Phase 1 (664 homes) complete"
+     },
+     {
+      "date": "2026-02",
+      "stage": "delivery",
+      "label": "Contour Tower 1 topped out"
+     },
+     {
+      "date": "2026-09",
+      "stage": "consent",
+      "label": "The Green + Lighthouse (2,388 homes, 71 storeys) S106 signed; JR threatened"
+     },
+     {
+      "date": "2032",
+      "stage": "target",
+      "label": "Cluster build-out c.6,400 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -5977,41 +6266,54 @@
     "images": [
      {
       "src": "assets/images/water-street/01.jpg",
-      "caption": "Manchester pushes Water Street SRF forward - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/manchester-pushes-water-street-srf-forward/",
+      "kind": "render",
+      "caption": "Illustrative sketch of the new Water Street park with towers (2026 SRF update)",
+      "credit": "Manchester City Council / SimpsonHaugh",
+      "source_url": "https://www.manchester.gov.uk/news-stories/2026/public-back-transformational-water-street-regeneration-plans-with-major-new-city-centre-park-at-its-heart",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1024,
-       637
+       1600,
+       995
       ]
      },
      {
       "src": "assets/images/water-street/02.jpg",
-      "caption": "Bridge, Water Street, Manchester - geograph.org.uk - 2805532",
-      "credit": "Stephen Richards",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Bridge,_Water_Street,_Manchester_-_geograph.org.uk_-_2805532.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "masterplan",
+      "caption": "Illustrative masterplan of the Water Street park and plots (2026 SRF update)",
+      "credit": "SimpsonHaugh / Manchester City Council (via AJ)",
+      "source_url": "https://www.architectsjournal.co.uk/news/simpsonhaugh-doubles-height-in-new-vision-for-manchester-neighbourhood",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       413
-      ]
-     },
-     {
-      "src": "assets/images/water-street/03.jpg",
-      "caption": "Bridges, Water Street, Manchester - geograph.org.uk - 2805499",
-      "credit": "Stephen Richards",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Bridges,_Water_Street,_Manchester_-_geograph.org.uk_-_2805499.jpg",
-      "licence": "CC BY-SA 2.0",
-      "px": [
-       640,
-       426
+       1553,
+       1447
       ]
      }
     ],
     "confidence": "srf-georeferenced-partial",
     "boundary_source": "Water Street SRF Final Report Jul 2026 (MCC/SimpsonHaugh) Fig 1.01 location plan, north-up, similarity on 3 OSM GCPs (<10 m); red line is open on the east side so the boundary is a concave hull of the line",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2016-11",
+      "stage": "framework",
+      "label": "Original Water Street / St John's framework"
+     },
+     {
+      "date": "2026-03",
+      "stage": "framework",
+      "label": "Draft SRF update approved for consultation"
+     },
+     {
+      "date": "2026-07",
+      "stage": "framework",
+      "label": "Final SRF update to Executive"
+     },
+     {
+      "date": "2036",
+      "stage": "target",
+      "label": "c.2,500 homes across the framework area"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -6251,31 +6553,72 @@
     ],
     "images": [
      {
-      "src": "assets/images/holt-town/02.jpg",
-      "caption": "Sign-off nears for 4,500-home Holt Town vision as fresh images emerge - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/sign-off-nears-for-4500-home-holt-town-vision-as-fresh-images-emerge/",
+      "src": "assets/images/holt-town/01.jpg",
+      "kind": "aerial-cgi",
+      "caption": "Holt Town woodland-town NDF: illustrative aerial sketch along the Medlock",
+      "credit": "Studio Egret West",
+      "source_url": "https://www.mvrdv.com/projects/1101/holt-town",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1024,
-       710
+       1600,
+       1112
+      ]
+     },
+     {
+      "src": "assets/images/holt-town/02.jpg",
+      "kind": "masterplan",
+      "caption": "Holt Town landscape masterplan between New Islington and Etihad Campus",
+      "credit": "Studio Egret West",
+      "source_url": "https://www.mvrdv.com/projects/1101/holt-town",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1182
       ]
      },
      {
       "src": "assets/images/holt-town/03.jpg",
-      "caption": "Holt Town - geograph.org.uk - 2831943",
-      "credit": "Gerald England",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Holt_Town_-_geograph.org.uk_-_2831943.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "Holt Town NDF: Resilient Meadow street-level illustration",
+      "credit": "Studio Egret West",
+      "source_url": "https://www.mvrdv.com/projects/1101/holt-town",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       504
+       1600,
+       1143
       ]
      }
     ],
     "confidence": "land-supply-site",
     "boundary_source": "GMCA 2025 offices land supply site MCC_EMP_17",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2023-03",
+      "stage": "framework",
+      "label": "Holt Town draft framework consultation"
+     },
+     {
+      "date": "2025-01",
+      "stage": "framework",
+      "label": "Neighbourhood Development Framework approved"
+     },
+     {
+      "date": "2027",
+      "stage": "start",
+      "label": "First stage c.200 homes in mill setting"
+     },
+     {
+      "date": "2029",
+      "stage": "delivery",
+      "label": "c.750 homes with landowners"
+     },
+     {
+      "date": "2040",
+      "stage": "target",
+      "label": "4,500 homes, ≥20% affordable"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -6436,41 +6779,76 @@
     "images": [
      {
       "src": "assets/images/etihad-campus/01.jpg",
-      "caption": "Manchester city training ground",
-      "credit": "Arne Müseler",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Manchester_city_training_ground.jpg",
-      "licence": "CC BY-SA 3.0 de",
+      "kind": "aerial-cgi",
+      "caption": "Aerial CGI of Etihad North Stand expansion, hotel and City Square",
+      "credit": "Populous / Manchester City",
+      "source_url": "https://populous.com/article/populous-collaborating-with-manchester-city-as-the-architect-for-the-development-of-an-entertainment-and-leisure-destination-at-the-etihad-stadium",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1198
+       900
       ]
      },
      {
       "src": "assets/images/etihad-campus/02.jpg",
-      "caption": "3037 - Etihad Campus",
-      "credit": "Mikey",
-      "source_url": "https://commons.wikimedia.org/wiki/File:3037_-_Etihad_Campus.jpg",
-      "licence": "CC BY 2.0",
+      "kind": "aerial-photo",
+      "caption": "Aerial of North Stand under construction with Co-op Live, May 2025",
+      "credit": "StadiumDB.com",
+      "source_url": "https://stadiumdb.com/news/2025/05/england_the_pinnacle_of_the_new_stand_at_etihad_stadium_has_been_reached",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1600,
-       1200
+       1344,
+       755
       ]
      },
      {
       "src": "assets/images/etihad-campus/03.jpg",
-      "caption": "Etihad Campus - geograph.org.uk - 5074272",
-      "credit": "Gerald England",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Etihad_Campus_-_geograph.org.uk_-_5074272.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "aerial-photo",
+      "caption": "Aerial of City Football Academy and Academy Stadium, Etihad Campus (2023)",
+      "credit": "Arne Müseler, CC BY-SA 3.0 de (Wikimedia Commons)",
+      "source_url": "https://en.wikipedia.org/wiki/Etihad_Campus",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1000,
-       671
+       1600,
+       1198
       ]
      }
     ],
     "confidence": "osm-site",
     "boundary_source": "OpenStreetMap relation 16095672 Etihad Campus (© OSM contributors, ODbL); cf. GMCA offices land supply MCC_EMP_13",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2002-07",
+      "stage": "delivery",
+      "label": "Commonwealth Games; City of Manchester Stadium opens"
+     },
+     {
+      "date": "2011-06",
+      "stage": "framework",
+      "label": "Eastlands Regeneration Framework"
+     },
+     {
+      "date": "2014-12",
+      "stage": "delivery",
+      "label": "City Football Academy opens"
+     },
+     {
+      "date": "2017-11",
+      "stage": "framework",
+      "label": "Eastlands framework update"
+     },
+     {
+      "date": "2024-04",
+      "stage": "delivery",
+      "label": "Co-op Live arena opens; North Stand expansion under way"
+     },
+     {
+      "date": "2026-09",
+      "stage": "delivery",
+      "label": "Radisson Blu Medlock Hotel opens; stadium lease under review"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -7105,19 +7483,47 @@
     "images": [
      {
       "src": "assets/images/strangeways/01.jpg",
-      "caption": "Salford and Manchester ready to rubber-stamp 7,000-home joint vision - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/salford-and-manchester-ready-to-rubber-stamp-7000-home-joint-vision/",
+      "kind": "render",
+      "caption": "Artist's impression of the Strangeways & Cambridge SRF: new park and homes",
+      "credit": "Manchester City Council",
+      "source_url": "https://www.manchester.gov.uk/news-stories/2025/plans-for-strangeways-regeneration-finalised",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1350,
-       1080
+       1203,
+       650
       ]
      }
     ],
     "confidence": "srf-georeferenced",
     "boundary_source": "Strangeways & Cambridge SRF Oct 2025 (MCC/Salford) Fig 1.1 red line, georeferenced (similarity, 3 GCPs ~30 m) and auto-traced",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2023-11",
+      "stage": "framework",
+      "label": "Draft Strangeways–Cambridge SRF consultation"
+     },
+     {
+      "date": "2025-03",
+      "stage": "delivery",
+      "label": "Manchester College city campus complete (£93m)"
+     },
+     {
+      "date": "2025-11",
+      "stage": "framework",
+      "label": "SRF adopted by Salford (6 Nov) and Manchester (7 Nov)"
+     },
+     {
+      "date": "2027",
+      "stage": "start",
+      "label": "Latimer 461 homes (first residential phase)"
+     },
+     {
+      "date": "2045",
+      "stage": "target",
+      "label": "Up to 7,000 homes; prison relocation unresolved"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -7986,41 +8392,59 @@
     "images": [
      {
       "src": "assets/images/ancoats-poland-st/01.jpg",
-      "caption": "29 Great Ancoats Street, Manchester - geograph.org.uk - 7571489",
-      "credit": "Stephen Richards",
-      "source_url": "https://commons.wikimedia.org/wiki/File:29_Great_Ancoats_Street,_Manchester_-_geograph.org.uk_-_7571489.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "masterplan",
+      "caption": "Poland Street Zone illustrative plan: Ancoats Green, Eliza Yard and future parcels",
+      "credit": "Manchester City Council (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/plans-for-green-heart-of-ancoats-revealed/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       758,
-       1024
+       1024,
+       688
       ]
      },
      {
       "src": "assets/images/ancoats-poland-st/02.jpg",
-      "caption": "Ancoats, Manchester - geograph.org.uk - 3846212",
-      "credit": "Steven Haslington",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Ancoats,_Manchester_-_geograph.org.uk_-_3846212.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "CGI of Eliza Yard, first Poland Street Zone phase (118 homes)",
+      "credit": "Manchester Life (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/manchester-life-lodges-118-home-eliza-yard-plan/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       900,
-       1600
-      ]
-     },
-     {
-      "src": "assets/images/ancoats-poland-st/03.jpg",
-      "caption": "Ancoats Hospital aka Ardwick and Ancoats Dispensary, Manchester under renovations in July 2023",
-      "credit": "Ridiculopathy",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Ancoats_Hospital_aka_Ardwick_and_Ancoats_Dispensary,_Manchester_under_renovations_in_July_2023.jpg",
-      "licence": "CC0",
-      "px": [
-       1600,
-       1200
+       1024,
+       1017
       ]
      }
     ],
     "confidence": "land-supply-plots",
     "boundary_source": "GMCA 2025 housing land supply plots (dissolved)",
-    "boundary_features": 7
+    "boundary_features": 7,
+    "timeline": [
+     {
+      "date": "2020-06",
+      "stage": "framework",
+      "label": "Poland Street Zone NDF approved"
+     },
+     {
+      "date": "2023-09",
+      "stage": "start",
+      "label": "Jersey Wharf and Eliza Yard start on site"
+     },
+     {
+      "date": "2025-11",
+      "stage": "consent",
+      "label": "Stocktons site 758 homes approved"
+     },
+     {
+      "date": "2026-06",
+      "stage": "delivery",
+      "label": "Jersey Wharf (190) and Eliza Yard (126) residents move in"
+     },
+     {
+      "date": "2030",
+      "stage": "target",
+      "label": "c.1,500 homes across later phases"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -8279,19 +8703,66 @@
     "images": [
      {
       "src": "assets/images/digital-campus/01.jpg",
-      "caption": "Treasury approves 900,000 sq ft Manchester Digital Campus - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/treasury-approves-900000-sq-ft-manchester-digital-campus/",
+      "kind": "render",
+      "caption": "Manchester Digital Campus north and south buildings from Great Ancoats St",
+      "credit": "Government Property Agency / AtkinsRéalis (via Manchester City Council)",
+      "source_url": "https://www.manchester.gov.uk/news-stories/2026/manchester-digital-campus-confirmed-government-progressing-landmark-hub",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       900
+      ]
+     },
+     {
+      "src": "assets/images/digital-campus/02.jpg",
+      "kind": "render",
+      "caption": "Digital Campus South Building and street frontage, planning CGI",
+      "credit": "Government Property Agency (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/gpa-reveals-manchester-digital-campus-design/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
        1024,
-       693
+       657
+      ]
+     },
+     {
+      "src": "assets/images/digital-campus/03.jpg",
+      "kind": "render",
+      "caption": "Planit-designed park on the former Central Retail Park, elevated CGI",
+      "credit": "Manchester City Council / Planit",
+      "source_url": "https://www.placenorthwest.co.uk/consultation-launches-for-central-retail-park/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1024,
+       743
       ]
      }
     ],
     "confidence": "land-supply-site",
     "boundary_source": "GMCA 2025 offices land supply site 141607/FO/2024",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2021-01",
+      "stage": "framework",
+      "label": "Central Retail Park acquired by MCC; office-led framework"
+     },
+     {
+      "date": "2025-02",
+      "stage": "consent",
+      "label": "Digital Campus approved (Government Property Agency)"
+     },
+     {
+      "date": "2026-09",
+      "stage": "start",
+      "label": "Enabling works 2026/27"
+     },
+     {
+      "date": "2032",
+      "stage": "target",
+      "label": "Campus completion"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -8452,8 +8923,33 @@
     "images": [
      {
       "src": "assets/images/east-village-central/01.jpg",
-      "caption": "Another 1,400 homes planned for Manchester as council fleshes out vision for Diecast site - Place North West",
-      "credit": "Place North West",
+      "kind": "aerial-cgi",
+      "caption": "Aerial massing sketch of the six East Village Central plots (former Presbar site)",
+      "credit": "Manchester City Council / SimpsonHaugh",
+      "source_url": "https://www.placenorthwest.co.uk/another-1400-homes-planned-for-manchester-as-council-fleshes-out-vision-for-diecast-site/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1024,
+       724
+      ]
+     },
+     {
+      "src": "assets/images/east-village-central/02.jpg",
+      "kind": "render",
+      "caption": "Portugal Street East towers CGI (Fairfax, now built)",
+      "credit": "Olympian Homes",
+      "source_url": "https://olympianhomes.com/building/portugal-street-east",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1215,
+       1500
+      ]
+     },
+     {
+      "src": "assets/images/east-village-central/03.jpg",
+      "kind": "render",
+      "caption": "Street-level sketch of East Village Central podium and public realm",
+      "credit": "Manchester City Council / SimpsonHaugh",
       "source_url": "https://www.placenorthwest.co.uk/another-1400-homes-planned-for-manchester-as-council-fleshes-out-vision-for-diecast-site/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
@@ -8464,7 +8960,39 @@
     ],
     "confidence": "srf-georeferenced",
     "boundary_source": "Manchester Piccadilly SRF Update Mar 2018 Appendix 1 area 11 East Village neighbourhood, aerial georeferenced (~30 m)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2018-03",
+      "stage": "framework",
+      "label": "Piccadilly SRF Update sub-areas"
+     },
+     {
+      "date": "2023-01",
+      "stage": "start",
+      "label": "The Fairfax (488 BTR) starts"
+     },
+     {
+      "date": "2025-03",
+      "stage": "delivery",
+      "label": "The Fairfax topped out"
+     },
+     {
+      "date": "2025-07",
+      "stage": "framework",
+      "label": "East Village Central SRF update"
+     },
+     {
+      "date": "2026-03",
+      "stage": "delivery",
+      "label": "The Fairfax practical completion"
+     },
+     {
+      "date": "2033",
+      "stage": "target",
+      "label": "c.1,888 homes across both frameworks"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -8717,41 +9245,71 @@
     "images": [
      {
       "src": "assets/images/first-street/01.jpg",
-      "caption": "Manchester’s First Street Hub reaches completion milestone",
-      "credit": "GOV.UK",
-      "source_url": "https://www.gov.uk/government/news/manchesters-first-street-hub-reaches-completion-milestone",
+      "kind": "render",
+      "caption": "First Street South (Square Gardens) public realm CGI between the towers",
+      "credit": "Ask Real Estate / Patrizia (via Construction Enquirer)",
+      "source_url": "https://www.constructionenquirer.com/2022/01/21/enabling-works-start-at-400m-manchester-first-street/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1200,
-       630
+       1600,
+       1067
       ]
      },
      {
       "src": "assets/images/first-street/02.jpg",
-      "caption": "First Street, Manchester - geograph.org.uk - 3727165",
-      "credit": "David Dixon",
-      "source_url": "https://commons.wikimedia.org/wiki/File:First_Street,_Manchester_-_geograph.org.uk_-_3727165.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "photo",
+      "caption": "Square Gardens: Acer and The Fernley towers, completed",
+      "credit": "SimpsonHaugh",
+      "source_url": "https://www.simpsonhaugh.com/projects/first-street-south-",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       480,
-       640
+       1600,
+       1225
       ]
      },
      {
       "src": "assets/images/first-street/03.jpg",
-      "caption": "First Street, Manchester - geograph.org.uk - 7187240",
-      "credit": "David Dixon",
-      "source_url": "https://commons.wikimedia.org/wiki/File:First_Street,_Manchester_-_geograph.org.uk_-_7187240.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "photo",
+      "caption": "First Street North: HOME, hotel and car park, completed",
+      "credit": "SimpsonHaugh",
+      "source_url": "https://www.simpsonhaugh.com/projects/first-street-north",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       768,
-       1024
+       1600,
+       668
       ]
      }
     ],
     "confidence": "srf-georeferenced",
     "boundary_source": "First Street Development Framework report Feb 2020 (MCC) Appendix plan, georeferenced (4 GCPs ~40 m); union of framework plots",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2015-05",
+      "stage": "delivery",
+      "label": "HOME arts centre opens"
+     },
+     {
+      "date": "2015-08",
+      "stage": "framework",
+      "label": "First Street SRF adopted"
+     },
+     {
+      "date": "2020-11",
+      "stage": "framework",
+      "label": "Framework plan update"
+     },
+     {
+      "date": "2022-06",
+      "stage": "delivery",
+      "label": "Acer Tower 716 homes complete"
+     },
+     {
+      "date": "2025-06",
+      "stage": "complete",
+      "label": "The Fernley (525 homes, 45 storeys) opens; largely built out"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -9152,40 +9710,65 @@
     "images": [
      {
       "src": "assets/images/circle-square/01.jpg",
-      "caption": "Circle Square - geograph.org.uk - 5029371",
-      "credit": "Peter McDermott",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Circle_Square_-_geograph.org.uk_-_5029371.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "aerial-photo",
+      "caption": "Drone view over completed Circle Square towers and Symphony Park",
+      "credit": "Curtins",
+      "source_url": "https://www.curtins.com/experience/circle-square-manchester/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       954
+       1363
       ]
      },
      {
       "src": "assets/images/circle-square/02.jpg",
-      "caption": "Circle Square - geograph.org.uk - 5086723",
-      "credit": "David Dixon",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Circle_Square_-_geograph.org.uk_-_5086723.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "photo",
+      "caption": "Symphony Park public realm with No.1/No.2 Circle Square behind",
+      "credit": "Oxford Road Corridor",
+      "source_url": "https://oxfordroadcorridor.com/place/circle-square/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       427
+       1600,
+       1056
       ]
      },
      {
       "src": "assets/images/circle-square/03.jpg",
-      "caption": "Circle Square Manchester",
-      "credit": "Duncan.Hull",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Circle_Square_Manchester.jpg",
-      "licence": "CC BY-SA 4.0",
+      "kind": "photo",
+      "caption": "Vita Living residential towers and raised garden, completed phase",
+      "credit": "5plus Architects",
+      "source_url": "https://5plusarchitects.com/work/vita-circle-square-manchester/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1024,
-       1024
+       1200,
+       1600
       ]
      }
     ],
     "confidence": "point-estimate",
-    "boundary_source": "centroid estimate"
+    "boundary_source": "centroid estimate",
+    "timeline": [
+     {
+      "date": "2016-07",
+      "stage": "consent",
+      "label": "Circle Square outline consent (former BBC site)"
+     },
+     {
+      "date": "2017-03",
+      "stage": "start",
+      "label": "Start on site"
+     },
+     {
+      "date": "2019-09",
+      "stage": "delivery",
+      "label": "Symphony Park and first buildings open"
+     },
+     {
+      "date": "2025-07",
+      "stage": "complete",
+      "label": "Effectively complete: 1,783 homes"
+     }
+    ]
    },
    "geometry": {
     "type": "Point",
@@ -9222,41 +9805,66 @@
     "images": [
      {
       "src": "assets/images/kampus/01.jpg",
-      "caption": "Kampus",
-      "credit": "Chapman Taylor",
-      "source_url": "https://www.chapmantaylor.com/projects/kampus",
+      "kind": "photo",
+      "caption": "Completed Kampus: canal-side towers and restored warehouses, Aytoun St",
+      "credit": "Mecanoo",
+      "source_url": "https://www.mecanoo.nl/Projects/project/179/KAMPUS?d=0&t=0",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1200,
-       630
+       1600,
+       896
       ]
      },
      {
       "src": "assets/images/kampus/02.jpg",
-      "caption": "Kampus - geograph.org.uk - 5765449",
-      "credit": "Peter McDermott",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Kampus_-_geograph.org.uk_-_5765449.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "photo",
+      "caption": "Kampus from the Rochdale Canal: new-build blocks and Little David St buildings",
+      "credit": "Chapman Taylor",
+      "source_url": "https://www.chapmantaylor.com/projects/kampus",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1080
+       1068
       ]
      },
      {
       "src": "assets/images/kampus/03.jpg",
-      "caption": "Kampus North Block Manchester March 2025",
-      "credit": "Valienne",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Kampus_North_Block_Manchester_March_2025.jpg",
-      "licence": "CC BY 4.0",
+      "kind": "photo",
+      "caption": "Kampus canal frontage at dusk, completed scheme",
+      "credit": "Chapman Taylor",
+      "source_url": "https://www.chapmantaylor.com/projects/kampus",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1200,
-       1600
+       1406,
+       1125
       ]
      }
     ],
     "confidence": "srf-georeferenced",
     "boundary_source": "Manchester Piccadilly SRF Update Mar 2018 Appendix 1 area 08 Aytoun Street SRF / Kampus, aerial georeferenced (~30 m)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2016-08",
+      "stage": "consent",
+      "label": "Kampus consent (Capital & Centric / HBD)"
+     },
+     {
+      "date": "2017-03",
+      "stage": "start",
+      "label": "Start on site"
+     },
+     {
+      "date": "2020-06",
+      "stage": "delivery",
+      "label": "First residents"
+     },
+     {
+      "date": "2022-01",
+      "stage": "complete",
+      "label": "533 BTR homes complete"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -9693,30 +10301,71 @@
     "images": [
      {
       "src": "assets/images/mix-manchester/01.jpg",
-      "caption": "Planning submitted for MIX MANCHESTER: a world-class, airport-connected innovation campus - Invest Manchester",
-      "credit": "Invest in Manchester",
-      "source_url": "https://www.investmanchester.co.uk/news/planning-submitted-for-mix-manchester-a-world-class-airport-connected-innovation-campus/",
+      "kind": "aerial-cgi",
+      "caption": "Aerial CGI of the MIX Manchester campus beside the airport and M56",
+      "credit": "MIX Manchester / Sheppard Robson (via Building)",
+      "source_url": "https://www.building.co.uk/news/sheppard-robson-unveils-1bn-manchester-science-campus-reboot/5129381.article",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1024,
-       602
+       1600,
+       900
       ]
      },
      {
       "src": "assets/images/mix-manchester/02.jpg",
-      "caption": "Plans go in for first phase of 1.6m sq ft Mix Manchester",
-      "credit": "Construction Enquirer",
-      "source_url": "https://www.constructionenquirer.com/2026/04/09/plans-go-in-for-first-phase-of-1-6m-sq-ft-mix-manchester/",
+      "kind": "render",
+      "caption": "CGI of the central landscaped park and campus buildings",
+      "credit": "MIX Manchester / Sheppard Robson (via Building)",
+      "source_url": "https://www.building.co.uk/news/sheppard-robson-unveils-1bn-manchester-science-campus-reboot/5129381.article",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1200,
-       828
+       1600,
+       957
+      ]
+     },
+     {
+      "src": "assets/images/mix-manchester/03.jpg",
+      "kind": "render",
+      "caption": "CGI of first-phase buildings submitted for planning, April 2026",
+      "credit": "MIX Manchester (via Invest Manchester)",
+      "source_url": "https://www.investmanchester.co.uk/news/planning-submitted-for-mix-manchester-a-world-class-airport-connected-innovation-campus/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       941
       ]
      }
     ],
     "confidence": "land-supply-site",
     "boundary_source": "GMCA 2025 offices land supply site MCC_EMP_12 (M56 spur / Ringway Rd W); cf. OSM Airport City",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2013-04",
+      "stage": "framework",
+      "label": "Airport City Enterprise Zone"
+     },
+     {
+      "date": "2019-06",
+      "stage": "delivery",
+      "label": "Global Logistics 821k sq ft delivered"
+     },
+     {
+      "date": "2023-11",
+      "stage": "framework",
+      "label": "Rebranded MIX Manchester"
+     },
+     {
+      "date": "2026-04",
+      "stage": "consent",
+      "label": "Phase 1 hybrid application submitted (1.6m sq ft)"
+     },
+     {
+      "date": "2027-10",
+      "stage": "delivery",
+      "label": "First units Q4 2027"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -9977,18 +10626,46 @@
     "images": [
      {
       "src": "assets/images/airport-t2/01.jpg",
-      "caption": "Manchester Airport Terminal 2 Transformation Project – Terminal 2 Extension",
-      "credit": "Buro Happold",
-      "source_url": "https://www.burohappold.com/projects/manchester-airport-terminal-2-transformation-project-terminal-2-extension/",
+      "kind": "aerial-cgi",
+      "caption": "Aerial CGI of the expanded Terminal 2, new pier and multi-storey car park",
+      "credit": "Manchester Airports Group",
+      "source_url": "https://mediacentre.manchesterairport.co.uk/manchester-airport-celebrates-one-year-of-construction-on-its-1bn-transformation-programme/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1500,
-       1000
+       1512,
+       851
       ]
      }
     ],
     "confidence": "point-estimate",
-    "boundary_source": "centroid estimate"
+    "boundary_source": "centroid estimate",
+    "timeline": [
+     {
+      "date": "2015-06",
+      "stage": "framework",
+      "label": "£1bn Manchester Airport Transformation Programme announced"
+     },
+     {
+      "date": "2017-07",
+      "stage": "start",
+      "label": "Terminal 2 extension starts"
+     },
+     {
+      "date": "2021-07",
+      "stage": "delivery",
+      "label": "Terminal 2 Phase 1 opens"
+     },
+     {
+      "date": "2025-06",
+      "stage": "complete",
+      "label": "Phase 2 complete"
+     },
+     {
+      "date": "2025-11",
+      "stage": "complete",
+      "label": "Terminal 1 closes (reported)"
+     }
+    ]
    },
    "geometry": {
     "type": "Point",
@@ -10025,41 +10702,76 @@
     "images": [
      {
       "src": "assets/images/wythenshawe-civic/01.jpg",
-      "caption": "New era for Wythenshawe as £32 million works begin at civic",
-      "credit": "Muse",
-      "source_url": "https://museplaces.com/stories/new-era-for-wythenshawe-as-32-million-works-begin-at-civic/",
+      "kind": "aerial-cgi",
+      "caption": "Illustrative aerial of the Wythenshawe Civic town-centre masterplan",
+      "credit": "Manchester City Council / Muse",
+      "source_url": "https://www.placenorthwest.co.uk/500m-wythenshawe-regeneration-gathers-pace-as-culture-plans-lodged/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1200,
-       675
+       1024,
+       724
       ]
      },
      {
       "src": "assets/images/wythenshawe-civic/02.jpg",
-      "caption": "Civic Centre, Wythenshawe - panoramio",
-      "credit": "WythenshaweMike",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Civic_Centre,_Wythenshawe_-_panoramio.jpg",
-      "licence": "CC BY 3.0",
+      "kind": "render",
+      "caption": "Wythenshawe Culture Hub CGI (phase 1, under construction)",
+      "credit": "Muse / Manchester City Council",
+      "source_url": "https://museplaces.com/stories/plans-for-new-wythenshawe-culture-hub-approved/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1200
+       1066
       ]
      },
      {
       "src": "assets/images/wythenshawe-civic/03.jpg",
-      "caption": "Wythenshawe Civic Centre (1) (2)",
-      "credit": "Rept0n1x",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Wythenshawe_Civic_Centre_(1)_(2).jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "Civic square CGI with food hall and workspace frontages",
+      "credit": "Manchester City Council / Muse",
+      "source_url": "https://www.manchester.gov.uk/news-stories/2026/work-starts-on-new-wythenshawe-culture-hub",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1200
+       985
       ]
      }
     ],
     "confidence": "land-supply-plots",
     "boundary_source": "GMCA 2025 housing land supply plots (dissolved)",
-    "boundary_features": 12
+    "boundary_features": 12,
+    "timeline": [
+     {
+      "date": "2022-07",
+      "stage": "framework",
+      "label": "Civic centre framework endorsed"
+     },
+     {
+      "date": "2024-07",
+      "stage": "framework",
+      "label": "Muse appointed development partner"
+     },
+     {
+      "date": "2026-02",
+      "stage": "start",
+      "label": "£32m first phase starts"
+     },
+     {
+      "date": "2026-06",
+      "stage": "consent",
+      "label": "First 422 social-rent homes approved"
+     },
+     {
+      "date": "2027",
+      "stage": "delivery",
+      "label": "Phase 1 opens"
+     },
+     {
+      "date": "2040",
+      "stage": "target",
+      "label": "c.2,000 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -10627,10 +11339,57 @@
       "url": "https://mft.nhs.uk/transforming-the-future-at-north-manchester-general-hospital/"
      }
     ],
-    "images": [],
+    "images": [
+     {
+      "src": "assets/images/nmgh/01.jpg",
+      "kind": "aerial-cgi",
+      "caption": "NMGH campus: aerial CGI of new acute hospital around the village green",
+      "credit": "Medical Architecture / Sheppard Robson",
+      "source_url": "https://medicalarchitecture.com/project/north-manchester-general-hospital-redevelopment/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       991
+      ]
+     },
+     {
+      "src": "assets/images/nmgh/02.jpg",
+      "kind": "render",
+      "caption": "NMGH: new hospital frontage onto the village green, street-level CGI",
+      "credit": "Medical Architecture / Sheppard Robson",
+      "source_url": "https://medicalarchitecture.com/project/north-manchester-general-hospital-redevelopment/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       695
+      ]
+     }
+    ],
     "confidence": "land-supply-site",
     "boundary_source": "GMCA 2025 housing land supply site",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2019-09",
+      "stage": "framework",
+      "label": "New Hospital Programme scheme"
+     },
+     {
+      "date": "2024-02",
+      "stage": "framework",
+      "label": "Campus masterplan; village and health innovation"
+     },
+     {
+      "date": "2028",
+      "stage": "start",
+      "label": "Main hospital construction"
+     },
+     {
+      "date": "2035",
+      "stage": "target",
+      "label": "New hospital and c.200 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -10749,19 +11508,66 @@
     "images": [
      {
       "src": "assets/images/jacksons-brickworks/01.jpg",
-      "caption": "Huge Jacksons Brickworks resi scheme greenlit - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/huge-jacksons-brickworks-resi-scheme-greenlit/",
+      "kind": "masterplan",
+      "caption": "Illustrative masterplan of the 47-acre former Jacksons Brickworks site",
+      "credit": "Your Housing Group (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/yhg-readies-47-acre-manchester-project/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       899,
-       493
+       1024,
+       723
+      ]
+     },
+     {
+      "src": "assets/images/jacksons-brickworks/02.jpg",
+      "kind": "render",
+      "caption": "CGI of new townhouses along a landscaped green route",
+      "credit": "Your Housing Group (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/yhg-readies-47-acre-manchester-project/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1024,
+       568
+      ]
+     },
+     {
+      "src": "assets/images/jacksons-brickworks/03.jpg",
+      "kind": "render",
+      "caption": "CGI of canal-side homes and cycle path, Newton Heath",
+      "credit": "Your Housing Group (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/yhg-readies-47-acre-manchester-project/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       800,
+       500
       ]
      }
     ],
     "confidence": "land-supply-plots",
     "boundary_source": "GMCA 2025 housing land supply plots (dissolved)",
-    "boundary_features": 2
+    "boundary_features": 2,
+    "timeline": [
+     {
+      "date": "2022-08",
+      "stage": "consent",
+      "label": "Outline consent 716 homes"
+     },
+     {
+      "date": "2025-01",
+      "stage": "consent",
+      "label": "Phase 1 detailed 378 homes"
+     },
+     {
+      "date": "2027",
+      "stage": "start",
+      "label": "Phase 1 start"
+     },
+     {
+      "date": "2032",
+      "stage": "target",
+      "label": "Build-out"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -10964,41 +11770,71 @@
     "images": [
      {
       "src": "assets/images/mediacity/01.jpg",
-      "caption": "Landsec committed to Mayfield and MediaCity despite development row back - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/landsec-committed-to-mayfield-and-mediacity-despite-development-row-back/",
+      "kind": "aerial-cgi",
+      "caption": "Aerial hero view of the MediaCity/Quayside regeneration framework",
+      "credit": "Prior + Partners for Landsec / Peel Media",
+      "source_url": "https://www.priorandpartners.com/project/mediacity-quayside-srf/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1024,
-       772
+       1600,
+       1131
       ]
      },
      {
       "src": "assets/images/mediacity/02.jpg",
-      "caption": "Manchester Ship Canal, MediaCity Footbridge - geograph.org.uk - 2684919",
-      "credit": "David Dixon",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Manchester_Ship_Canal,_MediaCity_Footbridge_-_geograph.org.uk_-_2684919.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "masterplan",
+      "caption": "Illustrative masterplan, MediaCity and Quayside SRF",
+      "credit": "Prior + Partners",
+      "source_url": "https://www.priorandpartners.com/salford-the-next-chapter-of-mediacity-and-the-quays/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1280,
-       960
+       1600,
+       1166
       ]
      },
      {
       "src": "assets/images/mediacity/03.jpg",
-      "caption": "Manchester Ship Canal, MediaCity Footbridge - geograph.org.uk - 4275593",
-      "credit": "David Dixon",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Manchester_Ship_Canal,_MediaCity_Footbridge_-_geograph.org.uk_-_4275593.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "Illustrative sketch of the new Quays waterfront, regeneration framework",
+      "credit": "MediaCityUK / Prior + Partners",
+      "source_url": "https://www.mediacityuk.co.uk/regeneration-framework/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       480
+       1600,
+       1044
       ]
      }
     ],
     "confidence": "land-supply-site",
     "boundary_source": "GMCA 2025 housing land supply site H/QYS/001 (framework area)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2007-05",
+      "stage": "start",
+      "label": "MediaCityUK Phase 1 starts"
+     },
+     {
+      "date": "2011-05",
+      "stage": "delivery",
+      "label": "BBC moves in"
+     },
+     {
+      "date": "2016-02",
+      "stage": "consent",
+      "label": "Phase 2 outline consent (Landsec / Peel)"
+     },
+     {
+      "date": "2024-03",
+      "stage": "framework",
+      "label": "Quays framework approved"
+     },
+     {
+      "date": "2025-09",
+      "stage": "framework",
+      "label": "Landsec cuts pipeline; no start date for next phase"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -11239,41 +12075,76 @@
     "images": [
      {
       "src": "assets/images/crescent-salford/01.jpg",
-      "caption": "Crescent, Salford - ECF",
-      "credit": "ECF",
-      "source_url": "https://englishcitiesfund.co.uk/our-places/crescent-salford/",
+      "kind": "aerial-cgi",
+      "caption": "Aerial illustrative view of the Crescent Salford masterplan along the A6",
+      "credit": "Make Architects",
+      "source_url": "https://www.makearchitects.com/projects/crescent-salford/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       512,
-       512
+       1600,
+       859
       ]
      },
      {
       "src": "assets/images/crescent-salford/02.jpg",
-      "caption": "Salford Crescent Railway Station - geograph.org.uk - 1700803",
-      "credit": "Richard Rogerson",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Salford_Crescent_Railway_Station_-_geograph.org.uk_-_1700803.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "CGI of Salford Rise, the elevated park route over the Crescent",
+      "credit": "Make Architects",
+      "source_url": "https://www.makearchitects.com/projects/salford-rise/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1200
+       1066
       ]
      },
      {
       "src": "assets/images/crescent-salford/03.jpg",
-      "caption": "Salford Crescent Station - geograph.org.uk - 1494219",
-      "credit": "Whatlep",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Salford_Crescent_Station_-_geograph.org.uk_-_1494219.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "CGI of Crescent Innovation North, first phase of the masterplan",
+      "credit": "English Cities Fund / Muse (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/first-phase-of-2-5bn-salford-masterplan-comes-forward/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       480
+       1024,
+       693
       ]
      }
     ],
     "confidence": "spd-georeferenced",
     "boundary_source": "Crescent Development Framework Jan 2021 (Salford CC / UoS / ECF) Fig. 4.1 Red Line Plan, orthoimage-based; scale fixed to the stated 102 ha, anchored on the David Lewis pitch; boundary auto-traced",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2019-12",
+      "stage": "framework",
+      "label": "Crescent masterplan (ECF / University of Salford / SCC)"
+     },
+     {
+      "date": "2021-03",
+      "stage": "framework",
+      "label": "Development framework adopted"
+     },
+     {
+      "date": "2023-01",
+      "stage": "start",
+      "label": "Adelphi Village (Ph1 student) on site"
+     },
+     {
+      "date": "2026-06",
+      "stage": "consent",
+      "label": "Crescent Innovation North (29 ac) consented; Ph2 185 flats"
+     },
+     {
+      "date": "2026-08",
+      "stage": "delivery",
+      "label": "Salford Rise green bridge due (not confirmed)"
+     },
+     {
+      "date": "2040",
+      "stage": "target",
+      "label": "c.3,000 homes, 1.6–2.4m sq ft"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -11730,41 +12601,76 @@
     "images": [
      {
       "src": "assets/images/salford-central/01.jpg",
-      "caption": "Salford Central - ECF",
-      "credit": "ECF",
-      "source_url": "https://englishcitiesfund.co.uk/our-places/salford-central/",
+      "kind": "render",
+      "caption": "New Bailey residential towers beside the Irwell, elevated CGI",
+      "credit": "English Cities Fund (via Buro Four)",
+      "source_url": "https://burofour.com/project/new-bailey-masterplan-salford/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       512,
-       512
+       1024,
+       787
       ]
      },
      {
       "src": "assets/images/salford-central/02.jpg",
-      "caption": "Entrance To Salford Central Station - geograph.org.uk - 1494233",
-      "credit": "Whatlep",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Entrance_To_Salford_Central_Station_-_geograph.org.uk_-_1494233.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "aerial-cgi",
+      "caption": "New Bailey skyline at night, drone-height view towards Manchester",
+      "credit": "English Cities Fund (via Buro Four)",
+      "source_url": "https://burofour.com/project/new-bailey-masterplan-salford/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       480
+       1600,
+       789
       ]
      },
      {
       "src": "assets/images/salford-central/03.jpg",
-      "caption": "Salford Central Railway Bridge - geograph.org.uk - 1414987",
-      "credit": "Sue Adair",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Salford_Central_Railway_Bridge_-_geograph.org.uk_-_1414987.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "photo",
+      "caption": "Eden, Two New Bailey Square with living wall (complete)",
+      "credit": "English Cities Fund",
+      "source_url": "https://englishcitiesfund.co.uk/our-places/salford-central/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       480
+       1600,
+       1118
       ]
      }
     ],
     "confidence": "spd-georeferenced",
     "boundary_source": "Salford Central Development Framework 2008 (Salford CC) Fig. 2 Location plan, georeferenced on 3 station GCPs, boundary auto-traced",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2008-05",
+      "stage": "framework",
+      "label": "Salford Central Development Framework adopted (50.4 ha)"
+     },
+     {
+      "date": "2012-06",
+      "stage": "start",
+      "label": "New Bailey Phase 1 starts"
+     },
+     {
+      "date": "2017-10",
+      "stage": "delivery",
+      "label": "One New Bailey and Vimto Gardens complete"
+     },
+     {
+      "date": "2025-05",
+      "stage": "consent",
+      "label": "Plot A1 (189 flats) consented; final residential phase"
+     },
+     {
+      "date": "2025-12",
+      "stage": "delivery",
+      "label": "Chapel Street East public realm complete"
+     },
+     {
+      "date": "2029",
+      "stage": "target",
+      "label": "Build-out"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -12933,41 +13839,76 @@
     "images": [
      {
       "src": "assets/images/greengate/01.jpg",
-      "caption": "Apartment block, Greengate, Salford - geograph.org.uk - 1879387",
-      "credit": "Chris Denny",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Apartment_block,_Greengate,_Salford_-_geograph.org.uk_-_1879387.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "CGI of the Renaker Colliers Yard tower trio at Greengate",
+      "credit": "Renaker",
+      "source_url": "https://www.placenorthwest.co.uk/renaker-looks-to-close-out-greengate-trilogy/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1600,
-       1067
+       1024,
+       574
       ]
      },
      {
       "src": "assets/images/greengate/02.jpg",
-      "caption": "Greengate, Manchester - geograph.org.uk - 2777850",
-      "credit": "Alexander P Kapp",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Greengate,_Manchester_-_geograph.org.uk_-_2777850.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "photo",
+      "caption": "Bankside at Colliers Yard, completed 2025",
+      "credit": "Denton Corker Marshall",
+      "source_url": "https://dentoncorkermarshall.com/projects/greengate-colliers-yard-bankside/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       480
+       1200,
+       1600
       ]
      },
      {
       "src": "assets/images/greengate/03.jpg",
-      "caption": "Greengate, Salford",
-      "credit": "Liverpoolpics",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Greengate,_Salford.jpg",
-      "licence": "CC BY-SA 3.0",
+      "kind": "render",
+      "caption": "Massing view of Greengate phases two and three (2020 committee)",
+      "credit": "Renaker / Salford City Council",
+      "source_url": "https://www.placenorthwest.co.uk/renaker-builds-greengate-momentum/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1200,
-       1600
+       1353,
+       853
       ]
      }
     ],
     "confidence": "spd-georeferenced",
     "boundary_source": "Greengate Regeneration Strategy 2018 (Salford CC / FCBS) Existing Heritage plan, georeferenced on 4 GCPs (residuals < 4 m), boundary auto-traced",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2005-03",
+      "stage": "framework",
+      "label": "Greengate regeneration strategy"
+     },
+     {
+      "date": "2017-06",
+      "stage": "delivery",
+      "label": "Anaconda Cut (44 storeys) complete"
+     },
+     {
+      "date": "2020-11",
+      "stage": "framework",
+      "label": "Greengate masterplan refresh"
+     },
+     {
+      "date": "2025-06",
+      "stage": "delivery",
+      "label": "Bankside (444) and Embankment Exchange (300) delivered"
+     },
+     {
+      "date": "2025-11",
+      "stage": "start",
+      "label": "Parkside (518 homes) groundworks"
+     },
+     {
+      "date": "2030",
+      "stage": "target",
+      "label": "Tower cluster build-out"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -13140,41 +14081,76 @@
     "images": [
      {
       "src": "assets/images/middlewood-locks/01.jpg",
-      "caption": "Mbb canal middlewood locks feb 2008",
-      "credit": "Parrot of Doom",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Mbb_canal_middlewood_locks_feb_2008.jpg",
-      "licence": "Public domain",
+      "kind": "render",
+      "caption": "Middlewood Locks next phase: canal-basin residential blocks CGI",
+      "credit": "Scarborough Group International",
+      "source_url": "https://scarboroughgroup.com/news/next-significant-phase-revealed-for-1bn-middlewood-locks-development",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1200
+       1332
       ]
      },
      {
       "src": "assets/images/middlewood-locks/02.jpg",
-      "caption": "Middlewood Locks - geograph.org.uk - 5630754",
-      "credit": "David Dixon",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Middlewood_Locks_-_geograph.org.uk_-_5630754.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "Middlewood Locks high-rise phase: Brick Fields Yard square CGI",
+      "credit": "Scarborough Group / Metro Holdings (via Construction Enquirer)",
+      "source_url": "https://www.constructionenquirer.com/2026/07/09/funding-deal-to-kick-start-middlewood-locks-tower-phase/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       481
+       1552,
+       1034
       ]
      },
      {
       "src": "assets/images/middlewood-locks/03.jpg",
-      "caption": "Middlewood Locks - geograph.org.uk - 5883794",
-      "credit": "Peter McDermott",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Middlewood_Locks_-_geograph.org.uk_-_5883794.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "photo",
+      "caption": "Completed Middlewood Locks canalside apartments",
+      "credit": "Scarborough Group International",
+      "source_url": "https://scarboroughgroup.com/projects/middlewood-locks-salford",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1121
+       1068
       ]
      }
     ],
     "confidence": "osm-site",
     "boundary_source": "OpenStreetMap ways 252746702 + 1551533047 (© OSM contributors, ODbL)",
-    "boundary_features": 2
+    "boundary_features": 2,
+    "timeline": [
+     {
+      "date": "2015-11",
+      "stage": "consent",
+      "label": "Outline consent 2,215 homes (Scarborough Group)"
+     },
+     {
+      "date": "2016-09",
+      "stage": "start",
+      "label": "Phase 1 starts"
+     },
+     {
+      "date": "2018-06",
+      "stage": "delivery",
+      "label": "Phase 1 (571 homes) complete"
+     },
+     {
+      "date": "2025-02",
+      "stage": "delivery",
+      "label": "Railings phase (189) occupied"
+     },
+     {
+      "date": "2026",
+      "stage": "consent",
+      "label": "RM applications 659 + 250 flats on remaining 10 ac"
+     },
+     {
+      "date": "2031",
+      "stage": "target",
+      "label": "Build-out"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -13339,41 +14315,71 @@
     "images": [
      {
       "src": "assets/images/pendleton/01.jpg",
-      "caption": "Bus station in Pendleton - geograph.org.uk - 6598053",
-      "credit": "philandju",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Bus_station_in_Pendleton_-_geograph.org.uk_-_6598053.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "aerial-photo",
+      "caption": "Drone view of completed Pendleton Phase 3 homes",
+      "credit": "Lovell",
+      "source_url": "https://corporate.lovell.co.uk/our-projects/pendleton-phase-3-salford",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1162
+       722
       ]
      },
      {
       "src": "assets/images/pendleton/02.jpg",
-      "caption": "Pendleton - geograph.org.uk - 4254286",
-      "credit": "Peter McDermott",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Pendleton_-_geograph.org.uk_-_4254286.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "CGI of Parkside terraces, Pendleton Phase 4",
+      "credit": "Lovell Together / Stantec (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/next-phase-of-pendleton-regeneration-mapped-out/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1600,
-       1121
+       1024,
+       576
       ]
      },
      {
       "src": "assets/images/pendleton/03.jpg",
-      "caption": "Pendleton - geograph.org.uk - 4295971",
-      "credit": "Peter McDermott",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Pendleton_-_geograph.org.uk_-_4295971.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "CGI of Churchill Road homes, Pendleton Phase 4 (485 homes)",
+      "credit": "SP+ / Lovell Together (via Property Week)",
+      "source_url": "https://www.propertyweek.com/news/next-485-home-phase-of-sp-lovells-salford-scheme-gets-greenlight",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1600,
-       913
+       800,
+       450
       ]
      }
     ],
     "confidence": "land-supply-plots",
     "boundary_source": "GMCA 2025 housing land supply plots (dissolved)",
-    "boundary_features": 2
+    "boundary_features": 2,
+    "timeline": [
+     {
+      "date": "2013-11",
+      "stage": "framework",
+      "label": "Pendleton PFI regeneration starts"
+     },
+     {
+      "date": "2019-06",
+      "stage": "delivery",
+      "label": "Refurbishment of 1,250 homes complete"
+     },
+     {
+      "date": "2024-06",
+      "stage": "consent",
+      "label": "Phoenix Quarter 485 homes approved"
+     },
+     {
+      "date": "2025-06",
+      "stage": "start",
+      "label": "Phoenix Quarter on site"
+     },
+     {
+      "date": "2030",
+      "stage": "target",
+      "label": "1,600 new homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -13853,10 +14859,45 @@
       "url": "https://www.greatermanchester-ca.gov.uk/GMCAFiles/PFE/Supporting%20documents/10.07%20Site%20Allocations%20-%20Salford/Topic%20Papers/10.07.71%20JPA29%20Port%20Salford%20Extension%20Topic%20Paper.pdf"
      }
     ],
-    "images": [],
+    "images": [
+     {
+      "src": "assets/images/port-salford/01.jpg",
+      "kind": "aerial-cgi",
+      "caption": "Aerial CGI of Port Salford: canal berth, rail terminal and warehouses",
+      "credit": "Peel L&P (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/peel-rejigs-port-salford-terminal-plans/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1024,
+       575
+      ]
+     }
+    ],
     "confidence": "allocation-boundary",
     "boundary_source": "PfE 2024 allocation JPA26 Port Salford Extension (GMCA, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2009-03",
+      "stage": "consent",
+      "label": "Port Salford consent (Peel)"
+     },
+     {
+      "date": "2016-01",
+      "stage": "delivery",
+      "label": "Phase 1 warehousing and Barton bridge"
+     },
+     {
+      "date": "2024-03",
+      "stage": "framework",
+      "label": "PfE JPA26 extension allocated"
+     },
+     {
+      "date": "2028",
+      "stage": "target",
+      "label": "Rail link and remaining sheds depend on rail / M60 J10-11"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -14157,18 +15198,65 @@
     "images": [
      {
       "src": "assets/images/clippers-quay/01.jpg",
-      "caption": "Green light for Salford co-living as planning epic concludes - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/green-light-for-salford-co-living-as-planning-epic-concludes/",
+      "kind": "render",
+      "caption": "Verified view CGI of the 30-storey Clippers Quay tower from across the water",
+      "credit": "CERT Property / OMI Architects",
+      "source_url": "https://certproperty.co.uk/projects/clippers-quay/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1024,
-       512
+       1600,
+       800
+      ]
+     },
+     {
+      "src": "assets/images/clippers-quay/02.jpg",
+      "kind": "render",
+      "caption": "Verified view CGI of Clippers Quay co-living and BTR tower",
+      "credit": "CERT Property / OMI Architects",
+      "source_url": "https://certproperty.co.uk/projects/clippers-quay/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1542
+      ]
+     },
+     {
+      "src": "assets/images/clippers-quay/03.jpg",
+      "kind": "render",
+      "caption": "CGI of Clippers Quay tower in Salford Quays context",
+      "credit": "CERT Property / OMI Architects",
+      "source_url": "https://certproperty.co.uk/projects/clippers-quay/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1600
       ]
      }
     ],
     "confidence": "point-estimate",
-    "boundary_source": "centroid estimate"
+    "boundary_source": "centroid estimate",
+    "timeline": [
+     {
+      "date": "2023-05",
+      "stage": "framework",
+      "label": "Quays remaining-sites strategy"
+     },
+     {
+      "date": "2025-10",
+      "stage": "consent",
+      "label": "Clippers Quay approved"
+     },
+     {
+      "date": "2027",
+      "stage": "start",
+      "label": "Start on site"
+     },
+     {
+      "date": "2029",
+      "stage": "target",
+      "label": "312 homes"
+     }
+    ]
    },
    "geometry": {
     "type": "Point",
@@ -14213,19 +15301,91 @@
     "images": [
      {
       "src": "assets/images/old-trafford-wharfside/01.jpg",
-      "caption": "Allies and Morrison unveils masterplan around new Man Utd stadium",
-      "credit": "The Architects’ Journal",
+      "kind": "aerial-cgi",
+      "caption": "Wharfside masterplan model axonometric with new Old Trafford stadium",
+      "credit": "Allies and Morrison",
       "source_url": "https://www.architectsjournal.co.uk/news/allies-and-morrison-unveils-masterplan-around-new-man-utd-stadium",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       560,
-       315
+       1600,
+       896
+      ]
+     },
+     {
+      "src": "assets/images/old-trafford-wharfside/02.jpg",
+      "kind": "masterplan",
+      "caption": "Trafford Wharfside development framework plan",
+      "credit": "Allies and Morrison",
+      "source_url": "https://www.architectsjournal.co.uk/news/allies-and-morrison-unveils-masterplan-around-new-man-utd-stadium",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1592
+      ]
+     },
+     {
+      "src": "assets/images/old-trafford-wharfside/03.jpg",
+      "kind": "render",
+      "caption": "Wharfside waterfront homes seen from MediaCity, illustrative view",
+      "credit": "Allies and Morrison",
+      "source_url": "https://www.architectsjournal.co.uk/news/allies-and-morrison-unveils-masterplan-around-new-man-utd-stadium",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1203
       ]
      }
     ],
     "confidence": "statutory-boundary",
     "boundary_source": "Old Trafford Regeneration MDC boundary (GMCA, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2024-03",
+      "stage": "framework",
+      "label": "Old Trafford Regeneration Task Force formed"
+     },
+     {
+      "date": "2025-03",
+      "stage": "framework",
+      "label": "Foster + Partners stadium and masterplan concept"
+     },
+     {
+      "date": "2026-01",
+      "stage": "framework",
+      "label": "Trafford Wharfside MDC in force (23 Jan)"
+     },
+     {
+      "date": "2026-06",
+      "stage": "framework",
+      "label": "United buys most stadium land from Indurent"
+     },
+     {
+      "date": "2026-09",
+      "stage": "framework",
+      "label": "Draft Wharfside Strategic Masterplan consultation closes"
+     },
+     {
+      "date": "2026-11",
+      "stage": "framework",
+      "label": "Masterplan adoption expected"
+     },
+     {
+      "date": "2028",
+      "stage": "consent",
+      "label": "Stadium planning application"
+     },
+     {
+      "date": "2031",
+      "stage": "delivery",
+      "label": "Target 2030–31 season"
+     },
+     {
+      "date": "2045",
+      "stage": "target",
+      "label": "15,000 homes, 48–92k jobs"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -14587,9 +15747,68 @@
       "url": "https://en.wikipedia.org/wiki/New_Trafford_Stadium"
      }
     ],
-    "images": [],
+    "images": [
+     {
+      "src": "assets/images/new-stadium/01.jpg",
+      "kind": "aerial-cgi",
+      "caption": "Aerial CGI of the 100,000-seat stadium and Old Trafford regeneration district",
+      "credit": "Foster + Partners / Manchester United",
+      "source_url": "https://www.dezeen.com/2025/03/11/manchester-united-stadium-foster-partners/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       900
+      ]
+     },
+     {
+      "src": "assets/images/new-stadium/02.jpg",
+      "kind": "render",
+      "caption": "Matchday boulevard CGI towards the new stadium",
+      "credit": "Foster + Partners / Manchester United",
+      "source_url": "https://www.dezeen.com/2025/03/11/manchester-united-stadium-foster-partners/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1067
+      ]
+     },
+     {
+      "src": "assets/images/new-stadium/03.jpg",
+      "kind": "render",
+      "caption": "Canalside CGI with stadium masts and plaza",
+      "credit": "Foster + Partners / Manchester United",
+      "source_url": "https://www.dezeen.com/2025/03/11/manchester-united-stadium-foster-partners/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1200,
+       1600
+      ]
+     }
+    ],
     "confidence": "point-estimate",
-    "boundary_source": "centroid estimate"
+    "boundary_source": "centroid estimate",
+    "timeline": [
+     {
+      "date": "2025-03",
+      "stage": "framework",
+      "label": "Foster + Partners concept unveiled"
+     },
+     {
+      "date": "2026-06",
+      "stage": "framework",
+      "label": "Stadium land acquired from Indurent"
+     },
+     {
+      "date": "2028",
+      "stage": "consent",
+      "label": "Planning application late 2027/28"
+     },
+     {
+      "date": "2031",
+      "stage": "target",
+      "label": "Opening target 2030–31 season"
+     }
+    ]
    },
    "geometry": {
     "type": "Point",
@@ -14626,19 +15845,59 @@
     "images": [
      {
       "src": "assets/images/civic-quarter/01.jpg",
-      "caption": "Trafford adopts 4,000-home strategy  - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/trafford-adopts-4000-home-strategy/",
+      "kind": "aerial-cgi",
+      "caption": "Civic Quarter AAP: aerial CGI of new neighbourhood around Old Trafford",
+      "credit": "Trafford Council (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/trafford-civic-quarter-opens-for-consultation/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       964,
-       488
+       1024,
+       724
+      ]
+     },
+     {
+      "src": "assets/images/civic-quarter/02.jpg",
+      "kind": "render",
+      "caption": "Civic Quarter 2018 vision sketch: processional route and civic square",
+      "credit": "Trafford Council (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/trafford-outlines-civic-quarter-vision/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1221,
+       776
       ]
      }
     ],
     "confidence": "land-supply-site",
     "boundary_source": "GMCA 2025 housing land supply site 1601-00 (Civic Quarter AAP)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2019-01",
+      "stage": "framework",
+      "label": "Civic Quarter masterplan"
+     },
+     {
+      "date": "2023-02",
+      "stage": "framework",
+      "label": "Area Action Plan adopted"
+     },
+     {
+      "date": "2025-06",
+      "stage": "consent",
+      "label": "Former B&Q site 228 homes approved"
+     },
+     {
+      "date": "2027",
+      "stage": "start",
+      "label": "Leisure centre and first plots"
+     },
+     {
+      "date": "2038",
+      "stage": "target",
+      "label": "c.4,000 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -14787,41 +16046,71 @@
     "images": [
      {
       "src": "assets/images/trafford-waters/01.jpg",
-      "caption": "Trafford Waters - Peel Waters",
-      "credit": "Peel Waters",
-      "source_url": "https://www.peelwaters.co.uk/portfolio/trafford-waters/",
+      "kind": "aerial-cgi",
+      "caption": "Aerial massing CGI of the Trafford Waters masterplan by the Ship Canal",
+      "credit": "Peel L&P (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/peel-lps-1bn-trafford-waters-unlocked/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       401,
-       392
+       1024,
+       604
       ]
      },
      {
       "src": "assets/images/trafford-waters/02.jpg",
-      "caption": "Coming soon...'Trafford Waters'",
-      "credit": "Anthony Shaw",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Coming_soon...%27Trafford_Waters%27.jpg",
-      "licence": "Public domain",
+      "kind": "render",
+      "caption": "Vision CGI of canal-side residential quarter, Trafford Waters",
+      "credit": "Peel Waters",
+      "source_url": "https://www.peelwaters.co.uk/portfolio/trafford-waters/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1200
+       900
       ]
      },
      {
       "src": "assets/images/trafford-waters/03.jpg",
-      "caption": "Coming soon...Trafford Waters",
-      "credit": "Anthony Shaw",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Coming_soon...Trafford_Waters.jpg",
-      "licence": "Public domain",
+      "kind": "render",
+      "caption": "CGI of Peel/X1 apartment blocks, approved next phase",
+      "credit": "Peel L&P / X1 (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/peel-x1-get-go-ahead-for-next-phase-of-1bn-masterplan/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1600,
-       1200
+       1024,
+       614
       ]
      }
     ],
     "confidence": "land-supply-site",
     "boundary_source": "GMCA 2025 housing land supply site 1894-00",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2017-03",
+      "stage": "consent",
+      "label": "Outline consent (Peel L&P)"
+     },
+     {
+      "date": "2022-06",
+      "stage": "start",
+      "label": "Enabling works"
+     },
+     {
+      "date": "2025-06",
+      "stage": "delivery",
+      "label": "L&Q first affordable homes"
+     },
+     {
+      "date": "2026-03",
+      "stage": "start",
+      "label": "X1 208 homes start"
+     },
+     {
+      "date": "2042",
+      "stage": "target",
+      "label": "c.20-year programme, 3,000 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -15118,19 +16407,59 @@
     "images": [
      {
       "src": "assets/images/new-carrington/01.jpg",
-      "caption": "Old carrington road flixton manchester",
-      "credit": "Parrot of Doom",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Old_carrington_road_flixton_manchester.jpg",
-      "licence": "CC BY-SA 3.0",
+      "kind": "render",
+      "caption": "Illustrative view of Carrington Village homes, Himor consultation",
+      "credit": "Himor (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/himor-consults-ahead-of-next-carrington-phase/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1143,
-       1600
+       1024,
+       723
+      ]
+     },
+     {
+      "src": "assets/images/new-carrington/02.jpg",
+      "kind": "render",
+      "caption": "Sketch view of Carrington Village streets, outline consent 2020",
+      "credit": "Himor (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/himor-gains-consent-for-next-future-carrington-phase/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1024,
+       443
       ]
      }
     ],
     "confidence": "allocation-boundary",
     "boundary_source": "PfE 2024 allocation JPA30 (GMCA, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2024-03",
+      "stage": "framework",
+      "label": "PfE adopted; JPA30 allocated"
+     },
+     {
+      "date": "2025-06",
+      "stage": "framework",
+      "label": "Masterplan delivery strategy"
+     },
+     {
+      "date": "2026-09",
+      "stage": "consent",
+      "label": "Relief Road (4.3 km) application"
+     },
+     {
+      "date": "2030",
+      "stage": "start",
+      "label": "Relief Road construction 2030–32"
+     },
+     {
+      "date": "2040",
+      "stage": "target",
+      "label": "c.5,000 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -18012,10 +19341,45 @@
       "url": "https://www.trafford.gov.uk/planning/planning-policy-and-strategy/masterplans-and-strategic-sites/davenport-green-timperley-wedge/timetable"
      }
     ],
-    "images": [],
+    "images": [
+     {
+      "src": "assets/images/timperley-wedge/01.jpg",
+      "kind": "masterplan",
+      "caption": "Davenport Green emerging masterplan, 2024 consultation",
+      "credit": "Royal London Asset Management",
+      "source_url": "https://davenportgreenconsultation.co.uk/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1359,
+       1600
+      ]
+     }
+    ],
     "confidence": "allocation-boundary",
     "boundary_source": "PfE 2024 allocation JPA3.2 (GMCA, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2024-03",
+      "stage": "framework",
+      "label": "PfE adopted; JPA3.2 allocated"
+     },
+     {
+      "date": "2025-11",
+      "stage": "framework",
+      "label": "Masterplan submitted; converting to planning document"
+     },
+     {
+      "date": "2026-06",
+      "stage": "consent",
+      "label": "First phase 179 homes at Dobbinetts Lane (full application)"
+     },
+     {
+      "date": "2037",
+      "stage": "target",
+      "label": "c.2,500 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -19916,19 +21280,71 @@
     "images": [
      {
       "src": "assets/images/stretford-mall/01.jpg",
-      "caption": "StretfordTownCentre",
-      "credit": "R Greenhalgh",
-      "source_url": "https://commons.wikimedia.org/wiki/File:StretfordTownCentre.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "masterplan",
+      "caption": "Stretford town centre masterplan, axonometric of the five neighbourhoods",
+      "credit": "Bruntwood Works / Trafford Council (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/long-awaited-stretford-masterplan-unveiled/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       480
+       1024,
+       724
+      ]
+     },
+     {
+      "src": "assets/images/stretford-mall/02.jpg",
+      "kind": "render",
+      "caption": "251-home residential block on the Stretford Mall site, approved 2026",
+      "credit": "Trafford Council / Bruntwood Works",
+      "source_url": "https://www.trafford.gov.uk/news/2026/permission-granted-251-new-homes-site-stretford-mall-0",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1113,
+       886
+      ]
+     },
+     {
+      "src": "assets/images/stretford-mall/03.jpg",
+      "kind": "render",
+      "caption": "King Street opened to the sky as an open-air high street, phase 1 CGI",
+      "credit": "Bruntwood Works / Trafford Council",
+      "source_url": "https://www.placenorthwest.co.uk/work-starts-on-50m-stretford-regeneration/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1024,
+       614
       ]
      }
     ],
     "confidence": "land-supply-site",
     "boundary_source": "GMCA 2025 offices land supply site E1038",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2020-09",
+      "stage": "framework",
+      "label": "Stretford Mall acquired by Trafford / Bruntwood JV"
+     },
+     {
+      "date": "2023-06",
+      "stage": "framework",
+      "label": "Town centre masterplan approved"
+     },
+     {
+      "date": "2026-07",
+      "stage": "consent",
+      "label": "251 apartments approved"
+     },
+     {
+      "date": "2028",
+      "stage": "delivery",
+      "label": "Phase 1 homes"
+     },
+     {
+      "date": "2033",
+      "stage": "target",
+      "label": "Later phases incl. 200 affordable"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -20159,40 +21575,60 @@
     "images": [
      {
       "src": "assets/images/altrincham-stamford/01.jpg",
-      "caption": "Altrincham Station - geograph.org.uk - 1749635",
-      "credit": "David Dixon",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Altrincham_Station_-_geograph.org.uk_-_1749635.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "Stamford Square public realm CGI, Stamford Quarter masterplan",
+      "credit": "Bruntwood Works / Trafford Council",
+      "source_url": "https://www.stamfordquarter.com/news/stamford-quarter-masterplan/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1200
+       1317
       ]
      },
      {
       "src": "assets/images/altrincham-stamford/02.jpg",
-      "caption": "Altrincham approach - geograph.org.uk - 829549",
-      "credit": "Whatlep",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Altrincham_approach_-_geograph.org.uk_-_829549.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "Residential redevelopment CGI on the Stamford Quarter frontage",
+      "credit": "Bruntwood Works / Trafford Council",
+      "source_url": "https://www.placenorthwest.co.uk/stamford-quarter-designs-takes-shape/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       431
+       1024,
+       565
       ]
      },
      {
       "src": "assets/images/altrincham-stamford/03.jpg",
-      "caption": "Altrincham railway station and Interchange, Greater Manchester, 2010 - geograph.org.uk - 4093751",
-      "credit": "Nigel Thompson",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Altrincham_railway_station_and_Interchange,_Greater_Manchester,_2010_-_geograph.org.uk_-_4093751.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "L&Q New Street homes CGI (Albert, Chapel and Lloyds Courts), approved",
+      "credit": "L&Q",
+      "source_url": "https://www.insidermedia.com/news/north-west/lq-secures-approval-for-altrincham-town-centre-resi-scheme",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1024,
-       721
+       1280,
+       720
       ]
      }
     ],
     "confidence": "point-estimate",
-    "boundary_source": "centroid estimate"
+    "boundary_source": "centroid estimate",
+    "timeline": [
+     {
+      "date": "2020-01",
+      "stage": "framework",
+      "label": "Stamford Quarter acquired by Trafford / Bruntwood JV"
+     },
+     {
+      "date": "2025-07",
+      "stage": "consent",
+      "label": "L&Q New Street 88 homes approved (40% affordable)"
+     },
+     {
+      "date": "2027",
+      "stage": "delivery",
+      "label": "New Street completion"
+     }
+    ]
    },
    "geometry": {
     "type": "Point",
@@ -20233,41 +21669,86 @@
     "images": [
      {
       "src": "assets/images/stockport-mdc/01.jpg",
-      "caption": "Parliament approves Stockport MDC expansion - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/parliament-approves-stockport-mdc-expansion/",
+      "kind": "aerial-cgi",
+      "caption": "Town Centre East SRF: aerial CGI over Stockport and the Goyt",
+      "credit": "Stockport MDC",
+      "source_url": "https://stockportmdc.co.uk/vision/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1024,
-       577
+       1566,
+       921
       ]
      },
      {
       "src": "assets/images/stockport-mdc/02.jpg",
-      "caption": "Stockport MDC - Homepage",
-      "credit": "Stockport MDC",
-      "source_url": "https://stockportmdc.co.uk/",
+      "kind": "aerial-cgi",
+      "caption": "Town Centre West masterplan: aerial CGI along the viaduct",
+      "credit": "Stockport MDC (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/masterplan-for-stockport-town-centre-west-revealed/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1600,
-       840
+       1024,
+       550
       ]
      },
      {
       "src": "assets/images/stockport-mdc/03.jpg",
-      "caption": "Plaza - Stockport town centre - geograph.org.uk - 4937466",
-      "credit": "Chris Allen",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Plaza_-_Stockport_town_centre_-_geograph.org.uk_-_4937466.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "Goyt riverside, Town Centre East: street-level CGI (Sep 2026)",
+      "credit": "Stockport MDC",
+      "source_url": "https://www.stockportmdc.co.uk/updated-stockport-8-masterplan-new-images-and-launch-of-2nd-community-conversation/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       480
+       1600,
+       1131
       ]
      }
     ],
     "confidence": "statutory-boundary",
     "boundary_source": "MDC boundary 2026 (GMCA feature service, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2019-09",
+      "stage": "framework",
+      "label": "Town Centre West MDC established (first town-centre MDC)"
+     },
+     {
+      "date": "2020-10",
+      "stage": "framework",
+      "label": "Town Centre West SRF adopted"
+     },
+     {
+      "date": "2024-03",
+      "stage": "delivery",
+      "label": "Stockport Interchange opens"
+     },
+     {
+      "date": "2026-02",
+      "stage": "framework",
+      "label": "Boundary extension to c.410 ac approved by Parliament"
+     },
+     {
+      "date": "2026-08",
+      "stage": "delivery",
+      "label": "Weir Mill opens; 1,200 homes complete / on site"
+     },
+     {
+      "date": "2026-12",
+      "stage": "start",
+      "label": "c.1,500 homes to start 2026"
+     },
+     {
+      "date": "2031",
+      "stage": "framework",
+      "label": "Business plan 2026–31"
+     },
+     {
+      "date": "2040",
+      "stage": "target",
+      "label": "c.8,000 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -20868,29 +22349,65 @@
     "images": [
      {
       "src": "assets/images/stockport-8/01.jpg",
-      "caption": "Approval for £350m Stockport 8 - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/approval-for-350m-stockport-8/",
+      "kind": "masterplan",
+      "caption": "Stockport 8 illustrative masterplan, King Street West to the viaduct",
+      "credit": "English Cities Fund / Stockport MDC (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/ecf-fleshes-out-vision-for-250m-stockport-8/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
        1024,
-       682
+       824
+      ]
+     },
+     {
+      "src": "assets/images/stockport-8/02.jpg",
+      "kind": "render",
+      "caption": "CGI of green street towards the viaduct, Stockport 8 planning scheme",
+      "credit": "Muse / shedkm (via Insider Media)",
+      "source_url": "https://www.insidermedia.com/news/north-west/plans-in-for-landmark-stockport-8-development-one-of-the-largest-town-centre-regeneration-projects-in-the-uk",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1280,
+       720
       ]
      },
      {
       "src": "assets/images/stockport-8/03.jpg",
-      "caption": "Stockport, from Stockport Viaduct - geograph.org.uk - 3126894",
-      "credit": "Steven Haslington",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Stockport,_from_Stockport_Viaduct_-_geograph.org.uk_-_3126894.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "Artist's sketch of new square beneath the viaduct, early consultation",
+      "credit": "Stockport Council / English Cities Fund",
+      "source_url": "https://www.stockport.gov.uk/news/plans-for-mixed-residential-neighbourhood-in-stockport-revealed-as-first",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       899
+       1131
       ]
      }
     ],
     "confidence": "point-estimate",
-    "boundary_source": "centroid estimate"
+    "boundary_source": "centroid estimate",
+    "timeline": [
+     {
+      "date": "2023-11",
+      "stage": "framework",
+      "label": "Stockport 8 (King Street West) framework"
+     },
+     {
+      "date": "2025-08",
+      "stage": "consent",
+      "label": "Consent for 1,328 homes"
+     },
+     {
+      "date": "2027",
+      "stage": "start",
+      "label": "Phase 1 start"
+     },
+     {
+      "date": "2034",
+      "stage": "target",
+      "label": "Build-out"
+     }
+    ]
    },
    "geometry": {
     "type": "Point",
@@ -20927,19 +22444,61 @@
     "images": [
      {
       "src": "assets/images/weir-mill/01.jpg",
-      "caption": "Stockport's newest neighbourhood Weir Mill set to open its doors - Stockport MDC",
-      "credit": "Stockport MDC",
-      "source_url": "https://stockportmdc.co.uk/stockports-newest-neighbourhood-weir-mill-set-to-open-its-doors/",
+      "kind": "aerial-photo",
+      "caption": "Drone view of Weir Mill beside Stockport Viaduct, new-build and restored mills",
+      "credit": "Capital&Centric",
+      "source_url": "https://www.capitalandcentric.com/journal/drone-footage-reveals-first-glimpse-of-greater-manchesters-tallest-roof-garden-outside-the-city-centre",
       "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1073
+       1200
+      ]
+     },
+     {
+      "src": "assets/images/weir-mill/02.jpg",
+      "kind": "render",
+      "caption": "Dusk CGI of Weir Mill new-build tower by the viaduct and Mersey",
+      "credit": "BDP / Capital&Centric",
+      "source_url": "https://www.bdp.com/us/design-stories/weir-mill-stockport",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1157
+      ]
+     },
+     {
+      "src": "assets/images/weir-mill/03.jpg",
+      "kind": "render",
+      "caption": "CGI of Weavers Square beneath the viaduct",
+      "credit": "BDP for Capital&Centric (via Stockport MDC)",
+      "source_url": "https://stockportmdc.co.uk/projects/weir-mill/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1210
       ]
      }
     ],
     "confidence": "land-supply-site",
     "boundary_source": "GMCA 2025 housing land supply site",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2020-10",
+      "stage": "consent",
+      "label": "Consent (Capital & Centric)"
+     },
+     {
+      "date": "2022-03",
+      "stage": "start",
+      "label": "Start on site"
+     },
+     {
+      "date": "2026-08",
+      "stage": "complete",
+      "label": "Opened: 253 homes in Grade II mills and new build"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -21028,40 +22587,60 @@
     "images": [
      {
       "src": "assets/images/stockport-interchange/01.jpg",
-      "caption": "£140m Stockport Interchange opens  - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/140m-stockport-interchange-opens/",
+      "kind": "aerial-photo",
+      "caption": "Drone photo of the completed interchange, Viaduct Park and ramp, June 2024",
+      "credit": "Stockport MDC",
+      "source_url": "https://stockportmdc.co.uk/projects/stockport-interchange/",
       "licence": "all rights reserved — research use with attribution",
-      "px": [
-       1024,
-       576
-      ]
-     },
-     {
-      "src": "assets/images/stockport-interchange/02.jpg",
-      "caption": "Buses at Stockport Interchange (geograph 7737783)",
-      "credit": "Gerald England",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Buses_at_Stockport_Interchange_(geograph_7737783).jpg",
-      "licence": "CC BY-SA 2.0",
-      "px": [
-       1600,
-       1224
-      ]
-     },
-     {
-      "src": "assets/images/stockport-interchange/03.jpg",
-      "caption": "StockportInterchange",
-      "credit": "Biguana99",
-      "source_url": "https://commons.wikimedia.org/wiki/File:StockportInterchange.jpg",
-      "licence": "CC BY 4.0",
       "px": [
        1600,
        900
       ]
+     },
+     {
+      "src": "assets/images/stockport-interchange/02.jpg",
+      "kind": "aerial-photo",
+      "caption": "Night aerial of the interchange, rooftop park and residential tower",
+      "credit": "Stockport MDC",
+      "source_url": "https://stockportmdc.co.uk/projects/stockport-interchange/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1280,
+       1600
+      ]
+     },
+     {
+      "src": "assets/images/stockport-interchange/03.jpg",
+      "kind": "aerial-photo",
+      "caption": "Aerial of the interchange and 196-home tower during construction",
+      "credit": "Willmott Dixon",
+      "source_url": "https://www.willmottdixon.co.uk/projects/stockport-interchange",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1057
+      ]
      }
     ],
     "confidence": "point-estimate",
-    "boundary_source": "centroid estimate"
+    "boundary_source": "centroid estimate",
+    "timeline": [
+     {
+      "date": "2020-12",
+      "stage": "consent",
+      "label": "Interchange, park and 196 flats approved"
+     },
+     {
+      "date": "2021-06",
+      "stage": "start",
+      "label": "Construction starts"
+     },
+     {
+      "date": "2024-03",
+      "stage": "complete",
+      "label": "Interchange opens (19 Mar)"
+     }
+    ]
    },
    "geometry": {
     "type": "Point",
@@ -21102,8 +22681,9 @@
     "images": [
      {
       "src": "assets/images/northern-gateway/01.jpg",
-      "caption": "Northern Gateway employment destination takes major step forward - Harworth",
-      "credit": "Harworth",
+      "kind": "aerial-cgi",
+      "caption": "Aerial CGI of Northern Gateway employment parks and landscape, phase 1 outline",
+      "credit": "Harworth Group / Russell LDP",
       "source_url": "https://harworthgroup.com/2025/04/24/northern-gateway-employment-destination-takes-major-step-forward/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
@@ -21113,19 +22693,59 @@
      },
      {
       "src": "assets/images/northern-gateway/02.jpg",
-      "caption": "Sites & Zones - Atom Valley Manchester",
-      "credit": "Atom Valley Manchester",
-      "source_url": "https://www.atom-valley.co.uk/the-region/sites-and-zones/",
+      "kind": "aerial-cgi",
+      "caption": "Northern Gateway green corridor between employment plots, aerial CGI",
+      "credit": "Russell LDP / Harworth Group",
+      "source_url": "https://russell-ldp.co.uk/portfolio/northern-gateway",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1210,
-       680
+       1280,
+       720
+      ]
+     },
+     {
+      "src": "assets/images/northern-gateway/03.jpg",
+      "kind": "render",
+      "caption": "Illustrative sketch of Northern Gateway business units by the lakes",
+      "credit": "Atom Valley (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/partners-cue-up-6-5m-sq-ft-at-gms-northern-gateway/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1024,
+       662
       ]
      }
     ],
     "confidence": "allocation-boundary",
     "boundary_source": "PfE 2024 allocation JPA1.1 (GMCA, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2024-03",
+      "stage": "framework",
+      "label": "PfE adopted; JPA1.1 allocated"
+     },
+     {
+      "date": "2025-03",
+      "stage": "framework",
+      "label": "Northern Gateway SPD adopted"
+     },
+     {
+      "date": "2025-04",
+      "stage": "consent",
+      "label": "Phase 1 outline submitted (undetermined)"
+     },
+     {
+      "date": "2026-01",
+      "stage": "start",
+      "label": "South Heywood c.400 homes under construction"
+     },
+     {
+      "date": "2045",
+      "stage": "target",
+      "label": "1.6m m² employment, 20,000 jobs across Atom Valley"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -22430,7 +24050,29 @@
     ],
     "confidence": "allocation-boundary",
     "boundary_source": "PfE 2024 allocation JPA1.2 (GMCA, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2024-03",
+      "stage": "framework",
+      "label": "PfE adopted; JPA1.2 allocated"
+     },
+     {
+      "date": "2026-03",
+      "stage": "framework",
+      "label": "Draft site-specific development framework consultation"
+     },
+     {
+      "date": "2029",
+      "stage": "start",
+      "label": "First phase"
+     },
+     {
+      "date": "2039",
+      "stage": "target",
+      "label": "1,550 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -23025,7 +24667,29 @@
     ],
     "confidence": "allocation-boundary",
     "boundary_source": "PfE 2024 allocation JPA2 (GMCA, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2024-03",
+      "stage": "framework",
+      "label": "PfE adopted; JPA2 allocated"
+     },
+     {
+      "date": "2025-09",
+      "stage": "consent",
+      "label": "314 homes + 140k sq ft at Rochdale committee (outcome unverified)"
+     },
+     {
+      "date": "2026-06",
+      "stage": "framework",
+      "label": "Infrastructure-led masterplan"
+     },
+     {
+      "date": "2039",
+      "stage": "target",
+      "label": "1,680 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -24519,31 +26183,67 @@
     ],
     "images": [
      {
-      "src": "assets/images/kingsway/02.jpg",
-      "caption": "(Unopened) Kingsway Business Park Metrolink station",
-      "credit": "Jza84",
-      "source_url": "https://commons.wikimedia.org/wiki/File:(Unopened)_Kingsway_Business_Park_Metrolink_station.jpg",
-      "licence": "CC BY-SA 3.0",
+      "src": "assets/images/kingsway/01.jpg",
+      "kind": "aerial-photo",
+      "caption": "Aerial of Kingsway Business Park at M62 J21",
+      "credit": "Wilson Bowden Developments",
+      "source_url": "https://www.wilsonbowden.co.uk/news/2023/01/incredible-year-at-kingsway-business-park-rochdale",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       899
+       1066
+      ]
+     },
+     {
+      "src": "assets/images/kingsway/02.jpg",
+      "kind": "render",
+      "caption": "CGI of the Sustainable Materials and Manufacturing Centre (SMMC)",
+      "credit": "Atom Valley / Rochdale Development Agency",
+      "source_url": "https://www.atom-valley.co.uk/news/construction-has-begun-on-rochdales-sustainable-materials-and-manufacturing-centre-smmc/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       798
       ]
      },
      {
       "src": "assets/images/kingsway/03.jpg",
-      "caption": "Kingsway Business Park Metrolink Stop - geograph.org.uk - 3693060",
-      "credit": "David Dixon",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Kingsway_Business_Park_Metrolink_Stop_-_geograph.org.uk_-_3693060.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "aerial-photo",
+      "caption": "Aerial of SMMC plot as construction begins, Oct 2025",
+      "credit": "Wilson Bowden Developments",
+      "source_url": "https://www.wilsonbowden.co.uk/news/2025/10/construction-has-begun-on-rochdales-smmc-building",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       484
+       966,
+       781
       ]
      }
     ],
     "confidence": "land-supply-site",
     "boundary_source": "GMCA 2025 industrial land supply site EMP01",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2005-06",
+      "stage": "framework",
+      "label": "Kingsway Business Park outline"
+     },
+     {
+      "date": "2014-03",
+      "stage": "delivery",
+      "label": "JD Sports and Kingsway Metrolink stop"
+     },
+     {
+      "date": "2024-09",
+      "stage": "start",
+      "label": "Sustainable Materials & Manufacturing Centre starts"
+     },
+     {
+      "date": "2026-07",
+      "stage": "delivery",
+      "label": "SMMC completing"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -25277,9 +26977,61 @@
       "url": "https://www.investinrochdale.co.uk/regeneration/projects/rochdale-rail-corridor"
      }
     ],
-    "images": [],
+    "images": [
+     {
+      "src": "assets/images/rochdale-station/01.jpg",
+      "kind": "render",
+      "caption": "Elevated CGI of a new station square and gateway, Rochdale rail corridor",
+      "credit": "Rochdale Development Agency",
+      "source_url": "https://www.investinrochdale.co.uk/regeneration/projects/rochdale-rail-corridor",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1200,
+       676
+      ]
+     },
+     {
+      "src": "assets/images/rochdale-station/02.jpg",
+      "kind": "render",
+      "caption": "CGI of Station Gardens townhouses (81 net zero homes)",
+      "credit": "Rochdale Development Agency",
+      "source_url": "https://www.investinrochdale.co.uk/regeneration/projects/rochdale-rail-corridor",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1530,
+       851
+      ]
+     }
+    ],
     "confidence": "point-estimate",
-    "boundary_source": "centroid estimate"
+    "boundary_source": "centroid estimate",
+    "timeline": [
+     {
+      "date": "2020-01",
+      "stage": "framework",
+      "label": "Rail Corridor SPD"
+     },
+     {
+      "date": "2023-08",
+      "stage": "delivery",
+      "label": "Riverside and Upperbanks complete"
+     },
+     {
+      "date": "2026-02",
+      "stage": "start",
+      "label": "Maclure Road 33 apartments started"
+     },
+     {
+      "date": "2028-01",
+      "stage": "delivery",
+      "label": "Station Gardens completion"
+     },
+     {
+      "date": "2035",
+      "stage": "target",
+      "label": "c.1,700 homes"
+     }
+    ]
    },
    "geometry": {
     "type": "Point",
@@ -25320,41 +27072,66 @@
     "images": [
      {
       "src": "assets/images/elton-reservoir/01.jpg",
-      "caption": "Elton Reservoir — Peel Land",
-      "credit": "Peel Land",
+      "kind": "aerial-cgi",
+      "caption": "Aerial illustrative masterplan of Elton Reservoir neighbourhoods and parkland",
+      "credit": "Peel L&P",
       "source_url": "https://www.peelland.co.uk/elton-reservoir",
       "licence": "all rights reserved — research use with attribution",
       "px": [
        1500,
-       844
+       743
       ]
      },
      {
       "src": "assets/images/elton-reservoir/02.jpg",
-      "caption": "Aerial view of Elton Reservoir",
-      "credit": "Parrot of Doom",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Elton_Reservoir.jpg",
-      "licence": "CC BY-SA 4.0",
+      "kind": "render",
+      "caption": "CGI of new homes along the canal at Elton Reservoir",
+      "credit": "Peel L&P",
+      "source_url": "https://www.peelland.co.uk/elton-reservoir",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1600,
-       1200
+       1500,
+       648
       ]
      },
      {
       "src": "assets/images/elton-reservoir/03.jpg",
-      "caption": "Elton Reservoir - geograph.org.uk - 2206290",
-      "credit": "David Dixon",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Elton_Reservoir_-_geograph.org.uk_-_2206290.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "CGI of the reservoir edge with boardwalk and water sports",
+      "credit": "Peel L&P",
+      "source_url": "https://www.peelland.co.uk/elton-reservoir",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       800,
-       600
+       913,
+       527
       ]
      }
     ],
     "confidence": "allocation-boundary",
     "boundary_source": "PfE 2024 allocation JPA7 (GMCA, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2024-03",
+      "stage": "framework",
+      "label": "PfE adopted; JPA7 allocated"
+     },
+     {
+      "date": "2026-07",
+      "stage": "framework",
+      "label": "Development framework finalised"
+     },
+     {
+      "date": "2027-09",
+      "stage": "delivery",
+      "label": "First completions 2027/28"
+     },
+     {
+      "date": "2040",
+      "stage": "target",
+      "label": "3,500 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -26263,29 +28040,41 @@
     "images": [
      {
       "src": "assets/images/mill-gate/01.jpg",
-      "caption": "Bury signs off Mill Gate regen framework - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/bury-signs-off-mill-gate-regen-framework/",
+      "kind": "masterplan",
+      "caption": "Aerial sketch of the Mill Gate regeneration framework area",
+      "credit": "Bury Council / Bruntwood (BDP, Layer.studio)",
+      "source_url": "https://www.bury.gov.uk/planning-building-control/regeneration/future-mill-gate",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1024,
-       592
-      ]
-     },
-     {
-      "src": "assets/images/mill-gate/03.jpg",
-      "caption": "Mill Gate - geograph.org.uk - 5126861",
-      "credit": "N Chadwick",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Mill_Gate_-_geograph.org.uk_-_5126861.jpg",
-      "licence": "CC BY-SA 2.0",
-      "px": [
-       640,
-       426
+       1600,
+       1043
       ]
      }
     ],
     "confidence": "point-estimate",
-    "boundary_source": "centroid estimate"
+    "boundary_source": "centroid estimate",
+    "timeline": [
+     {
+      "date": "2021-06",
+      "stage": "framework",
+      "label": "Bury acquires Mill Gate"
+     },
+     {
+      "date": "2026-01",
+      "stage": "framework",
+      "label": "Framework adopted"
+     },
+     {
+      "date": "2028",
+      "stage": "start",
+      "label": "Phase 1"
+     },
+     {
+      "date": "2038",
+      "stage": "target",
+      "label": "c.800 homes"
+     }
+    ]
    },
    "geometry": {
     "type": "Point",
@@ -26322,8 +28111,9 @@
     "images": [
      {
       "src": "assets/images/radcliffe/01.jpg",
-      "caption": "Radcliffe unveils £40m civic hub plans - Place North West",
-      "credit": "Place North West",
+      "kind": "render",
+      "caption": "Radcliffe Hub civic and leisure building CGI, town-centre SRF anchor",
+      "credit": "Bury Council",
       "source_url": "https://www.placenorthwest.co.uk/radcliffe-unveils-40m-civic-hub-plans/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
@@ -26333,29 +28123,46 @@
      },
      {
       "src": "assets/images/radcliffe/02.jpg",
-      "caption": "Canal Towpath near Radcliffe Town Centre - geograph.org.uk - 4886407",
-      "credit": "David Dixon",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Canal_Towpath_near_Radcliffe_Town_Centre_-_geograph.org.uk_-_4886407.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "Radcliffe Hub street-level CGI with new public square",
+      "credit": "Bury Council",
+      "source_url": "https://www.placenorthwest.co.uk/in-focus-regeneration-and-hope-in-radcliffe/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       481
-      ]
-     },
-     {
-      "src": "assets/images/radcliffe/03.jpg",
-      "caption": "Manchester, Bolton and Bury Canal, Radcliffe Town Centre - geograph.org.uk - 6449756",
-      "credit": "David Dixon",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Manchester,_Bolton_and_Bury_Canal,_Radcliffe_Town_Centre_-_geograph.org.uk_-_6449756.jpg",
-      "licence": "CC BY-SA 2.0",
-      "px": [
-       768,
-       1024
+       1024,
+       648
       ]
      }
     ],
     "confidence": "point-estimate",
-    "boundary_source": "centroid estimate"
+    "boundary_source": "centroid estimate",
+    "timeline": [
+     {
+      "date": "2019-11",
+      "stage": "framework",
+      "label": "Radcliffe SRF adopted"
+     },
+     {
+      "date": "2022-06",
+      "stage": "framework",
+      "label": "Towns Fund and hub design"
+     },
+     {
+      "date": "2024-01",
+      "stage": "start",
+      "label": "Civic hub on site"
+     },
+     {
+      "date": "2026-09",
+      "stage": "delivery",
+      "label": "Hub opens"
+     },
+     {
+      "date": "2035",
+      "stage": "target",
+      "label": "c.500 homes"
+     }
+    ]
    },
    "geometry": {
     "type": "Point",
@@ -26396,41 +28203,71 @@
     "images": [
      {
       "src": "assets/images/oldham-mdc/01.jpg",
-      "caption": "Willmott Dixon starts £28m Prince’s Gate Phase 1 development in Oldham town centre",
-      "credit": "Willmott Dixon",
+      "kind": "render",
+      "caption": "Oldham Town Living (Muse): masterplan street view CGI, 2025 application",
+      "credit": "Muse / Oldham Council (via Construction Enquirer)",
+      "source_url": "https://www.constructionenquirer.com/2025/04/11/muse-submits-oldham-town-centre-regeneration-plan/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1162
+      ]
+     },
+     {
+      "src": "assets/images/oldham-mdc/02.jpg",
+      "kind": "masterplan",
+      "caption": "Oldham town centre masterplan plan",
+      "credit": "Proctor & Matthews Architects",
+      "source_url": "https://proctorandmatthews.com/project/oldham-town-centre-masterplan",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1201
+      ]
+     },
+     {
+      "src": "assets/images/oldham-mdc/03.jpg",
+      "kind": "aerial-cgi",
+      "caption": "Princes Gate phase 1 homes, elevated CGI",
+      "credit": "Willmott Dixon / Muse",
       "source_url": "https://www.willmottdixon.co.uk/news/willmott-dixon-starts-28m-princes-gate-phase-1-development-in-oldham-town-centre",
       "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
        1137
       ]
-     },
-     {
-      "src": "assets/images/oldham-mdc/02.jpg",
-      "caption": "A new MDC approved for Oldham",
-      "credit": "Oldham Evening Chronicle",
-      "source_url": "https://www.oldham-chronicle.co.uk/news-features/139/news/191/a-new-mdc-approved-for-oldham",
-      "licence": "all rights reserved — research use with attribution",
-      "px": [
-       1600,
-       1067
-      ]
-     },
-     {
-      "src": "assets/images/oldham-mdc/03.jpg",
-      "caption": "Jack and the Beanstalk floral display, Oldham town centre - geograph.org.uk - 3863051",
-      "credit": "Linden Milner",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Jack_and_the_Beanstalk_floral_display,_Oldham_town_centre_-_geograph.org.uk_-_3863051.jpg",
-      "licence": "CC BY-SA 2.0",
-      "px": [
-       1200,
-       1600
-      ]
      }
     ],
     "confidence": "proposed-boundary",
     "boundary_source": "Proposed MDC boundary (GMCA, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2021-07",
+      "stage": "framework",
+      "label": "Oldham town centre plan (Creating a Better Place)"
+     },
+     {
+      "date": "2025-06",
+      "stage": "framework",
+      "label": "MDC proposal consultation"
+     },
+     {
+      "date": "2026-08",
+      "stage": "start",
+      "label": "Prince's Gate Ph1 (£28m, 75 affordable) starts"
+     },
+     {
+      "date": "2026-09",
+      "stage": "framework",
+      "label": "Oldham MDC approved"
+     },
+     {
+      "date": "2040",
+      "stage": "target",
+      "label": "c.2,000 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -28431,7 +30268,8 @@
     "images": [
      {
       "src": "assets/images/northern-roots/01.jpg",
-      "caption": "Northern Roots, Oldham",
+      "kind": "aerial-photo",
+      "caption": "Aerial of completed visitor centre and eco-park landscape",
       "credit": "Willmott Dixon",
       "source_url": "https://www.willmottdixon.co.uk/projects/northern-roots-oldham",
       "licence": "all rights reserved — research use with attribution",
@@ -28439,10 +30277,56 @@
        1600,
        1200
       ]
+     },
+     {
+      "src": "assets/images/northern-roots/02.jpg",
+      "kind": "aerial-photo",
+      "caption": "Elevated view of Northern Roots visitor centre, completed",
+      "credit": "Willmott Dixon",
+      "source_url": "https://www.willmottdixon.co.uk/projects/northern-roots-oldham",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1200
+      ]
+     },
+     {
+      "src": "assets/images/northern-roots/03.jpg",
+      "kind": "render",
+      "caption": "Proposal CGI of visitor centre by JDDK Architects",
+      "credit": "JDDK Architects / Oldham Council",
+      "source_url": "https://www.manchestersfinest.com/articles/northern-roots-oldhams-plan-for-the-160-acre-largest-urban-farm-eco-park-in-the-uk/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1024,
+       512
+      ]
      }
     ],
     "confidence": "point-estimate",
-    "boundary_source": "centroid estimate"
+    "boundary_source": "centroid estimate",
+    "timeline": [
+     {
+      "date": "2019-11",
+      "stage": "framework",
+      "label": "Northern Roots eco-park concept (Snipe Clough)"
+     },
+     {
+      "date": "2022-12",
+      "stage": "consent",
+      "label": "Visitor centre and park consent"
+     },
+     {
+      "date": "2024-03",
+      "stage": "start",
+      "label": "Construction starts"
+     },
+     {
+      "date": "2026-09",
+      "stage": "complete",
+      "label": "Public opening"
+     }
+    ]
    },
    "geometry": {
     "type": "Point",
@@ -28479,19 +30363,71 @@
     "images": [
      {
       "src": "assets/images/broadway-green/01.jpg",
-      "caption": "How Oldham is turning plans into places with momentum - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/how-oldham-is-turning-plans-into-places-with-momentum/",
+      "kind": "aerial-photo",
+      "caption": "Aerial of Broadway Green linear park and new homes, Foxdenton",
+      "credit": "Oldham Council (via Oldham Times)",
+      "source_url": "https://www.theoldhamtimes.co.uk/news/25955172.new-19-acre-park-opens-broadway-green-chadderton/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       962,
+       722
+      ]
+     },
+     {
+      "src": "assets/images/broadway-green/02.jpg",
+      "kind": "render",
+      "caption": "CGI street view of Tawny View shared-ownership homes, Foxdenton",
+      "credit": "Plumlife / Great Places",
+      "source_url": "https://www.plumlife.co.uk/development/foxdenton-chadderton/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1200,
+       600
+      ]
+     },
+     {
+      "src": "assets/images/broadway-green/03.jpg",
+      "kind": "render",
+      "caption": "CGI of Broadway Central industrial units (Chancerygate)",
+      "credit": "Chancerygate (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/triton-starts-chancerygates-25m-oldham-industrial/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
        1024,
-       713
+       484
       ]
      }
     ],
     "confidence": "proposals-map-wms",
     "boundary_source": "Oldham Local Plan Proposals Map WMS (map.oldham.gov.uk, business employment area polygon, 42 ha) unioned with GMCA 2025 land-supply plots HLA3263.1/.3, OLD0184, OLD0051",
-    "boundary_features": 5
+    "boundary_features": 5,
+    "timeline": [
+     {
+      "date": "2013-03",
+      "stage": "consent",
+      "label": "Outline consent (Foxdenton)"
+     },
+     {
+      "date": "2017-06",
+      "stage": "start",
+      "label": "Infrastructure and first homes"
+     },
+     {
+      "date": "2022-09",
+      "stage": "delivery",
+      "label": "Employment plots and Phase 2 homes"
+     },
+     {
+      "date": "2026-01",
+      "stage": "delivery",
+      "label": "Final housing phase 2025–26"
+     },
+     {
+      "date": "2027",
+      "stage": "target",
+      "label": "Completion"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -29014,41 +30950,76 @@
     "images": [
      {
       "src": "assets/images/bolton-mdc/01.jpg",
-      "caption": "Have your say: Bolton Town Centre Mayoral Development Corporation – Bolton Council",
-      "credit": "Bolton Council",
-      "source_url": "https://www.bolton.gov.uk/news/article/2007/have-your-say-bolton-town-centre-mayoral-development-corporation",
+      "kind": "render",
+      "caption": "CGI of Church Wharf riverside hotel and homes on the River Croal",
+      "credit": "Watson Homes (via Construction Enquirer)",
+      "source_url": "https://www.constructionenquirer.com/2025/10/03/go-ahead-for-100m-church-wharf-regeneration-in-bolton/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1200,
-       600
+       1600,
+       1107
       ]
      },
      {
       "src": "assets/images/bolton-mdc/02.jpg",
-      "caption": "Elephant sculpture in Bolton Town Centre (1)",
-      "credit": "Rept0n1x",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Elephant_sculpture_in_Bolton_Town_Centre_(1).JPG",
-      "licence": "CC BY-SA 3.0",
+      "kind": "render",
+      "caption": "CGI of Church Wharf public park looking to Bolton Parish Church",
+      "credit": "Watson Homes (via Construction Enquirer)",
+      "source_url": "https://www.constructionenquirer.com/2025/10/03/go-ahead-for-100m-church-wharf-regeneration-in-bolton/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1200
+       916
       ]
      },
      {
       "src": "assets/images/bolton-mdc/03.jpg",
-      "caption": "Elephant sculpture in Bolton Town Centre (2)",
-      "credit": "Rept0n1x",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Elephant_sculpture_in_Bolton_Town_Centre_(2).JPG",
-      "licence": "CC BY-SA 3.0",
+      "kind": "aerial-photo",
+      "caption": "Aerial of Crompton Place site highlighted ahead of demolition and redevelopment",
+      "credit": "Bolton Council (Invest in Bolton)",
+      "source_url": "https://investinbolton.com/district-centres/crompton-place/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1600,
-       1200
+       1216,
+       967
       ]
      }
     ],
     "confidence": "proposed-boundary",
     "boundary_source": "Proposed MDC boundary (GMCA, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2017-06",
+      "stage": "framework",
+      "label": "Bolton town centre masterplan (£1bn)"
+     },
+     {
+      "date": "2025-10",
+      "stage": "consent",
+      "label": "Church Wharf consented"
+     },
+     {
+      "date": "2026-03",
+      "stage": "framework",
+      "label": "MDC consultation"
+     },
+     {
+      "date": "2026-08",
+      "stage": "start",
+      "label": "Crompton Place demolition starts"
+     },
+     {
+      "date": "2026-09",
+      "stage": "framework",
+      "label": "Bolton MDC approved"
+     },
+     {
+      "date": "2040",
+      "stage": "target",
+      "label": "c.2,000 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -29373,40 +31344,65 @@
     "images": [
      {
       "src": "assets/images/crompton-place/01.jpg",
-      "caption": "Work starts to demolish Crompton Place – Bolton Council",
-      "credit": "Bolton Council",
-      "source_url": "https://www.bolton.gov.uk/news/article/2087/work-starts-to-demolish-crompton-place",
+      "kind": "render",
+      "caption": "Earlier consented Crompton Place scheme on Victoria Square (pre-MEPC)",
+      "credit": "Chapman Taylor",
+      "source_url": "https://www.chapmantaylor.com/projects/bolton-victoria-square",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1200,
-       600
+       1600,
+       1200
       ]
      },
      {
       "src": "assets/images/crompton-place/02.jpg",
-      "caption": "Bradshawgate and Crompton Place - geograph.org.uk - 6549349",
-      "credit": "philandju",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Bradshawgate_and_Crompton_Place_-_geograph.org.uk_-_6549349.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "Crompton Place blocks at dusk, earlier Chapman Taylor scheme",
+      "credit": "Bolton Council / Chapman Taylor (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/details-revealed-of-100m-crompton-place-overhaul/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1286
+       1067
       ]
      },
      {
       "src": "assets/images/crompton-place/03.jpg",
-      "caption": "Crompton Place - geograph.org.uk - 6900959",
-      "credit": "philandju",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Crompton_Place_-_geograph.org.uk_-_6900959.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "New street through Crompton Place towards the Town Hall, earlier scheme",
+      "credit": "Bolton Council / Chapman Taylor (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/bolton-marches-on-with-crompton-place-approval/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1600,
-       1113
+       1280,
+       790
       ]
      }
     ],
     "confidence": "point-estimate",
-    "boundary_source": "centroid estimate"
+    "boundary_source": "centroid estimate",
+    "timeline": [
+     {
+      "date": "2023-12",
+      "stage": "framework",
+      "label": "MEPC appointed for Crompton Place (c.£250m)"
+     },
+     {
+      "date": "2026-08",
+      "stage": "start",
+      "label": "Demolition starts (50 weeks)"
+     },
+     {
+      "date": "2027-08",
+      "stage": "consent",
+      "label": "Planning application after demolition"
+     },
+     {
+      "date": "2032",
+      "stage": "target",
+      "label": "340 homes and mixed use"
+     }
+    ]
    },
    "geometry": {
     "type": "Point",
@@ -29443,19 +31439,66 @@
     "images": [
      {
       "src": "assets/images/church-wharf/01.jpg",
-      "caption": "Go-ahead for Bolton £100m Church Wharf regeneration",
-      "credit": "Construction Enquirer",
+      "kind": "render",
+      "caption": "Church Wharf central square CGI, 415 homes and hotel scheme",
+      "credit": "Watson Homes / Jmarchitects",
       "source_url": "https://www.constructionenquirer.com/2025/10/03/go-ahead-for-100m-church-wharf-regeneration-in-bolton/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1200,
-       828
+       1600,
+       1118
+      ]
+     },
+     {
+      "src": "assets/images/church-wharf/02.jpg",
+      "kind": "render",
+      "caption": "Church Wharf landscaped courtyard CGI towards Bolton Parish Church",
+      "credit": "Watson Homes / Jmarchitects",
+      "source_url": "https://www.constructionenquirer.com/2025/10/03/go-ahead-for-100m-church-wharf-regeneration-in-bolton/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       916
+      ]
+     },
+     {
+      "src": "assets/images/church-wharf/03.jpg",
+      "kind": "render",
+      "caption": "Church Wharf riverside terrace CGI on the River Croal",
+      "credit": "Watson Homes / Jmarchitects",
+      "source_url": "https://www.constructionenquirer.com/2025/10/03/go-ahead-for-100m-church-wharf-regeneration-in-bolton/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1107
       ]
      }
     ],
     "confidence": "land-supply-site",
     "boundary_source": "GMCA 2025 housing land supply site",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2021-06",
+      "stage": "framework",
+      "label": "Watson Homes appointed"
+     },
+     {
+      "date": "2025-10",
+      "stage": "consent",
+      "label": "Permission granted: 415 homes + hotel"
+     },
+     {
+      "date": "2026-06",
+      "stage": "start",
+      "label": "Phase 1 start"
+     },
+     {
+      "date": "2029",
+      "stage": "target",
+      "label": "Phased delivery 2025–29"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -29632,19 +31675,59 @@
     "images": [
      {
       "src": "assets/images/rivington-chase/01.jpg",
-      "caption": "Bellway lodges plans for 458 homes at Horwich Loco Works - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/bellway-lodges-plans-for-458-homes-at-horwich-loco-works/",
+      "kind": "masterplan",
+      "caption": "Rivington Chase 2026 masterplan: developer parcels, green space, spine road",
+      "credit": "Rivington Chase / Bluemantle",
+      "source_url": "https://www.rivington-chase-horwich.co.uk/masterplan/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       979
+      ]
+     },
+     {
+      "src": "assets/images/rivington-chase/02.jpg",
+      "kind": "aerial-photo",
+      "caption": "Horwich Loco Works site under construction, aerial photo",
+      "credit": "Novo / Bluemantle",
+      "source_url": "https://www.rivington-chase-horwich.co.uk/masterplan/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
        1024,
-       576
+       768
       ]
      }
     ],
     "confidence": "land-supply-plots",
     "boundary_source": "GMCA 2025 housing land supply plots (dissolved)",
-    "boundary_features": 6
+    "boundary_features": 6,
+    "timeline": [
+     {
+      "date": "2015-06",
+      "stage": "consent",
+      "label": "Outline consent (Horwich Loco Works)"
+     },
+     {
+      "date": "2018-09",
+      "stage": "start",
+      "label": "First homes (Bellway / Bluemantle)"
+     },
+     {
+      "date": "2022-06",
+      "stage": "delivery",
+      "label": "c.500 homes delivered"
+     },
+     {
+      "date": "2026-03",
+      "stage": "consent",
+      "label": "Bellway 458 homes (32 ac) decision (outcome unverified)"
+     },
+     {
+      "date": "2035",
+      "stage": "target",
+      "label": "1,700 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -30875,19 +32958,71 @@
     "images": [
      {
       "src": "assets/images/fettlers/01.jpg",
-      "caption": "£135m Wigan Galleries regen project rebranded ‘Fettlers’ - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/135m-wigan-galleries-regen-project-rebranded-fettlers/",
+      "kind": "render",
+      "caption": "CGI of new street with hotel and market hall, former Galleries site",
+      "credit": "Cityheart / Wigan Council (via Zerum)",
+      "source_url": "https://zerum.co.uk/case-studies/wigan-galleries/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1133
+      ]
+     },
+     {
+      "src": "assets/images/fettlers/02.jpg",
+      "kind": "render",
+      "caption": "CGI of residential street and public realm, later phases",
+      "credit": "Cityheart / Wigan Council (via Zerum)",
+      "source_url": "https://zerum.co.uk/case-studies/wigan-galleries/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1131
+      ]
+     },
+     {
+      "src": "assets/images/fettlers/03.jpg",
+      "kind": "aerial-photo",
+      "caption": "Aerial of market hall frame under construction",
+      "credit": "Wigan Council / Little G Photography",
+      "source_url": "https://www.placenorthwest.co.uk/how-fettlers-is-becoming-a-turning-point-for-wigan/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
        1024,
-       768
+       587
       ]
      }
     ],
     "confidence": "land-supply-site",
     "boundary_source": "GMCA 2025 housing land supply site",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2021-03",
+      "stage": "framework",
+      "label": "Galleries redevelopment plan (Cityheart)"
+     },
+     {
+      "date": "2023-10",
+      "stage": "start",
+      "label": "Demolition and construction start"
+     },
+     {
+      "date": "2026-12",
+      "stage": "delivery",
+      "label": "Market Hall opens Christmas 2026"
+     },
+     {
+      "date": "2027-12",
+      "stage": "delivery",
+      "label": "Hotel and Phase 1 winter 2027"
+     },
+     {
+      "date": "2030",
+      "stage": "target",
+      "label": "464 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -30956,19 +33091,66 @@
     "images": [
      {
       "src": "assets/images/west-of-gibfield/01.jpg",
-      "caption": "Peel plans 500 homes, 490,000 sq ft industrial in Wigan - Place North West",
-      "credit": "Place North West",
-      "source_url": "https://www.placenorthwest.co.uk/peel-plans-500-homes-490000-sq-ft-industrial-in-wigan/",
+      "kind": "masterplan",
+      "caption": "Gibfield Park framework masterplan: character areas and country park",
+      "credit": "Peel Land",
+      "source_url": "https://www.gibfieldpark.co.uk/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       1024,
-       478
+       1600,
+       1543
+      ]
+     },
+     {
+      "src": "assets/images/west-of-gibfield/02.jpg",
+      "kind": "render",
+      "caption": "Illustrative view of green corridor and new homes, Gibfield Park",
+      "credit": "Peel Land",
+      "source_url": "https://www.gibfieldpark.co.uk/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1288
+      ]
+     },
+     {
+      "src": "assets/images/west-of-gibfield/03.jpg",
+      "kind": "masterplan",
+      "caption": "Country park and linear park plan, Gibfield Park",
+      "credit": "Peel Land",
+      "source_url": "https://www.gibfieldpark.co.uk/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1349,
+       1600
       ]
      }
     ],
     "confidence": "allocation-boundary",
     "boundary_source": "PfE 2024 allocation JPA34 (GMCA, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2024-03",
+      "stage": "framework",
+      "label": "PfE adopted; JPA34 allocated"
+     },
+     {
+      "date": "2026-02",
+      "stage": "framework",
+      "label": "Consultation launched"
+     },
+     {
+      "date": "2028",
+      "stage": "consent",
+      "label": "Outline application"
+     },
+     {
+      "date": "2036",
+      "stage": "target",
+      "label": "c.500 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -31482,7 +33664,7 @@
     "borough": "Wigan",
     "category": "employment",
     "status": "consented",
-    "lead": "Ask Developments / Peloton",
+    "lead": "Tritax Symmetry (Symmetry Park; landowner per Wigan Council); earlier promoters Ask Developments / Peloton",
     "architects": null,
     "stated_area_ha": null,
     "homes": null,
@@ -31501,41 +33683,49 @@
     "images": [
      {
       "src": "assets/images/m6-j25/01.jpg",
-      "caption": "Footbridge over M6 north of junction 25 - geograph.org.uk - 5316892",
-      "credit": "Gary Rogers",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Footbridge_over_M6_north_of_junction_25_-_geograph.org.uk_-_5316892.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "aerial-cgi",
+      "caption": "Aerial CGI of Symmetry Park Wigan logistics units at M6 J25",
+      "credit": "Tritax Symmetry (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/tritax-keen-to-crack-on-with-1m-sq-ft-wigan-industrial/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1024,
-       768
+       1600,
+       900
       ]
      },
      {
       "src": "assets/images/m6-j25/02.jpg",
-      "caption": "Junction 25 signage - northbound M6 - geograph.org.uk - 6990132",
-      "credit": "Dave Thompson",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Junction_25_signage_-_northbound_M6_-_geograph.org.uk_-_6990132.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "CGI of phase 1 logistics units at Symmetry Park Wigan",
+      "credit": "Tritax Symmetry (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/start-on-73m-tritax-symmetry-logistics-park-due-this-year/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1024,
-       768
-      ]
-     },
-     {
-      "src": "assets/images/m6-j25/03.jpg",
-      "caption": "M6 Junction 25 Northbound Exit road to A49 - geograph.org.uk - 5311601",
-      "credit": "Gary Rogers",
-      "source_url": "https://commons.wikimedia.org/wiki/File:M6_Junction_25_Northbound_Exit_road_to_A49_-_geograph.org.uk_-_5311601.jpg",
-      "licence": "CC BY-SA 2.0",
-      "px": [
-       1024,
-       768
+       361
       ]
      }
     ],
     "confidence": "allocation-boundary",
     "boundary_source": "PfE 2024 allocation JPA31 (GMCA, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2021-06",
+      "stage": "consent",
+      "label": "Outline consent (Peel / Harworth)"
+     },
+     {
+      "date": "2024-03",
+      "stage": "framework",
+      "label": "PfE adopted; JPA31 allocated"
+     },
+     {
+      "date": "2028",
+      "stage": "start",
+      "label": "No 2025–26 milestone found"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -31792,8 +33982,21 @@
     "images": [
      {
       "src": "assets/images/godley-green/01.jpg",
-      "caption": "Go-ahead for Manchester Garden Village",
-      "credit": "Construction Enquirer",
+      "kind": "aerial-cgi",
+      "caption": "Aerial perspective of Godley Green Garden Village looking north, revised 2025 plan",
+      "credit": "MADE Partnership / Tameside Council",
+      "source_url": "https://www.tamesidecorrespondent.co.uk/2025/08/07/amended-plans-for-godley-green-garden-village-to-be-submitted/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       900
+      ]
+     },
+     {
+      "src": "assets/images/godley-green/02.jpg",
+      "kind": "render",
+      "caption": "Village centre pedestrian route, approved scheme CGI",
+      "credit": "MADE Partnership (via Construction Enquirer)",
       "source_url": "https://www.constructionenquirer.com/2026/03/19/go-ahead-for-manchester-garden-village/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
@@ -31804,7 +34007,39 @@
     ],
     "confidence": "allocation-boundary",
     "boundary_source": "PfE 2024 allocation JPA28 (GMCA, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2021-09",
+      "stage": "consent",
+      "label": "Outline application submitted (21/01171/OUT)"
+     },
+     {
+      "date": "2024-03",
+      "stage": "framework",
+      "label": "PfE adopted; JPA28 allocated"
+     },
+     {
+      "date": "2026-01",
+      "stage": "consent",
+      "label": "Refused"
+     },
+     {
+      "date": "2026-03",
+      "stage": "consent",
+      "label": "Resolution to grant revised plans"
+     },
+     {
+      "date": "2026-10",
+      "stage": "start",
+      "label": "Start on site targeted autumn 2026"
+     },
+     {
+      "date": "2040",
+      "stage": "target",
+      "label": "2,150 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -32555,7 +34790,29 @@
     ],
     "confidence": "allocation-boundary",
     "boundary_source": "PfE 2024 allocation JPA27 (GMCA, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2024-01",
+      "stage": "framework",
+      "label": "Development framework approved"
+     },
+     {
+      "date": "2024-03",
+      "stage": "framework",
+      "label": "PfE adopted; JPA27 allocated"
+     },
+     {
+      "date": "2028",
+      "stage": "consent",
+      "label": "No planning application yet"
+     },
+     {
+      "date": "2038",
+      "stage": "target",
+      "label": "Employment build-out"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -32840,30 +35097,71 @@
     "images": [
      {
       "src": "assets/images/ashton-stalybridge-mdc/01.jpg",
-      "caption": "Ashton, Ashton Moss, Crothorn, Droylsden, Guide Bridge, Hyde, Oldham & Stalybridge RJD 32",
-      "credit": "Railway Clearing House",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Ashton,_Ashton_Moss,_Crothorn,_Droylsden,_Guide_Bridge,_Hyde,_Oldham_%26_Stalybridge_RJD_32.jpg",
-      "licence": "Public domain",
+      "kind": "render",
+      "caption": "St Petersfield: terraced green office building and public realm CGI",
+      "credit": "TODD Architects",
+      "source_url": "https://www.toddarch.com/projects/st-petersfield-ashton-manchester/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1057,
-       1600
+       1600,
+       1067
       ]
      },
      {
       "src": "assets/images/ashton-stalybridge-mdc/02.jpg",
-      "caption": "The Tame valley between Stalybridge and Ashton-under-Lyne - geograph.org.uk - 2102203",
-      "credit": "Bill Boaden",
-      "source_url": "https://commons.wikimedia.org/wiki/File:The_Tame_valley_between_Stalybridge_and_Ashton-under-Lyne_-_geograph.org.uk_-_2102203.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "masterplan",
+      "caption": "St Petersfield masterplan location plan, Ashton-under-Lyne",
+      "credit": "TODD Architects",
+      "source_url": "https://www.toddarch.com/projects/st-petersfield-ashton-manchester/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       1021
+       1100
+      ]
+     },
+     {
+      "src": "assets/images/ashton-stalybridge-mdc/03.jpg",
+      "kind": "render",
+      "caption": "St Petersfield: office plot and square, street-level CGI",
+      "credit": "TODD Architects",
+      "source_url": "https://www.toddarch.com/projects/st-petersfield-ashton-manchester/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1600,
+       1067
       ]
      }
     ],
     "confidence": "proposed-boundary",
     "boundary_source": "Proposed MDC boundary (GMCA, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2024-11",
+      "stage": "framework",
+      "label": "MDC proposal announced"
+     },
+     {
+      "date": "2026-05",
+      "stage": "framework",
+      "label": "MDC consultation May–Jul 2026 (61% support)"
+     },
+     {
+      "date": "2026-06",
+      "stage": "framework",
+      "label": "St Petersfield partner selection due (unverified)"
+     },
+     {
+      "date": "2026-09",
+      "stage": "framework",
+      "label": "MDC approved"
+     },
+     {
+      "date": "2040",
+      "stage": "target",
+      "label": "c.3,000 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -33126,13 +35424,38 @@
     "images": [
      {
       "src": "assets/images/atom-valley-mdc/01.jpg",
-      "caption": "Home",
-      "credit": "Greater Manchester Combined Authority",
-      "source_url": "https://www.greatermanchester-ca.gov.uk/what-we-do/planning-and-housing/mayoral-development-corporations/",
+      "kind": "aerial-cgi",
+      "caption": "Illustrative aerial sketch of employment campus, Northern Gateway",
+      "credit": "Atom Valley (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/partners-cue-up-6-5m-sq-ft-at-gms-northern-gateway/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       600,
-       400
+       1024,
+       662
+      ]
+     },
+     {
+      "src": "assets/images/atom-valley-mdc/02.jpg",
+      "kind": "render",
+      "caption": "Illustrative street sketch, Northern Gateway (JPA1.1)",
+      "credit": "Rochdale and Bury Councils",
+      "source_url": "https://www.placenorthwest.co.uk/northern-gateway-gets-rolling-in-bury-rochdale/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1024,
+       649
+      ]
+     },
+     {
+      "src": "assets/images/atom-valley-mdc/03.jpg",
+      "kind": "render",
+      "caption": "Illustrative green route sketch from Northern Gateway SPD",
+      "credit": "Bury and Rochdale Councils (SPD)",
+      "source_url": "https://www.placenorthwest.co.uk/views-sought-on-northern-gateway-mdc/",
+      "licence": "all rights reserved — research use with attribution",
+      "px": [
+       1023,
+       764
       ]
      }
     ],
@@ -33152,7 +35475,29 @@
     ],
     "confidence": "statutory-boundary",
     "boundary_source": "MDC boundary (GMCA feature service, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2022-06",
+      "stage": "framework",
+      "label": "Atom Valley Mayoral Development Zone launched"
+     },
+     {
+      "date": "2025-03",
+      "stage": "framework",
+      "label": "Northern Gateway SPD adopted"
+     },
+     {
+      "date": "2026-01",
+      "stage": "framework",
+      "label": "MDC established (19 Jan)"
+     },
+     {
+      "date": "2045",
+      "stage": "target",
+      "label": "Zone build-out: 20,000 jobs, 7,000 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -34795,35 +37140,26 @@
     "images": [
      {
       "src": "assets/images/middleton-mdc/01.jpg",
-      "caption": "Home",
-      "credit": "Greater Manchester Combined Authority",
-      "source_url": "https://www.greatermanchester-ca.gov.uk/what-we-do/planning-and-housing/mayoral-development-corporations/",
+      "kind": "masterplan",
+      "caption": "Middleton town centre masterplan area on aerial base (LDA Design, 2022)",
+      "credit": "Rochdale Borough Council (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/rochdale-progresses-middleton-regeneration-vision/",
       "licence": "all rights reserved — research use with attribution",
       "px": [
-       600,
-       400
+       1024,
+       910
       ]
      },
      {
       "src": "assets/images/middleton-mdc/02.jpg",
-      "caption": "Kirkway, Middleton - geograph.org.uk - 2329237",
-      "credit": "michael ely",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Kirkway,_Middleton_-_geograph.org.uk_-_2329237.jpg",
-      "licence": "CC BY-SA 2.0",
+      "kind": "render",
+      "caption": "CGI of Warwick Mill conversion to c.300 homes, first MDC project",
+      "credit": "Kam Lei Fong / Rochdale Council (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/rochdale-progresses-middleton-regeneration-vision/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       640,
-       456
-      ]
-     },
-     {
-      "src": "assets/images/middleton-mdc/03.jpg",
-      "caption": "Kirkway, Middleton - geograph.org.uk - 5920075",
-      "credit": "JThomas",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Kirkway,_Middleton_-_geograph.org.uk_-_5920075.jpg",
-      "licence": "CC BY-SA 2.0",
-      "px": [
-       640,
-       451
+       1024,
+       560
       ]
      }
     ],
@@ -34843,7 +37179,29 @@
     ],
     "confidence": "proposed-boundary",
     "boundary_source": "MDC boundary (GMCA feature service, OGL)",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2026-03",
+      "stage": "framework",
+      "label": "Middleton MDC proposed"
+     },
+     {
+      "date": "2026-09",
+      "stage": "framework",
+      "label": "Approved by Mayor / GMCA; government order needed"
+     },
+     {
+      "date": "2027",
+      "stage": "framework",
+      "label": "MDC established (subject to order)"
+     },
+     {
+      "date": "2040",
+      "stage": "target",
+      "label": "c.1,500 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [
@@ -35880,41 +38238,76 @@
     "images": [
      {
       "src": "assets/images/trinity-islands/01.jpg",
-      "caption": "Vista River Gardens Tower 1 and 2 Under Construction",
-      "credit": "Valienne",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Vista_River_Gardens_Tower_1_and_2_Under_Construction.jpg",
-      "licence": "CC0",
+      "kind": "render",
+      "caption": "CGI of the four Trinity Islands towers on the Irwell (39-60 storeys)",
+      "credit": "Renaker / SimpsonHaugh (via Place North West)",
+      "source_url": "https://www.placenorthwest.co.uk/renaker-tables-741m-trinity-islands-proposal/",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1200,
-       1600
+       1024,
+       721
       ]
      },
      {
       "src": "assets/images/trinity-islands/02.jpg",
-      "caption": "Trinity Islands, 1 August 2025",
-      "credit": "oatsy40",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Trinity_Islands,_1_August_2025.jpg",
-      "licence": "CC BY 4.0",
+      "kind": "masterplan",
+      "caption": "Trinity Islands landscape plan across both plots and river bridge",
+      "credit": "SimpsonHaugh",
+      "source_url": "https://www.simpsonhaugh.com/projects/trinity-islands",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
        1600,
-       900
+       1147
       ]
      },
      {
       "src": "assets/images/trinity-islands/03.jpg",
-      "caption": "Trinity Islands April 2023",
-      "credit": "DanielT103",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Trinity_Islands_April_2023.png",
-      "licence": "CC BY-SA 4.0",
+      "kind": "render",
+      "caption": "CGI of riverside public realm beneath the Trinity Islands towers",
+      "credit": "SimpsonHaugh",
+      "source_url": "https://www.simpsonhaugh.com/projects/trinity-islands",
+      "licence": "all rights reserved — research use with attribution",
       "px": [
-       1600,
-       1217
+       1500,
+       928
       ]
      }
     ],
     "confidence": "land-supply-site",
     "boundary_source": "GMCA 2025 housing land supply site 132429/FO/2021 (Trinity Islands, St John’s Masterplan), OGL v3",
-    "boundary_features": 1
+    "boundary_features": 1,
+    "timeline": [
+     {
+      "date": "2021-12",
+      "stage": "consent",
+      "label": "Consent 132429/FO/2021 (Renaker, four towers)"
+     },
+     {
+      "date": "2022-09",
+      "stage": "start",
+      "label": "Start on site"
+     },
+     {
+      "date": "2026-01",
+      "stage": "delivery",
+      "label": "Trinity Heights topped out"
+     },
+     {
+      "date": "2026-05",
+      "stage": "start",
+      "label": "St John's Waterside / West Gate started"
+     },
+     {
+      "date": "2026-12",
+      "stage": "delivery",
+      "label": "Vista River Gardens due"
+     },
+     {
+      "date": "2029",
+      "stage": "target",
+      "label": "1,016 homes"
+     }
+    ]
    },
    "geometry": {
     "coordinates": [

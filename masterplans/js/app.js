@@ -66,6 +66,8 @@ const STATUS_LABEL = {
   'on-site': 'On site', consented: 'Consented', framework: 'Framework', proposed: 'Proposed',
   'at-risk': 'At risk', delivered: 'Delivered'
 };
+const STAGE_LABEL = { framework: 'Framework', consent: 'Consent', start: 'On site', delivery: 'Delivered', complete: 'Complete', target: 'Target' };
+const STAGE_COLOR = { framework: '#c77dff', consent: '#4FA6C8', start: '#5ACDFF', delivery: '#f4a261', complete: '#a1a4a5', target: '#464a4d' };
 const PITCH_HA = 0.714; // FIFA 105×68 m
 
 const GM_BOUNDS = [[-2.75, 53.33], [-1.95, 53.68]];
@@ -73,7 +75,8 @@ let initialStyle = 'black';
 try { const saved = localStorage.getItem('ud-gm-style'); if (saved && saved !== 'satellite') initialStyle = saved; } catch {}
 const state = {
   data: null, features: [], filtered: [], selected: null, style: initialStyle,
-  borough: new Set(), status: new Set(), cat: new Set(), q: '', tour: null
+  borough: new Set(), status: new Set(), cat: new Set(), q: '', tour: null, gantt: false,
+  year: null, playing: null, brush: null, ext: null
 };
 
 const $ = (s) => document.querySelector(s);
@@ -81,6 +84,14 @@ const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls)
 const fmt = (n) => n == null ? '—' : n.toLocaleString('en-GB');
 const isPoly = (f) => f.geometry.type === 'Polygon' || f.geometry.type === 'MultiPolygon';
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+// 'YYYY' or 'YYYY-MM' → decimal year (mid-month / mid-year)
+const yr = (d) => { const [y, m] = String(d).split('-').map(Number); return m ? y + (m - 0.5) / 12 : y + 0.5; };
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const fmtDate = (d) => { const [y, m] = String(d).split('-'); return m ? `${MONTHS[+m - 1]} ${y}` : y; };
+const asOfYear = () => yr(state.data.meta.asOf.slice(0, 7));
+// stage a scheme had reached by decimal year y (null = not started)
+const stageAt = (p, y) => { let st = null; for (const e of p.timeline) { if (yr(e.date) <= y) st = e.stage; else break; } return st; };
+const fmtYear = (y) => { const yy = Math.floor(y), m = Math.floor((y - yy) * 12); return `${MONTHS[m]} ${yy}`; };
 
 // ---------- data ----------
 async function loadData() {
@@ -94,19 +105,25 @@ async function loadData() {
     p.centroid = c;
     p.bbox = isPoly(f) ? turf.bbox(f) : null;
     p.search = [p.name, p.borough, p.lead, p.architects, p.summary, p.commercial].join(' ').toLowerCase();
+    p.timeline = (p.timeline || []).slice().sort((a, b) => a.date.localeCompare(b.date));
+    p.t0 = p.timeline.length ? yr(p.timeline[0].date) : null;
+    p.t1 = p.timeline.length ? yr(p.timeline[p.timeline.length - 1].date) : null;
   });
   state.data = gj;
   state.features = gj.features;
   $('#asof').textContent = `${gj.features.length} schemes · status ${gj.meta.asOf}`;
+  const t0 = gj.features.map((f) => f.properties.t0).filter((v) => v != null), t1 = gj.features.map((f) => f.properties.t1).filter((v) => v != null);
+  state.ext = { Y0: Math.floor(Math.min(...t0)), Y1: Math.ceil(Math.max(...t1, asOfYear())) + 1 };
 }
 
+const withStage = (p) => ({ ...p, ystage: state.year == null ? '' : (stageAt(p, state.year) || 'none') });
 function pointsFC() {
   return { type: 'FeatureCollection', features: state.filtered.map((f) => ({
-    type: 'Feature', properties: f.properties, geometry: { type: 'Point', coordinates: f.properties.centroid }
+    type: 'Feature', properties: withStage(f.properties), geometry: { type: 'Point', coordinates: f.properties.centroid }
   })) };
 }
 function polysFC() {
-  return { type: 'FeatureCollection', features: state.filtered.filter(isPoly) };
+  return { type: 'FeatureCollection', features: state.filtered.filter(isPoly).map((f) => ({ ...f, properties: withStage(f.properties) })) };
 }
 
 // ---------- map ----------
@@ -165,7 +182,64 @@ function addLayers() {
     paint: { 'text-color': THEME[state.style].text, 'text-halo-color': THEME[state.style].halo, 'text-halo-width': 1.5 }
   });
   applyToggles();
+  applyTimePaint();
   if (state.selected) highlight(state.selected.properties.id);
+}
+
+// ---------- time scrubber ----------
+// when a year is set, overlays recolour by the stage reached that year; unstarted schemes fade out
+const BASE_PAINT = {
+  'poly-fill': { 'fill-opacity': 0.22 }, 'poly-line': { 'line-opacity': 1 }, 'poly-line-dash': { 'line-opacity': 1 },
+  'pt-halo': { 'circle-opacity': 0.25 }, 'pt': { 'circle-opacity': 1, 'circle-stroke-opacity': 1 }, 'labels': { 'text-opacity': 1 }
+};
+function applyTimePaint() {
+  if (!map.getLayer('poly-fill')) return;
+  const catColor = ['match', ['get', 'category'], ...Object.entries(CAT_COLOR).flat(), '#888'];
+  const stageColor = ['match', ['get', 'ystage'], ...Object.entries(STAGE_COLOR).flat(), '#555'];
+  const live = state.year == null;
+  const color = live ? catColor : stageColor;
+  const none = ['==', ['get', 'ystage'], 'none'];
+  const dim = (on, off) => (live ? on : ['case', none, off, on]);
+  map.setPaintProperty('poly-fill', 'fill-color', color);
+  map.setPaintProperty('poly-fill', 'fill-opacity', dim(0.22, 0.03));
+  ['poly-line', 'poly-line-dash'].forEach((id) => { map.setPaintProperty(id, 'line-color', color); map.setPaintProperty(id, 'line-opacity', dim(1, 0.15)); });
+  map.setPaintProperty('pt-halo', 'circle-color', color);
+  map.setPaintProperty('pt-halo', 'circle-opacity', dim(0.25, 0.04));
+  map.setPaintProperty('pt', 'circle-color', color);
+  map.setPaintProperty('pt', 'circle-opacity', dim(1, 0.12));
+  map.setPaintProperty('pt', 'circle-stroke-opacity', dim(1, 0.12));
+  map.setPaintProperty('labels', 'text-opacity', dim(1, 0.2));
+}
+
+function setYear(y, { fromSlider = false } = {}) {
+  state.year = y;
+  const live = y == null;
+  $('#timebar').classList.toggle('live', live);
+  $('#legend').classList.toggle('hidden', !live);
+  $('#legend-stage').classList.toggle('hidden', live);
+  if (!fromSlider) $('#year').value = live ? Math.round(asOfYear() * 12) : Math.round(y * 12);
+  $('#year-label').textContent = live ? `Now · ${state.data.meta.asOf}` : fmtYear(y);
+  const started = live ? null : state.filtered.filter((f) => stageAt(f.properties, y)).length;
+  $('#year-count').textContent = live ? '' : `${started} / ${state.filtered.length} started`;
+  refreshSources();
+  applyTimePaint();
+  renderList();
+  // move the Gantt cursor without a full re-render
+  const cur = live ? null : ((y - state.ext.Y0) / (state.ext.Y1 - state.ext.Y0)) * 100;
+  document.querySelectorAll('#gantt .gt-cur').forEach((c) => { c.style.left = cur == null ? '' : cur + '%'; c.classList.toggle('hidden', cur == null); });
+}
+
+function togglePlay() {
+  const btn = $('#btn-play');
+  if (state.playing) { clearInterval(state.playing); state.playing = null; btn.textContent = '▶'; btn.classList.remove('running'); return; }
+  let y = state.year == null || state.year >= state.ext.Y1 - 1 / 12 ? state.ext.Y0 : state.year;
+  btn.textContent = '■'; btn.classList.add('running');
+  setYear(y);
+  state.playing = setInterval(() => {
+    y += 1 / 12;
+    if (y >= state.ext.Y1) { togglePlay(); return; }
+    setYear(y);
+  }, 45);
 }
 
 function applyToggles() {
@@ -229,6 +303,8 @@ function select(id, { fly = true } = {}) {
   renderDetail(f);
   document.querySelectorAll('#list li').forEach((li) => li.classList.toggle('sel', li.dataset.id === id));
   document.querySelector(`#list li[data-id="${id}"]`)?.scrollIntoView({ block: 'nearest' });
+  document.querySelectorAll('#gantt .gt-row').forEach((r) => r.classList.toggle('sel', r.dataset.id === id));
+  document.querySelector('#gantt .gt-row.sel')?.scrollIntoView({ block: 'nearest' });
   history.replaceState(null, '', '#' + id);
   if (fly) flyTo(f);
 }
@@ -236,7 +312,7 @@ function select(id, { fly = true } = {}) {
 function closeDetail() {
   state.selected = null; highlight(null);
   $('#detail').classList.add('hidden');
-  document.querySelectorAll('#list li.sel').forEach((li) => li.classList.remove('sel'));
+  document.querySelectorAll('#list li.sel, #gantt .gt-row.sel').forEach((li) => li.classList.remove('sel'));
   history.replaceState(null, '', location.pathname);
 }
 
@@ -247,6 +323,23 @@ function scaleLine(ha) {
   const n = Math.min(40, Math.round(pitches));
   const icons = '<span class="pitch"></span>'.repeat(n);
   return `<div class="scale">${icons}${pitches > 40 ? ' …' : ''} ≈ ${fmt(Math.round(pitches))} football pitches · ${(ha / 100).toFixed(2)} km²</div>`;
+}
+
+function timelineHTML(p) {
+  if (!p.timeline.length) return '';
+  const now = asOfYear();
+  let nowDrawn = false;
+  const rows = p.timeline.map((e) => {
+    const future = yr(e.date) > now;
+    let nowRow = '';
+    if (future && !nowDrawn) { nowDrawn = true; nowRow = `<li class="tl-now"><span class="tl-dot"></span><span class="tl-d">Today</span><span class="tl-l">${esc(state.data.meta.asOf)}</span></li>`; }
+    return `${nowRow}<li class="tl-ev ${e.stage}${future ? ' future' : ''}">
+      <span class="tl-dot" style="--sc:${STAGE_COLOR[e.stage]}"></span>
+      <span class="tl-d">${fmtDate(e.date)}</span>
+      <span class="tl-l"><span class="tl-stage">${STAGE_LABEL[e.stage]}</span>${esc(e.label)}</span></li>`;
+  }).join('');
+  const span = p.t1 > p.t0 ? `${Math.floor(p.t0)}–${Math.floor(p.t1)}` : `${Math.floor(p.t0)}`;
+  return `<div class="kicker" style="margin-top:14px">Timeline · ${span}${p.t1 > now ? ' · dashed = expected' : ''}</div><ol class="tl">${rows}</ol>`;
 }
 
 async function renderDetail(f) {
@@ -260,6 +353,7 @@ async function renderDetail(f) {
     <h2>${esc(p.name)}</h2>
     ${p.summary ? `<p class="summary">${esc(p.summary)}</p>` : ''}
     <div class="milestone"><div class="d">Latest · ${esc(p.milestone_date || '')}</div>${esc(p.milestone)}</div>
+    ${timelineHTML(p)}
     <div class="facts">
       <div class="fact"><div class="k">Site area</div><div class="v">${areaV}</div></div>
       <div class="fact"><div class="k">Homes</div><div class="v">${p.homes ? fmt(p.homes) : '—'}</div></div>
@@ -297,12 +391,13 @@ function renderGallery(p) {
   g.innerHTML = '';
   const imgs = p.images || [];
   if (!imgs.length) { g.innerHTML = '<div class="empty">No images for this scheme.</div>'; return; }
-  imgs.forEach((im) => {
-    const fig = el('figure');
+  const KIND = { 'aerial-cgi': 'Aerial CGI', masterplan: 'Masterplan', render: 'Render', 'aerial-photo': 'Aerial photo', photo: 'Photo' };
+  imgs.forEach((im, i) => {
+    const fig = el('figure', i === 0 ? 'hero' : null);
     const img = el('img'); img.src = im.src; img.alt = im.caption || p.name; img.loading = 'lazy'; img.onclick = () => lightbox(im.src);
     fig.append(img);
     const host = im.source_url ? im.source_url.replace(/^https?:\/\/(www\.)?/, '').split('/')[0] : '';
-    fig.append(el('figcaption', null, `${esc(im.caption || '')}${im.credit ? `<br><span class="credit">© ${esc(im.credit)}${im.licence ? ' · ' + esc(im.licence) : ''}</span>` : ''}${im.source_url ? `<br><a class="src" href="${esc(im.source_url)}" target="_blank" rel="noopener">source: ${esc(host)} ↗</a>` : ''}`));
+    fig.append(el('figcaption', null, `${im.kind ? `<span class="kind">${KIND[im.kind] || esc(im.kind)}</span>` : ''}${esc(im.caption || '')}${im.credit ? `<br><span class="credit">© ${esc(im.credit)}${im.licence ? ' · ' + esc(im.licence) : ''}</span>` : ''}${im.source_url ? `<br><a class="src" href="${esc(im.source_url)}" target="_blank" rel="noopener">source: ${esc(host)} ↗</a>` : ''}`));
     g.append(fig);
   });
 }
@@ -335,10 +430,19 @@ function applyFilters() {
     if (state.status.size && !state.status.has(p.status)) return false;
     if (state.cat.size && !state.cat.has(p.category)) return false;
     if (state.q && !p.search.includes(state.q)) return false;
+    if (state.brush && !p.timeline.some((e) => { const t = yr(e.date); return t >= state.brush[0] && t <= state.brush[1]; })) return false;
     return true;
   });
   renderList();
+  renderGantt();
   refreshSources();
+  if (state.year != null) setYear(state.year);
+}
+
+function stageBadge(p) {
+  if (state.year == null) return `<span class="status ${p.status}">${STATUS_LABEL[p.status]}</span>`;
+  const st = stageAt(p, state.year);
+  return st ? `<span class="status stg" style="--sc:${STAGE_COLOR[st]}">${STAGE_LABEL[st]}</span>` : '<span class="status none">Not started</span>';
 }
 
 function renderList() {
@@ -353,13 +457,93 @@ function renderList() {
       const p = f.properties;
       const li = el('li'); li.dataset.id = p.id;
       li.innerHTML = `<span class="bar" style="background:${CAT_COLOR[p.category]}"></span>
-        <div><div class="name">${esc(p.name)}</div><div class="sub">${esc(p.borough)} · <span class="status ${p.status}">${STATUS_LABEL[p.status]}</span></div></div>
+        <div><div class="name">${esc(p.name)}</div><div class="sub">${esc(p.borough)} · ${stageBadge(p)}</div></div>
         <div class="meta"><b>${p.homes ? fmt(p.homes) : '—'}</b>${p.homes ? 'homes' : ''}<br>${p.area_ha ? p.area_ha + ' ha' : ''}</div>`;
       li.onclick = () => select(p.id);
       if (state.selected === f) li.classList.add('sel');
+      if (state.year != null && !stageAt(p, state.year)) li.classList.add('dim');
       ol.append(li);
     });
 }
+
+// ---------- gantt ----------
+function toggleGantt(on) {
+  state.gantt = on ?? !state.gantt;
+  $('#gantt').classList.toggle('hidden', !state.gantt);
+  $('#btn-gantt').classList.toggle('on', state.gantt);
+  if (state.gantt) renderGantt();
+  map.resize();
+}
+
+function renderGantt() {
+  if (!state.gantt) return;
+  const host = $('#gantt-rows');
+  const rows = state.filtered.filter((f) => f.properties.t0 != null).slice().sort((a, b) => a.properties.t0 - b.properties.t0);
+  const now = asOfYear();
+  const { Y0, Y1 } = state.ext;
+  const px = (y) => ((y - Y0) / (Y1 - Y0)) * 100;
+  const curPos = state.year == null ? null : px(state.year);
+  const cur = `<span class="gt-cur${curPos == null ? ' hidden' : ''}" style="left:${curPos ?? 0}%"></span>`;
+  const brush = state.brush ? `<span class="gt-brush" style="left:${px(state.brush[0])}%;width:${px(state.brush[1]) - px(state.brush[0])}%"></span>` : '';
+  const pxPerYear = ($('#gantt-axis').clientWidth || 800) / (Y1 - Y0);
+  const step = [1, 2, 5, 10].find((st) => st * pxPerYear >= 44) || 10;
+  let axis = '';
+  for (let y = Math.ceil(Y0 / step) * step; y < Y1; y += step) axis += `<span class="gt-tick" style="left:${px(y)}%">${y}</span>`;
+  $('#gantt-axis').innerHTML = axis + `<span class="gt-now" style="left:${px(now)}%"><i>today</i></span>` + brush + cur;
+  renderBrushChip();
+  host.innerHTML = rows.map((f) => {
+    const p = f.properties;
+    const done = Math.min(p.t1, now), a = px(p.t0);
+    const bar = `<span class="gt-bar" style="left:${a}%;width:${Math.max(0.4, px(done) - a)}%;background:${CAT_COLOR[p.category]}"></span>` +
+      (p.t1 > now ? `<span class="gt-bar future" style="left:${px(Math.max(p.t0, now))}%;width:${px(p.t1) - px(Math.max(p.t0, now))}%;border-color:${CAT_COLOR[p.category]}"></span>` : '');
+    const evs = p.timeline.map((e) => `<span class="gt-ev ${e.stage}${yr(e.date) > now ? ' future' : ''}" style="left:${px(yr(e.date))}%;--sc:${STAGE_COLOR[e.stage]}" title="${esc(fmtDate(e.date))} · ${STAGE_LABEL[e.stage]} · ${esc(e.label)}"></span>`).join('');
+    return `<div class="gt-row${state.selected === f ? ' sel' : ''}" data-id="${p.id}">
+      <div class="gt-name"><span class="status ${p.status}">${STATUS_LABEL[p.status]}</span>${esc(p.name)}</div>
+      <div class="gt-track"><span class="gt-now" style="left:${px(now)}%"></span>${brush}${bar}${evs}${cur}</div></div>`;
+  }).join('');
+  if (!rows.length) host.innerHTML = '<div class="empty">No schemes in the current filter.</div>';
+  host.querySelectorAll('.gt-row').forEach((r) => (r.onclick = () => select(r.dataset.id)));
+  host.querySelector('.gt-row.sel')?.scrollIntoView({ block: 'nearest' });
+}
+
+function renderBrushChip() {
+  const c = $('#gantt-brush');
+  if (!state.brush) { c.classList.add('hidden'); return; }
+  c.classList.remove('hidden');
+  c.querySelector('span').textContent = `${fmtYear(state.brush[0])} – ${fmtYear(state.brush[1])}`;
+}
+
+function setBrush(range) {
+  state.brush = range;
+  $('#btn-gantt').classList.toggle('brushed', !!range);
+  applyFilters();
+}
+
+// drag on the axis to brush a year range; a plain click clears it
+(() => {
+  const axis = $('#gantt-axis');
+  let x0 = null, ghost = null;
+  const yAt = (clientX) => { const r = axis.getBoundingClientRect(); const t = Math.min(1, Math.max(0, (clientX - r.left) / r.width)); return state.ext.Y0 + t * (state.ext.Y1 - state.ext.Y0); };
+  axis.addEventListener('pointerdown', (e) => {
+    x0 = e.clientX; axis.setPointerCapture(e.pointerId);
+    ghost = el('span', 'gt-brush ghost'); axis.append(ghost);
+  });
+  axis.addEventListener('pointermove', (e) => {
+    if (x0 == null || !ghost) return;
+    const r = axis.getBoundingClientRect(), a = Math.min(x0, e.clientX) - r.left, w = Math.abs(e.clientX - x0);
+    ghost.style.left = (a / r.width) * 100 + '%'; ghost.style.width = (w / r.width) * 100 + '%';
+  });
+  const end = (e) => {
+    if (x0 == null) return;
+    ghost?.remove(); ghost = null;
+    const dx = Math.abs(e.clientX - x0);
+    const range = dx < 4 ? null : [yAt(Math.min(x0, e.clientX)), yAt(Math.max(x0, e.clientX))];
+    x0 = null;
+    setBrush(range);
+  };
+  axis.addEventListener('pointerup', end);
+  axis.addEventListener('pointercancel', end);
+})();
 
 // ---------- tour ----------
 function toggleTour() {
@@ -382,10 +566,18 @@ $('#layers').addEventListener('change', applyToggles);
 $('#search').addEventListener('input', (e) => { state.q = e.target.value.trim().toLowerCase(); applyFilters(); });
 $('#btn-overview').onclick = () => { closeDetail(); map.fitBounds(GM_BOUNDS, { pitch: 0, bearing: 0, padding: 40, duration: 1800 }); };
 $('#btn-tour').onclick = toggleTour;
+$('#btn-gantt').onclick = () => toggleGantt();
+$('#gantt-close').onclick = () => toggleGantt(false);
+$('#gantt-brush button').onclick = () => setBrush(null);
+$('#year').addEventListener('input', (e) => { if (state.playing) togglePlay(); setYear(+e.target.value / 12, { fromSlider: true }); });
+$('#btn-play').onclick = togglePlay;
+$('#btn-now').onclick = () => { if (state.playing) togglePlay(); setYear(null); };
 $('#detail-close').onclick = closeDetail;
 document.addEventListener('keydown', (e) => {
   if (e.target.matches('input')) return;
   if (e.key === 'Escape') closeDetail();
+  if (e.key === 't' || e.key === 'T') toggleGantt();
+  if (e.key === 'p' || e.key === 'P') togglePlay();
   if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); state.selected ? step(1) : select(state.filtered[0]?.properties.id); }
   if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); state.selected && step(-1); }
 });
@@ -393,6 +585,8 @@ document.addEventListener('keydown', (e) => {
 loadData().then(() => {
   $('#basemap').value = state.style;
   buildChips();
+  $('#year').min = state.ext.Y0 * 12; $('#year').max = state.ext.Y1 * 12 - 1; $('#year').value = Math.round(asOfYear() * 12);
+  $('#year-label').textContent = `Now · ${state.data.meta.asOf}`;
   applyFilters();
   const go = () => { const id = location.hash.slice(1); if (id) select(id); };
   if (map.isStyleLoaded() && map.getLayer('poly-fill')) { refreshSources(); go(); } else map.once('style.load', () => { refreshSources(); go(); });

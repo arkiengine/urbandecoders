@@ -25,7 +25,10 @@ then open http://localhost:5181 (or any static server — it's plain HTML/JS).
   - `boundary-indicative` — none remaining
   - `point-estimate` — centroid only
 - Raw sources are in `qgis/source/`; `qgis/gm_masterplans.qgz` (EPSG:27700) holds the styled project and `qgis/gm_masterplans.gpkg` the `boundaries` + `sites` layers. Solid outline = sourced, dashed = illustrative/indicative.
-- `properties`: `id`, `name`, `borough`, `category` (housing | mixed | employment | framework | infrastructure | civic), `status` (on-site | consented | framework | proposed | at-risk | delivered), `lead`, `architects`, `stated_area_ha`, `homes`, `jobs`, `commercial`, `investment`, `milestone`, `milestone_date`, `summary`, `links[]`, `images[]`, `confidence`.
+- `properties`: `id`, `name`, `borough`, `category` (housing | mixed | employment | framework | infrastructure | civic), `status` (on-site | consented | framework | proposed | at-risk | delivered), `lead`, `architects`, `stated_area_ha`, `homes`, `jobs`, `commercial`, `investment`, `milestone`, `milestone_date`, `summary`, `links[]`, `images[]`, `confidence`, `timeline[]`.
+- `timeline[]` — dated stage events per scheme, `{ date, stage, label }` with `date` as `YYYY` or `YYYY-MM` and `stage` one of framework | consent | start | delivery | complete | target. Events dated after `meta.asOf` are expected / target dates and render hollow or dashed. Compiled from the summaries, milestones and public sources as of `meta.asOf`; entries marked "unverified" in the label are unconfirmed. Drives the stage timeline in the detail panel and the **Timeline** programme (Gantt) drawer.
+- **Year scrubber** (top-left of the map): drag the slider or press play to recolour every scheme by the stage it had reached in that month; unstarted schemes fade out and the list shows the stage reached. **Now** returns to current status.
+- **Brushing**: drag across the year axis of the Timeline drawer to keep only schemes with an event in that range (map, list and totals follow); click the axis or the range chip to clear.
 
 ### Images / renders
 
@@ -33,6 +36,8 @@ then open http://localhost:5181 (or any static server — it's plain HTML/JS).
    ```json
    "images": [{ "src": "assets/images/mayfield/park.jpg", "caption": "Mayfield Park", "credit": "Studio Egret West" }]
    ```
+
+Since Sep 2026 the images are curated proposal imagery (aerial CGIs, illustrative masterplans, hero renders, drone photos of delivered phases) sourced from developer, architect, council and trade-press pages. Each carries `kind` (aerial-cgi | masterplan | render | aerial-photo | photo), credit and source page, and the first image shows as the full-width hero. Simister/Bowlee, Stakehill and Ashton Moss West keep their older images because no proposal imagery is published outside PDFs.
 
 Renders are copyright of the respective practices/developers — clear usage before sharing.
 
@@ -42,4 +47,4 @@ Renders are copyright of the respective practices/developers — clear usage bef
 
 ## Keys
 
-`←/→` previous/next scheme · `Esc` close · **Tour** cycles through the filtered list.
+`←/→` previous/next scheme · `Esc` close · `T` toggle the programme timeline · `P` play/pause the year scrubber · **Tour** cycles through the filtered list.
