@@ -6,20 +6,20 @@
   var KEY = JA ? 'ud-estimate-ja' : 'ud-estimate';
   var S = JA ? {
     tiers: ['敷地', '地区', '都市'],
-    base: ['コンテクスト、マッシング、Webエクスプローラー',
-           'コンテクスト、マッシング、モビリティ、Webエクスプローラー',
-           'コンテクスト、マッシング、モビリティ、環境、Webエクスプローラー'],
-    next: ['敷地境界を送付（GeoJSON、DXF、またはレッドラインのPDF）',
+    base: ['周辺環境、ボリューム、Webビューア',
+           '周辺環境、ボリューム、交通、Webビューア',
+           '周辺環境、ボリューム、交通、環境、Webビューア'],
+    next: ['敷地の範囲を送付（GeoJSON、DXF、またはレッドラインのPDF）',
            'GISの範囲と既存のマスタープランを送付',
-           'データ一覧を送付（GIS、フィード、計画ポータル）'],
-    lod3: 'LOD 3 ファサード', feeds: 'ライブフィード', scenarios: 'シナリオ比較',
-    engagement: 'エンゲージメント・レイヤー', table: 'メディアテーブル制作', vr: 'VR制作',
+           'データ一覧を送付（GIS、リアルタイムデータ、計画ポータル）'],
+    lod3: 'LOD 3 のファサード', feeds: 'リアルタイムデータ', scenarios: 'シナリオ比較',
+    engagement: '住民参加レイヤー', table: 'メディアテーブル制作', vr: 'VR制作',
     none: 'なし', sep: '、', locale: 'ja-JP', notes: '\n\nプロジェクトメモ：\n',
-    tierN: function (n) { return 'ティア ' + n + ' / 3'; },
+    tierN: function (n) { return '区分 ' + n + ' / 3'; },
     weeks: function (w) { return w[0] + '〜' + w[1] + '週間'; },
     summary: function (e, v) {
       return 'urbandecoders.com のスコープ試算\n' +
-        'ティア：' + e.tier + '（' + v.area + ' ha、約' + v.buildings + '棟、LOD ' + v.lod + '）\n' +
+        '区分：' + e.tier + '（' + v.area + ' ha、約' + v.buildings + '棟、LOD ' + v.lod + '）\n' +
         '基本：' + e.base + '\n追加：' + e.added + '\n納品形態：' + v.delivery + '\n' +
         '初回ツインの目安：' + this.weeks(e.weeks);
     }
