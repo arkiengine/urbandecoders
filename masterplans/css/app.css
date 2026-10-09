@@ -89,6 +89,24 @@ a { color: var(--brand-teal-on-dark); text-decoration: none; }
 }
 .sitenav__cta:hover { background: #f1f7fe; color: #000; }
 .sitenav__cta span { color: var(--emphasis-red); font-weight: 700; }
+/* links stay centred between brand and CTA; the JP/EN switch sits tight to the right of the CTA */
+.sitenav__links { margin-inline: auto; }
+.sitenav__cta { margin-right: -12px; }
+
+/* JP / EN language switch — right-most item (mirrors .lang-switch in ../styles.css) */
+.lang-switch {
+  display: inline-flex; flex: 0 0 auto; align-items: stretch;
+  border: 1px solid var(--hairline-strong); border-radius: 4px; overflow: hidden;
+  font-family: var(--font-mono); font-size: 11px; line-height: 1; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.lang-switch__opt {
+  display: grid; place-items: center; min-width: 32px; padding: 6px 9px;
+  color: var(--ash); transition: color 120ms ease, background-color 120ms ease;
+}
+.lang-switch__opt + .lang-switch__opt { border-left: 1px solid var(--hairline-strong); }
+.lang-switch__opt:hover { color: var(--ink); background: rgba(255,255,255,0.04); }
+.lang-switch__opt[aria-current] { color: var(--ink); background: rgba(54,144,180,0.18); box-shadow: inset 0 -2px 0 var(--brand-cyan); }
+.lang-switch__opt:focus-visible { outline-offset: -2px; border-radius: 0; }
 
 /* App toolbar */
 #topbar {
@@ -313,8 +331,29 @@ a { color: var(--brand-teal-on-dark); text-decoration: none; }
 #legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
 #disclaimer { position: absolute; left: calc(var(--sidebar-w) + 16px); bottom: 10px; font-size: 10px; color: var(--ash); font-family: var(--mono); }
 
+/* Japanese (/ja/masterplans/): Latin runs keep the brand faces, kana/kanji fall through to the
+   JP faces loaded by that page. Scheme data stays English and is marked lang="en" by app.js. */
+html:lang(ja) {
+  --font-display: 'Archivo', 'M PLUS 1', 'Hiragino Sans', 'Yu Gothic', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'IBM Plex Sans', 'IBM Plex Sans JP', 'Hiragino Sans', 'Yu Gothic', 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'M PLUS 1 Code', ui-monospace, monospace;
+}
+html:lang(ja), html:lang(ja) body { letter-spacing: 0.02em; }
+html:lang(ja) :is(h1, h2, h3, .eyebrow) { font-feature-settings: "palt"; }
+html:lang(ja) :is(.conf, .scale, .empty) { line-height: 1.7; }
+/* the Japanese disclaimer is two lines (three below ~1050px); lift the legends clear of it */
+@media (min-width: 901px) {
+  html:lang(ja) #legend, html:lang(ja) #legend-stage { bottom: 47px; }
+}
+@media (min-width: 901px) and (max-width: 1060px) {
+  html:lang(ja) #legend, html:lang(ja) #legend-stage { bottom: 60px; }
+}
+
 @media (max-width: 1180px) {
   .sitenav__cta { display: none; }
+  /* keep the JP/EN switch on screen: links shrink and scroll sideways instead of pushing it out */
+  .sitenav__links { min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .sitenav__links::-webkit-scrollbar { display: none; }
 }
 @media (max-width: 900px) {
   :root { --nav-h: auto; --bar-h: auto; }

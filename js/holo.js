@@ -19,13 +19,15 @@
   });
 
   /* Live-feed markers: model position of the place each feed reads from */
+  var JA = document.documentElement.lang.indexOf('ja') === 0;
+  var MONO = JA ? '"JetBrains Mono", "M PLUS 1 Code", ui-monospace, monospace' : '"JetBrains Mono", ui-monospace, monospace';
   var FEEDS = [
-    { k: 'traffic', name: 'Traffic', x: -167, z: 169, h: 17.6 },
+    { k: 'traffic', name: JA ? '交通量' : 'Traffic', x: -167, z: 169, h: 17.6 },
     { k: 'cctv',    name: 'CCTV',    x: -45,  z: -439, h: 17.6 },
-    { k: 'bus',     name: 'Buses',   x: -336, z: 131, h: 43.6 },
-    { k: 'aqi',     name: 'Air',     x: 62,   z: 364, h: 17.6 },
-    { k: 'foot',    name: 'Footfall', x: -184, z: -18, h: 14.5 },
-    { k: 'rail',    name: 'Rail',    x: -425, z: 195, h: 17.6 }
+    { k: 'bus',     name: JA ? 'バス' : 'Buses',   x: -336, z: 131, h: 43.6 },
+    { k: 'aqi',     name: JA ? '大気質' : 'Air',     x: 62,   z: 364, h: 17.6 },
+    { k: 'foot',    name: JA ? '歩行者通行量' : 'Footfall', x: -184, z: -18, h: 14.5 },
+    { k: 'rail',    name: JA ? '鉄道' : 'Rail',    x: -425, z: 195, h: 17.6 }
   ];
   FEEDS.forEach(function (f) { f.el = document.querySelector('[data-feed="' + f.k + '"]'); });
 
@@ -152,7 +154,7 @@
       namedScreen[nI] = [cx0 + nx * ns * m, cy0 - ny * ns * m];
     }
     if (L.landmarks) {
-      ctx.font = '10px "JetBrains Mono", ui-monospace, monospace';
+      ctx.font = '10px ' + MONO;
       for (var lI = 0; lI < NAMED.length; lI++) {
         var lb = NAMED[lI], lp = namedScreen[lI];
         if (!lp) continue;
@@ -165,7 +167,7 @@
       }
     }
     if (L.feeds) {
-      ctx.font = '10.5px "JetBrains Mono", ui-monospace, monospace';
+      ctx.font = '10.5px ' + MONO;
       for (var fI = 0; fI < FEEDS.length; fI++) {
         var fd = FEEDS[fI], fp = proj3(fd.x, fd.h, fd.z);
         var val = fd.el ? fd.el.textContent : '';
@@ -190,7 +192,7 @@
       ctx.strokeStyle = 'rgba(90,205,255,0.9)'; ctx.lineWidth = 1.4;
       ctx.beginPath(); ctx.arc(sp2[0], sp2[1], 6, 0, Math.PI * 2); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(sp2[0], sp2[1] - 6); ctx.lineTo(sp2[0], sp2[1] - 22); ctx.stroke();
-      ctx.font = '11px "JetBrains Mono", ui-monospace, monospace';
+      ctx.font = '11px ' + MONO;
       var tw = ctx.measureText(sb[0]).width;
       var lx = Math.max(6, Math.min(w - tw - 18, sp2[0] - tw / 2 - 6));
       var ly = Math.max(8, sp2[1] - 42);

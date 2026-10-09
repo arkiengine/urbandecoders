@@ -2,33 +2,64 @@
    indicative timeline band and the modules involved. Never a price.
    The summary is kept in localStorage so the contact form can prefill. */
 (function () {
-  var KEY = 'ud-estimate';
+  var JA = document.documentElement.lang.indexOf('ja') === 0;
+  var KEY = JA ? 'ud-estimate-ja' : 'ud-estimate';
+  var S = JA ? {
+    tiers: ['敷地', '地区', '都市'],
+    base: ['コンテクスト、マッシング、Webエクスプローラー',
+           'コンテクスト、マッシング、モビリティ、Webエクスプローラー',
+           'コンテクスト、マッシング、モビリティ、環境、Webエクスプローラー'],
+    next: ['敷地境界を送付（GeoJSON、DXF、またはレッドラインのPDF）',
+           'GISの範囲と既存のマスタープランを送付',
+           'データ一覧を送付（GIS、フィード、計画ポータル）'],
+    lod3: 'LOD 3 ファサード', feeds: 'ライブフィード', scenarios: 'シナリオ比較',
+    engagement: 'エンゲージメント・レイヤー', table: 'メディアテーブル制作', vr: 'VR制作',
+    none: 'なし', sep: '、', locale: 'ja-JP', notes: '\n\nプロジェクトメモ：\n',
+    tierN: function (n) { return 'ティア ' + n + ' / 3'; },
+    weeks: function (w) { return w[0] + '〜' + w[1] + '週間'; },
+    summary: function (e, v) {
+      return 'urbandecoders.com のスコープ試算\n' +
+        'ティア：' + e.tier + '（' + v.area + ' ha、約' + v.buildings + '棟、LOD ' + v.lod + '）\n' +
+        '基本：' + e.base + '\n追加：' + e.added + '\n納品形態：' + v.delivery + '\n' +
+        '初回ツインの目安：' + this.weeks(e.weeks);
+    }
+  } : {
+    tiers: ['Site', 'District', 'City'],
+    base: ['Context, massing, web explorer',
+           'Context, massing, mobility, web explorer',
+           'Context, massing, mobility, environment, web explorer'],
+    next: ['Send your site boundary (GeoJSON, DXF or a red-line PDF)',
+           'Send your GIS extent and any existing masterplan',
+           'Send a data inventory: GIS, feeds, planning portal'],
+    lod3: 'LOD 3 facades', feeds: 'Live feeds', scenarios: 'Scenario compare',
+    engagement: 'Engagement layer', table: 'Media table build', vr: 'VR build',
+    none: 'None yet', sep: ', ', locale: 'en-GB', notes: '\n\nProject notes:\n',
+    tierN: function (n) { return 'Tier ' + n + ' of 3'; },
+    weeks: function (w) { return w[0] + ' to ' + w[1] + ' weeks'; },
+    summary: function (e, v) {
+      return 'Scope estimate from urbandecoders.com\n' +
+        'Tier: ' + e.tier + ' (' + v.area + ' ha, about ' + v.buildings + ' buildings, LOD ' + v.lod + ')\n' +
+        'Base: ' + e.base + '\nAdded: ' + e.added + '\nDelivery: ' + v.delivery + '\n' +
+        'Indicative first twin: ' + this.weeks(e.weeks);
+    }
+  };
 
   function estimate(v) {
-    var tier, n, weeks, base, next;
-    if (v.area < 5) {
-      tier = 'Site'; n = 1; weeks = [3, 5];
-      base = 'Context, massing, web explorer';
-      next = 'Send your site boundary (GeoJSON, DXF or a red-line PDF)';
-    } else if (v.area <= 100) {
-      tier = 'District'; n = 2; weeks = [6, 8];
-      base = 'Context, massing, mobility, web explorer';
-      next = 'Send your GIS extent and any existing masterplan';
-    } else {
-      tier = 'City'; n = 3; weeks = [10, 14];
-      base = 'Context, massing, mobility, environment, web explorer';
-      next = 'Send a data inventory: GIS, feeds, planning portal';
-    }
+    var i, n, weeks;
+    if (v.area < 5) { i = 0; weeks = [3, 5]; }
+    else if (v.area <= 100) { i = 1; weeks = [6, 8]; }
+    else { i = 2; weeks = [10, 14]; }
+    n = i + 1;
     var added = [];
-    if (v.lod === '3') { weeks[0] += 2; weeks[1] += 3; added.push('LOD 3 facades'); }
+    if (v.lod === '3') { weeks[0] += 2; weeks[1] += 3; added.push(S.lod3); }
     if (v.lod === '1') { weeks[0] = Math.max(2, weeks[0] - 1); weeks[1] = Math.max(3, weeks[1] - 1); }
     if (v.buildings > 1500 && n < 3) { weeks[0] += 1; weeks[1] += 2; }
-    if (v.feeds) { weeks[0] += 2; weeks[1] += 2; added.push('Live feeds'); }
-    if (v.scenarios) { weeks[0] += 1; weeks[1] += 2; added.push('Scenario compare'); }
-    if (v.engagement) { weeks[0] += 2; weeks[1] += 2; added.push('Engagement layer'); }
-    if (v.delivery === 'table') { weeks[0] += 1; weeks[1] += 1; added.push('Media table build'); }
-    if (v.delivery === 'vr') { weeks[0] += 2; weeks[1] += 3; added.push('VR build'); }
-    return { tier: tier, n: n, weeks: weeks, base: base, added: added.length ? added.join(', ') : 'None yet', next: next };
+    if (v.feeds) { weeks[0] += 2; weeks[1] += 2; added.push(S.feeds); }
+    if (v.scenarios) { weeks[0] += 1; weeks[1] += 2; added.push(S.scenarios); }
+    if (v.engagement) { weeks[0] += 2; weeks[1] += 2; added.push(S.engagement); }
+    if (v.delivery === 'table') { weeks[0] += 1; weeks[1] += 1; added.push(S.table); }
+    if (v.delivery === 'vr') { weeks[0] += 2; weeks[1] += 3; added.push(S.vr); }
+    return { tier: S.tiers[i], n: n, weeks: weeks, base: S.base[i], added: added.length ? added.join(S.sep) : S.none, next: S.next[i] };
   }
 
   var form = document.getElementById('est');
@@ -56,17 +87,14 @@
     function render() {
       var v = values(), e = estimate(v);
       outArea.textContent = v.area + ' ha';
-      outBld.textContent = '≈ ' + v.buildings.toLocaleString('en-GB');
+      outBld.textContent = '≈ ' + v.buildings.toLocaleString(S.locale);
       out.tier.textContent = e.tier;
-      out.n.textContent = 'Tier ' + e.n + ' of 3';
-      out.weeks.textContent = e.weeks[0] + ' to ' + e.weeks[1] + ' weeks';
+      out.n.textContent = S.tierN(e.n);
+      out.weeks.textContent = S.weeks(e.weeks);
       out.base.textContent = e.base;
       out.added.textContent = e.added;
       out.next.textContent = e.next;
-      var summary = 'Scope estimate from urbandecoders.com\n' +
-        'Tier: ' + e.tier + ' (' + v.area + ' ha, about ' + v.buildings + ' buildings, LOD ' + v.lod + ')\n' +
-        'Base: ' + e.base + '\nAdded: ' + e.added + '\nDelivery: ' + v.delivery + '\n' +
-        'Indicative first twin: ' + e.weeks[0] + ' to ' + e.weeks[1] + ' weeks';
+      var summary = S.summary(e, v);
       try { localStorage.setItem(KEY, summary); } catch (err) {}
     }
     area.addEventListener('input', render);
@@ -89,7 +117,7 @@
     var saved = null;
     try { saved = localStorage.getItem(KEY); } catch (err) {}
     if (saved && (location.hash === '#estimate' || document.referrer.indexOf(location.host) !== -1)) {
-      msg.value = saved + '\n\nProject notes:\n';
+      msg.value = saved + S.notes;
       var svc = document.getElementById('service');
       if (svc && !svc.value) svc.value = 'Digital twin (site, district or city)';
     }

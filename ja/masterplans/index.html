@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>グレーター・マンチェスターのマスタープラン — Urban Decoders</title>
+<meta name="description" content="グレーター・マンチェスター全域の主要なマスタープランと再生事業を、インタラクティブマップとプログラム・タイムラインで一覧。境界、ステータス、各段階、住宅戸数、雇用数、事業主体を掲載しています。">
+<link rel="canonical" href="https://www.urbandecoders.com/ja/masterplans/">
+<link rel="alternate" hreflang="en" href="https://www.urbandecoders.com/masterplans/">
+<link rel="alternate" hreflang="ja" href="https://www.urbandecoders.com/ja/masterplans/">
+<link rel="alternate" hreflang="x-default" href="https://www.urbandecoders.com/masterplans/">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600&family=M+PLUS+1:wght@500..700&family=M+PLUS+1+Code:wght@400..500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<link rel="stylesheet" href="../../masterplans/css/app.css?v=8">
+</head>
+<body>
+<div id="app">
+  <header class="sitenav">
+    <div class="sitenav__inner">
+      <a class="sitenav__brand" href="../index.html" aria-label="Urban Decoders ホーム">
+        <img src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+      </a>
+      <nav class="sitenav__links" aria-label="メインメニュー">
+        <a href="../platform.html">プラットフォーム</a>
+        <a href="../services.html">サービス</a>
+        <a href="../case-studies.html">実績</a>
+        <a href="./" aria-current="page">マスタープラン</a>
+        <a href="../lab.html">ラボ</a>
+        <a href="../blog.html">インサイト</a>
+        <a href="../about.html">会社概要</a>
+      </nav>
+      <a class="sitenav__cta" href="../contact.html">ツインを始める <span aria-hidden="true">&#8599;</span></a>
+      <div class="lang-switch" role="group" aria-label="言語 / Language">
+        <a class="lang-switch__opt" href="./" hreflang="ja" lang="ja" aria-label="日本語 (JP)" aria-current="true">JP</a>
+        <a class="lang-switch__opt" href="../../masterplans/" hreflang="en" lang="en" aria-label="English (EN)">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <header id="topbar">
+    <div class="brand">
+      <span class="eyebrow">グレーター・マンチェスターのマスタープラン</span>
+      <small id="asof">ステータス基準日 —</small>
+    </div>
+    <div class="controls">
+      <label class="select" title="ベースマップのスタイル">
+        <span>地図</span>
+        <select id="basemap">
+          <option value="liberty">ベクター</option>
+          <option value="positron">ライト</option>
+          <option value="dark">ダーク</option>
+          <option value="black">ブラック</option>
+          <option value="fiord">フィヨルド</option>
+          <option value="blueprint">ブループリント</option>
+          <option value="satellite">衛星写真</option>
+        </select>
+      </label>
+      <div class="seg" id="layers">
+        <label><input type="checkbox" id="lyr-polys" checked> 境界</label>
+        <label><input type="checkbox" id="lyr-points" checked> マーカー</label>
+        <label><input type="checkbox" id="lyr-labels" checked> ラベル</label>
+        <label><input type="checkbox" id="lyr-3d" checked> 3D</label>
+      </div>
+      <button id="btn-overview" title="全域を表示">全体表示</button>
+      <button id="btn-gantt" title="表示中の全スキームのプログラム・タイムライン（T）">タイムライン</button>
+      <button id="btn-tour" title="表示中のスキームを順に巡る">▶ ツアー</button>
+    </div>
+  </header>
+
+  <aside id="sidebar">
+    <input id="search" type="search" placeholder="スキーム名・デベロッパー・建築家を検索（英語）…">
+    <div class="chips" id="chips-borough"></div>
+    <div class="chips" id="chips-status"></div>
+    <div class="chips" id="chips-cat"></div>
+    <div id="totals"></div>
+    <ol id="list"></ol>
+  </aside>
+
+  <main id="map"></main>
+
+  <section id="detail" class="hidden">
+    <button id="detail-close" title="閉じる（Esc）">×</button>
+    <div id="detail-body"></div>
+  </section>
+
+  <section id="gantt" class="hidden" aria-label="プログラム・タイムライン">
+    <div class="gt-head">
+      <span class="eyebrow">プログラム</span>
+      <span class="gt-key"><i style="background:var(--stage-framework)"></i>フレームワーク <i style="background:var(--stage-consent)"></i>計画許可 <i style="background:var(--stage-start)"></i>着工 <i style="background:var(--stage-delivery)"></i>引き渡し <i style="background:var(--stage-complete)"></i>完了 <i class="hollow"></i>予定</span>
+      <span id="gantt-brush" class="hidden"><span></span><button title="期間をクリア">×</button></span>
+      <button id="gantt-close" title="タイムラインを閉じる（T）">×</button>
+    </div>
+    <div id="gantt-body">
+      <div class="gt-axis-wrap"><div class="gt-name"></div><div id="gantt-axis"></div></div>
+      <div id="gantt-rows"></div>
+    </div>
+  </section>
+
+  <div id="timebar" class="live" aria-label="年次スライダー">
+    <button id="btn-play" title="開発の進行を再生（P）">▶</button>
+    <input id="year" type="range" min="0" max="1" step="1" aria-label="年">
+    <span id="year-label">現在</span>
+    <span id="year-count"></span>
+    <button id="btn-now" title="現在のステータスに戻る">現在</button>
+  </div>
+
+  <div id="legend">
+    <span><i style="background:var(--c-housing)"></i>住宅主導</span>
+    <span><i style="background:var(--c-mixed)"></i>複合用途</span>
+    <span><i style="background:var(--c-employment)"></i>業務・雇用</span>
+    <span title="MDC：市長開発公社（Mayoral Development Corporation）"><i style="background:var(--c-framework)"></i>フレームワーク / MDC</span>
+    <span><i style="background:var(--c-infrastructure)"></i>インフラ</span>
+    <span><i style="background:var(--c-civic)"></i>公共・医療</span>
+  </div>
+  <div id="legend-stage" class="hidden">
+    <span><i style="background:var(--stage-framework)"></i>フレームワーク</span>
+    <span><i style="background:var(--stage-consent)"></i>計画許可済み</span>
+    <span><i style="background:var(--stage-start)"></i>工事中</span>
+    <span><i style="background:var(--stage-delivery)"></i>引き渡し中</span>
+    <span><i style="background:var(--stage-complete)"></i>完了</span>
+    <span><i style="background:#464a4d"></i>目標のみ</span>
+    <span><i class="faded"></i>未着手</span>
+  </div>
+  <div id="disclaimer">実線＝法定・用地指定・用地供給の敷地境界線、またはジオリファレンス済みの計画図 · 破線＝部分的（開いた線または一部区域のみ） · WGS84<br>スキーム名・概要などのデータは英語の原文のままです。</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@7.1.0/turf.min.js"></script>
+<script src="../../masterplans/js/app.js?v=7" type="module"></script>
+</body>
+</html>

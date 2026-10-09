@@ -249,6 +249,23 @@ h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
 /* Mobile menu via checkbox-free CSS: keep links, collapse into scroll on small screens */
 .nav__toggle { display: none; }
 
+/* JP / EN language switch — right-most item in the nav. Each option is a link
+   to the same page in the other language (/ja/ mirrors the English tree). */
+.lang-switch {
+  display: inline-flex; flex: 0 0 auto; align-items: stretch; align-self: stretch;
+  border: 1px solid var(--hairline-strong); border-radius: 4px; overflow: hidden;
+  font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; line-height: 1;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.lang-switch__opt {
+  display: grid; place-items: center; min-width: 34px; padding: 8px 9px;
+  color: var(--ash); transition: color 120ms ease, background-color 120ms ease;
+}
+.lang-switch__opt + .lang-switch__opt { border-left: 1px solid var(--hairline-strong); }
+.lang-switch__opt:hover { color: var(--ink); background: rgba(255,255,255,0.04); }
+.lang-switch__opt[aria-current] { color: var(--ink); background: rgba(54,144,180,0.18); box-shadow: inset 0 -2px 0 var(--brand-cyan); }
+.lang-switch__opt:focus-visible { outline-offset: -2px; border-radius: 0; }
+
 /* ------------------------------------------------------------------ */
 /* Cards + 3D tilt                                                     */
 /* ------------------------------------------------------------------ */
@@ -986,10 +1003,15 @@ h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
   .bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
   .bento__big { grid-column: span 2; grid-row: span 1; }
 }
-@media (max-width: 760px) {
+/* Two-row nav (links underneath) as soon as brand + seven links + CTA + JP/EN stop fitting on one line */
+@media (max-width: 1210px) {
   .nav__inner { flex-wrap: wrap; row-gap: 0; padding-block: 8px; }
   .nav__links { order: 3; flex: 1 0 100%; overflow-x: auto; scrollbar-width: none; padding-bottom: 6px; margin-inline: -4px; }
   .nav__links::-webkit-scrollbar { display: none; }
+}
+/* Phones: brand and JP/EN share the top row; the nav CTA steps aside (every page repeats it below) */
+@media (max-width: 480px) {
+  .nav__cta .btn { display: none; }
 }
 @media (max-width: 640px) {
   .grid--2, .grid--3, .grid--4, .tiers, .quotes { grid-template-columns: 1fr; }
@@ -1320,3 +1342,42 @@ h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
 .kv-list { display: grid; gap: 8px; font-size: 14px; color: var(--charcoal); max-width: 60ch; }
 .kv-list li { display: grid; grid-template-columns: 72px 1fr; gap: 10px; align-items: baseline; }
 .kv-list b { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-cyan); font-weight: 500; }
+
+/* ==================================================================
+   Japanese (/ja/) — type lanes and setting
+   Latin runs keep the brand faces; kana and kanji fall through per glyph:
+     Archivo → M PLUS 1 · IBM Plex Sans → IBM Plex Sans JP · JetBrains Mono → M PLUS 1 Code
+   The JP faces are linked from each /ja/ page head, so English pages never load them.
+   ================================================================== */
+html:lang(ja) {
+  --font-display: 'Archivo', 'M PLUS 1', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+  --font-techno: 'Play', 'M PLUS 1', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  --font-sans: 'IBM Plex Sans', 'IBM Plex Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+  --font-mono: 'JetBrains Mono', 'M PLUS 1 Code', 'Hiragino Sans', 'Yu Gothic', ui-monospace, monospace;
+}
+html:lang(ja) body { line-height: 1.75; letter-spacing: 0.02em; line-break: strict; }
+
+/* Headlines: proportional kana (palt), open leading for full-em glyphs, phrase-aware breaks */
+html:lang(ja) :is(h1, h2, h3, h4, .display, .section-title, .h-serif) {
+  line-height: 1.38; letter-spacing: 0.02em;
+  font-feature-settings: "palt"; word-break: auto-phrase;
+}
+html:lang(ja) .display { line-height: 1.24; font-size: clamp(2.1rem, 4.6vw, 3.6rem); }
+html:lang(ja) .display--xl { font-size: clamp(2.2rem, 5vw, 4.1rem); }
+html:lang(ja) .page-head .display { max-width: 15em; }  /* 16ch ≈ 8 kanji; JP needs a measure in em */
+html:lang(ja) .section-title { line-height: 1.32; font-size: clamp(1.7rem, 3.3vw, 2.4rem); }
+html:lang(ja) .use h3 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); }
+html:lang(ja) .lead { line-height: 1.9; }
+html:lang(ja) :is(.eyebrow, .btn, .pill, .tag, .cap__body b, .wcard__body h3, .role h3, .fan-list b, .statstrip__l) { word-break: auto-phrase; }
+
+/* Mono labels: JP glyphs need a touch more size than Latin caps at the same px */
+html:lang(ja) .eyebrow { font-size: 12px; letter-spacing: 0.06em; }
+html:lang(ja) .nav__link { font-size: 11.5px; letter-spacing: 0.04em; }
+html:lang(ja) .btn--mono { font-size: 12px; letter-spacing: 0.06em; }
+html:lang(ja) :is(.tag, .feed__name, .seg button, .member__role, .footer h4, .config__title, .holo-chip) { font-size: 11.5px; letter-spacing: 0.05em; }
+html:lang(ja) :is(.statstrip__l, .step__k, .use__n) { font-size: 12px; letter-spacing: 0.04em; }
+html:lang(ja) :is(.cap__g, .chip) { font-size: 11px; letter-spacing: 0.04em; }
+html:lang(ja) .fcard { font-size: 11px; letter-spacing: 0.04em; }
+html:lang(ja) .fcard__name { font-size: 12.5px; }
+html:lang(ja) .wcard__data { font-size: 12px; line-height: 1.85; }
+html:lang(ja) .est__tier small { letter-spacing: 0.04em; }

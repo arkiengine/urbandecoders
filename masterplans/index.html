@@ -5,11 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Greater Manchester Masterplans — Urban Decoders</title>
 <meta name="description" content="Interactive map and programme timeline of the major masterplan and regeneration schemes across Greater Manchester: boundaries, status, stages, homes, jobs and lead partners.">
+<link rel="alternate" hreflang="en" href="https://www.urbandecoders.com/masterplans/">
+<link rel="alternate" hreflang="ja" href="https://www.urbandecoders.com/ja/masterplans/">
+<link rel="alternate" hreflang="x-default" href="https://www.urbandecoders.com/masterplans/">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
-<link rel="stylesheet" href="css/app.css?v=7">
+<link rel="stylesheet" href="css/app.css?v=8">
 </head>
 <body>
 <div id="app">
@@ -28,6 +31,10 @@
         <a href="../about.html">About</a>
       </nav>
       <a class="sitenav__cta" href="../contact.html">Start a twin <span aria-hidden="true">&#8599;</span></a>
+      <div class="lang-switch" role="group" aria-label="Language / 言語">
+        <a class="lang-switch__opt" href="../ja/masterplans/" hreflang="ja" lang="ja" aria-label="日本語 (JP)">JP</a>
+        <a class="lang-switch__opt" href="./" hreflang="en" lang="en" aria-label="English (EN)" aria-current="true">EN</a>
+      </div>
     </div>
   </header>
 
@@ -120,6 +127,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7.1.0/turf.min.js"></script>
-<script src="js/app.js?v=6" type="module"></script>
+<script src="js/app.js?v=7" type="module"></script>
 </body>
 </html>

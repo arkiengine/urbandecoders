@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Decoders — 計画・開発・デザインのための都市デジタルツイン</title>
+<meta name="description" content="Urban Decodersは、都市の計画・検証・意思決定をひとつのモデルで行える生きたデジタルツインを構築します。GIS、BIM、都市のライブフィードを操作できるひとつのツインに統合し、計画当局（自治体）、マスタープランナー、アーバンデザイナー、開発パートナー（デベロッパー）に提供します。英国グレーター・マンチェスター、ストックポート。">
+<meta name="keywords" content="都市デジタルツイン, デジタルツイン, urban digital twin, マスタープラン, マスタープランニング, 計画ビジュアライゼーション, シナリオ検証, 都市のライブデータ, GIS, コンテクストモデル, ストックポート, マンチェスター">
+<link rel="canonical" href="https://www.urbandecoders.com/ja/">
+<link rel="alternate" hreflang="en" href="https://www.urbandecoders.com/">
+<link rel="alternate" hreflang="ja" href="https://www.urbandecoders.com/ja/">
+<link rel="alternate" hreflang="x-default" href="https://www.urbandecoders.com/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:title" content="Urban Decoders — 計画・開発・デザインのための都市デジタルツイン">
+<meta property="og:description" content="都市を計画する。モデルが応える。計画当局（自治体）、マスタープランナー、開発パートナー（デベロッパー）のための生きたデジタルツイン。">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-home.jpg">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../assets/favicon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600&family=M+PLUS+1:wght@500..700&family=M+PLUS+1+Code:wght@400..500&display=swap">
+<link rel="stylesheet" href="../styles.css?v=20261009">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Urban Decoders",
+  "description": "計画・開発・デザインのための都市デジタルツイン・スタジオ。GIS、BIM、都市のライブフィードから敷地・地区・都市の生きたデジタルツインを構築し、その上でシナリオ検証、住民協議プラットフォーム、エリアマネジメント・ダッシュボードを提供します。",
+  "url": "https://www.urbandecoders.com/ja/",
+  "inLanguage": "ja",
+  "email": "info@urbandecoders.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "45 Middle Hillgate",
+    "addressLocality": "Stockport",
+    "addressRegion": "Greater Manchester",
+    "postalCode": "SK1 3DG",
+    "addressCountry": "GB"
+  },
+  "areaServed": ["United Kingdom"],
+  "knowsAbout": ["都市デジタルツイン", "マスタープランニング", "計画シナリオ検証", "敷地の開発容量検討", "都市のライブデータ", "GISコンテクストモデリング", "住民協議プラットフォーム", "エリアマネジメント・ダッシュボード", "Unreal Engineによるビジュアライゼーション"],
+  "sameAs": ["https://www.youtube.com/@Urban_Decoders", "https://www.instagram.com/urbandecoders/"]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="Urban Decoders ホーム">
+      <img class="brand__wordmark" src="../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="メインメニュー">
+      <a class="nav__link" href="platform.html">プラットフォーム</a>
+      <a class="nav__link" href="services.html">サービス</a>
+      <a class="nav__link" href="case-studies.html">実績</a>
+      <a class="nav__link" href="masterplans/">マスタープラン</a>
+      <a class="nav__link" href="lab.html">ラボ</a>
+      <a class="nav__link" href="blog.html">インサイト</a>
+      <a class="nav__link" href="about.html">会社概要</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="contact.html">ツインを始める <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+      <div class="lang-switch" role="group" aria-label="言語 / Language">
+        <a class="lang-switch__opt" href="index.html" hreflang="ja" lang="ja" aria-label="日本語 (JP)" aria-current="true">JP</a>
+        <a class="lang-switch__opt" href="../index.html" hreflang="en" lang="en" aria-label="English (EN)">EN</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero band hero--video">
+  <div class="hero__video" aria-hidden="true">
+    <video id="hero-video" autoplay muted loop playsinline preload="metadata" poster="../assets/twin/posters/stockport-east-overview.jpg">
+      <source src="../assets/twin/stockport-east-overview.mp4" type="video/mp4">
+    </video>
+    <div class="hero__shade"></div>
+  </div>
+  <div class="wrap">
+    <div class="hero__grid">
+      <div class="stack">
+        <span class="eyebrow">都市デジタルツイン · 計画 · 開発 · デザイン</span>
+        <h1 class="display display--xl">都市を計画する。<span class="accent">モデルが応える。</span></h1>
+        <p class="lead">計画当局（自治体）、マスタープランナー、アーバンデザイナー、開発パートナー（デベロッパー）のための生きたデジタルツイン。GIS、BIM、都市のライブフィードを、最初の敷地検討からまちびらきの日まで、操作できるひとつのモデルで扱います。</p>
+        <div class="wrap-btns mt-6">
+          <a class="btn btn--primary btn--lg btn--mono" href="contact.html">ツインを始める <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+          <a class="btn btn--outline btn--lg btn--mono" href="case-studies.html">実績を見る</a>
+        </div>
+        <div class="badge-row mt-7">
+          <span class="pill"><span class="dot dot--green"></span> ストックポート・イースト ツイン · 稼働中</span>
+          <span class="pill pill--brand">ストックポート・モデル · 899棟の実在建物</span>
+        </div>
+      </div>
+
+      <!-- Interactive 3D globe (canvas) -->
+      <div class="globe-scene">
+        <canvas id="ud-globe" class="globe-canvas" tabindex="0" role="img" aria-label="回転するインタラクティブな3D地球儀。マンチェスターと東京のUrban Decodersスタジオを赤で示し、世界各地のプロジェクト都市とデータのアークで結んでいます。ドラッグで回転、都市をクリックでフォーカス、ボタンでズームできます。"></canvas>
+        <div class="globe-chip">
+          <div class="tag">スタジオ・ネットワーク</div>
+          <div class="mono" style="font-size:20px; letter-spacing:-0.5px; margin-top:6px; font-family:var(--font-display); font-weight:600">マンチェスター <span style="color:var(--brand-teal-light)">·</span> 東京</div>
+          <div class="muted" style="font-size:12px; font-family:var(--font-mono)">ドラッグで回転 · 都市をクリック</div>
+        </div>
+        <div class="globe-ctrls" role="group" aria-label="地球儀の操作">
+          <button class="globe-ctrl" id="globe-zin" type="button" aria-label="ズームイン" title="ズームイン">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+          </button>
+          <button class="globe-ctrl" id="globe-zout" type="button" aria-label="ズームアウト" title="ズームアウト">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14" stroke-linecap="round"/></svg>
+          </button>
+          <button class="globe-ctrl" id="globe-reset" type="button" aria-label="表示をリセット" title="表示をリセット">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 12a8 8 0 1 1-2.4-5.7M20 3v4h-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="globe-ctrl" id="globe-spin" type="button" aria-pressed="true" aria-label="回転を一時停止" title="回転を一時停止">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5v14M15 5v14" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <div class="globe-hint" id="globe-hint" aria-hidden="true">Ctrlキーを押しながらスクロールでズーム</div>
+      </div>
+    </div>
+
+    <div class="statstrip" aria-label="スタジオの数値">
+      <div><div class="statstrip__n">899</div><div class="statstrip__l">ストックポート・モデルの実在建物</div></div>
+      <div><div class="statstrip__n">6</div><div class="statstrip__l">統合済みのライブフィードの種類</div></div>
+      <div><div class="statstrip__n">LOD 2.2</div><div class="statstrip__l">地区の標準、明示された座標参照系（CRS）</div></div>
+      <div><div class="statstrip__n is-red">1</div><div class="statstrip__l">すべての意思決定を支えるモデル</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BACKED BY -->
+<section class="section--tight" aria-label="NVIDIA InceptionとEpic MegaGrantsによる支援">
+  <div class="wrap">
+    <div class="backed">
+      <span class="eyebrow">支援</span>
+      <div class="backed__logos">
+        <img class="backed__nv" src="../assets/logos/nvidia-inception.svg" alt="NVIDIA Inception プログラム メンバー" width="222" height="96">
+        <img class="backed__epic" src="../assets/logos/epic-megagrants.svg" alt="Epic MegaGrants 受賞" width="119" height="124">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIX LAYERS — interactive fan -->
+<section class="section glow-top" id="layers">
+  <div class="wrap">
+    <div class="stack center" style="max-width:52ch; margin-inline:auto; align-items:center">
+      <span class="eyebrow">6つのレイヤー</span>
+      <h2 class="section-title">生きたデジタルツインの6つのレイヤー。</h2>
+      <p class="lead center">私たちが構築するツインはすべて、同じ土台の上に同じ6つのレイヤーを重ねます。敷地検討なら3層で止めることもあります。都市ツインでは6層すべてがライブで動きます。カードにカーソルを合わせると持ち上がります。</p>
+    </div>
+    <div class="fan-wrap">
+      <div class="fan" aria-label="ツインの6つのレイヤー">
+        <a class="fcard" data-layer="context" href="services.html#context" style="--c:#1A5279; --r:-18deg; --y:26px">
+          <span class="fcard__row"><span aria-hidden="true">&#8598;</span><span>コンテクスト</span></span>
+          <span class="fcard__ico" aria-hidden="true"><canvas class="fcard__cv"></canvas></span>
+          <span class="fcard__name">コンテクスト</span>
+          <span class="fcard__row fcard__row--b" aria-hidden="true"><span>&#8598;</span><span>コンテクスト</span></span>
+        </a>
+        <a class="fcard" data-layer="massing" href="services.html#planning" style="--c:#2A7B9B; --r:-11deg; --y:12px">
+          <span class="fcard__row"><span aria-hidden="true">&#8598;</span><span>マッシング</span></span>
+          <span class="fcard__ico" aria-hidden="true"><canvas class="fcard__cv"></canvas></span>
+          <span class="fcard__name">マッシング</span>
+          <span class="fcard__row fcard__row--b" aria-hidden="true"><span>&#8598;</span><span>マッシング</span></span>
+        </a>
+        <a class="fcard" data-layer="mobility" href="services.html#planning" style="--c:#3690B4; --r:-4deg; --y:4px">
+          <span class="fcard__row"><span aria-hidden="true">&#8598;</span><span>モビリティ</span></span>
+          <span class="fcard__ico" aria-hidden="true"><canvas class="fcard__cv"></canvas></span>
+          <span class="fcard__name">モビリティ</span>
+          <span class="fcard__row fcard__row--b" aria-hidden="true"><span>&#8598;</span><span>モビリティ</span></span>
+        </a>
+        <a class="fcard" data-layer="environment" href="services.html#planning" style="--c:#4FA6C8; --r:4deg; --y:4px">
+          <span class="fcard__row"><span aria-hidden="true">&#8598;</span><span>環境</span></span>
+          <span class="fcard__ico" aria-hidden="true"><canvas class="fcard__cv"></canvas></span>
+          <span class="fcard__name">環境</span>
+          <span class="fcard__row fcard__row--b" aria-hidden="true"><span>&#8598;</span><span>環境</span></span>
+        </a>
+        <a class="fcard" data-layer="live" href="services.html#live-city" style="--c:#5ACDFF; --r:11deg; --y:12px">
+          <span class="fcard__row"><span aria-hidden="true">&#8598;</span><span>ライブデータ</span></span>
+          <span class="fcard__ico" aria-hidden="true"><canvas class="fcard__cv"></canvas></span>
+          <span class="fcard__name">ライブデータ</span>
+          <span class="fcard__row fcard__row--b" aria-hidden="true"><span>&#8598;</span><span>ライブデータ</span></span>
+        </a>
+        <a class="fcard" data-layer="decision" href="services.html#engagement" style="--c:#FF5A4A; --r:18deg; --y:26px">
+          <span class="fcard__row"><span aria-hidden="true">&#8598;</span><span>意思決定</span></span>
+          <span class="fcard__ico" aria-hidden="true"><canvas class="fcard__cv"></canvas></span>
+          <span class="fcard__name">意思決定</span>
+          <span class="fcard__row fcard__row--b" aria-hidden="true"><span>&#8598;</span><span>意思決定</span></span>
+        </a>
+      </div>
+      <div class="fan-list">
+        <div><b>コンテクスト</b>GIS、地形、制約条件、土地所有</div>
+        <div><b>マッシング</b>開発容量、密度、フェーズ計画、住戸構成</div>
+        <div><b>モビリティ</b>公共交通、交通量、歩行、駐車場</div>
+        <div><b>環境</b>採光、風環境、騒音、温熱環境</div>
+        <div><b>ライブデータ</b>通行量カウンター、CCTV、GTFS-RT、AURN</div>
+        <div><b>意思決定</b>住民協議、委員会、ダッシュボード</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CAPABILITIES -->
+<section class="section" id="capabilities">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">機能</span>
+      <h2 class="section-title">ツインにできること。</h2>
+      <p class="lead">エクスプローラーに標準搭載された16のツール。いずれもストックポート・イーストのツインで収録しました。タイルにカーソルを合わせると再生します。すべてのツールが同じジオリファレンスされた基盤の上で動くため、計測値も、影も、バス路線も食い違いません。</p>
+    </div>
+    <div class="caps">
+      <div class="cap" tabindex="0" role="button" aria-label="一人称ウォークスルー：デモ映像を再生" data-video="../assets/twin/first-person-park.mp4">
+        <div class="cap__media"><img src="../assets/twin/caps/first-person-park.jpg" alt="ストックポート・イーストのツインでの一人称ウォークスルー" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">空間を移動する</span><b>一人称ウォークスルー</b><span>目線の高さで通りを歩き、どの玄関からどの街角へも移動できます。</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="ドローン・ウォークスルー：デモ映像を再生" data-video="../assets/twin/urban-night.mp4">
+        <div class="cap__media"><img src="../assets/twin/caps/urban-night.jpg" alt="ストックポート・イーストのツインでのドローン・ウォークスルー" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">空間を移動する</span><b>ドローン・ウォークスルー</b><span>敷地の上空を自由に、または保存したルートに沿って飛行できます。</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="ミニマップ：デモ映像を再生" data-video="../assets/twin/minimap.mp4">
+        <div class="cap__media"><img src="../assets/twin/caps/minimap.jpg" alt="ストックポート・イーストのツインでのミニマップ" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">空間を移動する</span><b>ミニマップ</b><span>現在地と視線の方向をリアルタイムで追従する平面図。</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="断面ツール：デモ映像を再生" data-video="../assets/twin/section.mp4">
+        <div class="cap__media"><img src="../assets/twin/caps/section.jpg" alt="ストックポート・イーストのツインでの断面ツール" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">空間を移動する</span><b>断面ツール</b><span>任意の面でモデルを切断し、地盤、階層、設備を読み取れます。</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="太陽位置コントロール：デモ映像を再生" data-video="../assets/twin/dynamic-sun.mp4">
+        <div class="cap__media"><img src="../assets/twin/caps/dynamic-sun.jpg" alt="ストックポート・イーストのツインでの太陽位置コントロール" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">光と気候</span><b>太陽位置コントロール</b><span>日付と時刻を設定し、敷地を横切る影の動きを確認できます。</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="天候コントロール：デモ映像を再生" data-video="../assets/twin/weather.mp4">
+        <div class="cap__media"><img src="../assets/twin/caps/weather.jpg" alt="ストックポート・イーストのツインでの天候コントロール" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">光と気候</span><b>天候コントロール</b><span>雨、霧、雪、雲の状態を切り替え。雰囲気の演出にもレビューにも。</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="日射解析：デモ映像を再生" data-video="../assets/twin/solar.mp4">
+        <div class="cap__media"><img src="../assets/twin/caps/solar.jpg" alt="ストックポート・イーストのツインでの日射解析" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">光と気候</span><b>日射解析</b><span>ファサード、屋根、公共空間の日射量と日照時間。</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="可視領域解析：デモ映像を再生" data-video="../assets/twin/viewshed.mp4">
+        <div class="cap__media"><img src="../assets/twin/caps/viewshed.jpg" alt="ストックポート・イーストのツインでの可視領域解析" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">光と気候</span><b>可視領域解析</b><span>任意の地点から何が見えるか。そして計画によって何が見えなくなるか。</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="GISデータ：デモ映像を再生" data-video="../assets/twin/poi-gis.mp4">
+        <div class="cap__media"><img src="../assets/twin/caps/poi-gis.jpg" alt="ストックポート・イーストのツインでのGISデータ" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">モデル上のデータ</span><b>GISデータ</b><span>区画、制約条件、地形、ライフラインを、明示された座標参照系（CRS）で。</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="都市データ：デモ映像を再生" data-video="../assets/twin/urban-gis.mp4">
+        <div class="cap__media"><img src="../assets/twin/caps/urban-gis.jpg" alt="ストックポート・イーストのツインでの都市データ" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">モデル上のデータ</span><b>都市データ</b><span>人口、土地利用、歩行者通行量、大気質を、照会できるレイヤーとして。</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="交通データ：デモ映像を再生" data-video="../assets/twin/poi-transport.mp4">
+        <div class="cap__media"><img src="../assets/twin/caps/poi-transport.jpg" alt="ストックポート・イーストのツインでの交通データ" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">モデル上のデータ</span><b>交通データ</b><span>路線、停留所、時刻表、GTFS-RTによるリアルタイムの車両位置。</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="POIデータ：デモ映像を再生" data-video="../assets/twin/pois.mp4">
+        <div class="cap__media"><img src="../assets/twin/caps/pois.jpg" alt="ストックポート・イーストのツインでのPOIデータ" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">モデル上のデータ</span><b>POIデータ</b><span>スポット、生活利便施設、ランドマークを、距離やメディアとあわせて。</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="デザイン・コンフィギュレーター：デモ映像を再生" data-video="../assets/twin/configurator.mp4">
+        <div class="cap__media"><img src="../assets/twin/caps/configurator.jpg" alt="ストックポート・イーストのツインでのデザイン・コンフィギュレーター" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">デザインとプレゼンテーション</span><b>デザイン・コンフィギュレーター</b><span>マッシング、ファサード、素材の選択肢をライブスライダーで。数値も同時に表示します。</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="計測ツール：デモ映像を再生" data-video="../assets/twin/measuring.mp4">
+        <div class="cap__media"><img src="../assets/twin/caps/measuring.jpg" alt="ストックポート・イーストのツインでの計測ツール" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">デザインとプレゼンテーション</span><b>計測ツール</b><span>距離、面積、高さを、モデルから直接メートル単位で読み取れます。</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="カスタムギャラリー：デモ映像を再生" data-video="../assets/twin/gallery.mp4">
+        <div class="cap__media"><img src="../assets/twin/caps/gallery.jpg" alt="ストックポート・イーストのツインでのカスタムギャラリー" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">デザインとプレゼンテーション</span><b>カスタムギャラリー</b><span>レンダリング、写真、パノラマ、動画を、写っている場所にピン留め。</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="夜間シーン：デモ映像を再生" data-video="../assets/twin/first-person-night.mp4">
+        <div class="cap__media"><img src="../assets/twin/caps/first-person-night.jpg" alt="ストックポート・イーストのツインでの夜間シーン" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">デザインとプレゼンテーション</span><b>夜間シーン</b><span>日没後の街路照明とファサード照明。ナイトタイムエコノミーや安全性の検討に。</span></div>
+      </div>
+    </div>
+    <button class="yt-facade mt-8" type="button" data-video="../assets/twin/stockport-east-overview.mp4" aria-label="再生：ストックポート・イーストのデジタルツイン（1分39秒）" style="display:block; aspect-ratio:21/9">
+      <img src="../assets/twin/posters/stockport-east-overview.jpg" alt="上空から見たストックポート・イーストのデジタルツイン" loading="lazy" width="1280" height="720">
+      <span class="yt-play" aria-hidden="true"></span>
+      <span class="yt-facade__cap"><span class="tag">視聴</span><span style="color:#fff; font-family:var(--font-display); font-size:18px">ストックポート・イースト デジタルツイン · 1:39</span></span>
+    </button>
+  </div>
+</section>
+
+<!-- THREE USES -->
+<section class="section glow-top" id="uses">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:8px">
+      <span class="eyebrow">3つの用途</span>
+      <h2 class="section-title">計画。検証。決定。ひとつのモデルで。</h2>
+    </div>
+    <div class="uses">
+      <article class="use">
+        <div>
+          <div class="use__n">[ <b>01</b> / 03 ] 計画</div>
+          <h3>マスタープランと敷地の開発容量を、実際の敷地の上で。</h3>
+          <p>区画、街区、公共空間をジオリファレンスされた敷地上に直接生成し、パラメータを動かすたびに延床面積（GFA）、建蔽率、緑地率、住戸構成を再計算します。容量検討は2週間ではなく、半日で。</p>
+          <div class="use__proof">19,551 m²の敷地 · FAR 1〜6を数秒で · Cesium 3D Tiles</div>
+        </div>
+        <button class="yt-facade" type="button" data-video="../assets/arki/arki-masterplans.mp4" aria-label="再生：地区のレイアウトを生成するマスタープラン・コンフィギュレーター">
+          <img src="../assets/img/poster-masterplans.jpg" alt="実在の都市タイル上に区画を配置するマスタープラン・コンフィギュレーター" loading="lazy" width="720" height="405">
+          <span class="yt-play" aria-hidden="true"></span>
+          <span class="yt-facade__cap"><span class="tag">再生</span><span style="color:#fff; font-family:var(--font-display); font-size:16px">マスタープラン・コンフィギュレーター</span></span>
+        </button>
+      </article>
+      <article class="use">
+        <div>
+          <div class="use__n">[ <b>02</b> / 03 ] 検証</div>
+          <h3>シナリオを、数値付きで比較。</h3>
+          <p>密度、高さ、フェーズ計画、採光、眺望、公共交通へのアクセスを、同じモデルの中で案ごとに比較検証します。委員会室に持ち込むのはイメージパースではなく、比較そのものです。</p>
+          <div class="use__proof">バルコニー330か所 · 14,584 m² · ドラッグに合わせて再計算</div>
+          <a class="btn btn--outline btn--sm btn--mono mt-6" href="services.html#configurator">密度スライダーを試す</a>
+        </div>
+        <button class="yt-facade" type="button" data-video="../assets/arki/arki-vertical-garden.mp4" aria-label="再生：面積を再計算しながらライブで再構成されるタワー">
+          <img src="../assets/img/poster-vertical-garden.jpg" alt="面積表を再計算しながら再構成される垂直庭園タワー" loading="lazy" width="720" height="405">
+          <span class="yt-play" aria-hidden="true"></span>
+          <span class="yt-facade__cap"><span class="tag">再生</span><span style="color:#fff; font-family:var(--font-display); font-size:16px">ライブ・シナリオ検証</span></span>
+        </button>
+      </article>
+      <article class="use">
+        <div>
+          <div class="use__n">[ <b>03</b> / 03 ] 決定</div>
+          <h3>住民協議、委員会への根拠資料、ひとつのダッシュボード。</h3>
+          <p>住民は自宅の通りから計画案を見て回り、意図した場所にコメントをピン留めできます。自治体の担当者は、記録、主な論点、エクスポートを受け取れます。まちびらきの後は、同じツインがその場所を運営するダッシュボードになります。</p>
+          <div class="use__proof">コメントは場所にピン留め · エクスポート可能 · 匿名化した集計のみ</div>
+          <a class="btn btn--outline btn--sm btn--mono mt-6" href="services.html#consultation-demo">住民協議デモを試す</a>
+        </div>
+        <a class="media" href="services.html#consultation-demo" aria-label="住民協議デモを開く">
+          <img src="../assets/img/touch-committee.jpg" alt="会議室のスクリーンにストックポート・イーストのツインを映し、Historic and Civic Heartエリアを指し示す自治体の担当者" loading="lazy" width="1400" height="798" style="aspect-ratio:16/9">
+          <div class="media__cap"><div class="tag">委員会</div><div style="font-family:var(--font-display); font-size:16px; margin-top:4px; color:#fff">根拠を、会議の場に</div></div>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SCOPE ESTIMATOR -->
+<section class="section glow-top" id="scope">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">スコープ試算</span>
+      <h2 class="section-title">1分で、ツインのスコープを試算。</h2>
+      <p class="lead">範囲とレイヤーを設定してください。ティア、目安のスケジュール、必要なモジュールがわかります。価格は初回ヒアリングを経て決まるため、ここでは表示しません。</p>
+    </div>
+    <div class="est" id="est">
+      <div class="est__form" role="group" aria-label="スコープの入力項目">
+        <div class="est__row"><label for="est-area">敷地面積</label><output id="est-area-v" for="est-area">42 ha</output><input type="range" id="est-area" min="1" max="300" step="1" value="42"></div>
+        <div class="est__row"><label for="est-bld">対象建物数</label><output id="est-bld-v" for="est-bld">≈ 900</output><input type="range" id="est-bld" min="10" max="5000" step="10" value="900"></div>
+        <div class="est__row"><span>詳細度（LOD）</span><span class="seg" data-key="lod" role="group" aria-label="詳細度（LOD）"><button type="button" data-val="1" aria-pressed="false">LOD 1</button><button type="button" data-val="2.2" aria-pressed="true">LOD 2.2</button><button type="button" data-val="3" aria-pressed="false">LOD 3</button></span></div>
+        <div class="est__row"><span>都市のライブフィード</span><span class="seg" data-key="feeds" role="group" aria-label="都市のライブフィード"><button type="button" data-val="no" aria-pressed="false">なし</button><button type="button" data-val="yes" aria-pressed="true">あり</button></span></div>
+        <div class="est__row"><span>シナリオ比較</span><span class="seg" data-key="scenarios" role="group" aria-label="シナリオ比較"><button type="button" data-val="no" aria-pressed="false">なし</button><button type="button" data-val="yes" aria-pressed="true">あり</button></span></div>
+        <div class="est__row"><span>住民参加モジュール</span><span class="seg" data-key="engagement" role="group" aria-label="住民参加モジュール"><button type="button" data-val="no" aria-pressed="true">なし</button><button type="button" data-val="yes" aria-pressed="false">あり</button></span></div>
+        <div class="est__row"><span>納品形態</span><span class="seg" data-key="delivery" role="group" aria-label="納品形態"><button type="button" data-val="web" aria-pressed="true">Web</button><button type="button" data-val="table" aria-pressed="false">テーブル</button><button type="button" data-val="vr" aria-pressed="false">VR</button></span></div>
+      </div>
+      <div class="est__out" aria-live="polite">
+        <span class="tag">目安のスコープ</span>
+        <div class="est__tier"><span id="est-tier">地区</span><small id="est-tier-n">ティア 2 / 3</small></div>
+        <div class="est__line"><span>初回ツイン</span><b id="est-weeks">6〜8週間</b></div>
+        <div class="est__line"><span>基本</span><b id="est-base">コンテクスト、マッシング、モビリティ、Webエクスプローラー</b></div>
+        <div class="est__line"><span>追加</span><b id="est-added">ライブフィード、シナリオ比較</b></div>
+        <div class="est__line"><span>次のステップ</span><b id="est-next">GISの範囲と既存のマスタープランを送付</b></div>
+        <a class="btn btn--primary btn--mono" href="contact.html#estimate">初回ヒアリングを予約 <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div>
+    <p class="muted mt-4" style="font-size:12px">ティア：敷地は5 ha未満、地区は100 haまで、都市はそれ以上。期間は最初に稼働するツインまでの目安の幅であり、納品スケジュールではありません。</p>
+  </div>
+</section>
+
+<!-- LAB — ARKI ENGINE -->
+<section class="section arki glow-top" id="arki-engine">
+  <div class="wrap">
+    <div class="arki__head">
+      <div class="stack">
+        <span class="eyebrow">ラボ</span>
+        <h2 class="display" style="font-size:clamp(2.4rem,5vw,3.8rem)">Arki <span class="text-red">Engine</span></h2>
+        <p class="lead">ツインを支える研究開発。Arki Engineは、Unreal Engine上に構築した私たちのデザインプラットフォームです。Grasshopperのロジックがリアルタイムのジオメトリを駆動し、パビリオンもタワーも地区全体も、パラメータの変化に合わせて面積表ごと再生成されます。</p>
+        <p class="lead">ここにあるコンフィギュレーターはすべて、Grasshopperの定義から始まりました。建築家がすでに信頼しているロジックが、そのままライブモデルを動かします。</p>
+        <div class="wrap-btns">
+          <div class="arki__badge">
+            <img src="../assets/arki/epic-megagrant.png" alt="Epic MegaGrants 受賞ロゴ" loading="lazy" width="34" height="34">
+            <span>Epic MegaGrant 受賞</span>
+          </div>
+          <a class="btn btn--outline btn--mono" href="lab.html">ラボの内側へ</a>
+        </div>
+      </div>
+      <div class="media">
+        <img src="../assets/arki/tower1.png" alt="Unreal Engineで動作するArki Engineのリアルタイム・パラメトリック・タワーコンフィギュレーター" loading="lazy" width="720" height="405">
+        <div class="media__cap"><span class="tag">コンフィギュレーター</span><div style="font-family:var(--font-display); font-size:17px; margin-top:4px">オフィス T46 · ウェストミンスターのタイル</div></div>
+      </div>
+    </div>
+
+    <!-- 3D coverflow gallery -->
+    <div class="coverflow-wrap mt-8">
+      <div class="coverflow" id="cf-gallery" tabindex="0" role="group" aria-label="Arki Engineのプロジェクトギャラリー。スクロール、ドラッグ、または矢印キーでレンダリングを切り替えられます">
+        <div class="coverflow__stage">
+        <figure class="cf-card"><img src="../assets/arki/pav1.png" alt="Arki Engineのパビリオン・コンフィギュレーターで生成した木造パビリオン" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>木造パビリオン</h4><p>755部材の集積構造</p></figcaption></figure>
+        <figure class="cf-card"><img src="../assets/arki/tower1.png" alt="ロンドンのスカイラインに重ねたパラメトリックなオフィスタワーのマッシング" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>オフィスタワー T46</h4><p>パラメトリックなマッシング検討</p></figcaption></figure>
+        <figure class="cf-card"><img src="../assets/arki/plan2.png" alt="Arki Engineによるデータ駆動型の地区マスタープラン" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>地区マスタープラン</h4><p>データ駆動型の区画レイアウト</p></figcaption></figure>
+        <figure class="cf-card"><img src="../assets/arki/tower5.png" alt="リアルタイムでレンダリングした集合住宅タワーのファサード検討" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>集合住宅タワー</h4><p>リアルタイムのファサード検討</p></figcaption></figure>
+        <figure class="cf-card"><img src="../assets/arki/pav3.png" alt="ジェネレーティブに生成したキャノピー・パビリオンの構造" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>キャノピー・パビリオン</h4><p>ジェネレーティブな構造</p></figcaption></figure>
+        <figure class="cf-card"><img src="../assets/arki/plan4.png" alt="コンテクストとゾーニングのレイヤーを重ねたアーバンプラン" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>アーバンプラン</h4><p>コンテクスト + ゾーニングのレイヤー</p></figcaption></figure>
+        <figure class="cf-card"><img src="../assets/arki/tower3.png" alt="ジオメトリを自在に変更できる複合用途タワー" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>複合用途タワー</h4><p>可変ジオメトリ</p></figcaption></figure>
+        <figure class="cf-card"><img src="../assets/arki/pav4.png" alt="ウォーターフロント・パビリオンの素材コンフィギュレーター" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>ウォーターフロント・パビリオン</h4><p>素材コンフィギュレーター</p></figcaption></figure>
+        </div>
+      </div>
+      <button class="cf-nav cf-nav--prev" type="button" aria-controls="cf-gallery" aria-label="前のレンダリング">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="cf-nav cf-nav--next" type="button" aria-controls="cf-gallery" aria-label="次のレンダリング">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <p class="coverflow-hint">スクロールでギャラリーを回転</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="flex items-center" style="justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:40px">
+      <div class="stack" style="max-width:46ch">
+        <span class="eyebrow">実績</span>
+        <h2 class="section-title">実在の場所、実在のデータ。</h2>
+      </div>
+      <a class="btn btn--outline btn--mono" href="case-studies.html">すべての実績</a>
+    </div>
+    <div class="wgrid">
+      <a class="wcard wcard--red" href="case-studies.html#cs-5" data-video="../assets/twin/stockport-east-overview.mp4" tabindex="0">
+        <div class="wcard__img"><img src="../assets/twin/posters/stockport-east-overview.jpg" alt="上空から見たストックポート・イーストのマスタープラン・ツイン" loading="lazy" width="640" height="360"></div>
+        <div class="wcard__body">
+          <div class="badge-row"><span class="pill" style="border-color:var(--emphasis-red-border); color:var(--emphasis-red-bright)">マスタープラン・ツイン</span><span class="pill">16のツール</span></div>
+          <h3>ストックポート・イースト マスタープラン</h3>
+          <p><strong style="color:var(--ink)">できること。</strong>ストックポート・イースト再生地区の、実際に稼働するツインです。GISレイヤー、主要な眺望、太陽位置と天候のコントロール、一人称とドローンのウォークスルー、計測ツールと断面ツール、日射解析と可視領域解析、POIデータと交通データ。すべてがひとつのジオリファレンスされた基盤の上にあります。</p>
+          <p><strong style="color:var(--ink)">得られるもの。</strong>自治体の担当者、設計者、住民が動き回り、問いかけられるモデル。このサイトで紹介している機能は、すべてこのツインの中で収録しました。カーソルを合わせるとフライスルーを再生します。</p>
+          <div class="wcard__data">ストックポート・イースト<i>·</i>英国国家座標系（British National Grid）<i>·</i>Unreal Engine 5<i>·</i>GIS + 交通 + POIレイヤー<i>·</i>1:39の映像</div>
+        </div>
+      </a>
+      <a class="wcard" href="case-studies.html#cs-7" data-video="../assets/twin/configurator.mp4" tabindex="0">
+        <div class="wcard__img"><img src="../assets/twin/posters/configurator.jpg" alt="公園と周囲の街区を生成するアーバン・コンフィギュレーター。画面に敷地面積、住戸数、緑地率を表示" loading="lazy" width="640" height="360"></div>
+        <div class="wcard__body">
+          <div class="badge-row"><span class="pill pill--brand">コンフィギュレーター</span><span class="pill">公園・都市空間</span></div>
+          <h3>公園・都市空間コンフィギュレーター</h3>
+          <p><strong style="color:var(--ink)">できること。</strong>敷地面積、住戸構成、緑地率、街区タイポロジーをライブスライダーで操作します。公園と周囲の街区が、実際の敷地上のツインの中でそのまま再生成されます。</p>
+          <p><strong style="color:var(--ink)">得られるもの。</strong>ドラッグに合わせて、住戸数、商業テナント数、緑地率を再計算。図の構成では、敷地1,200 m²、住宅25戸、商業テナント10件、緑地35%です。</p>
+          <div class="wcard__data">敷地1,200 m²<i>·</i>25住戸<i>·</i>商業テナント10件<i>·</i>緑地35%<i>·</i>ツイン内でライブ動作</div>
+        </div>
+      </a>
+      <a class="wcard" href="case-studies.html#cs-2">
+        <div class="wcard__img"><img src="../assets/img/work-masterplan.jpg" alt="容積率（FAR）1でのマスタープラン・コンフィギュレーターの区画検討" loading="lazy" width="720" height="405"></div>
+        <div class="wcard__body">
+          <h3>マスタープラン・コンフィギュレーター</h3>
+          <p>奥行き、間口、容積率（FAR）、階高、駐車場、セットバック、緑地率をもとに、実際の敷地上に区画レイアウトを生成します。</p>
+          <div class="wcard__data">敷地19,551 m²<i>·</i>FAR 1：19街区、26,094 m²<i>·</i>FAR 6：123,639 m²<i>·</i>Cesiumタイル</div>
+        </div>
+      </a>
+      <a class="wcard" href="case-studies.html#cs-1">
+        <div class="wcard__img"><img src="../assets/img/work-t46-london.jpg" alt="ウェストミンスターに重ねたオフィスタワー T46 のコンフィギュレーター" loading="lazy" width="720" height="405"></div>
+        <div class="wcard__body">
+          <h3>オフィスタワー T46</h3>
+          <p>階高、半径、階数、曲率、パネルの色をライブスライダーで調整し、実際のウェストミンスターのスカイラインと照らし合わせて評価します。</p>
+          <div class="wcard__data">20階<i>·</i>ガラスパネル864枚<i>·</i>延床面積（GFA）をライブで再計算<i>·</i>ウェストミンスターの3Dタイル</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE WORK WITH -->
+<section class="section glow-top" id="who">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:8px">
+      <span class="eyebrow">協働先</span>
+      <h2 class="section-title">まちをかたちづくる人のために。</h2>
+    </div>
+    <div class="roles">
+      <div class="role"><span class="role__n">01</span><h3>計画当局（自治体）</h3><p>計画、制約条件、そして今動いているまちを共有するモデル。政策も事前協議も委員会も、同じ根拠を見て判断できます。</p></div>
+      <div class="role"><span class="role__n">02</span><h3>マスタープランナー・アーバンデザイナー</h3><p>開発容量、密度、フェーズ計画を、実際の敷地上で数時間のうちに検証。提示するすべての案に数値が付きます。</p></div>
+      <div class="role"><span class="role__n">03</span><h3>開発パートナー（デベロッパー）</h3><p>事業性検討から住民協議、計画許可までプロジェクトに伴走し、計画の変化に合わせて常に最新の状態を保つツイン。</p></div>
+      <div class="role"><span class="role__n">04</span><h3>交通・インフラ</h3><p>交通軸、駅、港湾、ターミナルを、そのネットワークやフィードとともにモデル化。開業の何年も前からリハーサルできます。</p></div>
+      <div class="role"><span class="role__n">05</span><h3>大学・市民プログラム</h3><p>場所について学ぶためのゲームエンジン・ツール。実際の都市データにもとづく学校プログラム、展示、研修を構築します。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:56px">
+      <span class="eyebrow">進め方</span>
+      <h2 class="section-title">敷地境界から稼働するツインまで、4つのステップ。</h2>
+      <p class="lead">単一の敷地検討から都市規模のプログラムまで、すべてのツインは同じ4つのステップを経ます。</p>
+    </div>
+    <div class="process-panel">
+    <div class="process" role="tablist" aria-label="進め方：4つのステップ">
+      <div class="process__track" aria-hidden="true"><i class="process__fill"></i></div>
+      <div class="step" role="tab" aria-selected="true" tabindex="0">
+        <div class="step__dot">01</div>
+        <div class="step__k">把握</div>
+        <h3>敷地と意思決定を読み解く</h3>
+        <p>GIS、BIM、測量、オープンデータ、ライブフィードなど既存の資料を精査し、ツインが誰のために何に答えるべきかを合意します。</p>
+      </div>
+      <div class="step" role="tab" aria-selected="false" tabindex="-1">
+        <div class="step__dot">02</div>
+        <div class="step__k">構築</div>
+        <h3>コンテクストを構築する</h3>
+        <p>地形、区画、ネットワーク、制約条件を整理し、明示された座標参照系（CRS）でひとつのジオリファレンスされた基盤にまとめます。以降のレイヤーはすべてこの上に載ります。</p>
+      </div>
+      <div class="step" role="tab" aria-selected="false" tabindex="-1">
+        <div class="step__dot">03</div>
+        <div class="step__k">モデル化</div>
+        <h3>マッシング、シナリオ、フィード</h3>
+        <p>基盤の上で案を生成し、フィードを接続し、住民参加の仕組みを組み込みます。各マイルストーンでお客様と一緒にレビューします。</p>
+      </div>
+      <div class="step" role="tab" aria-selected="false" tabindex="-1">
+        <div class="step__dot">04</div>
+        <div class="step__k">運用</div>
+        <h3>展開し、最新に保つ</h3>
+        <p>Web、メディアテーブル、ヘッドセット。モデルを引き渡し、公開後も計画とフィードに同期させ続けます。</p>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band">
+      <span class="eyebrow eyebrow--plain" style="justify-content:center; display:flex">ツインを始める</span>
+      <h2 class="section-title mt-6" style="max-width:20ch; margin-inline:auto">敷地境界を送ってください。スコープでお応えします。</h2>
+      <p class="lead mx-auto center mt-6" style="margin-inline:auto">GeoJSON、DXF、または敷地境界線（レッドライン）のPDFがあれば始められます。ティア、スケジュール、意思決定に必要なレイヤーをお返しします。</p>
+      <div class="wrap-btns mt-7" style="justify-content:center">
+        <a class="btn btn--primary btn--lg btn--mono" href="contact.html">ツインを始める <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+        <a class="btn btn--outline btn--lg btn--mono" href="platform.html">プラットフォームを見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="index.html" aria-label="Urban Decoders ホーム">
+          <img class="brand__wordmark" src="../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>計画・開発・デザインのための都市デジタルツイン・スタジオ。英国グレーター・マンチェスターのストックポートを拠点に、英国内外で活動しています。</p>
+        <div class="footer__badges"><img class="nv" src="../assets/logos/nvidia-inception.svg" alt="NVIDIA Inception プログラム メンバー" width="93" height="40" loading="lazy"><img class="epic" src="../assets/logos/epic-megagrants.svg" alt="Epic MegaGrants 受賞" width="46" height="48" loading="lazy"></div>
+      </div>
+      <div>
+        <h4>スタジオ</h4>
+        <ul>
+          <li><a href="platform.html">プラットフォーム</a></li>
+          <li><a href="services.html">サービス</a></li>
+          <li><a href="case-studies.html">実績</a></li>
+          <li><a href="lab.html">ラボ</a></li>
+          <li><a href="about.html">会社概要</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>リソース</h4>
+        <ul>
+          <li><a href="blog.html">インサイト</a></li>
+          <li><a href="platform.html#capabilities">機能一覧</a></li>
+          <li><a href="platform.html#scope">スコープ試算</a></li>
+          <li><a href="contact.html">初回ヒアリングを予約</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG<br>United Kingdom</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+      <div class="social">
+        <a href="#" aria-label="Urban Decoders の LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.57-2.3 3.2V21H9z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/urbandecoders/" target="_blank" rel="noopener" aria-label="Urban Decoders の Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener" aria-label="Urban Decoders の YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.77-1.77C19.3 5.1 12 5.1 12 5.1s-7.3 0-8.83.43A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.77 1.77C4.7 18.9 12 18.9 12 18.9s7.3 0 8.83-.43a2.5 2.5 0 0 0 1.77-1.77C23 15.2 23 12 23 12ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/facade.js?v=20261009" defer></script>
+<script src="../js/gallery.js?v=20261009" defer></script>
+<script src="../js/globe.js?v=20261009b" defer></script>
+<script src="../js/fan.js?v=20261009" defer></script>
+<script src="../js/process.js?v=20261009" defer></script>
+<script src="../js/layers.js?v=20261009" defer></script>
+<script src="../js/hero.js?v=20261009" defer></script>
+<script src="../js/estimator.js?v=20261009" defer></script>
+<script src="../js/caps.js?v=20261009" defer></script>
+</body>
+</html>

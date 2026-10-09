@@ -1,4 +1,4 @@
-/* Interactive 3D globe — vanilla canvas, brand teal ramp; the Manchester hub is the one red marker. */
+/* Interactive 3D globe — vanilla canvas, brand teal ramp; the studio hubs (Manchester, Tokyo) are the red markers. */
 (function () {
   var canvas = document.getElementById('ud-globe');
   if (!canvas || !canvas.getContext) return;
@@ -10,16 +10,18 @@
   var HUB = 'rgba(255,90,74,1)';           // the decoded marker: the studio hub
   var AUTO = 0.0022;
 
+  var JA = document.documentElement.lang.indexOf('ja') === 0;
+  var MONO = JA ? '"JetBrains Mono", "M PLUS 1 Code", ui-monospace, monospace' : '"JetBrains Mono", ui-monospace, monospace';
   var markers = [
-    { lat: 53.48, lng: -2.24, label: 'Manchester', hub: true },
-    { lat: 51.51, lng: -0.13, label: 'London' },
-    { lat: 35.68, lng: 139.69, label: 'Tokyo' },
-    { lat: 40.71, lng: -74.00, label: 'New York' },
-    { lat: 25.20, lng: 55.27, label: 'Dubai' },
-    { lat: 12.97, lng: 77.59, label: 'Bengaluru' },
-    { lat: 1.35, lng: 103.82, label: 'Singapore' },
-    { lat: -33.87, lng: 151.21, label: 'Sydney' },
-    { lat: 30.04, lng: 31.24, label: 'Cairo' }
+    { lat: 53.48, lng: -2.24, label: JA ? 'マンチェスター' : 'Manchester', hub: true },
+    { lat: 35.68, lng: 139.69, label: JA ? '東京' : 'Tokyo', hub: true },
+    { lat: 51.51, lng: -0.13, label: JA ? 'ロンドン' : 'London' },
+    { lat: 40.71, lng: -74.00, label: JA ? 'ニューヨーク' : 'New York' },
+    { lat: 25.20, lng: 55.27, label: JA ? 'ドバイ' : 'Dubai' },
+    { lat: 12.97, lng: 77.59, label: JA ? 'ベンガルール' : 'Bengaluru' },
+    { lat: 1.35, lng: 103.82, label: JA ? 'シンガポール' : 'Singapore' },
+    { lat: -33.87, lng: 151.21, label: JA ? 'シドニー' : 'Sydney' },
+    { lat: 30.04, lng: 31.24, label: JA ? 'カイロ' : 'Cairo' }
   ];
   var connections = [
     { from: [53.48, -2.24], to: [51.51, -0.13] },
@@ -33,7 +35,9 @@
     { from: [1.35, 103.82], to: [-33.87, 151.21] }
   ];
 
-  var HOME_Y = 1.91, HOME_X = 0.55;     // Europe/Africa front, Manchester in frame
+  // Opening view: EN faces Europe/Africa with Manchester in frame; JA centres on East Asia
+  // (30N 112E), north up, Tokyo upper right and Manchester on the upper-left limb.
+  var HOME_Y = JA ? -0.334 : 1.91, HOME_X = JA ? -0.452 : 0.55;
   var rotY = HOME_Y, rotX = HOME_X, time = 0, raf = 0;
   var zoom = 1, ZMIN = 0.6, ZMAX = 2.2;
   var fly = null;            // {p, fy, ty, fx, tx, fz, tz} camera animation
@@ -140,7 +144,7 @@
       ctx.strokeStyle = col.replace('1)', (0.2 + pulse * 0.18).toFixed(2) + ')'); ctx.lineWidth = 1; ctx.stroke();
       ctx.beginPath(); ctx.arc(s[0], s[1], mk.hub ? 3.2 : 2.4, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill();
       if (mk.label) {
-        ctx.font = (mk.hub ? '600 ' : '') + '11px "JetBrains Mono", ui-monospace, monospace';
+        ctx.font = (mk.hub ? '600 ' : '') + '11px ' + MONO;
         var lw = ctx.measureText(mk.label).width;
         var lrect = [s[0] + 2, s[1] - 10, lw + 14, 18], clash = false;
         for (var q = 0; q < placedLabels.length; q++) {
@@ -261,8 +265,9 @@
     spinOn = on;
     if (!spinBtn) return;
     spinBtn.setAttribute('aria-pressed', String(on));
-    spinBtn.setAttribute('aria-label', on ? 'Pause rotation' : 'Resume rotation');
-    spinBtn.title = on ? 'Pause rotation' : 'Resume rotation';
+    var tip = JA ? (on ? '回転を一時停止' : '回転を再開') : (on ? 'Pause rotation' : 'Resume rotation');
+    spinBtn.setAttribute('aria-label', tip);
+    spinBtn.title = tip;
     spinBtn.innerHTML = on
       ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5v14M15 5v14" stroke-linecap="round"/></svg>'
       : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>';

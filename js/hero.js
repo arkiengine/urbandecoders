@@ -5,11 +5,14 @@
   if (!v) return;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hero = v.closest('.hero');
+  var S = document.documentElement.lang.indexOf('ja') === 0
+    ? { pause: 'ループを停止', play: 'ループを再生', pauseL: '背景動画を一時停止', playL: '背景動画を再生' }
+    : { pause: 'Pause loop', play: 'Play loop', pauseL: 'Pause the background video', playL: 'Play the background video' };
   var btn = document.createElement('button');
   btn.type = 'button'; btn.className = 'hero__mute';
-  btn.innerHTML = '<i></i><span>Pause loop</span>';
+  btn.innerHTML = '<i></i><span>' + S.pause + '</span>';
   btn.setAttribute('aria-pressed', 'false');
-  btn.setAttribute('aria-label', 'Pause the background video');
+  btn.setAttribute('aria-label', S.pauseL);
   hero.appendChild(btn);
 
   var userPaused = reduce;
@@ -17,8 +20,8 @@
     if (on) { v.play && v.play().catch(function () {}); }
     else { v.pause(); }
     btn.setAttribute('aria-pressed', String(!on));
-    btn.querySelector('span').textContent = on ? 'Pause loop' : 'Play loop';
-    btn.setAttribute('aria-label', on ? 'Pause the background video' : 'Play the background video');
+    btn.querySelector('span').textContent = on ? S.pause : S.play;
+    btn.setAttribute('aria-label', on ? S.pauseL : S.playL);
   }
   if (reduce) { v.removeAttribute('autoplay'); set(false); }
   btn.addEventListener('click', function () { userPaused = !userPaused; set(!userPaused); });

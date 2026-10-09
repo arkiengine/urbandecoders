@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ラボ — Arki EngineとUrban Decodersのツインを支える研究</title>
+<meta name="description" content="Urban Decodersのラボ。Epic MegaGrant受賞のArki Engineは、Grasshopperのロジックを、パビリオン、タワー、マスタープランのためのUnreal Engineリアルタイム・コンフィギュレーターに変換します。動画、定義、公開中のチュートリアルを紹介します。">
+<meta name="keywords" content="Arki Engine, Unreal Engine 建築, Grasshopper Unreal 連携, パラメトリック・コンフィギュレーター, Epic MegaGrant, リアルタイム設計プラットフォーム, デジタルツイン 研究, digital twin research">
+<link rel="canonical" href="https://www.urbandecoders.com/ja/lab.html">
+<link rel="alternate" hreflang="en" href="https://www.urbandecoders.com/lab.html">
+<link rel="alternate" hreflang="ja" href="https://www.urbandecoders.com/ja/lab.html">
+<link rel="alternate" hreflang="x-default" href="https://www.urbandecoders.com/lab.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:title" content="ラボ — Arki EngineとUrban Decodersのツインを支える研究">
+<meta property="og:description" content="GrasshopperのロジックがUnreal Engineのリアルタイム・ジオメトリを動かす。私たちが構築するすべてのツインを支える研究開発。">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../assets/favicon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600&family=M+PLUS+1:wght@500..700&family=M+PLUS+1+Code:wght@400..500&display=swap">
+<link rel="stylesheet" href="../styles.css?v=20261009">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Arki Engine",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Windows",
+  "description": "Unreal Engine上に構築したリアルタイム設計プラットフォーム。Grasshopperの定義が、ライブ集計表と連動する設定可能なパビリオン、タワー、マスタープランを駆動します。",
+  "url": "https://www.urbandecoders.com/ja/lab.html",
+  "inLanguage": "ja",
+  "author": { "@type": "Organization", "name": "Urban Decoders" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="Urban Decoders ホーム">
+      <img class="brand__wordmark" src="../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="メインメニュー">
+      <a class="nav__link" href="platform.html">プラットフォーム</a>
+      <a class="nav__link" href="services.html">サービス</a>
+      <a class="nav__link" href="case-studies.html">実績</a>
+      <a class="nav__link" href="masterplans/">マスタープラン</a>
+      <a class="nav__link" href="lab.html" aria-current="page">ラボ</a>
+      <a class="nav__link" href="blog.html">インサイト</a>
+      <a class="nav__link" href="about.html">会社概要</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="contact.html">ツインを始める <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+      <div class="lang-switch" role="group" aria-label="言語 / Language">
+        <a class="lang-switch__opt" href="lab.html" hreflang="ja" lang="ja" aria-label="日本語 (JP)" aria-current="true">JP</a>
+        <a class="lang-switch__opt" href="../lab.html" hreflang="en" lang="en" aria-label="English (EN)">EN</a>
+      </div>
+    </div>
+  </div>
+</header>
+<main id="main">
+<section class="page-head glow-top">
+  <div class="wrap stack">
+    <span class="eyebrow">ラボ</span>
+    <h1 class="display">Arki <span class="text-red">Engine。</span><br>ツインを支える研究。</h1>
+    <p class="lead">Arki Engineは、Unreal Engine上で動く私たちのリアルタイム設計プラットフォームです。Grasshopperのロジックがジオメトリを駆動するため、パラメーターを動かすと、パビリオンもタワーも地区全体も、集計表ごと再生成されます。ここで得た知見は、すべてツインに還元しています。</p>
+    <div class="wrap-btns">
+      <div class="arki__badge">
+        <img src="../assets/arki/epic-megagrant.png" alt="Epic MegaGrants 受賞ロゴ" loading="lazy" width="34" height="34">
+        <span>Epic MegaGrant 受賞</span>
+      </div>
+      <a class="btn btn--outline btn--mono" href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener">YouTubeのチュートリアル（英語）</a>
+    </div>
+  </div>
+</section>
+
+<!-- THE TOOLS IN MOTION -->
+<section class="section" id="in-motion">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">動作デモ</span>
+      <h2 class="section-title">ツールが考える瞬間を見る。</h2>
+      <p class="lead">4つのコンフィギュレーターを、それぞれライブで収録しました。スライダーが動き、ジオメトリが再生成され、パネルの数値も合わせて再計算されます。</p>
+    </div>
+    <div class="grid grid--2">
+      <div>
+        <button class="yt-facade" type="button" data-video="../assets/arki/arki-pavilions.mp4" aria-label="再生：コンポーネントを集積するパビリオン・コンフィギュレーター">
+          <img src="../assets/img/poster-pavilions.jpg" alt="パビリオン・コンフィギュレーターの静止画。湖畔のジェネレーティブな木造構造体" loading="lazy" width="720" height="405">
+          <span class="yt-play" aria-hidden="true"></span>
+          <span class="yt-facade__cap"><span class="tag">再生</span><span style="color:#fff; font-family:var(--font-display); font-size:16px">パビリオン・コンフィギュレーター</span></span>
+        </button>
+        <p class="wcard__data mt-4">755コンポーネント · 2,257 m² · 木材、規格材、ポリカーボネートをスライダーひとつで切替</p>
+      </div>
+      <div>
+        <button class="yt-facade" type="button" data-video="../assets/arki/arki-buildings.mp4" aria-label="再生：タワー・コンフィギュレーターによるファサード検討">
+          <img src="../assets/img/poster-buildings.jpg" alt="タワー・コンフィギュレーターの静止画。パラメトリックなファサード検討" loading="lazy" width="720" height="405">
+          <span class="yt-play" aria-hidden="true"></span>
+          <span class="yt-facade__cap"><span class="tag">再生</span><span style="color:#fff; font-family:var(--font-display); font-size:16px">タワー・コンフィギュレーター</span></span>
+        </button>
+        <p class="wcard__data mt-4">オフィスタワー T46 · 20階 · ガラスパネル864枚 · ウェストミンスター3D Tiles</p>
+      </div>
+      <div>
+        <button class="yt-facade" type="button" data-video="../assets/arki/arki-masterplans.mp4" aria-label="再生：区画をレイアウトするマスタープラン・コンフィギュレーター">
+          <img src="../assets/img/poster-masterplans.jpg" alt="マスタープラン・コンフィギュレーターの静止画。実在の都市タイル上の区画レイアウト" loading="lazy" width="720" height="405">
+          <span class="yt-play" aria-hidden="true"></span>
+          <span class="yt-facade__cap"><span class="tag">再生</span><span style="color:#fff; font-family:var(--font-display); font-size:16px">マスタープラン・コンフィギュレーター</span></span>
+        </button>
+        <p class="wcard__data mt-4">敷地19,551 m² · FAR 1〜6 · 駐車場、セットバック、緑地率</p>
+      </div>
+      <div>
+        <button class="yt-facade" type="button" data-video="../assets/arki/arki-vertical-garden.mp4" aria-label="再生：ライブで再構成される垂直庭園タワー">
+          <img src="../assets/img/poster-vertical-garden.jpg" alt="緑化バルコニーを備え、高密な市街地にそびえる垂直庭園タワー" loading="lazy" width="720" height="405">
+          <span class="yt-play" aria-hidden="true"></span>
+          <span class="yt-facade__cap"><span class="tag">再生</span><span style="color:#fff; font-family:var(--font-display); font-size:16px">垂直庭園タワー</span></span>
+        </button>
+        <p class="wcard__data mt-4">30層 · 緑化バルコニー330 · 14,584 m²をドラッグに合わせて再計算</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO PANEL — Stockport living model -->
+<section class="section glow-top" id="living-model">
+  <div class="wrap">
+    <div class="flex items-center" style="justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:32px">
+      <div class="stack" style="max-width:50ch">
+        <span class="eyebrow">生きたモデル</span>
+        <h2 class="section-title">私たちの街を、生きたモデルに。</h2>
+        <p class="lead">899棟の実在建物のフットプリントから構築した、ストックポート中心市街地です。ツインが持つレイヤーを切り替えられます。高さ、ランドマーク、自治体がすでに公開しているライブフィード、そしてスタジオ自体。</p>
+      </div>
+      <a class="btn btn--outline btn--mono" href="platform.html">ツインの構成要素</a>
+    </div>
+
+    <div class="demo">
+      <div class="demo__panel">
+        <b>Stockport SK1</b>
+        <p>ドラッグで視点を回転、建物をタップすると名称を表示します。赤いビームは45 Middle Hillgateのスタジオを示しています。</p>
+        <div class="demo__kv"><span>CRS</span>EPSG:27700 <span>SRC</span>OSM <span>LOD</span>1 <span>N</span>899</div>
+      </div>
+      <div class="holo-scene" id="holo-scene" tabindex="0" role="img" aria-label="OpenStreetMapの実在建物フットプリントから構築した、ストックポート中心市街地のインタラクティブな点群モデル。赤いビームはMiddle HillgateにあるUrban Decodersのスタジオを示します。ドラッグで視点を回転し、建物にカーソルを合わせるかタップすると名称を表示します。レイヤーボタンで高さ、ランドマーク、ライブフィードのマーカーを追加できます。">
+        <canvas class="holo-canvas" id="ud-holo"></canvas>
+        <div class="holo-chip">ストックポート中心市街地</div>
+      </div>
+      <div class="demo__chips" role="group" aria-label="モデルのレイヤー">
+        <button class="chip" type="button" data-layer="buildings" aria-pressed="true"><i></i>建物</button>
+        <button class="chip" type="button" data-layer="heights" aria-pressed="false"><i></i>高さ</button>
+        <button class="chip" type="button" data-layer="landmarks" aria-pressed="false"><i></i>ランドマーク</button>
+        <button class="chip chip--red" type="button" data-layer="feeds" aria-pressed="false"><i></i>ライブフィード</button>
+        <button class="chip chip--red" type="button" data-layer="studio" aria-pressed="true"><i></i>スタジオ</button>
+      </div>
+    </div>
+
+    <div class="demo__feeds" id="live-feeds" aria-label="都市のライブフィードの例（デモ値）">
+      <div class="feed">
+        <div class="feed__head"><span class="feed__name">交通量</span><span class="feed__src">SCOOT</span></div>
+        <div class="feed__val"><span data-feed="traffic">1,240</span><small>台/時</small></div>
+        <div class="feed__meta">A6 Wellington Rd · <span class="feed__ok">順調</span></div>
+        <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="traffic" fill="none" stroke="rgba(79,166,200,0.9)" stroke-width="1.5" points=""/></svg>
+      </div>
+      <div class="feed">
+        <div class="feed__head"><span class="feed__name">CCTV</span><span class="feed__src">自治体</span></div>
+        <div class="feed__val"><span data-feed="cctv">38</span><small>/ 42台稼働中</small></div>
+        <div class="feed__meta">カウントのみ · <span class="feed__ok">顔データは保存しません</span></div>
+        <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="cctv" fill="none" stroke="rgba(79,166,200,0.9)" stroke-width="1.5" points=""/></svg>
+      </div>
+      <div class="feed">
+        <div class="feed__head"><span class="feed__name">バス</span><span class="feed__src">GTFS-RT</span></div>
+        <div class="feed__val"><span data-feed="bus">14</span><small>台（表示範囲内）</small></div>
+        <div class="feed__meta">Bee Network · <span class="feed__warn">1台遅延</span></div>
+        <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="bus" fill="none" stroke="rgba(79,166,200,0.9)" stroke-width="1.5" points=""/></svg>
+      </div>
+      <div class="feed">
+        <div class="feed__head"><span class="feed__name">大気質</span><span class="feed__src">DEFRA AURN</span></div>
+        <div class="feed__val"><span data-feed="aqi">23</span><small>µg/m³ NO₂</small></div>
+        <div class="feed__meta">Shaw Heath · <span class="feed__ok">低濃度</span></div>
+        <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="aqi" fill="none" stroke="rgba(79,166,200,0.9)" stroke-width="1.5" points=""/></svg>
+      </div>
+      <div class="feed">
+        <div class="feed__head"><span class="feed__name">歩行者通行量</span><span class="feed__src">センサー</span></div>
+        <div class="feed__val"><span data-feed="foot">2,860</span><small>/時</small></div>
+        <div class="feed__meta">Merseyway · <span class="feed__ok">前週比+12%</span></div>
+        <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="foot" fill="none" stroke="rgba(79,166,200,0.9)" stroke-width="1.5" points=""/></svg>
+      </div>
+      <div class="feed">
+        <div class="feed__head"><span class="feed__name">鉄道</span><span class="feed__src">Darwin</span></div>
+        <div class="feed__val"><span data-feed="rail">6</span><small>本（今後30分）</small></div>
+        <div class="feed__meta">ストックポート駅 · <span class="feed__ok">定刻</span></div>
+        <svg class="feed__spark" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline data-spark="rail" fill="none" stroke="rgba(79,166,200,0.9)" stroke-width="1.5" points=""/></svg>
+      </div>
+    </div>
+    <p class="muted mt-4" style="font-size:12px">フィードの数値は説明用のシミュレーションです。記載したデータソースは、私たちが統合する公共データや事業者フィードの種類を示すもので、統合は常にデータ所有者の利用条件に従います。建物フットプリント © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" style="color:var(--ash); text-decoration:underline">OpenStreetMap</a> contributors。EPSG:4326からローカルなメートル座標に投影しています。</p>
+  </div>
+</section>
+
+<!-- FROM GRASSHOPPER TO GAME ENGINE -->
+<section class="section glow-top" id="grasshopper">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:48px">
+      <span class="eyebrow">ツールのつくり方</span>
+      <h2 class="section-title">Grasshopperからゲームエンジンへ。</h2>
+      <p class="lead">すべてのコンフィギュレーターは、Grasshopperの定義から始まります。これらのキャンバス上の<span class="mono" style="font-size:0.9em">RH_IN</span>パラメーター（コンポーネント数、階高、形態の曲率、素材）が、Unreal Engineのライブスライダーになります。そのため、建築家がすでに信頼しているロジックが、そのままリアルタイムモデルを駆動します。</p>
+    </div>
+    <div class="grid grid--2">
+      <figure class="media"><img src="../assets/img/gh-pavilion.jpg" alt="パビリオン・コンフィギュレーターのGrasshopper定義。コンポーネント数、形状タイプ、素材のRH_INパラメーターを含む" loading="lazy" width="700" height="380"><figcaption class="media__cap"><div class="tag">パビリオンの定義</div><div style="font-family:var(--font-display); font-size:16px; margin-top:4px">コンポーネント · 形状 · 素材</div></figcaption></figure>
+      <figure class="media"><img src="../assets/img/gh-tower.jpg" alt="タワー・コンフィギュレーターのGrasshopper定義。階高、半径、階数、開口、曲率のパラメーターを含む" loading="lazy" width="700" height="380"><figcaption class="media__cap"><div class="tag">タワーの定義</div><div style="font-family:var(--font-display); font-size:16px; margin-top:4px">オフィスタワー T46のロジック</div></figcaption></figure>
+      <figure class="media"><img src="../assets/img/gh-masterplan.jpg" alt="マスタープラン・コンフィギュレーターのGrasshopper定義" loading="lazy" width="700" height="380"><figcaption class="media__cap"><div class="tag">マスタープランの定義</div><div style="font-family:var(--font-display); font-size:16px; margin-top:4px">パラメーターから区画を生成</div></figcaption></figure>
+      <figure class="media"><img src="../assets/img/gh-vertical-garden.jpg" alt="垂直庭園タワーのGrasshopper定義。階高、階数、敷地寸法、バルコニー数のパラメーターを含む" loading="lazy" width="700" height="380"><figcaption class="media__cap"><div class="tag">垂直庭園の定義</div><div style="font-family:var(--font-display); font-size:16px; margin-top:4px">敷地 · 階数 · バルコニー</div></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section arki" id="gallery">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:24px">
+      <span class="eyebrow">ギャラリー</span>
+      <h2 class="section-title">エンジンから生まれた8つの検討。</h2>
+    </div>
+    <div class="coverflow-wrap">
+      <div class="coverflow" id="cf-gallery" tabindex="0" role="group" aria-label="Arki Engineのプロジェクトギャラリー。スクロール、ドラッグ、または矢印キーでレンダリングを切り替えられます">
+        <div class="coverflow__stage">
+        <figure class="cf-card"><img src="../assets/arki/pav1.png" alt="Arki Engineのパビリオン・コンフィギュレーターで生成した木造パビリオン" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>木造パビリオン</h4><p>755コンポーネントの集積</p></figcaption></figure>
+        <figure class="cf-card"><img src="../assets/arki/tower1.png" alt="ロンドンのスカイラインに重ねたパラメトリックなオフィスタワーのマッシング" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>オフィスタワー T46</h4><p>パラメトリックなマッシング検討</p></figcaption></figure>
+        <figure class="cf-card"><img src="../assets/arki/plan2.png" alt="Arki Engineで作成したデータ駆動型の地区マスタープラン" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>地区マスタープラン</h4><p>データ駆動型の区画レイアウト</p></figcaption></figure>
+        <figure class="cf-card"><img src="../assets/arki/tower5.png" alt="リアルタイムでレンダリングした集合住宅タワーのファサード検討" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>集合住宅タワー</h4><p>リアルタイムのファサード検討</p></figcaption></figure>
+        <figure class="cf-card"><img src="../assets/arki/pav3.png" alt="ジェネレーティブなキャノピー・パビリオンの構造体" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>キャノピー・パビリオン</h4><p>ジェネレーティブ構造</p></figcaption></figure>
+        <figure class="cf-card"><img src="../assets/arki/plan4.png" alt="コンテクストとゾーニングのレイヤーを重ねたアーバンプラン" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>アーバンプラン</h4><p>コンテクスト + ゾーニングレイヤー</p></figcaption></figure>
+        <figure class="cf-card"><img src="../assets/arki/tower3.png" alt="ジオメトリを設定できる複合用途タワー" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>複合用途タワー</h4><p>設定可能なジオメトリ</p></figcaption></figure>
+        <figure class="cf-card"><img src="../assets/arki/pav4.png" alt="ウォーターフロント・パビリオンの素材コンフィギュレーター" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>ウォーターフロント・パビリオン</h4><p>素材コンフィギュレーター</p></figcaption></figure>
+        </div>
+      </div>
+      <button class="cf-nav cf-nav--prev" type="button" aria-controls="cf-gallery" aria-label="前のレンダリング">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="cf-nav cf-nav--next" type="button" aria-controls="cf-gallery" aria-label="次のレンダリング">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <p class="coverflow-hint">スクロールでギャラリーを回転</p>
+    </div>
+
+    <a class="yt-facade mt-8" href="https://www.youtube.com/watch?v=dEDtEmvwqyE" target="_blank" rel="noopener" aria-label="YouTubeでArki Engineのウォークスルーを視聴（英語）" style="display:block; aspect-ratio:21/9">
+      <img src="../assets/arki/pav3.png" alt="Unreal EngineでのArki Engineによる垂直庭園タワーのウォークスルー" loading="lazy" width="1400" height="600">
+      <span class="yt-play" aria-hidden="true"></span>
+      <span class="yt-facade__cap"><span class="tag">ウォークスルー</span><span style="color:#fff; font-family:var(--font-display); font-size:18px">Unreal Engineでのリアルタイム設計（英語）</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- STACK + NUMBERS -->
+<section class="section glow-top" id="stack">
+  <div class="wrap">
+    <div class="hero__grid" style="align-items:start">
+      <div class="stack">
+        <span class="eyebrow">技術スタック</span>
+        <h2 class="section-title">ラボを支える技術。</h2>
+        <p class="lead">パラメトリックなロジックはRhinoとGrasshopper、BIMはRevit、GISはQGIS、リアルタイムはCesiumとPLATEAUのタイリングを組み合わせたUnreal Engine 5。そして、IFC、TopologicPy、グラフデータベース、FastAPIブリッジによるデータレイヤーが全体をつなぎます。</p>
+        <div class="stack-line">
+          <span>Rhino · Grasshopper</span><span>Revit · Dynamo</span><span>QGIS · GDAL</span><span>Unreal Engine 5</span><span>Cesium 3D Tiles</span><span>PLATEAU · CityGML</span><span>IFC · TopologicPy</span><span>Neo4j</span><span>FastAPI</span><span>ComfyUI</span>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat__num">Epic</div><div class="stat__label">MegaGrantをArki Engineが受賞</div></div>
+        <div class="stat"><div class="stat__num">20K<span class="unit">+</span></div><div class="stat__label">ツイン、AI、Unrealを私たちと学ぶYouTubeコミュニティ</div></div>
+        <div class="stat"><div class="stat__num">50<span class="unit">+</span></div><div class="stat__label">リアルタイム可視化と空間テクノロジーのチュートリアル</div></div>
+        <div class="stat"><div class="stat__num">899</div><div class="stat__label">ブラウザで動くストックポート・モデルの実在建物</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap"><div class="cta-band">
+    <span class="eyebrow eyebrow--plain" style="justify-content:center; display:flex">ラボと協働する</span>
+    <h2 class="section-title mt-6" style="max-width:22ch; margin-inline:auto">既存のツールでは扱いきれない課題を、私たちに。</h2>
+    <p class="lead mx-auto center mt-6" style="margin-inline:auto">研究パートナーシップ、カスタム・コンフィギュレーター、そしてお客様のデータを中心に構築するツイン・パイプライン。</p>
+    <div class="wrap-btns mt-7" style="justify-content:center">
+      <a class="btn btn--primary btn--lg btn--mono" href="contact.html">相談を始める <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+      <a class="btn btn--outline btn--lg btn--mono" href="case-studies.html">実績を見る</a>
+    </div>
+  </div></div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="index.html" aria-label="Urban Decoders ホーム">
+          <img class="brand__wordmark" src="../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>計画・開発・デザインのための都市デジタルツイン・スタジオ。英国グレーター・マンチェスターのストックポートを拠点に、英国内外で活動しています。</p>
+        <div class="footer__badges"><img class="nv" src="../assets/logos/nvidia-inception.svg" alt="NVIDIA Inception プログラム メンバー" width="93" height="40" loading="lazy"><img class="epic" src="../assets/logos/epic-megagrants.svg" alt="Epic MegaGrants 受賞" width="46" height="48" loading="lazy"></div>
+      </div>
+      <div>
+        <h4>スタジオ</h4>
+        <ul>
+          <li><a href="platform.html">プラットフォーム</a></li>
+          <li><a href="services.html">サービス</a></li>
+          <li><a href="case-studies.html">実績</a></li>
+          <li><a href="lab.html">ラボ</a></li>
+          <li><a href="about.html">会社概要</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>リソース</h4>
+        <ul>
+          <li><a href="blog.html">インサイト</a></li>
+          <li><a href="platform.html#capabilities">機能一覧</a></li>
+          <li><a href="platform.html#scope">スコープ試算</a></li>
+          <li><a href="contact.html">初回ヒアリングを予約</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG<br>United Kingdom</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+      <div class="social">
+        <a href="#" aria-label="Urban Decoders の LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.57-2.3 3.2V21H9z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/urbandecoders/" target="_blank" rel="noopener" aria-label="Urban Decoders の Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener" aria-label="Urban Decoders の YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.77-1.77C19.3 5.1 12 5.1 12 5.1s-7.3 0-8.83.43A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.77 1.77C4.7 18.9 12 18.9 12 18.9s7.3 0 8.83-.43a2.5 2.5 0 0 0 1.77-1.77C23 15.2 23 12 23 12ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../js/feeds.js?v=20261009" defer></script>
+<script src="../js/holo.js?v=20261009" defer></script>
+<script src="../js/facade.js?v=20261009" defer></script>
+<script src="../js/gallery.js?v=20261009" defer></script>
+</body>
+</html>

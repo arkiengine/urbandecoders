@@ -7,22 +7,35 @@
   var form = document.getElementById('consult-form');
   var input = document.getElementById('consult-input');
 
-  var pins = [
+  var JA = document.documentElement.lang.indexOf('ja') === 0;
+  var pins = JA ? [
+    { x: 27, y: 46, s: 'support', t: '川沿いの遊歩道が気に入っています。大きく育った木はぜひ残してください。' },
+    { x: 63, y: 58, s: 'concern', t: 'イベント開催日に周辺へ路上駐車があふれないか心配です。' },
+    { x: 47, y: 30, s: 'idea',    t: '橋のそばの角に、小さな遊び場をつくれませんか？' }
+  ] : [
     { x: 27, y: 46, s: 'support', t: 'Love the riverside path, please keep the mature trees.' },
     { x: 63, y: 58, s: 'concern', t: 'Worried about parking overspill on event days.' },
     { x: 47, y: 30, s: 'idea',    t: 'Could the corner by the bridge take a small playground?' }
   ];
   var pending = null;
-  var LABEL = { support: 'Support', concern: 'Concern', idea: 'Idea' };
+  var LABEL = JA ? { support: '賛成', concern: '懸念', idea: '提案' } : { support: 'Support', concern: 'Concern', idea: 'Idea' };
+  var STAT = JA
+    ? { all: 'コメント', support: '賛成', concern: '懸念', idea: '提案', pin: 'のコメント：' }
+    : { all: 'comments', support: 'support', concern: 'concerns', idea: 'ideas', pin: ' comment: ' };
 
+  function stat(n, label, style) {
+    var num = '<b>' + n + '</b>';
+    return '<span class="consult__stat"' + (style ? ' style="' + style + '"' : '') + '>' +
+      (JA ? label + ' ' + num : num + ' ' + label) + '</span>';
+  }
   function renderStats() {
     var c = { support: 0, concern: 0, idea: 0 };
     pins.forEach(function (p) { c[p.s]++; });
     statsEl.innerHTML =
-      '<span class="consult__stat"><b>' + pins.length + '</b> comments</span>' +
-      '<span class="consult__stat" style="color:#58c98a"><b>' + c.support + '</b> support</span>' +
-      '<span class="consult__stat" style="color:var(--emphasis-red-bright)"><b>' + c.concern + '</b> concerns</span>' +
-      '<span class="consult__stat" style="color:var(--brand-blue)"><b>' + c.idea + '</b> ideas</span>';
+      stat(pins.length, STAT.all) +
+      stat(c.support, STAT.support, 'color:#58c98a') +
+      stat(c.concern, STAT.concern, 'color:var(--emphasis-red-bright)') +
+      stat(c.idea, STAT.idea, 'color:var(--brand-blue)');
   }
 
   function showTip(pin, el) {
@@ -40,7 +53,7 @@
     b.className = 'consult__pin consult__pin--' + pin.s;
     b.style.left = pin.x + '%';
     b.style.top = pin.y + '%';
-    b.setAttribute('aria-label', LABEL[pin.s] + ' comment: ' + pin.t);
+    b.setAttribute('aria-label', LABEL[pin.s] + STAT.pin + pin.t);
     b.addEventListener('mouseenter', function () { showTip(pin, b); });
     b.addEventListener('focus', function () { showTip(pin, b); });
     b.addEventListener('mouseleave', hideTip);
@@ -119,7 +132,8 @@
     tall: document.getElementById('cfg-s-tall'), cov: document.getElementById('cfg-s-cov'),
     green: document.getElementById('cfg-s-green')
   };
-  var fmt = function (n) { return Math.round(n).toLocaleString('en-GB'); };
+  var JA = document.documentElement.lang.indexOf('ja') === 0;
+  var fmt = function (n) { return Math.round(n).toLocaleString(JA ? 'ja-JP' : 'en-GB'); };
 
   var model = { buildings: [], park: null, gfa: 0 };
 
@@ -168,7 +182,7 @@
     stats.gfa.textContent = fmt(gfa) + ' m²';
     stats.far.textContent = (gfa / PLOT).toFixed(2) + ' / ' + far.toFixed(1);
     stats.count.textContent = String(model.buildings.length);
-    stats.tall.textContent = tallest + ' floors · ' + Math.round(tallest * floorH) + ' m';
+    stats.tall.textContent = tallest + (JA ? '階 · ' : ' floors · ') + Math.round(tallest * floorH) + ' m';
     stats.cov.textContent = Math.round(model.buildings.length * fp / PLOT * 100) + '%';
     stats.green.textContent = fmt(gw * gd) + ' m² · ' + Math.round(gw * gd / PLOT * 100) + '%';
   }

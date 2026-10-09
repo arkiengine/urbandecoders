@@ -1,6 +1,93 @@
 // GM Masterplans Twin — MapLibre + turf, no API keys.
 // Data: data/schemes.geojson (WGS84). Boundaries are indicative.
 
+// ---------- i18n ----------
+// The same module serves /masterplans/ (en) and /ja/masterplans/ (ja), so data and image URLs
+// resolve against this file, not the page. UI strings only: scheme data stays English.
+const BASE = new URL('../', import.meta.url);
+const LANG = document.documentElement.lang.startsWith('ja') ? 'ja' : 'en';
+const LOCALE = LANG === 'ja' ? 'ja-JP' : 'en-GB';
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+// 'YYYY' | 'YYYY-MM' | 'YYYY-MM-DD' → 2026年9月27日
+const jaDate = (d) => { const [y, m, dd] = String(d).split('-').map(Number); return `${y}年${m ? `${m}月` : ''}${dd ? `${dd}日` : ''}`; };
+const T = {
+  en: {
+    cat: { housing: 'Housing-led', mixed: 'Mixed use', employment: 'Employment', framework: 'Framework / MDC', infrastructure: 'Infrastructure', civic: 'Civic / health' },
+    catTip: {},
+    status: { 'on-site': 'On site', consented: 'Consented', framework: 'Framework', proposed: 'Proposed', 'at-risk': 'At risk', delivered: 'Delivered' },
+    stage: { framework: 'Framework', consent: 'Consent', start: 'On site', delivery: 'Delivered', complete: 'Complete', target: 'Target' },
+    kind: { 'aerial-cgi': 'Aerial CGI', masterplan: 'Masterplan', render: 'Render', 'aerial-photo': 'Aerial photo', photo: 'Photo' },
+    month: (y, m) => (m ? `${MONTHS[m - 1]} ${y}` : `${y}`),
+    day: (d) => d,
+    asof: (n, d) => `${n} schemes · status ${d}`,
+    now: (d) => `Now · ${d}`,
+    started: (a, b) => `${a} / ${b} started`,
+    homes: (s) => `${s} homes`,
+    listHomes: 'homes',
+    totals: (n, h, ha) => `<b>${n}</b> schemes · <b>${h}</b> homes (stated) · <b>${ha}</b> ha`,
+    pitches: (n, km2) => `≈ ${n} football pitches · ${km2} km²`,
+    today: 'Today',
+    todayAxis: 'today',
+    timeline: (span, future) => `Timeline · ${span}${future ? ' · dashed = expected' : ''}`,
+    span: (a, b) => (b == null ? `${a}` : `${a}–${b}`),
+    stated: 'stated',
+    drawn: (ha) => `drawn ${ha} ha`,
+    drawnPoly: 'drawn polygon',
+    latest: 'Latest',
+    fact: { area: 'Site area', homes: 'Homes', jobs: 'Jobs', investment: 'Investment / GDV', lead: 'Lead / partners', architects: 'Masterplanner / architects', commercial: 'Commercial / other', centroid: 'Centroid (WGS84)' },
+    images: 'Images &amp; renders',
+    conf: (src, c, d) => `Boundary: ${src} · confidence: ${c}. Figures from public sources as of ${d}; conflicting values noted in the summary.`,
+    prev: '← Previous',
+    next: 'Next →',
+    noImages: 'No images for this scheme.',
+    source: (h) => `source: ${h} ↗`,
+    notStarted: 'Not started',
+    noRows: 'No schemes in the current filter.',
+    range: (a, b) => `${a} – ${b}`,
+    tour: '▶ Tour',
+    stop: '■ Stop'
+  },
+  ja: {
+    cat: { housing: '住宅主導', mixed: '複合用途', employment: '業務・雇用', framework: 'フレームワーク / MDC', infrastructure: 'インフラ', civic: '公共・医療' },
+    catTip: { framework: 'MDC：市長開発公社（Mayoral Development Corporation）' },
+    status: { 'on-site': '工事中', consented: '計画許可済み', framework: 'フレームワーク', proposed: '提案中', 'at-risk': '停滞リスク', delivered: '引き渡し済み' },
+    stage: { framework: 'フレームワーク', consent: '計画許可', start: '着工', delivery: '引き渡し', complete: '完了', target: '目標' },
+    kind: { 'aerial-cgi': '鳥瞰CG', masterplan: 'マスタープラン', render: 'パース', 'aerial-photo': '航空写真', photo: '写真' },
+    month: (y, m) => (m ? `${y}年${m}月` : `${y}年`),
+    day: jaDate,
+    asof: (n, d) => `${n}件のスキーム · ${d}時点のステータス`,
+    now: (d) => `現在 · ${d}`,
+    started: (a, b) => `着手済み ${a} / ${b}件`,
+    homes: (s) => `${s}戸`,
+    listHomes: '戸',
+    totals: (n, h, ha) => `<b>${n}</b>件のスキーム · 住宅<b>${h}</b>戸（公表値） · <b>${ha}</b> ha`,
+    pitches: (n, km2) => `≈ サッカー場${n}面分 · ${km2} km²`,
+    today: '現在',
+    todayAxis: '現在',
+    timeline: (span, future) => `タイムライン · ${span}${future ? ' · 破線＝予定' : ''}`,
+    span: (a, b) => (b == null ? `${a}年` : `${a}〜${b}年`),
+    stated: '公表値',
+    drawn: (ha) => `作図 ${ha} ha`,
+    drawnPoly: '作図ポリゴンより算出',
+    latest: '最新',
+    fact: { area: '敷地面積', homes: '住宅戸数', jobs: '雇用数', investment: '投資額 / GDV', lead: '事業主体 / パートナー', architects: 'マスタープランナー / 建築家', commercial: '商業・その他', centroid: '重心（WGS84）' },
+    images: '画像・パース',
+    conf: (src, c, d) => `境界：${src} · 確度：${c}。数値は${d}時点の公開情報に基づきます。出典により異なる値は概要に記載しています。`,
+    prev: '← 前へ',
+    next: '次へ →',
+    noImages: 'このスキームの画像はありません。',
+    source: (h) => `出典：${h} ↗`,
+    notStarted: '未着手',
+    noRows: '現在の絞り込み条件に該当するスキームはありません。',
+    range: (a, b) => `${a}〜${b}`,
+    tour: '▶ ツアー',
+    stop: '■ 停止'
+  }
+}[LANG];
+// on the Japanese page, mark English data runs so screen readers and fonts treat them as English
+const DL = LANG === 'ja' ? ' lang="en"' : '';
+const en = (html) => (LANG === 'ja' ? `<span lang="en">${html}</span>` : html);
+
 const OMT = { type: 'vector', url: 'https://tiles.openfreemap.org/planet' };
 const GLYPHS = 'https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf';
 // Blueprint: monochrome blue "GIS" style built on OpenMapTiles
@@ -57,16 +144,10 @@ const CAT_COLOR = {
   housing: '#f4a261', mixed: '#2a9d8f', employment: '#6c8cff',
   framework: '#c77dff', infrastructure: '#94a3b8', civic: '#e76f51'
 };
-const CAT_LABEL = {
-  housing: 'Housing-led', mixed: 'Mixed use', employment: 'Employment',
-  framework: 'Framework / MDC', infrastructure: 'Infrastructure', civic: 'Civic / health'
-};
+const CAT_LABEL = T.cat;
 const STATUS_ORDER = ['on-site', 'consented', 'framework', 'proposed', 'at-risk', 'delivered'];
-const STATUS_LABEL = {
-  'on-site': 'On site', consented: 'Consented', framework: 'Framework', proposed: 'Proposed',
-  'at-risk': 'At risk', delivered: 'Delivered'
-};
-const STAGE_LABEL = { framework: 'Framework', consent: 'Consent', start: 'On site', delivery: 'Delivered', complete: 'Complete', target: 'Target' };
+const STATUS_LABEL = T.status;
+const STAGE_LABEL = T.stage;
 const STAGE_COLOR = { framework: '#c77dff', consent: '#4FA6C8', start: '#5ACDFF', delivery: '#f4a261', complete: '#a1a4a5', target: '#464a4d' };
 const PITCH_HA = 0.714; // FIFA 105×68 m
 
@@ -81,21 +162,20 @@ const state = {
 
 const $ = (s) => document.querySelector(s);
 const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
-const fmt = (n) => n == null ? '—' : n.toLocaleString('en-GB');
+const fmt = (n) => n == null ? '—' : n.toLocaleString(LOCALE);
 const isPoly = (f) => f.geometry.type === 'Polygon' || f.geometry.type === 'MultiPolygon';
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 // 'YYYY' or 'YYYY-MM' → decimal year (mid-month / mid-year)
 const yr = (d) => { const [y, m] = String(d).split('-').map(Number); return m ? y + (m - 0.5) / 12 : y + 0.5; };
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const fmtDate = (d) => { const [y, m] = String(d).split('-'); return m ? `${MONTHS[+m - 1]} ${y}` : y; };
+const fmtDate = (d) => { const [y, m] = String(d).split('-'); return T.month(y, m ? +m : 0); };
 const asOfYear = () => yr(state.data.meta.asOf.slice(0, 7));
 // stage a scheme had reached by decimal year y (null = not started)
 const stageAt = (p, y) => { let st = null; for (const e of p.timeline) { if (yr(e.date) <= y) st = e.stage; else break; } return st; };
-const fmtYear = (y) => { const yy = Math.floor(y), m = Math.floor((y - yy) * 12); return `${MONTHS[m]} ${yy}`; };
+const fmtYear = (y) => { const yy = Math.floor(y), m = Math.floor((y - yy) * 12); return T.month(yy, m + 1); };
 
 // ---------- data ----------
 async function loadData() {
-  const r = await fetch('data/schemes.geojson');
+  const r = await fetch(new URL('data/schemes.geojson', BASE));
   const gj = await r.json();
   gj.features.forEach((f) => {
     const p = f.properties;
@@ -111,7 +191,7 @@ async function loadData() {
   });
   state.data = gj;
   state.features = gj.features;
-  $('#asof').textContent = `${gj.features.length} schemes · status ${gj.meta.asOf}`;
+  $('#asof').textContent = T.asof(gj.features.length, T.day(gj.meta.asOf));
   const t0 = gj.features.map((f) => f.properties.t0).filter((v) => v != null), t1 = gj.features.map((f) => f.properties.t1).filter((v) => v != null);
   state.ext = { Y0: Math.floor(Math.min(...t0)), Y1: Math.ceil(Math.max(...t1, asOfYear())) + 1 };
 }
@@ -218,9 +298,9 @@ function setYear(y, { fromSlider = false } = {}) {
   $('#legend').classList.toggle('hidden', !live);
   $('#legend-stage').classList.toggle('hidden', live);
   if (!fromSlider) $('#year').value = live ? Math.round(asOfYear() * 12) : Math.round(y * 12);
-  $('#year-label').textContent = live ? `Now · ${state.data.meta.asOf}` : fmtYear(y);
+  $('#year-label').textContent = live ? T.now(T.day(state.data.meta.asOf)) : fmtYear(y);
   const started = live ? null : state.filtered.filter((f) => stageAt(f.properties, y)).length;
-  $('#year-count').textContent = live ? '' : `${started} / ${state.filtered.length} started`;
+  $('#year-count').textContent = live ? '' : T.started(started, state.filtered.length);
   refreshSources();
   applyTimePaint();
   renderList();
@@ -274,7 +354,7 @@ window.addEventListener('hashchange', () => { const id = location.hash.slice(1);
 const hover = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 12 });
 map.on('mousemove', 'pt', (e) => {
   const p = e.features[0].properties;
-  hover.setLngLat(e.lngLat).setHTML(`<b>${esc(p.name)}</b><br>${esc(p.borough)} · ${p.homes ? fmt(+p.homes) + ' homes' : ''} ${p.area_ha ? '· ' + p.area_ha + ' ha' : ''}`).addTo(map);
+  hover.setLngLat(e.lngLat).setHTML(`<b${DL}>${esc(p.name)}</b><br>${esc(p.borough)} · ${p.homes ? T.homes(fmt(+p.homes)) : ''} ${p.area_ha ? '· ' + p.area_ha + ' ha' : ''}`).addTo(map);
 });
 map.on('mouseleave', 'pt', () => hover.remove());
 
@@ -322,7 +402,7 @@ function scaleLine(ha) {
   const pitches = ha / PITCH_HA;
   const n = Math.min(40, Math.round(pitches));
   const icons = '<span class="pitch"></span>'.repeat(n);
-  return `<div class="scale">${icons}${pitches > 40 ? ' …' : ''} ≈ ${fmt(Math.round(pitches))} football pitches · ${(ha / 100).toFixed(2)} km²</div>`;
+  return `<div class="scale">${icons}${pitches > 40 ? ' …' : ''} ${T.pitches(fmt(Math.round(pitches)), (ha / 100).toFixed(2))}</div>`;
 }
 
 function timelineHTML(p) {
@@ -332,44 +412,44 @@ function timelineHTML(p) {
   const rows = p.timeline.map((e) => {
     const future = yr(e.date) > now;
     let nowRow = '';
-    if (future && !nowDrawn) { nowDrawn = true; nowRow = `<li class="tl-now"><span class="tl-dot"></span><span class="tl-d">Today</span><span class="tl-l">${esc(state.data.meta.asOf)}</span></li>`; }
+    if (future && !nowDrawn) { nowDrawn = true; nowRow = `<li class="tl-now"><span class="tl-dot"></span><span class="tl-d">${T.today}</span><span class="tl-l">${esc(T.day(state.data.meta.asOf))}</span></li>`; }
     return `${nowRow}<li class="tl-ev ${e.stage}${future ? ' future' : ''}">
       <span class="tl-dot" style="--sc:${STAGE_COLOR[e.stage]}"></span>
       <span class="tl-d">${fmtDate(e.date)}</span>
-      <span class="tl-l"><span class="tl-stage">${STAGE_LABEL[e.stage]}</span>${esc(e.label)}</span></li>`;
+      <span class="tl-l"><span class="tl-stage">${STAGE_LABEL[e.stage]}</span>${en(esc(e.label))}</span></li>`;
   }).join('');
-  const span = p.t1 > p.t0 ? `${Math.floor(p.t0)}–${Math.floor(p.t1)}` : `${Math.floor(p.t0)}`;
-  return `<div class="kicker" style="margin-top:14px">Timeline · ${span}${p.t1 > now ? ' · dashed = expected' : ''}</div><ol class="tl">${rows}</ol>`;
+  const span = p.t1 > p.t0 ? T.span(Math.floor(p.t0), Math.floor(p.t1)) : T.span(Math.floor(p.t0));
+  return `<div class="kicker" style="margin-top:14px">${T.timeline(span, p.t1 > now)}</div><ol class="tl">${rows}</ol>`;
 }
 
 async function renderDetail(f) {
   const p = f.properties;
   const body = $('#detail-body');
   const areaV = p.stated_area_ha
-    ? `${fmt(p.stated_area_ha)} ha <small>stated${p.computed_area_ha ? ` · drawn ${Math.round(p.computed_area_ha)} ha` : ''}</small>`
-    : (p.computed_area_ha ? `${Math.round(p.computed_area_ha)} ha <small>drawn polygon</small>` : '—');
+    ? `${fmt(p.stated_area_ha)} ha <small>${T.stated}${p.computed_area_ha ? ` · ${T.drawn(Math.round(p.computed_area_ha))}` : ''}</small>`
+    : (p.computed_area_ha ? `${Math.round(p.computed_area_ha)} ha <small>${T.drawnPoly}</small>` : '—');
   body.innerHTML = `
     <div class="kicker">${esc(p.borough)} · ${CAT_LABEL[p.category] || p.category} · <span class="status ${p.status}">${STATUS_LABEL[p.status] || p.status}</span></div>
-    <h2>${esc(p.name)}</h2>
-    ${p.summary ? `<p class="summary">${esc(p.summary)}</p>` : ''}
-    <div class="milestone"><div class="d">Latest · ${esc(p.milestone_date || '')}</div>${esc(p.milestone)}</div>
+    <h2${DL}>${esc(p.name)}</h2>
+    ${p.summary ? `<p class="summary"${DL}>${esc(p.summary)}</p>` : ''}
+    <div class="milestone"><div class="d">${T.latest} · ${esc(p.milestone_date ? T.day(p.milestone_date) : '')}</div>${en(esc(p.milestone))}</div>
     ${timelineHTML(p)}
     <div class="facts">
-      <div class="fact"><div class="k">Site area</div><div class="v">${areaV}</div></div>
-      <div class="fact"><div class="k">Homes</div><div class="v">${p.homes ? fmt(p.homes) : '—'}</div></div>
-      <div class="fact"><div class="k">Jobs</div><div class="v">${p.jobs ? fmt(p.jobs) : '—'}</div></div>
-      <div class="fact"><div class="k">Investment / GDV</div><div class="v" style="font-size:13px">${esc(p.investment || '—')}</div></div>
-      <div class="fact wide"><div class="k">Lead / partners</div><div class="v">${esc(p.lead || '—')}</div></div>
-      ${p.architects ? `<div class="fact wide"><div class="k">Masterplanner / architects</div><div class="v">${esc(p.architects)}</div></div>` : ''}
-      ${p.commercial ? `<div class="fact wide"><div class="k">Commercial / other</div><div class="v">${esc(p.commercial)}</div></div>` : ''}
-      <div class="fact wide"><div class="k">Centroid (WGS84)</div><div class="v" style="font-family:monospace;font-size:12px">${p.centroid[1].toFixed(5)}, ${p.centroid[0].toFixed(5)}</div></div>
+      <div class="fact"><div class="k">${T.fact.area}</div><div class="v">${areaV}</div></div>
+      <div class="fact"><div class="k">${T.fact.homes}</div><div class="v">${p.homes ? fmt(p.homes) : '—'}</div></div>
+      <div class="fact"><div class="k">${T.fact.jobs}</div><div class="v">${p.jobs ? fmt(p.jobs) : '—'}</div></div>
+      <div class="fact"><div class="k">${T.fact.investment}</div><div class="v" style="font-size:13px"${DL}>${esc(p.investment || '—')}</div></div>
+      <div class="fact wide"><div class="k">${T.fact.lead}</div><div class="v"${DL}>${esc(p.lead || '—')}</div></div>
+      ${p.architects ? `<div class="fact wide"><div class="k">${T.fact.architects}</div><div class="v"${DL}>${esc(p.architects)}</div></div>` : ''}
+      ${p.commercial ? `<div class="fact wide"><div class="k">${T.fact.commercial}</div><div class="v"${DL}>${esc(p.commercial)}</div></div>` : ''}
+      <div class="fact wide"><div class="k">${T.fact.centroid}</div><div class="v" style="font-family:monospace;font-size:12px">${p.centroid[1].toFixed(5)}, ${p.centroid[0].toFixed(5)}</div></div>
     </div>
     ${scaleLine(p.area_ha)}
-    <div class="links">${(p.links || []).map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}</div>
-    <div class="kicker" style="margin-top:12px">Images &amp; renders</div>
+    <div class="links"${DL}>${(p.links || []).map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}</div>
+    <div class="kicker" style="margin-top:12px">${T.images}</div>
     <div class="gallery" id="gallery"></div>
-    <div class="conf">Boundary: ${esc(p.boundary_source || '—')} · confidence: ${esc(p.confidence)}. Figures from public sources as of ${esc(state.data.meta.asOf)}; conflicting values noted in the summary.</div>
-    <div class="nav"><button id="prev">← Previous</button><button id="next">Next →</button></div>`;
+    <div class="conf">${T.conf(en(esc(p.boundary_source || '—')), esc(p.confidence), esc(T.day(state.data.meta.asOf)))}</div>
+    <div class="nav"><button id="prev">${T.prev}</button><button id="next">${T.next}</button></div>`;
   $('#detail').classList.remove('hidden');
   $('#detail').scrollTop = 0;
   $('#prev').onclick = () => step(-1);
@@ -390,14 +470,15 @@ function renderGallery(p) {
   const g = $('#gallery');
   g.innerHTML = '';
   const imgs = p.images || [];
-  if (!imgs.length) { g.innerHTML = '<div class="empty">No images for this scheme.</div>'; return; }
-  const KIND = { 'aerial-cgi': 'Aerial CGI', masterplan: 'Masterplan', render: 'Render', 'aerial-photo': 'Aerial photo', photo: 'Photo' };
+  if (!imgs.length) { g.innerHTML = `<div class="empty">${T.noImages}</div>`; return; }
+  const KIND = T.kind;
   imgs.forEach((im, i) => {
     const fig = el('figure', i === 0 ? 'hero' : null);
-    const img = el('img'); img.src = im.src; img.alt = im.caption || p.name; img.loading = 'lazy'; img.onclick = () => lightbox(im.src);
+    const src = new URL(im.src, BASE).href;
+    const img = el('img'); img.src = src; img.alt = im.caption || p.name; img.loading = 'lazy'; img.onclick = () => lightbox(src);
     fig.append(img);
     const host = im.source_url ? im.source_url.replace(/^https?:\/\/(www\.)?/, '').split('/')[0] : '';
-    fig.append(el('figcaption', null, `${im.kind ? `<span class="kind">${KIND[im.kind] || esc(im.kind)}</span>` : ''}${esc(im.caption || '')}${im.credit ? `<br><span class="credit">© ${esc(im.credit)}${im.licence ? ' · ' + esc(im.licence) : ''}</span>` : ''}${im.source_url ? `<br><a class="src" href="${esc(im.source_url)}" target="_blank" rel="noopener">source: ${esc(host)} ↗</a>` : ''}`));
+    fig.append(el('figcaption', null, `${im.kind ? `<span class="kind">${KIND[im.kind] || esc(im.kind)}</span>` : ''}${im.caption ? en(esc(im.caption)) : ''}${im.credit ? `<br><span class="credit">© ${esc(im.credit)}${im.licence ? ' · ' + esc(im.licence) : ''}</span>` : ''}${im.source_url ? `<br><a class="src" href="${esc(im.source_url)}" target="_blank" rel="noopener">${T.source(esc(host))}</a>` : ''}`));
     g.append(fig);
   });
 }
@@ -414,6 +495,7 @@ function buildChips() {
     host.innerHTML = '';
     items.forEach((it) => {
       const c = el('button', 'chip', `${sw ? `<span class="sw" style="background:${sw(it)}"></span>` : ''}${label(it)}`);
+      if (sw && T.catTip[it]) c.title = T.catTip[it];
       c.onclick = () => { set.has(it) ? set.delete(it) : set.add(it); c.classList.toggle('on'); applyFilters(); };
       host.append(c);
     });
@@ -442,14 +524,14 @@ function applyFilters() {
 function stageBadge(p) {
   if (state.year == null) return `<span class="status ${p.status}">${STATUS_LABEL[p.status]}</span>`;
   const st = stageAt(p, state.year);
-  return st ? `<span class="status stg" style="--sc:${STAGE_COLOR[st]}">${STAGE_LABEL[st]}</span>` : '<span class="status none">Not started</span>';
+  return st ? `<span class="status stg" style="--sc:${STAGE_COLOR[st]}">${STAGE_LABEL[st]}</span>` : `<span class="status none">${T.notStarted}</span>`;
 }
 
 function renderList() {
   const ol = $('#list'); ol.innerHTML = '';
   const homes = state.filtered.reduce((a, f) => a + (f.properties.homes || 0), 0);
   const ha = state.filtered.reduce((a, f) => a + (f.properties.area_ha || 0), 0);
-  $('#totals').innerHTML = `<b>${state.filtered.length}</b> schemes · <b>${fmt(homes)}</b> homes (stated) · <b>${fmt(Math.round(ha))}</b> ha`;
+  $('#totals').innerHTML = T.totals(state.filtered.length, fmt(homes), fmt(Math.round(ha)));
   state.filtered
     .slice()
     .sort((a, b) => (b.properties.homes || 0) - (a.properties.homes || 0))
@@ -457,8 +539,8 @@ function renderList() {
       const p = f.properties;
       const li = el('li'); li.dataset.id = p.id;
       li.innerHTML = `<span class="bar" style="background:${CAT_COLOR[p.category]}"></span>
-        <div><div class="name">${esc(p.name)}</div><div class="sub">${esc(p.borough)} · ${stageBadge(p)}</div></div>
-        <div class="meta"><b>${p.homes ? fmt(p.homes) : '—'}</b>${p.homes ? 'homes' : ''}<br>${p.area_ha ? p.area_ha + ' ha' : ''}</div>`;
+        <div><div class="name"${DL}>${esc(p.name)}</div><div class="sub">${esc(p.borough)} · ${stageBadge(p)}</div></div>
+        <div class="meta"><b>${p.homes ? fmt(p.homes) : '—'}</b>${p.homes ? T.listHomes : ''}<br>${p.area_ha ? p.area_ha + ' ha' : ''}</div>`;
       li.onclick = () => select(p.id);
       if (state.selected === f) li.classList.add('sel');
       if (state.year != null && !stageAt(p, state.year)) li.classList.add('dim');
@@ -489,7 +571,7 @@ function renderGantt() {
   const step = [1, 2, 5, 10].find((st) => st * pxPerYear >= 44) || 10;
   let axis = '';
   for (let y = Math.ceil(Y0 / step) * step; y < Y1; y += step) axis += `<span class="gt-tick" style="left:${px(y)}%">${y}</span>`;
-  $('#gantt-axis').innerHTML = axis + `<span class="gt-now" style="left:${px(now)}%"><i>today</i></span>` + brush + cur;
+  $('#gantt-axis').innerHTML = axis + `<span class="gt-now" style="left:${px(now)}%"><i>${T.todayAxis}</i></span>` + brush + cur;
   renderBrushChip();
   host.innerHTML = rows.map((f) => {
     const p = f.properties;
@@ -501,7 +583,7 @@ function renderGantt() {
       <div class="gt-name"><span class="status ${p.status}">${STATUS_LABEL[p.status]}</span>${esc(p.name)}</div>
       <div class="gt-track"><span class="gt-now" style="left:${px(now)}%"></span>${brush}${bar}${evs}${cur}</div></div>`;
   }).join('');
-  if (!rows.length) host.innerHTML = '<div class="empty">No schemes in the current filter.</div>';
+  if (!rows.length) host.innerHTML = `<div class="empty">${T.noRows}</div>`;
   host.querySelectorAll('.gt-row').forEach((r) => (r.onclick = () => select(r.dataset.id)));
   host.querySelector('.gt-row.sel')?.scrollIntoView({ block: 'nearest' });
 }
@@ -510,7 +592,7 @@ function renderBrushChip() {
   const c = $('#gantt-brush');
   if (!state.brush) { c.classList.add('hidden'); return; }
   c.classList.remove('hidden');
-  c.querySelector('span').textContent = `${fmtYear(state.brush[0])} – ${fmtYear(state.brush[1])}`;
+  c.querySelector('span').textContent = T.range(fmtYear(state.brush[0]), fmtYear(state.brush[1]));
 }
 
 function setBrush(range) {
@@ -548,9 +630,9 @@ function setBrush(range) {
 // ---------- tour ----------
 function toggleTour() {
   const btn = $('#btn-tour');
-  if (state.tour) { clearTimeout(state.tour); state.tour = null; btn.classList.remove('running'); btn.textContent = '▶ Tour'; return; }
+  if (state.tour) { clearTimeout(state.tour); state.tour = null; btn.classList.remove('running'); btn.textContent = T.tour; return; }
   if (!state.filtered.length) return;
-  btn.classList.add('running'); btn.textContent = '■ Stop';
+  btn.classList.add('running'); btn.textContent = T.stop;
   let i = state.selected ? state.filtered.indexOf(state.selected) : -1;
   const next = () => {
     i = (i + 1) % state.filtered.length;
@@ -586,7 +668,7 @@ loadData().then(() => {
   $('#basemap').value = state.style;
   buildChips();
   $('#year').min = state.ext.Y0 * 12; $('#year').max = state.ext.Y1 * 12 - 1; $('#year').value = Math.round(asOfYear() * 12);
-  $('#year-label').textContent = `Now · ${state.data.meta.asOf}`;
+  $('#year-label').textContent = T.now(T.day(state.data.meta.asOf));
   applyFilters();
   const go = () => { const id = location.hash.slice(1); if (id) select(id); };
   if (map.isStyleLoaded() && map.getLayer('poly-fill')) { refreshSources(); go(); } else map.once('style.load', () => { refreshSources(); go(); });
