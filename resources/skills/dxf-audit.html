@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DXF Audit — Claude skill for architecture — Urban Decoders</title>
+<meta name="description" content="Verdict-first forensics on a CAD file: units, scale, origin, layers, blocks, hygiene. The file is evidence and is never modified.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/skills/dxf-audit.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DXF Audit — Claude skill for architecture — Urban Decoders">
+<meta property="og:description" content="Verdict-first forensics on a CAD file: units, scale, origin, layers, blocks, hygiene. The file is evidence and is never modified.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "DXF Audit",
+  "alternateName": "dxf-audit",
+  "description": "Verdict-first forensics on a CAD file: units, scale, origin, layers, blocks, hygiene. The file is evidence and is never modified.",
+  "codeSampleType": "full solution",
+  "programmingLanguage": "Claude Skill",
+  "url": "https://www.urbandecoders.com/resources/skills/dxf-audit.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "license": "Proprietary",
+  "isPartOf": { "@type": "CollectionPage", "name": "Claude Skills for Architecture", "url": "https://www.urbandecoders.com/resources/skills/" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/">Skills</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/compliance-files.html">Compliance &amp; files</a><span aria-hidden="true">/</span>
+      <span><code>dxf-audit</code></span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Audit report</span>
+        <h1 class="display tpl-skilltitle">DXF Audit</h1>
+        <p class="lead">Verdict-first forensics on a CAD file: units, scale, origin, layers, blocks, hygiene. The file is evidence and is never modified.</p>
+        <p class="tpl-callline">Once installed, Claude loads it on its own when the conversation
+        matches. You can also call it directly with <code>/dxf-audit</code>.</p>
+        <div class="wrap-btns">
+          <a class="btn btn--brand btn--mono" href="../downloads/dxf-audit.skill" download>Download .skill <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+          <a class="btn btn--outline btn--mono" href="#quick-reference">Read the quick reference</a>
+        </div>
+      </div>
+      <dl class="tpl-meta card">
+        <div><dt>Category</dt><dd><a href="../../resources/skills/compliance-files.html">Compliance &amp; files</a></dd></div>
+        <div><dt>Output</dt><dd>Audit report</dd></div>
+        <div><dt>Package</dt><dd>3 files &middot; 35.8 KB</dd></div>
+        <div><dt>Download</dt><dd>15.3 KB zip</dd></div>
+        <div><dt>Worked example</dt><dd><a href="../downloads/dxf-audit-example.zip" download>3 files &middot; 17.1 KB</a></dd></div>
+        <div><dt>Tags</dt><dd class="tpl-meta__tags"><span class="tag">DXF</span><span class="tag">CAD</span><span class="tag">Survey</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap"><div class="tpl-disclaimer" role="note">
+  <span class="tpl-disclaimer__tag">Read first</span>
+  <p>These skills assist qualified practitioners. They replace neither the architect of
+  record nor the approving authority. Every figure, clause and citation they surface is
+  marked for you to verify — treat an unverified output as a question, not an answer.</p>
+</div></div>
+</section>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Install just this one.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">Two routes. Both end with Claude loading the
+        skill by itself when your conversation matches.</p>
+      </div>
+      <div class="tpl-install">
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">A</span> Claude app, Chat or Cowork</h3>
+          <ol class="md-list">
+            <li>Download <code>dxf-audit.skill</code> below.</li>
+            <li>Open Claude, go to <strong>Settings &rarr; Capabilities &rarr; Skills</strong> and upload the file.</li>
+            <li>Start a conversation and attach your material. The skill loads itself on a match.</li>
+          </ol>
+          <a class="btn btn--ghost btn--mono btn--sm" href="../downloads/dxf-audit.skill" download>dxf-audit.skill &middot; 15.3 KB</a>
+        </div>
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">B</span> Claude Code, in your project</h3>
+          <p>Unzip the package into your skills folder, then restart Claude Code.</p>
+          <div class="codeblock">
+            <button class="codeblock__copy" type="button" data-copy>Copy</button>
+            <pre><code>mkdir -p .claude/skills &amp;&amp; unzip dxf-audit.skill -d .claude/skills/</code></pre>
+          </div>
+          <p class="tpl-fine">Use <code>~/.claude/skills/</code> instead to install it for every project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="at-a-glance">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">At a glance</span>
+      <h2 class="section-title">What it takes, what you get.</h2>
+    </div>
+    <div class="grid grid--3 tpl-glance">
+      <div class="card tpl-glance__box">
+        <h3>It takes</h3>
+        <p>A .dxf — survey, architect&#x27;s background, consultant&#x27;s drawing, legacy file</p>
+      </div>
+      <div class="card tpl-glance__box">
+        <h3>You get</h3>
+        <p>A verdict-first audit: safe uses as-is, unsafe uses, the single biggest problem, then provenance, geometry frame, layers, blocks, extractable schedules, a ranked risk table and what was not checked. Every claim tagged [measured], [inferred] or [verify manually].</p>
+      </div>
+      <div class="card tpl-glance__box tpl-glance__box--red">
+        <h3>It will not</h3>
+        <p>Purge, fix, translate or re-save the file; declare compliance; convert units silently; choose between two revisions.</p>
+      </div>
+    </div>
+    <div class="tpl-example">
+      <span class="tag">Test drive</span>
+      <p>Selden Row survey (.dxf), a rescaled sheet with a disputed revision. Run the skill on the example input, then score your output against the defect key &mdash; it lists what was planted and what a good run does with it.</p>
+      <a class="btn btn--outline btn--mono btn--sm" href="../downloads/dxf-audit-example.zip" download>Worked example <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="quick-reference">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#run-it">Run it</a></li><li><a href="#the-report">The report</a></li><li><a href="#what-it-will-not-do-by-design">What it will not do — by design</a></li><li><a href="#work-the-output">Work the output</a></li></ul>
+        <p class="tpl-toc__head tpl-toc__head--spaced">Jump to</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#files">Files on disk</a></li>
+          <li><a href="#trigger">When it triggers</a></li>
+        </ul>
+      </nav>
+      <div class="tpl-doc">
+        <span class="eyebrow">Quick reference</span>
+        <h2 class="section-title" style="margin:var(--space-4) 0 var(--space-6)">How to run it.</h2>
+        <div class="md"><p>Forensic health-check of a DXF before anyone scales off it, takes quantities from it, or links it under a model. <strong>Measures first, judges second, changes nothing.</strong> The file is evidence: it is never modified, purged or re-saved.</p>
+<h2 id="run-it" class="md-h2">Run it</h2>
+<p>Attach the .dxf and ask:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>Audit this DXF. It&#x27;s a survey we&#x27;ve been sent — can we trust it?
+Audit this DXF as a background for our Revit model, and give me the door count.
+Why doesn&#x27;t this drawing scale at 1:50? What units is it in?
+Extract the door/window/parking schedule from this DXF and flag anything unsafe.</code></pre></div>
+<p>Best results: say what the drawing is <em>for</em>, who issued it, and whether xrefs came with it. No answers? It still runs, with a purpose-agnostic verdict.</p>
+<h2 id="the-report" class="md-h2">The report</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Section</th><th>What it holds</th></tr></thead><tbody><tr><td>Verdict</td><td>What the file is, safe uses as-is, unsafe uses, single biggest problem. First, always.</td></tr><tr><td>Provenance &amp; identity</td><td>Title block contents vs what you were told; revision conflicts.</td></tr><tr><td>Geometry frame</td><td>Units, the three scale witnesses, origin distance, coordinate frame.</td></tr><tr><td>Layer structure</td><td>Real entity counts, off/frozen layers hiding geometry, content on 0/Defpoints.</td></tr><tr><td>Blocks &amp; annotation</td><td>Insert counts, coincident duplicates, exploded dimensions, overrides.</td></tr><tr><td>Extractable data</td><td>Attribute schedules (doors, windows…) — as-drawn, duplicates flagged inline.</td></tr><tr><td>Cleanup &amp; reuse steps</td><td>Ordered instructions for <em>your</em> CAD tool, on a copy — never performed for you.</td></tr><tr><td>Ranked risk table</td><td>High / Medium / Low / Info; each states what it breaks downstream.</td></tr><tr><td>What was not checked</td><td>Always present. The verdict is only as good as this list.</td></tr></tbody></table></div>
+<p><strong>Evidence tags — read nothing without checking its tag:</strong></p>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Tag</th><th>Meaning</th></tr></thead><tbody><tr><td><code>[measured]</code></td><td>Read directly from the file.</td></tr><tr><td><code>[inferred]</code></td><td>Deduced; the basis is stated in the same sentence.</td></tr><tr><td><code>[verify manually]</code></td><td>Not knowable from this file; names what to check.</td></tr></tbody></table></div>
+<blockquote class="mdquote"><p>The three scale witnesses — annotated scale, viewport ratio, model text height. All agree: the sheet is measurable. Any disagreement: the sheet was rescaled and nothing printed can be scaled off, whatever the title block says.</p></blockquote>
+<h2 id="what-it-will-not-do-by-design" class="md-h2">What it will not do — by design</h2>
+<ul class="md-list">
+<li><strong>Touch the file.</strong> No purge, fix, translate or re-save — cleanup is prescribed, you perform it on a copy.</li>
+<li><strong>Declare compliance.</strong> Door widths are as-drawn measurements; Part M et al. are separate checks, with documents named <code>[to verify]</code>, never figures from memory.</li>
+<li><strong>Let inference pose as measurement.</strong> &quot;Probably mm from the 926 door leaf&quot; stays labelled as a deduction forever.</li>
+<li><strong>Convert units silently.</strong> Two surviving unit hypotheses are both reported, with what would settle them.</li>
+<li><strong>Present block counts as reality.</strong> Counts are as-drawn; coincident duplicates are reported beside every number they would inflate.</li>
+<li><strong>Pick between contradictions.</strong> Rev C vs &quot;REV D&quot;, current vs hidden old outline — logged for the issuer, not ruled on.</li>
+<li><strong>Web-search the practice, client or site</strong> unless you ask; no client names in filenames.</li>
+<li><strong>Decide for you.</strong> It reports whether the file is sound; whether it is acceptable for your deliverable is your call.</li>
+</ul>
+<h2 id="work-the-output" class="md-h2">Work the output</h2>
+<ol class="md-list">
+<li>Read the verdict; if a High says stop, stop before opening the file in CAD.</li>
+<li>Resolve the revision question with the issuer before any downstream work.</li>
+<li>Use the deduplicated counts, never raw insert counts, for schedules.</li>
+<li>Run the cleanup list on a copy; keep the received file as the evidence copy.</li>
+<li>Send the contradiction items (revision, false dimensions, hidden layers) back to the issuer as questions — they are their defects to rule on.</li>
+<li>File the &quot;what was not checked&quot; list with the audit; it defines the checks still owed before the drawing carries real weight.</li>
+</ol>
+<hr class="divider md-hr">
+<p><strong>Remember:</strong> the audit tests the file&#x27;s internal honesty, not the building. A clean audit means the drawing agrees with itself — site verification is still site verification. Test drive: run it on the Selden Row sample (<code>example-input.dxf</code>) and score against <code>selden-row-defect-key.md</code>.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="trigger">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Triggering</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">When Claude reaches for it.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">This is the description Claude itself reads to
+        decide whether the skill applies. It is worth knowing, because it tells you exactly how to
+        phrase the ask — and what the skill will decline.</p>
+      </div>
+      <div class="tpl-triggerbox card">
+        <p class="tpl-triggerbox__name"><code>dxf-audit</code></p>
+        <p>Forensic audit of a DXF CAD file before anyone trusts it: measures units, scale, origin and coordinate frame, layer discipline, block and attribute integrity, duplicates and geometry hygiene, then reports verdict-first what the drawing can and cannot be used for — every claim tagged [measured], [inferred] or [verify manually]. Use this WHENEVER an architect or technologist supplies a .dxf (survey, architect&#x27;s background, consultant&#x27;s drawing, legacy file) and wants it &quot;audited&quot;, &quot;checked&quot;, &quot;sanity-checked&quot;, or asks &quot;can I trust this file&quot;, &quot;what units is this in&quot;, &quot;why doesn&#x27;t this drawing scale&quot;, &quot;why is everything miles from the origin&quot;, &quot;is this the issued revision&quot;, &quot;extract the doors/parking from this DXF&quot;, &quot;count the blocks&quot;, or &quot;is this safe to link into Revit / import into Rhino or QGIS&quot;. Also trigger before any take-off derived from a DXF. Do NOT use for checking a design against regulations, to modify, purge or re-save CAD files, or for native .dwg, .rvt or .3dm — ask for a DXF export first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="files">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Package</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Files it puts on your disk.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">3 files, 35.8 KB unzipped,
+        under <code>.claude/skills/dxf-audit/</code>. Reference material loads only when the skill
+        needs it &mdash; references/, scripts/.</p>
+        <p><a class="btn btn--outline btn--mono btn--sm" href="../downloads/dxf-audit.skill" download>Download the package <span class="btn__arrow" aria-hidden="true">&#8595;</span></a></p>
+      </div>
+      <div class="tpl-tree card">
+        <p class="tpl-tree__root"><code>.claude/skills/dxf-audit/</code></p>
+        <ul class="tpl-tree__list"><li class="tpl-file" style="--d:1"><span class="tpl-file__name">dxf-forensics.md</span><span class="tpl-file__dir">references/</span><span class="tpl-file__size">6.1 KB</span></li><li class="tpl-file" style="--d:1"><span class="tpl-file__name">audit_dxf.py</span><span class="tpl-file__dir">scripts/</span><span class="tpl-file__size">14.8 KB</span></li><li class="tpl-file" style="--d:0"><span class="tpl-file__name">SKILL.md</span><span class="tpl-file__dir"></span><span class="tpl-file__size">14.9 KB</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More in this category">
+      <a class="tpl-prevnext__item" href="../../resources/skills/part-m-drawing-check.html"><span>Previous</span><strong>Part M Drawing Check</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/skills/compliance-files.html">All Compliance &amp; files</a>
+      <span></span>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

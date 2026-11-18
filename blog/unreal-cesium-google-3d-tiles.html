@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Revit or Rhino model inside Google&#x27;s 3D tiles, in Unreal Engine — Urban Decoders</title>
+<meta name="description" content="Cesium for Unreal, photorealistic 3D tiles and Datasmith — a model placed at real coordinates in streamed city context, clipped to your site, lit and rendered. The setup in order, including the steps people get stuck on.">
+<link rel="canonical" href="https://www.urbandecoders.com/blog/unreal-cesium-google-3d-tiles.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Your Revit or Rhino model inside Google&#x27;s 3D tiles, in Unreal Engine — Urban Decoders">
+<meta property="og:description" content="Cesium for Unreal, photorealistic 3D tiles and Datasmith — a model placed at real coordinates in streamed city context, clipped to your site, lit and rendered. The setup in order, including the steps people get stuck on.">
+<meta property="og:image" content="https://i.ytimg.com/vi/aKi1Q3JRn7U/maxresdefault.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../assets/favicon-192.png">
+<link rel="stylesheet" href="../styles.css?v=20261117">
+<link rel="stylesheet" href="../resources/resources.css?v=20261117">
+<link rel="stylesheet" href="../blog/blog.css?v=20261117">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Your Revit or Rhino model inside Google&#x27;s 3D tiles, in Unreal Engine",
+  "description": "Cesium for Unreal, photorealistic 3D tiles and Datasmith — a model placed at real coordinates in streamed city context, clipped to your site, lit and rendered. The setup in order, including the steps people get stuck on.",
+  "image": "https://www.urbandecoders.com/assets/img/blog/unreal-cesium-google-3d-tiles/step-06.jpg",
+  "url": "https://www.urbandecoders.com/blog/unreal-cesium-google-3d-tiles.html",
+  "datePublished": "2023-06-13",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "publisher": { "@type": "Organization", "name": "Urban Decoders" },
+  "video": {
+    "@type": "VideoObject",
+    "name": "Your Revit or Rhino model inside Google&#x27;s 3D tiles, in Unreal Engine",
+    "thumbnailUrl": "https://i.ytimg.com/vi/aKi1Q3JRn7U/maxresdefault.jpg",
+    "uploadDate": "2023-06-13",
+    "embedUrl": "https://www.youtube.com/embed/aKi1Q3JRn7U"
+  }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../platform.html">Platform</a>
+      <a class="nav__link" href="../services.html">Services</a>
+      <a class="nav__link" href="../case-studies.html">Work</a>
+      <a class="nav__link" href="../courses.html">Courses</a>
+      <a class="nav__link" href="../resources/">Resources</a>
+      <a class="nav__link" href="../blog.html" aria-current="page">Blog</a>
+      <a class="nav__link" href="../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../blog.html">Blog</a><span aria-hidden="true">/</span>
+      <span>GIS &amp; geospatial</span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">GIS &amp; geospatial</span>
+        <h1 class="display tpl-skilltitle">Your Revit or Rhino model inside Google&#x27;s 3D tiles, in Unreal Engine</h1>
+        <p class="lead">Cesium for Unreal, photorealistic 3D tiles and Datasmith — a model placed at real coordinates in streamed city context, clipped to your site, lit and rendered. The setup in order, including the steps people get stuck on.</p>
+      </div>
+      <dl class="tpl-meta card"><div><dt>Published</dt><dd>13 June 2023</dd></div><div><dt>Tools</dt><dd>Unreal Engine, Cesium, Revit</dd></div><div><dt>Watch</dt><dd>20:53</dd></div><div><dt>Reading</dt><dd>9 min</dd></div></dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="post-video">
+      <a class="yt-facade" href="https://www.youtube.com/watch?v=aKi1Q3JRn7U" target="_blank" rel="noopener" aria-label="Watch on YouTube: Your Revit or Rhino model inside Google&#x27;s 3D tiles, in Unreal Engine">
+        <img src="https://i.ytimg.com/vi/aKi1Q3JRn7U/maxresdefault.jpg" alt="Your Revit or Rhino model inside Google&#x27;s 3D tiles, in Unreal Engine &mdash; watch on YouTube" loading="lazy" width="1280" height="720">
+        <span class="yt-play" aria-hidden="true"></span>
+      </a>
+      <p class="post-video__cap">Prefer to watch? This guide is the written version of
+      <a href="https://www.youtube.com/watch?v=aKi1Q3JRn7U" target="_blank" rel="noopener">Your Revit or Rhino model inside Google&#x27;s 3D tiles, in Unreal Engine</a>
+      &mdash; 20:53 on the Urban Decoders channel.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#1-install-and-create-the-accounts-youll-need">1. Install, and create the accounts you&#x27;ll need</a></li><li><a href="#2-the-google-maps-api-key">2. The Google Maps API key</a></li><li><a href="#3-go-to-your-actual-site">3. Go to your actual site</a></li><li><a href="#4-clip-the-tiles-to-your-site">4. Clip the tiles to your site</a></li><li><a href="#5-bring-in-the-model-with-datasmith">5. Bring in the model with Datasmith</a></li><li><a href="#6-light-it-dress-it-and-get-an-image-out">6. Light it, dress it, and get an image out</a></li><li><a href="#why-this-is-worth-the-setup">Why this is worth the setup</a></li></ul>
+      </nav>
+      <div class="tpl-doc">
+        <div class="md post-body"><p>This is the foundation under a lot of what we build: <strong>satellite-accurate city context, streamed, with your own model in the right place inside it</strong> — and the whole of Unreal Engine available on top for animation, data overlays, materials and first-person walkthroughs.</p>
+<p>Cesium is a platform for 3D geospatial data that works with 3D tilesets in both web and game engines, and that now includes Google&#x27;s photorealistic tiles. The plugin for Unreal is free.</p>
+<blockquote class="mdquote"><p><strong>A note on versions.</strong> This workflow was recorded against Unreal 5.0/5.1, when Cesium was distributed through the Epic Marketplace and Google&#x27;s photorealistic tiles had just been released. The plugin now ships for current Unreal versions and the storefront has moved, so expect the install step to look different. Everything after the install — georeferencing, clipping, Datasmith, lighting — works the same way.</p></blockquote>
+<h2 id="1-install-and-create-the-accounts-youll-need" class="md-h2">1. Install, and create the accounts you&#x27;ll need</h2>
+<p>Install the <strong>Cesium for Unreal</strong> plugin, then start a new project from the blank architectural template. Edit → Plugins → search Cesium → enable → restart.</p>
+<p>You also need two accounts:</p>
+<ul class="md-list">
+<li>A <strong>Cesium ion</strong> account — free for non-commercial use — to access the tiles.</li>
+<li>A <strong>Google Cloud</strong> account for the Map Tiles API.</li>
+</ul>
+<figure class="post-fig"><img src="../assets/img/blog/unreal-cesium-google-3d-tiles/step-01.jpg" alt="The Cesium panel. Four actors to add: a 3D tileset, SunSky, a Dynamic Pawn, and later a cartographic polygon." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">2:50</span>The Cesium panel. Four actors to add: a 3D tileset, SunSky, a Dynamic Pawn, and later a cartographic polygon.</figcaption></figure>
+<p>Create a new empty level and save it. In the Cesium panel on the left, add <strong>Cesium SunSky</strong>, a <strong>Dynamic Pawn</strong>, and a <strong>blank 3D Tiles tileset</strong>.</p>
+<p>First thing that looks broken but isn&#x27;t: the sky is blown out. Select Cesium SunSky, find the directional light nested under it, and drop the intensity right down. The sky comes back.</p>
+<h2 id="2-the-google-maps-api-key" class="md-h2">2. The Google Maps API key</h2>
+<p>In Google Cloud, set up an account and agree to the terms. There is a monthly free allowance that is plenty for experimenting; a card is required for verification and you are not charged until you upgrade manually.</p>
+<p>An API key is generated — <strong>copy it and keep it private</strong>, because it bills to your account.</p>
+<p>The step people miss: <strong>enable the Map Tiles API</strong>. Search &quot;map tiles&quot; in the console, open it, and make sure it is enabled. Without this the key exists and nothing loads.</p>
+<figure class="post-fig"><img src="../assets/img/blog/unreal-cesium-google-3d-tiles/step-02.jpg" alt="The tileset set to &quot;From URL&quot;, with the Cesium web guide&#x27;s URL and the API token. Connect your Cesium ion account too." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">4:47</span>The tileset set to &quot;From URL&quot;, with the Cesium web guide&#x27;s URL and the API token. Connect your Cesium ion account too.</figcaption></figure>
+<p>Back in Unreal: select the Cesium 3D Tileset, set source to <strong>From URL</strong>, paste the URL from the Cesium web guide, and paste your API key as the token. Then connect your Cesium ion account from the panel on the far left.</p>
+<h2 id="3-go-to-your-actual-site" class="md-h2">3. Go to your actual site</h2>
+<p>You have a map; it is in the wrong place. You need latitude and longitude.</p>
+<p>Either right-click a point in Google Maps and copy the coordinates, or — for more control — use OpenStreetMap&#x27;s Nominatim, zoom to the area, hit reverse, and click any point to get its coordinates. You are not limited to places with markers.</p>
+<p>Select <strong>CesiumGeoreference</strong> and paste them into Origin Latitude and Origin Longitude. Watch the order.</p>
+<figure class="post-fig"><img src="../assets/img/blog/unreal-cesium-google-3d-tiles/step-03.jpg" alt="Origin latitude and longitude on the georeference. The map jumps to your site after a few moments of streaming." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">6:32</span>Origin latitude and longitude on the georeference. The map jumps to your site after a few moments of streaming.</figcaption></figure>
+<p>Then check one more setting: on the Cesium 3D Tileset, under the Georeference section, make sure the CesiumGeoreference is selected.</p>
+<p>If everything goes black, it is the time zone, not a failure — set it at the top of SunSky so you can see the geometry.</p>
+<p>Navigate with <strong>WSAD</strong>, and <strong>Q and E for up and down</strong>, which you will use constantly.</p>
+<h2 id="4-clip-the-tiles-to-your-site" class="md-h2">4. Clip the tiles to your site</h2>
+<p>The full tileset is enormous and it streams a lot of API data. Reduce it.</p>
+<p>First, a trick that saves a lot of frustration: <strong>drop a cube at your site</strong> — Place Actors → Shapes → drag a cube in. Select it and press <strong>F</strong> to zoom straight back to it any time you get lost. Then right-click its Location in the transform panel and copy the coordinates. You will paste them twice more.</p>
+<p>Add a <strong>Cesium Cartographic Polygon</strong> from the panel. It appears somewhere arbitrary; paste your saved coordinates into its transform and it lands on your site. Scale it to cover as much as you want, bearing in mind the views you will take.</p>
+<figure class="post-fig"><img src="../assets/img/blog/unreal-cesium-google-3d-tiles/step-04.jpg" alt="The clipping polygon applied through a Cesium Polygon Raster Overlay, with the selection inverted." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">9:52</span>The clipping polygon applied through a Cesium Polygon Raster Overlay, with the selection inverted.</figcaption></figure>
+<p>To make it clip: select the <strong>Cesium 3D Tileset</strong>, in the Details panel press <strong>Add</strong>, type polygon, choose <strong>Cesium Polygon Raster Overlay</strong>. Press the plus by Polygons and add your cartographic polygon.</p>
+<p>There is a checkbox to invert the selection — so you can keep a piece of the city and discard the rest, or cut a plot out of it. Multiple polygons are supported for external and internal clipping.</p>
+<h2 id="5-bring-in-the-model-with-datasmith" class="md-h2">5. Bring in the model with Datasmith</h2>
+<p>Edit → Plugins → search <strong>Datasmith</strong> → install the Datasmith Importer. You also need the exporter for your authoring software, from the Unreal Engine website — it covers Revit, Rhino, SketchUp and others.</p>
+<p>Two edits in Revit make this go much better:</p>
+<ul class="md-list">
+<li><strong>VV</strong> on the keyboard → Model Categories → turn <strong>plants</strong> off. You do not want RPC billboards in Unreal.</li>
+<li>Crop the site to the surrounding buildings: in a site floor plan, View → <strong>Scope Box</strong>, drag the area you want to keep, then adjust its extents in the 3D view.</li>
+</ul>
+<p>Then Datasmith toolbar → Export Datasmith File.</p>
+<figure class="post-fig"><img src="../assets/img/blog/unreal-cesium-google-3d-tiles/step-05.jpg" alt="Datasmith import running. Geometry and materials are the two options that matter." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">12:58</span>Datasmith import running. Geometry and materials are the two options that matter.</figcaption></figure>
+<p>In Unreal: the plus button → Datasmith → File Import. Make a new folder to keep it organised. Select <strong>geometry</strong> and <strong>materials</strong> and import.</p>
+<p>The model will land at the origin, which is in the middle of nowhere and dark. Select it in the outliner, press <strong>F</strong> to zoom to it — then paste in the coordinates from your cube. From there it is manual rotation and adjustment to sit it correctly.</p>
+<h2 id="6-light-it-dress-it-and-get-an-image-out" class="md-h2">6. Light it, dress it, and get an image out</h2>
+<p><strong>Lighting.</strong> Back in lit view, select Cesium SunSky and set the time zone — +9 for Japan, in this case — then play with time of day. Dusk or dawn gives a warm tint and long shadows. Set the date for an accurate sun position.</p>
+<p><strong>Assets.</strong> Megascan trees from the launcher drop into the content folder; drag them in, or use <strong>Foliage mode</strong> (top left, paint icon) to scatter them with control over density and random scaling. Keep them in their own outliner folder.</p>
+<p><strong>Materials.</strong> Imported materials often tile badly. Use <strong>Quixel Bridge</strong> — the green plus icon — to find a replacement, download at low or medium quality for aerial work, and drag it onto the surface. Double-click the material instance to tweak.</p>
+<p><strong>Atmosphere.</strong> Add a <strong>Post Process Volume</strong> from visual effects. Tick <strong>Infinite Extent</strong> so it applies everywhere, set exposure to manual with a sensible value, and adjust bloom and temperature from there. Then add <strong>Exponential Height Fog</strong> and <strong>Volumetric Clouds</strong>. On the fog, push the <strong>start distance</strong> out so your building is not shrouded while the distance still blends.</p>
+<figure class="post-fig"><img src="../assets/img/blog/unreal-cesium-google-3d-tiles/step-06.jpg" alt="Golden hour over Shinjuku, with the imported model in Google&#x27;s streamed tiles. Fog start distance pushed out so the site stays clear." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">19:24</span>Golden hour over Shinjuku, with the imported model in Google&#x27;s streamed tiles. Fog start distance pushed out so the site stays clear.</figcaption></figure>
+<p><strong>Output.</strong> Move to a view you like, hit the burger menu → <strong>Create Camera Here</strong> → Cine Camera, and save your favourite positions. Then the same menu → <strong>High Resolution Screenshot</strong>, set a modest size multiplier — go too high and Unreal will crash — and capture.</p>
+<h2 id="why-this-is-worth-the-setup" class="md-h2">Why this is worth the setup</h2>
+<p>The setup is an hour; after that, <strong>dropping a new design into accurate city context is minutes</strong>. That changes what is reasonable to test: more options, in real context, earlier.</p>
+<p>And it is the floor rather than the ceiling. The same scene takes city data overlays, interactive walkthroughs and presentations, and can be packaged as a desktop or web app. That is the line between a render and a twin.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More guides">
+      <a class="tpl-prevnext__item" href="../blog/nano-banana-beginners-guide.html"><span>Newer</span><strong>Nano Banana for architecture — a beginner&#x27;s guide to 3D and diagrams</strong></a>
+      <a class="tpl-prevnext__all" href="../blog.html">All guides</a>
+      <span></span>
+    </nav>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="tpl-cta card card--emphasis">
+      <div>
+        <h2 class="section-title">Want this running on a real project?</h2>
+        <p class="lead">We build these pipelines for planning, development and design teams &mdash;
+        and the twins they feed. Tell us what you are working on.</p>
+      </div>
+      <a class="btn btn--primary btn--mono" href="../contact.html">Talk to the studio <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap"><div class="cta-band">
+    <span class="eyebrow eyebrow--plain" style="justify-content:center; display:flex">Stay in the loop</span>
+    <h2 class="section-title mt-6" style="max-width:22ch; margin-inline:auto">Learn the tools shaping tomorrow&rsquo;s cities.</h2>
+    <p class="lead mx-auto center mt-6" style="margin-inline:auto">Every guide here starts life as a video on the channel. Subscribe for new workflows on digital twins, AI and real-time visualisation &mdash; and see how Urban Decoders builds them.</p>
+    <div class="wrap-btns mt-7" style="justify-content:center">
+      <a class="btn btn--primary btn--lg" href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener">Subscribe on YouTube</a>
+      <a class="btn btn--outline btn--lg" href="../contact.html">Work with us</a>
+    </div>
+  </div></div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+        <div class="footer__badges"><img class="nv" src="../assets/logos/nvidia-inception.svg" alt="NVIDIA Inception Program member" width="93" height="40" loading="lazy"><img class="epic" src="../assets/logos/epic-megagrants.svg" alt="Epic MegaGrants Recipient" width="46" height="48" loading="lazy"></div>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../platform.html">Platform</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../case-studies.html">Work</a></li>
+          <li><a href="../courses.html">Courses</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../resources/">All resources</a></li>
+          <li><a href="../resources/skills/">Skills library</a></li>
+          <li><a href="../resources/guides/">Guides &amp; how-tos</a></li>
+          <li><a href="../contact.html">Book a scoping call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+      <div class="social">
+        <a href="https://www.instagram.com/urbandecoders/" target="_blank" rel="noopener" aria-label="Urban Decoders on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener" aria-label="Urban Decoders on YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.77-1.77C19.3 5.1 12 5.1 12 5.1s-7.3 0-8.83.43A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.77 1.77C4.7 18.9 12 18.9 12 18.9s7.3 0 8.83-.43a2.5 2.5 0 0 0 1.77-1.77C23 15.2 23 12 23 12ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../resources/resources.js?v=20261117" defer></script>
+</body>
+</html>

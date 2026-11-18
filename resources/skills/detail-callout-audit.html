@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detail Callout Audit — Claude skill for architecture — Urban Decoders</title>
+<meta name="description" content="Resolves the cross-reference graph of a technical package: dangling callouts, orphan details, and junctions drawn nowhere.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/skills/detail-callout-audit.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Detail Callout Audit — Claude skill for architecture — Urban Decoders">
+<meta property="og:description" content="Resolves the cross-reference graph of a technical package: dangling callouts, orphan details, and junctions drawn nowhere.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "Detail Callout Audit",
+  "alternateName": "detail-callout-audit",
+  "description": "Resolves the cross-reference graph of a technical package: dangling callouts, orphan details, and junctions drawn nowhere.",
+  "codeSampleType": "full solution",
+  "programmingLanguage": "Claude Skill",
+  "url": "https://www.urbandecoders.com/resources/skills/detail-callout-audit.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "license": "Proprietary",
+  "isPartOf": { "@type": "CollectionPage", "name": "Claude Skills for Architecture", "url": "https://www.urbandecoders.com/resources/skills/" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/">Skills</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/drawings-spec.html">Drawings &amp; spec</a><span aria-hidden="true">/</span>
+      <span><code>detail-callout-audit</code></span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Callout map</span>
+        <h1 class="display tpl-skilltitle">Detail Callout Audit</h1>
+        <p class="lead">Resolves the cross-reference graph of a technical package: dangling callouts, orphan details, and junctions drawn nowhere.</p>
+        <p class="tpl-callline">Once installed, Claude loads it on its own when the conversation
+        matches. You can also call it directly with <code>/detail-callout-audit</code>.</p>
+        <div class="wrap-btns">
+          <a class="btn btn--brand btn--mono" href="../downloads/detail-callout-audit.skill" download>Download .skill <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+          <a class="btn btn--outline btn--mono" href="#quick-reference">Read the quick reference</a>
+        </div>
+      </div>
+      <dl class="tpl-meta card">
+        <div><dt>Category</dt><dd><a href="../../resources/skills/drawings-spec.html">Drawings &amp; spec</a></dd></div>
+        <div><dt>Output</dt><dd>Callout map</dd></div>
+        <div><dt>Package</dt><dd>1 file &middot; 7.9 KB</dd></div>
+        <div><dt>Download</dt><dd>3.4 KB zip</dd></div>
+        <div><dt>Worked example</dt><dd><a href="../downloads/detail-callout-audit-example.zip" download>3 files &middot; 9.7 KB</a></dd></div>
+        <div><dt>Tags</dt><dd class="tpl-meta__tags"><span class="tag">Details</span><span class="tag">Technical</span><span class="tag">Pre-issue</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap"><div class="tpl-disclaimer" role="note">
+  <span class="tpl-disclaimer__tag">Read first</span>
+  <p>These skills assist qualified practitioners. They replace neither the architect of
+  record nor the approving authority. Every figure, clause and citation they surface is
+  marked for you to verify — treat an unverified output as a question, not an answer.</p>
+</div></div>
+</section>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Install just this one.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">Two routes. Both end with Claude loading the
+        skill by itself when your conversation matches.</p>
+      </div>
+      <div class="tpl-install">
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">A</span> Claude app, Chat or Cowork</h3>
+          <ol class="md-list">
+            <li>Download <code>detail-callout-audit.skill</code> below.</li>
+            <li>Open Claude, go to <strong>Settings &rarr; Capabilities &rarr; Skills</strong> and upload the file.</li>
+            <li>Start a conversation and attach your material. The skill loads itself on a match.</li>
+          </ol>
+          <a class="btn btn--ghost btn--mono btn--sm" href="../downloads/detail-callout-audit.skill" download>detail-callout-audit.skill &middot; 3.4 KB</a>
+        </div>
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">B</span> Claude Code, in your project</h3>
+          <p>Unzip the package into your skills folder, then restart Claude Code.</p>
+          <div class="codeblock">
+            <button class="codeblock__copy" type="button" data-copy>Copy</button>
+            <pre><code>mkdir -p .claude/skills &amp;&amp; unzip detail-callout-audit.skill -d .claude/skills/</code></pre>
+          </div>
+          <p class="tpl-fine">Use <code>~/.claude/skills/</code> instead to install it for every project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="at-a-glance">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">At a glance</span>
+      <h2 class="section-title">What it takes, what you get.</h2>
+    </div>
+    <div class="grid grid--3 tpl-glance">
+      <div class="card tpl-glance__box">
+        <h3>It takes</h3>
+        <p>A drawing set — general arrangements and detail sheets</p>
+      </div>
+      <div class="card tpl-glance__box">
+        <h3>You get</h3>
+        <p>A callout map resolving each reference to its target, dangling and orphan lists, duplicate reference collisions, and a junction-coverage survey of the conditions visible on the drawings.</p>
+      </div>
+      <div class="card tpl-glance__box tpl-glance__box--red">
+        <h3>It will not</h3>
+        <p>Judge whether a detail is correct or buildable, draw a missing detail, renumber anything, or count a missing consultant sheet as a failure.</p>
+      </div>
+    </div>
+    <div class="tpl-example">
+      <span class="tag">Test drive</span>
+      <p>Ellerby Wharf — a sheet split in January that broke six callouts. Run the skill on the example input, then score your output against the defect key &mdash; it lists what was planted and what a good run does with it.</p>
+      <a class="btn btn--outline btn--mono btn--sm" href="../downloads/detail-callout-audit-example.zip" download>Worked example <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="quick-reference">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#run-it">Run it</a></li><li><a href="#the-report">The report</a></li><li><a href="#the-three-failures">The three failures</a></li><li><a href="#what-it-will-not-do-by-design">What it will not do — by design</a></li><li><a href="#work-the-output">Work the output</a></li></ul>
+        <p class="tpl-toc__head tpl-toc__head--spaced">Jump to</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#files">Files on disk</a></li>
+          <li><a href="#trigger">When it triggers</a></li>
+        </ul>
+      </nav>
+      <div class="tpl-doc">
+        <span class="eyebrow">Quick reference</span>
+        <h2 class="section-title" style="margin:var(--space-4) 0 var(--space-6)">How to run it.</h2>
+        <div class="md"><p>Resolves the cross-reference graph of a technical package: dangling callouts, orphan details, collisions, and junctions drawn nowhere. <strong>Audits references and coverage, never design. Draws nothing, renumbers nothing.</strong></p>
+<h2 id="run-it" class="md-h2">Run it</h2>
+<p>Attach the drawing set, and say what the package is for:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>Audit the detail callouts across this package before we issue for construction.
+Which details does nothing call up? And which callouts point nowhere?
+We split the detail sheets last month. Did the references survive?
+Which junctions on these elevations have no detail at all?</code></pre></div>
+<p>Say which consultant packages are <strong>not</strong> included. Otherwise every callout into a missing package reads as a failure and the count misleads you.</p>
+<h2 id="the-report" class="md-h2">The report</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Section</th><th>What it holds</th></tr></thead><tbody><tr><td>Verdict</td><td>Cross-referenced well enough to issue? The single biggest problem.</td></tr><tr><td>Callout map</td><td>Callout ref · On sheet · At location · Points to sheet · Target found · Target title · Status.</td></tr><tr><td>Dangling callouts</td><td>Pointing at nothing, or at the wrong sheet.</td></tr><tr><td>Orphan details</td><td>Drawn but called up by nothing.</td></tr><tr><td>Duplicates &amp; collisions</td><td>One reference for two details, or one detail with two numbers.</td></tr><tr><td>Junction coverage</td><td>Conditions visible on the drawings and whether each has a detail. Marked <code>[inferred]</code> throughout.</td></tr><tr><td>Direction &amp; scale</td><td>Section cut directions and stated scales that disagree with what they show.</td></tr><tr><td>Ranked findings</td><td>High / Medium / Low / Info.</td></tr><tr><td>What was not checked</td><td>Always present.</td></tr></tbody></table></div>
+<p><strong>Tags:</strong> <code>[found]</code> · <code>[not found]</code> · <code>[wrong sheet]</code> · <code>[ambiguous]</code> · <code>[unreadable]</code> · <code>[verify manually]</code>.</p>
+<h2 id="the-three-failures" class="md-h2">The three failures</h2>
+<ol class="md-list">
+<li><strong>The dangling callout</strong> — a bubble pointing at a detail that does not exist or has moved. The contractor rings up. Twice.</li>
+<li><strong>The orphan detail</strong> — drawn, checked, coordinated, called up by nothing. Usually it means a callout was deleted, so a junction is now undetailed.</li>
+<li><strong>The undetailed junction</strong> — nobody drew it, nobody called it up, nobody noticed. An absence leaves no mark on a drawing set.</li>
+</ol>
+<blockquote class="mdquote"><p>The first two are findable mechanically. The third is why the audit lists the conditions it can see and asks whether each is detailed, instead of only following the references that already exist.</p></blockquote>
+<h2 id="what-it-will-not-do-by-design" class="md-h2">What it will not do — by design</h2>
+<ul class="md-list">
+<li><strong>Judge whether a detail is correct, buildable, weathertight or compliant.</strong> References and coverage only.</li>
+<li><strong>Draw, sketch or describe a missing detail.</strong> A gap is a gap.</li>
+<li><strong>Renumber, re-reference or edit anything.</strong></li>
+<li><strong>Quote a construction standard or performance figure from memory.</strong></li>
+<li><strong>Report a junction as adequately detailed.</strong> It reports that a detail exists and is reached. Whether it resolves the junction is the author&#x27;s call.</li>
+<li><strong>Count a missing consultant sheet as a dangling callout.</strong> Those are <code>[verify manually]</code>, reported separately with a count.</li>
+<li><strong>Infer that an orphan detail is safe to delete.</strong> More often it means a callout was lost, which is the opposite problem.</li>
+</ul>
+<h2 id="work-the-output" class="md-h2">Work the output</h2>
+<ol class="md-list">
+<li>Read the pattern findings before the individual ones. A convention that changed mid-package is one fix; fifty dangling callouts is fifty.</li>
+<li>Chase orphans as hard as dangling callouts — they point at undetailed junctions.</li>
+<li>Fix duplicates and collisions first. A contractor resolving an ambiguous reference may reach either detail, and will reach the cheaper one.</li>
+<li>Treat the junction coverage section as a conversation with the technical lead, not a defect list. It is marked <code>[inferred]</code> for a reason.</li>
+<li>Re-run after any sheet split or renumbering. That is precisely when the graph breaks and precisely when nobody checks.</li>
+<li>File the not-checked list; it names the consultant packages still outside the audit.</li>
+</ol>
+<hr class="divider md-hr">
+<p><strong>Remember:</strong> the audit proves the references resolve. Whether the detail they reach is any good is a technical review, and that is a different pair of eyes.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="trigger">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Triggering</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">When Claude reaches for it.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">This is the description Claude itself reads to
+        decide whether the skill applies. It is worth knowing, because it tells you exactly how to
+        phrase the ask — and what the skill will decline.</p>
+      </div>
+      <div class="tpl-triggerbox card">
+        <p class="tpl-triggerbox__name"><code>detail-callout-audit</code></p>
+        <p>Audit detail and section callouts across a drawing set: every callout traced to the sheet it points to, every detail traced back to the drawings that call it up, with dangling callouts, orphan details, duplicated references, wrong-sheet pointers, scale and orientation mismatches, and junctions that are drawn nowhere. Returns a verdict-first report and a callout map; it never draws, renumbers or edits anything. Use this WHENEVER someone asks to &quot;check the detail callouts&quot;, &quot;do the section marks point to the right sheets&quot;, &quot;which details are missing&quot;, &quot;audit the callout references&quot;, &quot;are there details nobody calls up&quot;, &quot;check the drawing cross-references&quot;, or runs a pre-issue check on a technical package. Do NOT use it to judge whether a detail is correct, buildable or compliant, to draw a missing detail, to check specification coordination (spec-drawing-crosscheck), or to audit the register itself (drawing-register-audit).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="files">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Package</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Files it puts on your disk.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">1 file, 7.9 KB unzipped,
+        under <code>.claude/skills/detail-callout-audit/</code>. Reference material loads only when the skill
+        needs it &mdash; no subfolders.</p>
+        <p><a class="btn btn--outline btn--mono btn--sm" href="../downloads/detail-callout-audit.skill" download>Download the package <span class="btn__arrow" aria-hidden="true">&#8595;</span></a></p>
+      </div>
+      <div class="tpl-tree card">
+        <p class="tpl-tree__root"><code>.claude/skills/detail-callout-audit/</code></p>
+        <ul class="tpl-tree__list"><li class="tpl-file" style="--d:0"><span class="tpl-file__name">SKILL.md</span><span class="tpl-file__dir"></span><span class="tpl-file__size">7.9 KB</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More in this category">
+      <a class="tpl-prevnext__item" href="../../resources/skills/spec-drawing-crosscheck.html"><span>Previous</span><strong>Spec / Drawing Cross-check</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/skills/drawings-spec.html">All Drawings &amp; spec</a>
+      <span></span>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

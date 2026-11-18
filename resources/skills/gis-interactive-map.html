@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GIS Interactive Map — Claude skill for architecture — Urban Decoders</title>
+<meta name="description" content="Site data becomes one self-contained interactive HTML map, with unverified layers visibly dashed.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/skills/gis-interactive-map.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GIS Interactive Map — Claude skill for architecture — Urban Decoders">
+<meta property="og:description" content="Site data becomes one self-contained interactive HTML map, with unverified layers visibly dashed.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "GIS Interactive Map",
+  "alternateName": "gis-interactive-map",
+  "description": "Site data becomes one self-contained interactive HTML map, with unverified layers visibly dashed.",
+  "codeSampleType": "full solution",
+  "programmingLanguage": "Claude Skill",
+  "url": "https://www.urbandecoders.com/resources/skills/gis-interactive-map.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "license": "Proprietary",
+  "isPartOf": { "@type": "CollectionPage", "name": "Claude Skills for Architecture", "url": "https://www.urbandecoders.com/resources/skills/" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/">Skills</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/visuals-diagrams.html">Visuals &amp; diagrams</a><span aria-hidden="true">/</span>
+      <span><code>gis-interactive-map</code></span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Single .html map</span>
+        <h1 class="display tpl-skilltitle">GIS Interactive Map</h1>
+        <p class="lead">Site data becomes one self-contained interactive HTML map, with unverified layers visibly dashed.</p>
+        <p class="tpl-callline">Once installed, Claude loads it on its own when the conversation
+        matches. You can also call it directly with <code>/gis-interactive-map</code>.</p>
+        <div class="wrap-btns">
+          <a class="btn btn--brand btn--mono" href="../downloads/gis-interactive-map.skill" download>Download .skill <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+          <a class="btn btn--outline btn--mono" href="#quick-reference">Read the quick reference</a>
+        </div>
+      </div>
+      <dl class="tpl-meta card">
+        <div><dt>Category</dt><dd><a href="../../resources/skills/visuals-diagrams.html">Visuals &amp; diagrams</a></dd></div>
+        <div><dt>Output</dt><dd>Single .html map</dd></div>
+        <div><dt>Package</dt><dd>3 files &middot; 21.2 KB</dd></div>
+        <div><dt>Download</dt><dd>10.7 KB zip</dd></div>
+        <div><dt>Worked example</dt><dd><a href="../downloads/gis-interactive-map-example.zip" download>6 files &middot; 11.6 KB</a></dd></div>
+        <div><dt>Tags</dt><dd class="tpl-meta__tags"><span class="tag">GeoJSON</span><span class="tag">Leaflet</span><span class="tag">Stage 0–2</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap"><div class="tpl-disclaimer" role="note">
+  <span class="tpl-disclaimer__tag">Read first</span>
+  <p>These skills assist qualified practitioners. They replace neither the architect of
+  record nor the approving authority. Every figure, clause and citation they surface is
+  marked for you to verify — treat an unverified output as a question, not an answer.</p>
+</div></div>
+</section>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Install just this one.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">Two routes. Both end with Claude loading the
+        skill by itself when your conversation matches.</p>
+      </div>
+      <div class="tpl-install">
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">A</span> Claude app, Chat or Cowork</h3>
+          <ol class="md-list">
+            <li>Download <code>gis-interactive-map.skill</code> below.</li>
+            <li>Open Claude, go to <strong>Settings &rarr; Capabilities &rarr; Skills</strong> and upload the file.</li>
+            <li>Start a conversation and attach your material. The skill loads itself on a match.</li>
+          </ol>
+          <a class="btn btn--ghost btn--mono btn--sm" href="../downloads/gis-interactive-map.skill" download>gis-interactive-map.skill &middot; 10.7 KB</a>
+        </div>
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">B</span> Claude Code, in your project</h3>
+          <p>Unzip the package into your skills folder, then restart Claude Code.</p>
+          <div class="codeblock">
+            <button class="codeblock__copy" type="button" data-copy>Copy</button>
+            <pre><code>mkdir -p .claude/skills &amp;&amp; unzip gis-interactive-map.skill -d .claude/skills/</code></pre>
+          </div>
+          <p class="tpl-fine">Use <code>~/.claude/skills/</code> instead to install it for every project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="at-a-glance">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">At a glance</span>
+      <h2 class="section-title">What it takes, what you get.</h2>
+    </div>
+    <div class="grid grid--3 tpl-glance">
+      <div class="card tpl-glance__box">
+        <h3>It takes</h3>
+        <p>One or more GeoJSON files — boundaries, constraints, POIs, routes, survey points — plus a location</p>
+      </div>
+      <div class="card tpl-glance__box">
+        <h3>You get</h3>
+        <p>A single self-contained .html (Leaflet from CDN, data inlined): each dataset a labelled toggleable layer with legend, popups, scale bar and auto-fit, plus a data-integrity summary and an evidence-based read of what the layers show.</p>
+      </div>
+      <div class="card tpl-glance__box tpl-glance__box--red">
+        <h3>It will not</h3>
+        <p>Source constraint data or generate flood zones and listings from memory; do geoprocessing (buffer in QGIS, then map it); produce print drawings.</p>
+      </div>
+    </div>
+    <div class="tpl-example">
+      <span class="tag">Test drive</span>
+      <p>Brindle Works brief with boundary, constraints and POI GeoJSON. Run the skill on the example input, then score your output against the defect key &mdash; it lists what was planted and what a good run does with it.</p>
+      <a class="btn btn--outline btn--mono btn--sm" href="../downloads/gis-interactive-map-example.zip" download>Worked example <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="quick-reference">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#run-it">Run it</a></li><li><a href="#the-deliverable">The deliverable</a></li><li><a href="#what-it-will-not-do-by-design">What it will not do — by design</a></li><li><a href="#work-the-output">Work the output</a></li></ul>
+        <p class="tpl-toc__head tpl-toc__head--spaced">Jump to</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#files">Files on disk</a></li>
+          <li><a href="#trigger">When it triggers</a></li>
+        </ul>
+      </nav>
+      <div class="tpl-doc">
+        <span class="eyebrow">Quick reference</span>
+        <h2 class="section-title" style="margin:var(--space-4) 0 var(--space-6)">How to run it.</h2>
+        <div class="md"><p>Turns your GeoJSON files into one self-contained interactive HTML map — Leaflet from CDN, all data inlined, layer toggles, legend, popups — plus a data-integrity report. <strong>Not a GIS — a trustworthy renderer of exactly what you supplied.</strong></p>
+<h2 id="run-it" class="md-h2">Run it</h2>
+<p>Attach one or more GeoJSON files (points, lines, polygons) and ask:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>Build an interactive map of these datasets centred on [place / lat,long].
+Map the site boundary, constraints and POIs as separate toggleable layers.
+The flood layer is from the EA download; the rest is our own survey.   (state provenance!)
+The points are dense — cluster them.                                   (large data)</code></pre></div>
+<p>Open the resulting <code>.html</code> by double-clicking — no install, no server. Base tiles need a connection; everything else is inside the file.</p>
+<h2 id="the-deliverable" class="md-h2">The deliverable</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Part</th><th>What it holds</th></tr></thead><tbody><tr><td>The map</td><td>Pan/zoom, scale bar, zoom buttons, OSM base with attribution.</td></tr><tr><td>Layer control</td><td>One toggleable layer per dataset, expanded by default.</td></tr><tr><td>Legend</td><td>Fixed key: every layer, its colour, unverified layers marked.</td></tr><tr><td>Popups</td><td>Every attribute of the clicked feature, HTML-escaped, <code>[unnamed feature]</code> where names are missing.</td></tr><tr><td>Info panel</td><td>Collapsible: data summary, excluded features, <code>[to verify]</code> list, analysis, caveats — travels inside the file.</td></tr><tr><td>Chat report</td><td>Data summary → map config → analysis → gaps &amp; caveats.</td></tr></tbody></table></div>
+<p><strong>Styling:</strong> colour-blind-safe palette (Okabe–Ito), one colour per dataset, semi-transparent polygon fills. <strong>Dashed outlines mean unverified data</strong> — the caveat survives a screenshot even when the legend doesn&#x27;t.</p>
+<h2 id="what-it-will-not-do-by-design" class="md-h2">What it will not do — by design</h2>
+<ul class="md-list">
+<li><strong>Fix your geometry.</strong> Projected coordinates (OSGB eastings/northings), swapped lat/lon, unclosed rings, null geometries are flagged and excluded — never silently corrected. Reproject in QGIS to EPSG:4326 and re-supply.</li>
+<li><strong>Draw constraints from memory.</strong> Flood zones, conservation areas, listings, TPOs only plot from a file you supply. Otherwise it names the source to get (EA Flood Map for Planning, NHLE, LPA policies map) and marks <code>[to verify]</code>.</li>
+<li><strong>Declare compliance.</strong> &quot;The site is outside Flood Zone 2&quot; is a verdict against authoritative data, not a map caption. It shows what your layers show, labelled with their provenance, and declines the verdict.</li>
+<li><strong>Upgrade dubious provenance.</strong> If your description of a layer&#x27;s source contradicts the file&#x27;s own metadata, both are reported; the layer renders as unverified until resolved.</li>
+<li><strong>Invent attributes.</strong> Missing names show <code>[unnamed feature]</code>; missing fields stay missing and get flagged.</li>
+<li><strong>Web-search your site or client</strong> unless you ask; no client names in filenames.</li>
+<li><strong>Geoprocess.</strong> Buffers, catchments, joins belong in QGIS; map the result.</li>
+</ul>
+<h2 id="work-the-output" class="md-h2">Work the output</h2>
+<ol class="md-list">
+<li>Read the <strong>excluded features</strong> list first — anything excluded is data you need to fix at source before the map is complete.</li>
+<li>Check every <strong><code>[to verify]</code></strong> item: fetch the authoritative dataset (EA / NHLE / LPA), re-export, re-run with real provenance stated.</li>
+<li>Toggle layers to sanity-check each dataset against the base map — a layer that &quot;looks right&quot; over OSM is your fastest gross-error check.</li>
+<li>Before circulating, confirm the info panel caveats are ones you can live with — the file travels without you attached.</li>
+<li>For the report figure, screenshot with the legend in frame; dashed layers are dashed for a reason.</li>
+</ol>
+<hr class="divider md-hr">
+<p><strong>Remember:</strong> the map is only as honest as its labelling — a sketched polygon in confident blue becomes &quot;the flood zone&quot; the moment it is forwarded. Test drive: run it on the Brindle Works sample (brief + three GeoJSONs) and score against <code>brindle-works-defect-key.md</code>.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="trigger">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Triggering</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">When Claude reaches for it.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">This is the description Claude itself reads to
+        decide whether the skill applies. It is worth knowing, because it tells you exactly how to
+        phrase the ask — and what the skill will decline.</p>
+      </div>
+      <div class="tpl-triggerbox card">
+        <p class="tpl-triggerbox__name"><code>gis-interactive-map</code></p>
+        <p>Turn one or more GeoJSON files plus a target location into a single self-contained interactive HTML map (Leaflet from CDN, data inlined) — each dataset a labelled, toggleable layer with legend, popups, scale bar and auto-fit — plus a data-integrity summary and an evidence-based read of what the layers show. Use this WHENEVER someone supplies GeoJSON (site boundaries, constraints, points of interest, routes, survey points) and wants it &quot;mapped&quot;, &quot;on an interactive map&quot;, &quot;as a Leaflet map&quot;, &quot;as one HTML file I can email&quot;, &quot;layers I can toggle&quot;, &quot;plotted with a legend&quot;, or asks &quot;put these datasets on a map of [place]&quot;, &quot;visualise this GeoJSON&quot;, &quot;make me a site context map&quot;. Also trigger for combining spatial datasets for a RIBA Stage 0–2 context study. Do NOT use for static print drawings, for geoprocessing such as buffers or catchments (do that in QGIS, then map it), or for sourcing constraint data — this skill plots supplied data and never generates flood zones or listings from memory.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="files">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Package</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Files it puts on your disk.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">3 files, 21.2 KB unzipped,
+        under <code>.claude/skills/gis-interactive-map/</code>. Reference material loads only when the skill
+        needs it &mdash; references/, scripts/.</p>
+        <p><a class="btn btn--outline btn--mono btn--sm" href="../downloads/gis-interactive-map.skill" download>Download the package <span class="btn__arrow" aria-hidden="true">&#8595;</span></a></p>
+      </div>
+      <div class="tpl-tree card">
+        <p class="tpl-tree__root"><code>.claude/skills/gis-interactive-map/</code></p>
+        <ul class="tpl-tree__list"><li class="tpl-file" style="--d:1"><span class="tpl-file__name">leaflet-map-template.md</span><span class="tpl-file__dir">references/</span><span class="tpl-file__size">5.0 KB</span></li><li class="tpl-file" style="--d:1"><span class="tpl-file__name">validate_geojson.py</span><span class="tpl-file__dir">scripts/</span><span class="tpl-file__size">5.8 KB</span></li><li class="tpl-file" style="--d:0"><span class="tpl-file__name">SKILL.md</span><span class="tpl-file__dir"></span><span class="tpl-file__size">10.5 KB</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More in this category">
+      <a class="tpl-prevnext__item" href="../../resources/skills/site-matrix-diagram-builder.html"><span>Previous</span><strong>Site Matrix Diagram Builder</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/skills/visuals-diagrams.html">All Visuals &amp; diagrams</a>
+      <span></span>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect Blender to Claude — Urban Decoders</title>
+<meta name="description" content="The most mature of the community integrations, recently renamed from blender-mcp to mcp-for-blender. One command sets up the client config and the add-on together — and there is a safe mode worth knowing about.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/guides/mcp-blender.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Connect Blender to Claude — Urban Decoders">
+<meta property="og:description" content="The most mature of the community integrations, recently renamed from blender-mcp to mcp-for-blender. One command sets up the client config and the add-on together — and there is a safe mode worth knowing about.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Connect Blender to Claude",
+  "description": "The most mature of the community integrations, recently renamed from blender-mcp to mcp-for-blender. One command sets up the client config and the add-on together — and there is a safe mode worth knowing about.",
+  "url": "https://www.urbandecoders.com/resources/guides/mcp-blender.html",
+  "dateModified": "2026-11-16",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "publisher": { "@type": "Organization", "name": "Urban Decoders" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/guides/">Guides</a><span aria-hidden="true">/</span>
+      <span>MCP setup</span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">MCP setup</span>
+        <h1 class="display tpl-skilltitle">Connect Blender to Claude</h1>
+        <p class="lead">The most mature of the community integrations, recently renamed from blender-mcp to mcp-for-blender. One command sets up the client config and the add-on together — and there is a safe mode worth knowing about.</p>
+      </div>
+      <dl class="tpl-meta card"><div><dt>Software</dt><dd>Blender 3.0+</dd></div><div><dt>Level</dt><dd>Beginner</dd></div><div><dt>Reading</dt><dd>7 min</dd></div><div><dt>Updated</dt><dd>2026-11-16</dd></div></dl>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#what-you-need">What you need</a></li><li><a href="#the-short-route">The short route</a></li><li><a href="#the-long-route">The long route</a></li><li><a href="#starting-the-connection-in-blender">Starting the connection in Blender</a></li><li><a href="#checking-it-worked">Checking it worked</a></li><li><a href="#safe-mode-read-this-before-the-first-real-session">Safe mode — read this before the first real session</a></li><li><a href="#troubleshooting">Troubleshooting</a></li><li><a href="#what-it-is-good-for">What it is good for</a></li></ul>
+      </nav>
+      <div class="tpl-doc">
+        <figure class="guide-fig"><img src="../../assets/img/mcp/mcp-blender.svg" alt="Connect Blender to Claude — connection diagram" width="1200" height="440" loading="eager" decoding="async"><figcaption>Claude talks to Blender 3.0+ over MCP: tool calls out, model state back. What installs where is in the steps below.</figcaption></figure>
+        <div class="md"><p>Blender has the most developed community MCP integration of any application in these guides, and the easiest install — a single setup command does the client config and the add-on together.</p>
+<p><strong>One thing to know before you search for it:</strong> the project was <strong>renamed</strong>. The PyPI package was <code>blender-mcp</code> and is now <strong><code>mcp-for-blender</code></strong>. Old setups keep working — <code>uvx blender-mcp</code> still runs the server and no config change is required — but <strong>new installs should use <code>mcp-for-blender</code></strong>.</p>
+<p>Read <a href="mcp-what-it-is.html">What MCP actually is</a> first if this is your first server.</p>
+<p><strong>Source:</strong> the project README at <a href="https://github.com/ahujasid/mcp-for-blender" target="_blank" rel="noopener">github.com/ahujasid/mcp-for-blender</a>. It is a third-party integration, <strong>not made by the Blender Foundation</strong>.</p>
+<h2 id="what-you-need" class="md-h2">What you need</h2>
+<ul class="md-list">
+<li><strong>Blender 3.0 or newer.</strong> (Blender 5.3+ only for the Gaussian-splat world tools.)</li>
+<li><strong>Python 3.10 or newer.</strong></li>
+<li><strong>uv</strong> — install with the official installer, <strong>not</strong> <code>pip install uv</code>:</li>
+</ul>
+<p>| Platform | Command | |---|---| | macOS | <code>brew install uv</code> | | Windows | <code>winget install --id=astral-sh.uv -e</code> | | Windows (alt) | <code>powershell -ExecutionPolicy ByPass -c &quot;irm https://astral.sh/uv/install.ps1 \| iex&quot;</code> |</p>
+<h2 id="the-short-route" class="md-h2">The short route</h2>
+<p>The project&#x27;s own recommendation — this finds your MCP clients, adds a <code>blender</code> entry while keeping your existing config (and saving a <code>.bak</code>), and installs and enables the add-on:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-bash">uvx mcp-for-blender setup</code></pre></div>
+<p>The README also publishes one-line installers that do the <code>uv</code> step too. <strong>Read any script before you pipe it to a shell</strong> — that is true here and everywhere else:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-bash">curl -LsSf https://www.mcp-for-blender.com/install.sh | sh</code></pre></div>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-powershell">irm https://www.mcp-for-blender.com/install.ps1 | iex</code></pre></div>
+<p>If you would rather do it by hand, the long route follows.</p>
+<h2 id="the-long-route" class="md-h2">The long route</h2>
+<h3 id="claude-desktop" class="md-h3">Claude Desktop</h3>
+<p>Settings → Developer → Edit Config, then:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-json">{
+  &quot;mcpServers&quot;: {
+    &quot;blender&quot;: {
+      &quot;command&quot;: &quot;uvx&quot;,
+      &quot;args&quot;: [&quot;mcp-for-blender&quot;]
+    }
+  }
+}</code></pre></div>
+<p>Save and <strong>fully quit Claude Desktop</strong> — on Windows, from the system tray — then reopen it.</p>
+<h3 id="claude-code" class="md-h3">Claude Code</h3>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-bash">claude mcp add blender uvx mcp-for-blender</code></pre></div>
+<h3 id="the-blender-add-on" class="md-h3">The Blender add-on</h3>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-bash">uvx mcp-for-blender install-addon</code></pre></div>
+<p>This copies the add-on into your Blender add-ons folder as <code>blender_mcp.py</code>, prints where it wrote, and keeps a <code>.bak</code> of anything it replaced. <code>uvx mcp-for-blender addon-paths</code> lists the folders it considered.</p>
+<p>Then in Blender: <strong>Edit → Preferences → Add-ons</strong>, search for <strong>MCP for Blender</strong>, and enable <strong>Interface: MCP for Blender</strong>.</p>
+<p>If it does not appear, click <strong>Install…</strong> and select the copied <code>blender_mcp.py</code>, or restart Blender.</p>
+<h2 id="starting-the-connection-in-blender" class="md-h2">Starting the connection in Blender</h2>
+<p>The add-on starts its server when Blender opens. To see it:</p>
+<ol class="md-list">
+<li>In the 3D viewport, press <strong><code>N</code></strong> to open the sidebar.</li>
+<li>Open the <strong>MCP for Blender</strong> tab.</li>
+<li>If the server is not running, click <strong>Start MCP Server</strong>.</li>
+</ol>
+<p>Default port is <strong>9876</strong> on <strong>localhost</strong>.</p>
+<p><strong>A documentation inconsistency worth knowing about.</strong> The README&#x27;s &quot;Starting the Connection&quot; section labels the button <strong>Connect to Claude</strong> and says to make sure the MCP server is running in your terminal. Its Quickstart section labels the button <strong>Start MCP Server</strong>, and the troubleshooting table says explicitly <strong>not</strong> to run the <code>uvx</code> command in a terminal. These do not reconcile. <strong>Go by what your Blender UI actually shows</strong>, and follow the troubleshooting table on the terminal question — Claude starts the server, you do not.</p>
+<h2 id="checking-it-worked" class="md-h2">Checking it worked</h2>
+<p>In Claude, look for the tools appearing (a hammer icon in Desktop). Then try one of the README&#x27;s own prompts:</p>
+<blockquote class="mdquote"><p>Create a sphere and place it above the cube</p></blockquote>
+<p>The <code>get_addon_status</code> tool reports the Blender version, add-on version and which libraries are enabled — useful as a first call when something is off.</p>
+<h2 id="safe-mode-read-this-before-the-first-real-session" class="md-h2">Safe mode — read this before the first real session</h2>
+<p><strong>By default, Claude can run arbitrary Python inside Blender.</strong> The <code>execute_blender_code</code> tool does exactly that, and the README is blunt about it: <strong>always save your work before using it.</strong></p>
+<p>There is a safe mode, and it is not on by default:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>BLENDER_MCP_SAFE_MODE=1</code></pre></div>
+<p>With it set, scripts are checked before they run, and the following are blocked: file reads and writes, running other programs, network access, and code that keeps running after the script ends.</p>
+<p><strong>Set it unless you have a specific reason not to.</strong> The tools that make this integration useful — creating geometry, materials, lighting, cameras — do not need the ability to write files or open sockets.</p>
+<p>Two further points from the README:</p>
+<ul class="md-list">
+<li><strong>The add-on socket has no authentication or encryption.</strong> Anyone who can reach that port can run Python inside Blender. Keep it on <code>localhost</code>. If you genuinely need remote access, the README recommends an SSH tunnel rather than binding outward.</li>
+<li><strong>Telemetry is opt-in</strong>, and <code>DISABLE_TELEMETRY=true</code> turns it off entirely.</li>
+</ul>
+<h2 id="troubleshooting" class="md-h2">Troubleshooting</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Symptom</th><th>Cause</th></tr></thead><tbody><tr><td><strong>Nothing connects</strong></td><td>Check the Blender add-on server is running <em>and</em> the MCP server is configured in Claude. <strong>Do not run the <code>uvx</code> command in a terminal yourself.</strong> The README notes the first command sometimes does not go through and works after that.</td></tr><tr><td><strong><code>spawn uvx ENOENT</code></strong></td><td>Claude cannot find <code>uvx</code>. Either use <code>&quot;command&quot;: &quot;cmd&quot;, &quot;args&quot;: [&quot;/c&quot;, &quot;uvx&quot;, &quot;mcp-for-blender&quot;]</code>, or run <code>where uvx</code> and put the absolute path (e.g. <code>C:\Users\&lt;you&gt;\.local\bin\uvx.exe</code>) in <code>&quot;command&quot;</code>. Then fully quit the client from the system tray.</td></tr><tr><td><strong>Tools appear twice</strong></td><td>More than one instance running. Use <strong>one</strong> — either Cursor or Claude Desktop, not both.</td></tr><tr><td><strong>Blender UI freezes on asset download</strong></td><td>Poly Haven downloads run on Blender&#x27;s main thread. Ask for 1k or 2k textures.</td></tr><tr><td><strong>Timeouts</strong></td><td>Simplify the request, or split it into steps.</td></tr><tr><td><strong>Stale version after an update</strong></td><td><code>uv cache clean mcp-for-blender blender-mcp &amp;&amp; uvx --refresh mcp-for-blender</code></td></tr></tbody></table></div>
+<p>To run two instances deliberately — say Claude Desktop and Cursor — give each its own port (<code>uvx mcp-for-blender --port 9877</code>) and set the matching port in the Blender add-on panel.</p>
+<p>To upgrade:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-bash">uvx mcp-for-blender@latest update</code></pre></div>
+<p>The <code>update</code> command also tells you if a client is still configured under the old <code>blender-mcp</code> name, and <code>uvx mcp-for-blender setup</code> switches it over.</p>
+<h2 id="what-it-is-good-for" class="md-h2">What it is good for</h2>
+<p>Generative and exploratory modelling: building scenes, materials, lighting and camera setups from description. The README&#x27;s example prompts give the flavour — <em>&quot;Make the lighting like a studio&quot;</em>, <em>&quot;Point the camera at the scene, and make it isometric&quot;</em>.</p>
+<p>For architectural work that matters, the honest framing is that this is a <strong>sketching tool</strong>, not a documentation one. It is very good at getting a scene to roughly where you want it so you can take over. It is not a route to geometry you would measure off.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More guides">
+      <a class="tpl-prevnext__item" href="../../resources/guides/mcp-what-it-is.html"><span>Previous</span><strong>What MCP actually is, and where Claude keeps its config</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/guides/">All guides</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/guides/mcp-qgis.html"><span>Next</span><strong>Connect QGIS to Claude</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

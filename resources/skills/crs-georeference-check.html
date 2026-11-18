@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRS &amp; Georeferencing Check — Claude skill for architecture — Urban Decoders</title>
+<meta name="description" content="Every dataset&#x27;s CRS, datum, units and origin in one register — with the symptom each disagreement would produce.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/skills/crs-georeference-check.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CRS &amp; Georeferencing Check — Claude skill for architecture — Urban Decoders">
+<meta property="og:description" content="Every dataset&#x27;s CRS, datum, units and origin in one register — with the symptom each disagreement would produce.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "CRS &amp; Georeferencing Check",
+  "alternateName": "crs-georeference-check",
+  "description": "Every dataset&#x27;s CRS, datum, units and origin in one register — with the symptom each disagreement would produce.",
+  "codeSampleType": "full solution",
+  "programmingLanguage": "Claude Skill",
+  "url": "https://www.urbandecoders.com/resources/skills/crs-georeference-check.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "license": "Proprietary",
+  "isPartOf": { "@type": "CollectionPage", "name": "Claude Skills for Architecture", "url": "https://www.urbandecoders.com/resources/skills/" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/">Skills</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/twins-data.html">Twins &amp; data</a><span aria-hidden="true">/</span>
+      <span><code>crs-georeference-check</code></span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Georeferencing register</span>
+        <h1 class="display tpl-skilltitle">CRS &amp; Georeferencing Check</h1>
+        <p class="lead">Every dataset&#x27;s CRS, datum, units and origin in one register — with the symptom each disagreement would produce.</p>
+        <p class="tpl-callline">Once installed, Claude loads it on its own when the conversation
+        matches. You can also call it directly with <code>/crs-georeference-check</code>.</p>
+        <div class="wrap-btns">
+          <a class="btn btn--brand btn--mono" href="../downloads/crs-georeference-check.skill" download>Download .skill <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+          <a class="btn btn--outline btn--mono" href="#quick-reference">Read the quick reference</a>
+        </div>
+      </div>
+      <dl class="tpl-meta card">
+        <div><dt>Category</dt><dd><a href="../../resources/skills/twins-data.html">Twins &amp; data</a></dd></div>
+        <div><dt>Output</dt><dd>Georeferencing register</dd></div>
+        <div><dt>Package</dt><dd>1 file &middot; 8.9 KB</dd></div>
+        <div><dt>Download</dt><dd>4.0 KB zip</dd></div>
+        <div><dt>Worked example</dt><dd><a href="../downloads/crs-georeference-check-example.zip" download>3 files &middot; 10.3 KB</a></dd></div>
+        <div><dt>Tags</dt><dd class="tpl-meta__tags"><span class="tag">CRS</span><span class="tag">GIS</span><span class="tag">Datum</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap"><div class="tpl-disclaimer" role="note">
+  <span class="tpl-disclaimer__tag">Read first</span>
+  <p>These skills assist qualified practitioners. They replace neither the architect of
+  record nor the approving authority. Every figure, clause and citation they surface is
+  marked for you to verify — treat an unverified output as a question, not an answer.</p>
+</div></div>
+</section>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Install just this one.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">Two routes. Both end with Claude loading the
+        skill by itself when your conversation matches.</p>
+      </div>
+      <div class="tpl-install">
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">A</span> Claude app, Chat or Cowork</h3>
+          <ol class="md-list">
+            <li>Download <code>crs-georeference-check.skill</code> below.</li>
+            <li>Open Claude, go to <strong>Settings &rarr; Capabilities &rarr; Skills</strong> and upload the file.</li>
+            <li>Start a conversation and attach your material. The skill loads itself on a match.</li>
+          </ol>
+          <a class="btn btn--ghost btn--mono btn--sm" href="../downloads/crs-georeference-check.skill" download>crs-georeference-check.skill &middot; 4.0 KB</a>
+        </div>
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">B</span> Claude Code, in your project</h3>
+          <p>Unzip the package into your skills folder, then restart Claude Code.</p>
+          <div class="codeblock">
+            <button class="codeblock__copy" type="button" data-copy>Copy</button>
+            <pre><code>mkdir -p .claude/skills &amp;&amp; unzip crs-georeference-check.skill -d .claude/skills/</code></pre>
+          </div>
+          <p class="tpl-fine">Use <code>~/.claude/skills/</code> instead to install it for every project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="at-a-glance">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">At a glance</span>
+      <h2 class="section-title">What it takes, what you get.</h2>
+    </div>
+    <div class="grid grid--3 tpl-glance">
+      <div class="card tpl-glance__box">
+        <h3>It takes</h3>
+        <p>Survey, CAD, BIM, GIS vectors and rasters, point clouds, city models, engine scenes</p>
+      </div>
+      <div class="card tpl-glance__box">
+        <h3>You get</h3>
+        <p>What each file declares and where the declaration lives, horizontal and vertical recorded separately, a pairwise agreement matrix, every discrepancy paired with its visible symptom, and one-line questions for the surveyor.</p>
+      </div>
+      <div class="card tpl-glance__box tpl-glance__box--red">
+        <h3>It will not</h3>
+        <p>Reproject or rewrite anything, infer a CRS from coordinates or location, supply datum shift parameters from memory, or round &quot;cannot tell&quot; to &quot;agree&quot;.</p>
+      </div>
+    </div>
+    <div class="tpl-example">
+      <span class="tag">Test drive</span>
+      <p>Ravensholt — a point cloud floating on the wrong vertical datum. Run the skill on the example input, then score your output against the defect key &mdash; it lists what was planted and what a good run does with it.</p>
+      <a class="btn btn--outline btn--mono btn--sm" href="../downloads/crs-georeference-check-example.zip" download>Worked example <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="quick-reference">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#run-it">Run it</a></li><li><a href="#the-register">The register</a></li><li><a href="#the-causes-short-boring-and-always-the-same">The causes — short, boring, and always the same</a></li><li><a href="#what-it-will-not-do-by-design">What it will not do — by design</a></li><li><a href="#work-the-output">Work the output</a></li></ul>
+        <p class="tpl-toc__head tpl-toc__head--spaced">Jump to</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#files">Files on disk</a></li>
+          <li><a href="#trigger">When it triggers</a></li>
+        </ul>
+      </nav>
+      <div class="tpl-doc">
+        <span class="eyebrow">Quick reference</span>
+        <h2 class="section-title" style="margin:var(--space-4) 0 var(--space-6)">How to run it.</h2>
+        <div class="md"><p>Every dataset&#x27;s CRS, datum, units, origin and epoch in one register: what each declares, where they disagree, and what the disagreement would look like on screen. <strong>Reconciles declarations. Never reprojects, never infers a CRS.</strong></p>
+<h2 id="run-it" class="md-h2">Run it</h2>
+<p>List or attach the datasets, and say what they are for:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>These datasets won&#x27;t line up. Build me a georeferencing register.
+We&#x27;re assembling a twin in Unreal over Cesium — do these share a frame?
+The point cloud sits a metre above the survey. Which datum problem is this?
+What do I need to ask the surveyor before we start modelling?</code></pre></div>
+<p>Say what the target platform is. The coordinate-magnitude consequences and the target frame options are written against it — and a GIS answer and an engine answer are frequently opposites.</p>
+<h2 id="the-register" class="md-h2">The register</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Part</th><th>What it holds</th></tr></thead><tbody><tr><td>Inventory</td><td>Every file: type, format, source, date, supplier.</td></tr><tr><td>Declaration table</td><td>CRS as declared · <strong>where the declaration lives</strong> · horizontal datum · vertical datum · units (H and V) · origin/offset · rotation · epoch · coordinate magnitude · confidence.</td></tr><tr><td>Agreement matrix</td><td>Pairwise: CRS, datum, units, origin — agree / differ / <strong>cannot tell</strong>.</td></tr><tr><td>Discrepancy list</td><td>Each mismatch <strong>with the symptom it produces</strong>, so an observed misalignment traces back to a cause.</td></tr><tr><td>Undeclared &amp; assumed</td><td>Datasets with no CRS declared anywhere, held strictly apart from those that declare one.</td></tr><tr><td>Confirmation requests</td><td>One-line questions the surveyor or publisher can answer in one line.</td></tr><tr><td>Target frame options</td><td>Trade-offs stated, for you to choose. Never chosen for you.</td></tr></tbody></table></div>
+<p><strong>Confidence:</strong> <code>[declared]</code> · <code>[documented]</code> · <code>[stated]</code> (a human said so — hearsay, however senior) · <code>[undeclared]</code> · <code>[conflicting]</code>.</p>
+<blockquote class="mdquote"><p><strong>There is no <code>[inferred]</code> tag, deliberately.</strong> A CRS guessed from coordinate magnitude or from a location will be inherited as a fact by every downstream process. Not declared means <code>[undeclared]</code>, and <code>[undeclared]</code> is a question.</p></blockquote>
+<h2 id="the-causes-short-boring-and-always-the-same" class="md-h2">The causes — short, boring, and always the same</h2>
+<ul class="md-list">
+<li><strong>Grid distance treated as ground distance.</strong> Small, systematic, grows with distance from the origin.</li>
+<li><strong>An undeclared vertical datum.</strong> Orthometric and ellipsoidal heights differ by tens of metres and both are called &quot;height&quot;.</li>
+<li><strong>Units.</strong> Survey feet and international feet differ by two parts per million — invisible on a site, ruinous across a city.</li>
+<li><strong>A local site grid</strong> whose rotation and translation live in one consultant&#x27;s head.</li>
+<li><strong>Datum realisation or epoch.</strong> The same nominal CRS at two epochs is not the same CRS where the ground moves.</li>
+<li><strong>A CRS assumed from the location</strong> rather than read from the file.</li>
+</ul>
+<h2 id="what-it-will-not-do-by-design" class="md-h2">What it will not do — by design</h2>
+<ul class="md-list">
+<li><strong>Reproject, transform, shift or rewrite any file.</strong> It prescribes; you execute in GDAL/OGR, PROJ or the authoring tool with confirmed parameters.</li>
+<li><strong>Infer a CRS</strong> from coordinates, a place name, or what is usual in that country.</li>
+<li><strong>Supply EPSG definitions, datum shifts, grid files or transformation parameters from memory.</strong> A remembered parameter propagates silently into everything.</li>
+<li><strong>State a transformation&#x27;s accuracy</strong> or how much error a datum mismatch adds.</li>
+<li><strong>Treat a matching CRS name as agreement</strong> where realisation or epoch may differ.</li>
+<li><strong>Round <code>cannot tell</code> to <code>agree</code>.</strong></li>
+<li><strong>Choose the target frame.</strong></li>
+</ul>
+<h2 id="work-the-output" class="md-h2">Work the output</h2>
+<ol class="md-list">
+<li>Send the confirmation requests today. They are one-line questions precisely so they get one-line answers.</li>
+<li>Match your actual symptom to the discrepancy list before changing anything — the fix for a vertical datum offset and the fix for a grid-vs-ground error look nothing alike.</li>
+<li>Document any local grid or project offset as data, in a file that travels with the model. An offset in someone&#x27;s authoring file is lost at handover.</li>
+<li>Decide the target frame deliberately, and record the decision. GIS wants true coordinates; a real-time engine wants small ones. You usually need both, with the transformation written down.</li>
+<li>Re-run whenever a new dataset arrives. One undeclared file poisons a federation that was previously consistent.</li>
+<li>Keep the register with the project data, not in an email. It is the only place the frame is written down.</li>
+</ol>
+<hr class="divider md-hr">
+<p><strong>Remember:</strong> the symptom is never the cause. A register that pairs every mismatch with the misalignment it produces turns three days of guessing into one question to the surveyor.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="trigger">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Triggering</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">When Claude reaches for it.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">This is the description Claude itself reads to
+        decide whether the skill applies. It is worth knowing, because it tells you exactly how to
+        phrase the ask — and what the skill will decline.</p>
+      </div>
+      <div class="tpl-triggerbox card">
+        <p class="tpl-triggerbox__name"><code>crs-georeference-check</code></p>
+        <p>Reconcile the coordinate reference systems, units, origins and datums of every dataset in a project — survey, CAD, BIM, GIS vectors, rasters, point clouds, city models, engine scenes — into one register that states what each file declares, what it appears to be, where they disagree, and what must be confirmed before anything is overlaid. It never reprojects, transforms or rewrites a file, and never infers a CRS from coordinate values. Use this WHENEVER someone asks to &quot;check the georeferencing&quot;, &quot;why don&#x27;t these line up&quot;, &quot;what CRS is this in&quot;, &quot;reconcile the survey with the GIS data&quot;, &quot;our model is in the wrong place&quot;, &quot;prepare these for Unreal/Cesium&quot;, &quot;do these datasets share an origin&quot;, or is assembling a digital twin, masterplan basemap or federated model. Do NOT use it to perform a reprojection or transformation, to supply EPSG definitions, datum shifts or grid parameters from memory, to repair files, or to audit a single IFC in depth (ifc-model-audit).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="files">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Package</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Files it puts on your disk.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">1 file, 8.9 KB unzipped,
+        under <code>.claude/skills/crs-georeference-check/</code>. Reference material loads only when the skill
+        needs it &mdash; no subfolders.</p>
+        <p><a class="btn btn--outline btn--mono btn--sm" href="../downloads/crs-georeference-check.skill" download>Download the package <span class="btn__arrow" aria-hidden="true">&#8595;</span></a></p>
+      </div>
+      <div class="tpl-tree card">
+        <p class="tpl-tree__root"><code>.claude/skills/crs-georeference-check/</code></p>
+        <ul class="tpl-tree__list"><li class="tpl-file" style="--d:0"><span class="tpl-file__name">SKILL.md</span><span class="tpl-file__dir"></span><span class="tpl-file__size">8.9 KB</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More in this category">
+      <a class="tpl-prevnext__item" href="../../resources/skills/ifc-model-audit.html"><span>Previous</span><strong>IFC Model Audit</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/skills/twins-data.html">All Twins &amp; data</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/skills/revit-unreal-handover.html"><span>Next</span><strong>Revit → Unreal Handover</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

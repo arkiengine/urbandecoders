@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revit → Unreal Handover — Claude skill for architecture — Urban Decoders</title>
+<meta name="description" content="What a real-time engine actually needs, checked before anyone exports: placement, identity, weight, materials.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/skills/revit-unreal-handover.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Revit → Unreal Handover — Claude skill for architecture — Urban Decoders">
+<meta property="og:description" content="What a real-time engine actually needs, checked before anyone exports: placement, identity, weight, materials.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "Revit → Unreal Handover",
+  "alternateName": "revit-unreal-handover",
+  "description": "What a real-time engine actually needs, checked before anyone exports: placement, identity, weight, materials.",
+  "codeSampleType": "full solution",
+  "programmingLanguage": "Claude Skill",
+  "url": "https://www.urbandecoders.com/resources/skills/revit-unreal-handover.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "license": "Proprietary",
+  "isPartOf": { "@type": "CollectionPage", "name": "Claude Skills for Architecture", "url": "https://www.urbandecoders.com/resources/skills/" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/">Skills</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/twins-data.html">Twins &amp; data</a><span aria-hidden="true">/</span>
+      <span><code>revit-unreal-handover</code></span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Readiness report</span>
+        <h1 class="display tpl-skilltitle">Revit → Unreal Handover</h1>
+        <p class="lead">What a real-time engine actually needs, checked before anyone exports: placement, identity, weight, materials.</p>
+        <p class="tpl-callline">Once installed, Claude loads it on its own when the conversation
+        matches. You can also call it directly with <code>/revit-unreal-handover</code>.</p>
+        <div class="wrap-btns">
+          <a class="btn btn--brand btn--mono" href="../downloads/revit-unreal-handover.skill" download>Download .skill <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+          <a class="btn btn--outline btn--mono" href="#quick-reference">Read the quick reference</a>
+        </div>
+      </div>
+      <dl class="tpl-meta card">
+        <div><dt>Category</dt><dd><a href="../../resources/skills/twins-data.html">Twins &amp; data</a></dd></div>
+        <div><dt>Output</dt><dd>Readiness report</dd></div>
+        <div><dt>Package</dt><dd>1 file &middot; 9.6 KB</dd></div>
+        <div><dt>Download</dt><dd>4.1 KB zip</dd></div>
+        <div><dt>Worked example</dt><dd><a href="../downloads/revit-unreal-handover-example.zip" download>3 files &middot; 12.3 KB</a></dd></div>
+        <div><dt>Tags</dt><dd class="tpl-meta__tags"><span class="tag">Unreal</span><span class="tag">Datasmith</span><span class="tag">Real-time</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap"><div class="tpl-disclaimer" role="note">
+  <span class="tpl-disclaimer__tag">Read first</span>
+  <p>These skills assist qualified practitioners. They replace neither the architect of
+  record nor the approving authority. Every figure, clause and citation they surface is
+  marked for you to verify — treat an unverified output as a question, not an answer.</p>
+</div></div>
+</section>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Install just this one.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">Two routes. Both end with Claude loading the
+        skill by itself when your conversation matches.</p>
+      </div>
+      <div class="tpl-install">
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">A</span> Claude app, Chat or Cowork</h3>
+          <ol class="md-list">
+            <li>Download <code>revit-unreal-handover.skill</code> below.</li>
+            <li>Open Claude, go to <strong>Settings &rarr; Capabilities &rarr; Skills</strong> and upload the file.</li>
+            <li>Start a conversation and attach your material. The skill loads itself on a match.</li>
+          </ol>
+          <a class="btn btn--ghost btn--mono btn--sm" href="../downloads/revit-unreal-handover.skill" download>revit-unreal-handover.skill &middot; 4.1 KB</a>
+        </div>
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">B</span> Claude Code, in your project</h3>
+          <p>Unzip the package into your skills folder, then restart Claude Code.</p>
+          <div class="codeblock">
+            <button class="codeblock__copy" type="button" data-copy>Copy</button>
+            <pre><code>mkdir -p .claude/skills &amp;&amp; unzip revit-unreal-handover.skill -d .claude/skills/</code></pre>
+          </div>
+          <p class="tpl-fine">Use <code>~/.claude/skills/</code> instead to install it for every project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="at-a-glance">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">At a glance</span>
+      <h2 class="section-title">What it takes, what you get.</h2>
+    </div>
+    <div class="grid grid--3 tpl-glance">
+      <div class="card tpl-glance__box">
+        <h3>It takes</h3>
+        <p>A model export, schedule export or model summary — and the target engine and purpose</p>
+      </div>
+      <div class="card tpl-glance__box">
+        <h3>You get</h3>
+        <p>Coordinate magnitude and its consequence, binding readiness as parameter fill rates, a geometry census ranked by weight, instancing opportunities, material and UV gaps, hygiene findings, an exclusion list and an ordered checklist.</p>
+      </div>
+      <div class="card tpl-glance__box tpl-glance__box--red">
+        <h3>It will not</h3>
+        <p>Modify the model, run the export, write engine-side code, state a polygon budget from memory, promise a frame rate, or treat a visualisation model as twin-ready.</p>
+      </div>
+    </div>
+    <div class="tpl-example">
+      <span class="tag">Test drive</span>
+      <p>Priory Fields — 68 classrooms, 22 with a BMS key. Run the skill on the example input, then score your output against the defect key &mdash; it lists what was planted and what a good run does with it.</p>
+      <a class="btn btn--outline btn--mono btn--sm" href="../downloads/revit-unreal-handover-example.zip" download>Worked example <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="quick-reference">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#run-it">Run it</a></li><li><a href="#the-four-problems-that-account-for-nearly-all-of-it">The four problems that account for nearly all of it</a></li><li><a href="#the-report">The report</a></li><li><a href="#what-it-will-not-do-by-design">What it will not do — by design</a></li><li><a href="#work-the-output">Work the output</a></li></ul>
+        <p class="tpl-toc__head tpl-toc__head--spaced">Jump to</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#files">Files on disk</a></li>
+          <li><a href="#trigger">When it triggers</a></li>
+        </ul>
+      </nav>
+      <div class="tpl-doc">
+        <span class="eyebrow">Quick reference</span>
+        <h2 class="section-title" style="margin:var(--space-4) 0 var(--space-6)">How to run it.</h2>
+        <div class="md"><p>What a real-time engine actually needs, checked <strong>before</strong> anyone exports: placement, identity, polygon budget, materials, hygiene. <strong>Modifies no model, runs no export.</strong> Makes the first export the real one.</p>
+<h2 id="run-it" class="md-h2">Run it</h2>
+<p>Attach the model export, a schedule export or a model summary:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>Check this Revit model before we export to Unreal for the operational twin.
+Our scene jitters when the camera moves. Is it the coordinates?
+Where&#x27;s the polygon budget actually going? We can&#x27;t cut everything.
+What do we strip before export, and what has to be fixed in Revit first?</code></pre></div>
+<p>Say the engine, the target hardware, and <strong>whether live data will bind to the model</strong>. Without those the report can rank, but it cannot advise.</p>
+<h2 id="the-four-problems-that-account-for-nearly-all-of-it" class="md-h2">The four problems that account for nearly all of it</h2>
+<ol class="md-list">
+<li><strong>Coordinate magnitude.</strong> True survey coordinates in a single-precision engine means jitter, shimmer and bad snapping. It reads as an engine bug. It is a placement decision made weeks earlier in the authoring model.</li>
+<li><strong>Nothing to bind to.</strong> Elements arriving as <code>Wall_412837</code> with no type, no level, no classification and no persistent id can be looked at but not <em>operated</em>. <strong>This is the difference between a visualisation and a twin.</strong></li>
+<li><strong>Weight in the wrong places.</strong> Ironmongery, pipe fittings and light fittings routinely outweigh the whole envelope. With no per-category census, everything gets decimated and the building looks worse for no gain.</li>
+<li><strong>Materials that cannot be authored.</strong> Unassigned, over-shared, or no usable UVs — each is engine-side rework, cheaper to prevent than to fix.</li>
+</ol>
+<h2 id="the-report" class="md-h2">The report</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Section</th><th>What it holds</th></tr></thead><tbody><tr><td>Verdict</td><td>Ready to export for the stated purpose? The single biggest blocker. First, always.</td></tr><tr><td>Placement</td><td>Origin, coordinate magnitude, units, rotation, and the placement options with trade-offs.</td></tr><tr><td>Structure</td><td>Levels, categories, worksets — and whether the engine can filter on what survives.</td></tr><tr><td><strong>Identity &amp; binding</strong></td><td>What persistent id each element carries across, fill rates for binding parameters, the join key for runtime data.</td></tr><tr><td>Geometry census</td><td>Element and triangle counts by category, <strong>ranked by weight</strong>, top consumers named.</td></tr><tr><td>Tessellation</td><td>Where curved and detailed geometry will explode, and detail no camera will see.</td></tr><tr><td>Instancing</td><td>Repeated elements that should arrive as instances, not unique meshes.</td></tr><tr><td>Materials &amp; UVs</td><td>Unassigned, over-shared, transparency, double-sided, missing UVs.</td></tr><tr><td>Hygiene</td><td>Duplicates, coincident faces (z-fighting that reads as a render fault), degenerate geometry, hidden-but-exported.</td></tr><tr><td>Exclusion list</td><td>What to strip, with the reason.</td></tr><tr><td>Export checklist</td><td>Ordered, for whoever runs the export.</td></tr></tbody></table></div>
+<p><strong>Tags:</strong> <code>[measured]</code> · <code>[estimated]</code> (assumption named) · <code>[inferred]</code> · <code>[verify manually]</code>.</p>
+<h2 id="what-it-will-not-do-by-design" class="md-h2">What it will not do — by design</h2>
+<ul class="md-list">
+<li><strong>Modify the model.</strong> No purging, decimating, renaming or re-origining. It prescribes; the author performs it in their tool.</li>
+<li><strong>Run the export</strong>, or write engine-side code, Blueprints, materials or import scripts.</li>
+<li><strong>State a polygon limit, draw-call budget or performance threshold from memory.</strong> Budgets depend on hardware, scene, lighting and frame-rate target. Give it the budget, or it ranks counts without a threshold.</li>
+<li><strong>Promise a frame rate</strong> or predict performance.</li>
+<li><strong>Choose the placement strategy.</strong> It states the options and the trade-offs.</li>
+<li><strong>Let an <code>[estimated]</code> triangle count reach a decision</strong> without its assumption attached.</li>
+<li><strong>Treat a visualisation-ready model as twin-ready.</strong> The identity section is where that distinction lives, and it is never softened.</li>
+</ul>
+<h2 id="work-the-output" class="md-h2">Work the output</h2>
+<ol class="md-list">
+<li>Settle placement first, and <strong>record the offset somewhere that travels with the model</strong>. An undocumented offset is what breaks the twin&#x27;s relationship to GIS six months later.</li>
+<li>Read the identity section before committing to a twin. If nothing stable survives the export, fix it in the authoring model — rebuilding a matching layer engine-side costs far more.</li>
+<li>Cut from the top of the ranked census, not across the board. That is the whole reason for ranking.</li>
+<li>Take the instancing list seriously; it is the cheapest large win available and it is usually left on the table.</li>
+<li>Fix hygiene before export. Coincident faces z-fight in the engine and get reported as a rendering problem by someone who will never find the cause.</li>
+<li>Re-run before each major re-export. Models gain weight quietly, and the category that was fine last month is often the new top consumer.</li>
+</ol>
+<hr class="divider md-hr">
+<p><strong>Remember:</strong> the export is the easy part. Everything that makes the result usable was decided in the authoring model, and this check is how you find out before the scene is already slow.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="trigger">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Triggering</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">When Claude reaches for it.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">This is the description Claude itself reads to
+        decide whether the skill applies. It is worth knowing, because it tells you exactly how to
+        phrase the ask — and what the skill will decline.</p>
+      </div>
+      <div class="tpl-triggerbox card">
+        <p class="tpl-triggerbox__name"><code>revit-unreal-handover</code></p>
+        <p>Check a BIM model and its export settings against what a real-time engine actually needs before anyone exports: origin and coordinate magnitude, units, level and category structure, naming and instance identity for runtime data binding, material and UV readiness, tessellation and polygon budget by category, duplicate and degenerate geometry, and what must be decimated, instanced or excluded. Returns a readiness report and an export checklist; it modifies no model and runs no export. Use this WHENEVER someone asks to &quot;prep this model for Unreal&quot;, &quot;why does our model jitter in the engine&quot;, &quot;get this ready for Datasmith&quot;, &quot;check the model before we export to the twin&quot;, &quot;how heavy is this going to be&quot;, &quot;what do we strip before export&quot;, or is moving Revit, Rhino or IFC geometry into a real-time or web viewer. Do NOT use it to perform the export, decimate or edit geometry, write engine-side code or Blueprints, audit general model health (revit-model-audit), or reconcile multi-dataset georeferencing (crs-georeference-check).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="files">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Package</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Files it puts on your disk.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">1 file, 9.6 KB unzipped,
+        under <code>.claude/skills/revit-unreal-handover/</code>. Reference material loads only when the skill
+        needs it &mdash; no subfolders.</p>
+        <p><a class="btn btn--outline btn--mono btn--sm" href="../downloads/revit-unreal-handover.skill" download>Download the package <span class="btn__arrow" aria-hidden="true">&#8595;</span></a></p>
+      </div>
+      <div class="tpl-tree card">
+        <p class="tpl-tree__root"><code>.claude/skills/revit-unreal-handover/</code></p>
+        <ul class="tpl-tree__list"><li class="tpl-file" style="--d:0"><span class="tpl-file__name">SKILL.md</span><span class="tpl-file__dir"></span><span class="tpl-file__size">9.6 KB</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More in this category">
+      <a class="tpl-prevnext__item" href="../../resources/skills/crs-georeference-check.html"><span>Previous</span><strong>CRS &amp; Georeferencing Check</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/skills/twins-data.html">All Twins &amp; data</a>
+      <span></span>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

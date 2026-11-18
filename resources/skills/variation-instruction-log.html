@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variation &amp; Instruction Log — Claude skill for architecture — Urban Decoders</title>
+<meta name="description" content="Finds the moments in correspondence where a change may have been created, and quotes the exact sentence.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/skills/variation-instruction-log.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Variation &amp; Instruction Log — Claude skill for architecture — Urban Decoders">
+<meta property="og:description" content="Finds the moments in correspondence where a change may have been created, and quotes the exact sentence.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "Variation &amp; Instruction Log",
+  "alternateName": "variation-instruction-log",
+  "description": "Finds the moments in correspondence where a change may have been created, and quotes the exact sentence.",
+  "codeSampleType": "full solution",
+  "programmingLanguage": "Claude Skill",
+  "url": "https://www.urbandecoders.com/resources/skills/variation-instruction-log.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "license": "Proprietary",
+  "isPartOf": { "@type": "CollectionPage", "name": "Claude Skills for Architecture", "url": "https://www.urbandecoders.com/resources/skills/" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/">Skills</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/contract-admin.html">Contract admin</a><span aria-hidden="true">/</span>
+      <span><code>variation-instruction-log</code></span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Change register</span>
+        <h1 class="display tpl-skilltitle">Variation &amp; Instruction Log</h1>
+        <p class="lead">Finds the moments in correspondence where a change may have been created, and quotes the exact sentence.</p>
+        <p class="tpl-callline">Once installed, Claude loads it on its own when the conversation
+        matches. You can also call it directly with <code>/variation-instruction-log</code>.</p>
+        <div class="wrap-btns">
+          <a class="btn btn--brand btn--mono" href="../downloads/variation-instruction-log.skill" download>Download .skill <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+          <a class="btn btn--outline btn--mono" href="#quick-reference">Read the quick reference</a>
+        </div>
+      </div>
+      <dl class="tpl-meta card">
+        <div><dt>Category</dt><dd><a href="../../resources/skills/contract-admin.html">Contract admin</a></dd></div>
+        <div><dt>Output</dt><dd>Change register</dd></div>
+        <div><dt>Package</dt><dd>1 file &middot; 8.3 KB</dd></div>
+        <div><dt>Download</dt><dd>3.6 KB zip</dd></div>
+        <div><dt>Worked example</dt><dd><a href="../downloads/variation-instruction-log-example.zip" download>3 files &middot; 10.1 KB</a></dd></div>
+        <div><dt>Tags</dt><dd class="tpl-meta__tags"><span class="tag">Changes</span><span class="tag">Instructions</span><span class="tag">Record</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap"><div class="tpl-disclaimer" role="note">
+  <span class="tpl-disclaimer__tag">Read first</span>
+  <p>These skills assist qualified practitioners. They replace neither the architect of
+  record nor the approving authority. Every figure, clause and citation they surface is
+  marked for you to verify — treat an unverified output as a question, not an answer.</p>
+</div></div>
+</section>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Install just this one.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">Two routes. Both end with Claude loading the
+        skill by itself when your conversation matches.</p>
+      </div>
+      <div class="tpl-install">
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">A</span> Claude app, Chat or Cowork</h3>
+          <ol class="md-list">
+            <li>Download <code>variation-instruction-log.skill</code> below.</li>
+            <li>Open Claude, go to <strong>Settings &rarr; Capabilities &rarr; Skills</strong> and upload the file.</li>
+            <li>Start a conversation and attach your material. The skill loads itself on a match.</li>
+          </ol>
+          <a class="btn btn--ghost btn--mono btn--sm" href="../downloads/variation-instruction-log.skill" download>variation-instruction-log.skill &middot; 3.6 KB</a>
+        </div>
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">B</span> Claude Code, in your project</h3>
+          <p>Unzip the package into your skills folder, then restart Claude Code.</p>
+          <div class="codeblock">
+            <button class="codeblock__copy" type="button" data-copy>Copy</button>
+            <pre><code>mkdir -p .claude/skills &amp;&amp; unzip variation-instruction-log.skill -d .claude/skills/</code></pre>
+          </div>
+          <p class="tpl-fine">Use <code>~/.claude/skills/</code> instead to install it for every project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="at-a-glance">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">At a glance</span>
+      <h2 class="section-title">What it takes, what you get.</h2>
+    </div>
+    <div class="grid grid--3 tpl-glance">
+      <div class="card tpl-glance__box">
+        <h3>It takes</h3>
+        <p>Emails, minutes, site records, RFI responses, marked drawings</p>
+      </div>
+      <div class="card tpl-glance__box">
+        <h3>You get</h3>
+        <p>Every candidate change with its verbatim trigger, how it arose, and its real instruction status — formal, written non-formal, verbal recorded, verbal unrecorded, implied or none — plus a regularisation list and a chronology.</p>
+      </div>
+      <div class="card tpl-glance__box tpl-glance__box--red">
+        <h3>It will not</h3>
+        <p>Value anything, assess entitlement, decide whether something is a variation under the contract, draft an instruction, or paraphrase a trigger.</p>
+      </div>
+    </div>
+    <div class="tpl-example">
+      <span class="tag">Test drive</span>
+      <p>Wellgate Yard — &#x27;Yes, that works&#x27;, four months before the dispute. Run the skill on the example input, then score your output against the defect key &mdash; it lists what was planted and what a good run does with it.</p>
+      <a class="btn btn--outline btn--mono btn--sm" href="../downloads/variation-instruction-log-example.zip" download>Worked example <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="quick-reference">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#run-it">Run it</a></li><li><a href="#the-log">The log</a></li><li><a href="#what-it-will-not-do-by-design">What it will not do — by design</a></li><li><a href="#work-the-output">Work the output</a></li></ul>
+        <p class="tpl-toc__head tpl-toc__head--spaced">Jump to</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#files">Files on disk</a></li>
+          <li><a href="#trigger">When it triggers</a></li>
+        </ul>
+      </nav>
+      <div class="tpl-doc">
+        <span class="eyebrow">Quick reference</span>
+        <h2 class="section-title" style="margin:var(--space-4) 0 var(--space-6)">How to run it.</h2>
+        <div class="md"><p>Correspondence becomes a change register: every candidate change traced to the exact wording that created it, with its real instruction status. <strong>Records what was said and by whom. Never values, never determines, never advises.</strong></p>
+<h2 id="run-it" class="md-h2">Run it</h2>
+<p>Attach the correspondence, minutes and any existing instruction register:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>Build a change log from this correspondence — we think things have been instructed verbally.
+What&#x27;s been changed with no instruction behind it?
+Reconstruct the change history for the cladding from these emails and minutes.
+Which items need regularising in writing, and who by?</code></pre></div>
+<p>Say whose correspondence you have <strong>and whose you do not</strong>. A change register with a known blind spot is useful; one with an unknown blind spot is dangerous.</p>
+<h2 id="the-log" class="md-h2">The log</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Part</th><th>What it holds</th></tr></thead><tbody><tr><td>Change log</td><td>Ref · Date · Element · What changed · How it arose · Source + location · <strong>Verbatim trigger</strong> · Instruction status · Instructed by · Regularisation needed.</td></tr><tr><td>Verbal &amp; implied list</td><td>The items most likely to cause a dispute. First.</td></tr><tr><td>Regularisation list</td><td>What needs confirming in writing, by whom, referring to what.</td></tr><tr><td>Chronology</td><td>Date order — how a change history is reconstructed and how gaps become obvious.</td></tr><tr><td>Conflicts log</td><td>Two sources describing one change differently, or an instruction apparently contradicted later.</td></tr><tr><td>Query list</td><td>May be changes, cannot be established from the supplied material.</td></tr></tbody></table></div>
+<p><strong>How it arose:</strong> <code>client request</code> · <code>design development</code> · <code>site condition</code> · <code>statutory</code> · <code>contractor proposal</code> · <code>error correction</code> · <code>unknown</code>.</p>
+<p><strong>Instruction status — the column nobody keeps:</strong></p>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Status</th><th>Meaning</th></tr></thead><tbody><tr><td><code>formal</code></td><td>A written instruction exists, with reference and date.</td></tr><tr><td><code>written non-formal</code></td><td>Confirmed in writing but not as a contract instruction.</td></tr><tr><td><code>verbal recorded</code></td><td>Said verbally, captured in minutes or a site record.</td></tr><tr><td><code>verbal unrecorded</code></td><td>Referred to as having been said, with no record of the saying.</td></tr><tr><td><code>implied</code></td><td>No instruction at all — a response or approval that may operate as one.</td></tr><tr><td><code>none found</code></td><td>The change happened with nothing instructing it.</td></tr></tbody></table></div>
+<blockquote class="mdquote"><p><strong><code>implied</code> is why this skill exists.</strong> &quot;Yes, that works.&quot; &quot;Happy with that.&quot; &quot;Go ahead and we&#x27;ll sort the paperwork.&quot; Each may have created a change, and each is invisible in a register built from formal instructions alone.</p></blockquote>
+<h2 id="what-it-will-not-do-by-design" class="md-h2">What it will not do — by design</h2>
+<ul class="md-list">
+<li><strong>Value anything.</strong> No cost, no quantities, no &quot;minor&quot;, no &quot;significant&quot;.</li>
+<li><strong>Assess entitlement</strong> to time or money, or whether a claim would succeed.</li>
+<li><strong>Decide whether something is a variation under the contract.</strong> It records what happened and what was said; the contract administrator determines.</li>
+<li><strong>Draft or issue an instruction.</strong></li>
+<li><strong>Interpret contract clauses</strong> or advise on contractual position.</li>
+<li><strong>Promote a <code>verbal unrecorded</code> item</strong> because it is probably true, or demote an <code>implied</code> one because the wording was casual. Casual wording is the point.</li>
+<li><strong>Paraphrase a trigger.</strong> Verbatim or nothing — a paraphrase is worthless the moment anybody disagrees, and people disagree about exactly these sentences.</li>
+<li><strong>Attribute motive</strong> or characterise anyone&#x27;s conduct.</li>
+<li><strong>Guess an origin.</strong> <code>unknown</code> is a real value.</li>
+</ul>
+<h2 id="work-the-output" class="md-h2">Work the output</h2>
+<ol class="md-list">
+<li>Read the blind-spot note first. If you only have the architect&#x27;s inbox, everything agreed client-to-contractor is missing.</li>
+<li>Work the regularisation list immediately. It is the whole reason to run this before a dispute rather than during one.</li>
+<li>Check the <code>implied</code> rows personally — each is a sentence someone in your team wrote, and only they know what they meant by it.</li>
+<li>Give the chronology to the contract administrator. Gaps in a date sequence are where the missing correspondence is.</li>
+<li>Close non-changes in the log with the reason rather than deleting them. The record that something was considered and dismissed is worth having.</li>
+<li>Re-run monthly. Reconstructing eighteen months of correspondence under pressure is the expensive version of this exercise.</li>
+</ol>
+<hr class="divider md-hr">
+<p><strong>Remember:</strong> the verbatim trigger column is the entire evidential value of the log. Everything else can be rebuilt; a sentence nobody quoted at the time cannot.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="trigger">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Triggering</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">When Claude reaches for it.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">This is the description Claude itself reads to
+        decide whether the skill applies. It is worth knowing, because it tells you exactly how to
+        phrase the ask — and what the skill will decline.</p>
+      </div>
+      <div class="tpl-triggerbox card">
+        <p class="tpl-triggerbox__name"><code>variation-instruction-log</code></p>
+        <p>Turn project correspondence — emails, minutes, site records, RFI responses, marked drawings — into a change and instruction log: every item that may constitute a change identified, classified by how it arose, traced to the exact wording that created it, with its instruction status recorded and verbal or implied instructions flagged for regularisation. Use this WHENEVER someone asks to &quot;log the variations&quot;, &quot;what changes have we had&quot;, &quot;build a change register&quot;, &quot;did anyone instruct this&quot;, &quot;find the verbal instructions&quot;, &quot;track the instructions this month&quot;, &quot;what&#x27;s been changed without an instruction&quot;, or is reconstructing a change history. Do NOT use it to value a change, assess time or cost entitlement, decide whether something is a variation under the contract, issue or draft an instruction, or give contractual or legal advice — it records what was said and by whom, and names what needs regularising.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="files">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Package</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Files it puts on your disk.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">1 file, 8.3 KB unzipped,
+        under <code>.claude/skills/variation-instruction-log/</code>. Reference material loads only when the skill
+        needs it &mdash; no subfolders.</p>
+        <p><a class="btn btn--outline btn--mono btn--sm" href="../downloads/variation-instruction-log.skill" download>Download the package <span class="btn__arrow" aria-hidden="true">&#8595;</span></a></p>
+      </div>
+      <div class="tpl-tree card">
+        <p class="tpl-tree__root"><code>.claude/skills/variation-instruction-log/</code></p>
+        <ul class="tpl-tree__list"><li class="tpl-file" style="--d:0"><span class="tpl-file__name">SKILL.md</span><span class="tpl-file__dir"></span><span class="tpl-file__size">8.3 KB</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More in this category">
+      <a class="tpl-prevnext__item" href="../../resources/skills/monthly-progress-report.html"><span>Previous</span><strong>Monthly Progress Report</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/skills/contract-admin.html">All Contract admin</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/skills/fee-proposal-builder.html"><span>Next</span><strong>Fee Proposal Builder</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

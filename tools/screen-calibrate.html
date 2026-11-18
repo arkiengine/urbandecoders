@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Screen calibrator — corner pin</title>
+<style>
+  :root { color-scheme: dark; --ink: #fcfdff; --mute: #a1a4a5; --line: rgba(255,255,255,0.14); --pin: #FF5A4A; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 24px; background: #000; color: var(--ink);
+         font: 14px/1.6 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif; }
+  h1 { font-size: 18px; margin: 0 0 4px; letter-spacing: 0.01em; }
+  p.sub { color: var(--mute); margin: 0 0 20px; }
+  .bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 16px; }
+  label { font: 500 11px/1 'JetBrains Mono', ui-monospace, monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); }
+  input[type=text] { flex: 1 1 320px; min-width: 240px; padding: 9px 12px; border-radius: 8px;
+    border: 1px solid var(--line); background: #0a0a0c; color: var(--ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; }
+  input[type=number] { width: 90px; padding: 9px 10px; border-radius: 8px; border: 1px solid var(--line); background: #0a0a0c; color: var(--ink); font-size: 12px; }
+  button { padding: 9px 14px; border-radius: 8px; border: 1px solid var(--line); background: #101012; color: var(--ink); cursor: pointer; font-size: 12px; }
+  button:hover { border-color: #3690B4; }
+  #stage { position: relative; display: inline-block; max-width: 100%; user-select: none; touch-action: none; }
+  #stage img { display: block; max-width: 100%; height: auto; }
+  #port { position: absolute; top: 0; left: 0; transform-origin: 0 0; overflow: hidden; pointer-events: none; }
+  #port video, #port .grid { position: absolute; inset: 0; width: 100%; height: 100%; }
+  #port video { object-fit: cover; }
+  #port .grid { background:
+      repeating-linear-gradient(90deg, rgba(255,90,74,0.9) 0 1px, transparent 1px 10%),
+      repeating-linear-gradient(0deg, rgba(255,90,74,0.9) 0 1px, transparent 1px 10%),
+      rgba(54,144,180,0.25);
+      box-shadow: inset 0 0 0 2px var(--pin); }
+  .h { position: absolute; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%;
+       border: 2px solid var(--pin); background: rgba(255,90,74,0.22); cursor: grab; z-index: 5; }
+  .h::after { content: attr(data-k); position: absolute; left: 24px; top: -2px; font: 500 10px/1 'JetBrains Mono', monospace; color: var(--pin); }
+  .h.drag { cursor: grabbing; background: var(--pin); }
+  textarea { width: 100%; margin-top: 16px; min-height: 120px; padding: 12px; border-radius: 8px;
+    border: 1px solid var(--line); background: #0a0a0c; color: #5ACDFF;
+    font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; }
+  kbd { font-family: 'JetBrains Mono', monospace; font-size: 11px; border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; }
+</style>
+</head>
+<body>
+<h1>Screen calibrator</h1>
+<p class="sub">Drag the four handles onto the corners of the glass — top-left, top-right, bottom-right, bottom-left, in that order. Arrow keys nudge the focused handle (<kbd>shift</kbd> = 10×). Copy the attribute into your <code>.screen--pin</code> block.</p>
+
+<div class="bar">
+  <label for="src">Still</label>
+  <input id="src" type="text" value="../assets/img/touch-committee.jpg">
+  <input id="file" type="file" accept="image/*">
+  <label for="ar">Aspect</label>
+  <input id="ar" type="number" step="0.0001" value="1.7778">
+  <button id="grid">Grid / video</button>
+</div>
+
+<div id="stage">
+  <img id="still" src="../assets/img/touch-committee.jpg" alt="">
+  <div id="port"><div class="grid"></div></div>
+</div>
+
+<textarea id="out" readonly></textarea>
+
+<script>
+(function () {
+  var stage = document.getElementById('stage'), still = document.getElementById('still'),
+      port = document.getElementById('port'), out = document.getElementById('out'),
+      arIn = document.getElementById('ar');
+  var P = [[25, 4], [91, 6], [91, 69], [25, 71]];          // TL TR BR BL, % of the image
+  var keys = ['TL', 'TR', 'BR', 'BL'], handles = [];
+
+  function gauss(A, b) {
+    var n = 8, i, j, k;
+    for (i = 0; i < n; i++) {
+      var p = i;
+      for (j = i + 1; j < n; j++) if (Math.abs(A[j][i]) > Math.abs(A[p][i])) p = j;
+      var t = A[i]; A[i] = A[p]; A[p] = t; var tb = b[i]; b[i] = b[p]; b[p] = tb;
+      for (j = i + 1; j < n; j++) {
+        var f = A[j][i] / A[i][i];
+        for (k = i; k < n; k++) A[j][k] -= f * A[i][k];
+        b[j] -= f * b[i];
+      }
+    }
+    var o = new Array(n);
+    for (i = n - 1; i >= 0; i--) { var s = b[i]; for (j = i + 1; j < n; j++) s -= A[i][j] * o[j]; o[i] = s / A[i][i]; }
+    return o;
+  }
+  function homography(src, dst) {
+    var A = [], b = [];
+    for (var i = 0; i < 4; i++) {
+      var x = src[i][0], y = src[i][1], X = dst[i][0], Y = dst[i][1];
+      A.push([x, y, 1, 0, 0, 0, -X * x, -X * y]); b.push(X);
+      A.push([0, 0, 0, x, y, 1, -Y * x, -Y * y]); b.push(Y);
+    }
+    return gauss(A, b);
+  }
+
+  function draw() {
+    var w = still.clientWidth, h = still.clientHeight;
+    if (!w || !h) return;
+    var ar = parseFloat(arIn.value) || 16 / 9;
+    var pw = Math.round(w), ph = Math.round(w / ar);
+    port.style.width = pw + 'px'; port.style.height = ph + 'px';
+    var m = homography([[0, 0], [pw, 0], [pw, ph], [0, ph]],
+                       P.map(function (p) { return [p[0] / 100 * w, p[1] / 100 * h]; }));
+    port.style.transform = 'matrix3d(' + [m[0], m[3], 0, m[6], m[1], m[4], 0, m[7], 0, 0, 1, 0, m[2], m[5], 0, 1].join(',') + ')';
+    handles.forEach(function (el, i) { el.style.left = P[i][0] / 100 * w + 'px'; el.style.top = P[i][1] / 100 * h + 'px'; });
+    out.value = 'data-corners="' + P.map(function (p) { return p[0].toFixed(2) + ',' + p[1].toFixed(2); }).join(' ') + '"'
+      + '\ndata-aspect="' + ar.toFixed(4) + '"';
+  }
+
+  P.forEach(function (_, i) {
+    var el = document.createElement('div');
+    el.className = 'h'; el.dataset.k = keys[i]; el.tabIndex = 0;
+    stage.appendChild(el); handles.push(el);
+    el.addEventListener('pointerdown', function (e) {
+      el.setPointerCapture(e.pointerId); el.classList.add('drag'); e.preventDefault();
+    });
+    el.addEventListener('pointermove', function (e) {
+      if (!el.classList.contains('drag')) return;
+      var r = still.getBoundingClientRect();
+      P[i] = [(e.clientX - r.left) / r.width * 100, (e.clientY - r.top) / r.height * 100];
+      draw();
+    });
+    el.addEventListener('pointerup', function () { el.classList.remove('drag'); });
+    el.addEventListener('keydown', function (e) {
+      var d = e.shiftKey ? 1 : 0.1, k = { ArrowLeft: [-d, 0], ArrowRight: [d, 0], ArrowUp: [0, -d], ArrowDown: [0, d] }[e.key];
+      if (!k) return;
+      e.preventDefault(); P[i] = [P[i][0] + k[0], P[i][1] + k[1]]; draw();
+    });
+  });
+
+  document.getElementById('src').addEventListener('change', function () { still.src = this.value; });
+  document.getElementById('file').addEventListener('change', function () {
+    if (this.files[0]) still.src = URL.createObjectURL(this.files[0]);
+  });
+  arIn.addEventListener('input', draw);
+  document.getElementById('grid').addEventListener('click', function () {
+    var v = port.querySelector('video');
+    if (v) { v.remove(); port.querySelector('.grid').style.display = ''; return; }
+    port.querySelector('.grid').style.display = 'none';
+    v = document.createElement('video');
+    v.src = '../assets/twin/stockport-east-overview.mp4';
+    v.muted = true; v.loop = true; v.playsInline = true; v.autoplay = true;
+    port.appendChild(v); v.play();
+  });
+  still.addEventListener('load', draw);
+  window.addEventListener('resize', draw);
+  if (still.complete) draw();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RFP Response Builder — Claude skill for architecture — Urban Decoders</title>
+<meta name="description" content="RFP plus practice material becomes a response draft with a compliance matrix. Gaps stay [TBC] rather than becoming invented credentials.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/skills/rfp-response-builder.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="RFP Response Builder — Claude skill for architecture — Urban Decoders">
+<meta property="og:description" content="RFP plus practice material becomes a response draft with a compliance matrix. Gaps stay [TBC] rather than becoming invented credentials.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "RFP Response Builder",
+  "alternateName": "rfp-response-builder",
+  "description": "RFP plus practice material becomes a response draft with a compliance matrix. Gaps stay [TBC] rather than becoming invented credentials.",
+  "codeSampleType": "full solution",
+  "programmingLanguage": "Claude Skill",
+  "url": "https://www.urbandecoders.com/resources/skills/rfp-response-builder.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "license": "Proprietary",
+  "isPartOf": { "@type": "CollectionPage", "name": "Claude Skills for Architecture", "url": "https://www.urbandecoders.com/resources/skills/" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/">Skills</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/bids-business.html">Bids &amp; business</a><span aria-hidden="true">/</span>
+      <span><code>rfp-response-builder</code></span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">.docx draft</span>
+        <h1 class="display tpl-skilltitle">RFP Response Builder</h1>
+        <p class="lead">RFP plus practice material becomes a response draft with a compliance matrix. Gaps stay [TBC] rather than becoming invented credentials.</p>
+        <p class="tpl-callline">Once installed, Claude loads it on its own when the conversation
+        matches. You can also call it directly with <code>/rfp-response-builder</code>.</p>
+        <div class="wrap-btns">
+          <a class="btn btn--brand btn--mono" href="../downloads/rfp-response-builder.skill" download>Download .skill <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+          <a class="btn btn--outline btn--mono" href="#quick-reference">Read the quick reference</a>
+        </div>
+      </div>
+      <dl class="tpl-meta card">
+        <div><dt>Category</dt><dd><a href="../../resources/skills/bids-business.html">Bids &amp; business</a></dd></div>
+        <div><dt>Output</dt><dd>.docx draft</dd></div>
+        <div><dt>Package</dt><dd>2 files &middot; 23.1 KB</dd></div>
+        <div><dt>Download</dt><dd>10.7 KB zip</dd></div>
+        <div><dt>Worked example</dt><dd><a href="../downloads/rfp-response-builder-example.zip" download>4 files &middot; 45.5 KB</a></dd></div>
+        <div><dt>Tags</dt><dd class="tpl-meta__tags"><span class="tag">Tender</span><span class="tag">Compliance matrix</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap"><div class="tpl-disclaimer" role="note">
+  <span class="tpl-disclaimer__tag">Read first</span>
+  <p>These skills assist qualified practitioners. They replace neither the architect of
+  record nor the approving authority. Every figure, clause and citation they surface is
+  marked for you to verify — treat an unverified output as a question, not an answer.</p>
+</div></div>
+</section>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Install just this one.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">Two routes. Both end with Claude loading the
+        skill by itself when your conversation matches.</p>
+      </div>
+      <div class="tpl-install">
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">A</span> Claude app, Chat or Cowork</h3>
+          <ol class="md-list">
+            <li>Download <code>rfp-response-builder.skill</code> below.</li>
+            <li>Open Claude, go to <strong>Settings &rarr; Capabilities &rarr; Skills</strong> and upload the file.</li>
+            <li>Start a conversation and attach your material. The skill loads itself on a match.</li>
+          </ol>
+          <a class="btn btn--ghost btn--mono btn--sm" href="../downloads/rfp-response-builder.skill" download>rfp-response-builder.skill &middot; 10.7 KB</a>
+        </div>
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">B</span> Claude Code, in your project</h3>
+          <p>Unzip the package into your skills folder, then restart Claude Code.</p>
+          <div class="codeblock">
+            <button class="codeblock__copy" type="button" data-copy>Copy</button>
+            <pre><code>mkdir -p .claude/skills &amp;&amp; unzip rfp-response-builder.skill -d .claude/skills/</code></pre>
+          </div>
+          <p class="tpl-fine">Use <code>~/.claude/skills/</code> instead to install it for every project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="at-a-glance">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">At a glance</span>
+      <h2 class="section-title">What it takes, what you get.</h2>
+    </div>
+    <div class="grid grid--3 tpl-glance">
+      <div class="card tpl-glance__box">
+        <h3>It takes</h3>
+        <p>Tender documents plus the practice&#x27;s qualifications pack, CVs, case studies, rate card</p>
+      </div>
+      <div class="card tpl-glance__box">
+        <h3>You get</h3>
+        <p>An editable .docx response draft, a compliance matrix tracing every scored question to a section, [TBC] wherever the materials don't support a claim, and a before-issue checklist.</p>
+      </div>
+      <div class="card tpl-glance__box tpl-glance__box--red">
+        <h3>It will not</h3>
+        <p>Invent a project, an accreditation or a headcount; set the fee; decide whether to bid.</p>
+      </div>
+    </div>
+    <div class="tpl-example">
+      <span class="tag">Test drive</span>
+      <p>Redgate Baths RFP plus Thornleigh practice materials. Run the skill on the example input, then score your output against the defect key &mdash; it lists what was planted and what a good run does with it.</p>
+      <a class="btn btn--outline btn--mono btn--sm" href="../downloads/rfp-response-builder-example.zip" download>Worked example <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="quick-reference">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#run-it">Run it</a></li><li><a href="#the-document">The document</a></li><li><a href="#what-it-will-not-do-by-design">What it will not do — by design</a></li><li><a href="#work-the-output">Work the output</a></li></ul>
+        <p class="tpl-toc__head tpl-toc__head--spaced">Jump to</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#files">Files on disk</a></li>
+          <li><a href="#trigger">When it triggers</a></li>
+        </ul>
+      </nav>
+      <div class="tpl-doc">
+        <span class="eyebrow">Quick reference</span>
+        <h2 class="section-title" style="margin:var(--space-4) 0 var(--space-6)">How to run it.</h2>
+        <div class="md"><p>Turns an RFP/ITT plus the practice&#x27;s bid materials into an editable .docx response draft: compliance matrix, tailored answers in the client&#x27;s own order, <code>[TBC]</code> wherever the materials don&#x27;t support a claim, and a before-issue checklist. <strong>Not the incoming-tender digest — that&#x27;s Bid Summariser, which runs first.</strong></p>
+<h2 id="run-it" class="md-h2">Run it</h2>
+<p>Attach the tender pack <strong>and</strong> the practice&#x27;s materials in the same message, then ask:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>Draft our tender response to this RFP.
+Answer this ITT — qualifications pack, CVs and rate card attached.
+Draft the quality responses against the scored criteria; leave the fee as structure only.
+Bid summary already done — build the response from it and the pack.</code></pre></div>
+<p>Attach at minimum the <strong>RFP</strong> and a <strong>qualifications pack</strong>. Also useful: CVs, case-study sheets, rate card, policies, insurance certificates. Whatever is missing is not guessed — the affected sections come back as gaps.</p>
+<p>Expect an intake check, an RFP decode, then 5–8 numbered questions with defaults. Reply &quot;use defaults&quot; to proceed.</p>
+<h2 id="the-document" class="md-h2">The document</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Section</th><th>What it holds</th></tr></thead><tbody><tr><td>Cover sheet</td><td>Project, client, deadline, DRAFT banner — not for issue until the checklist clears.</td></tr><tr><td>RFP snapshot</td><td>Deadlines, delivery method, limits, scored criteria + weightings (summed and checked), pass/fail criteria, inferred client priorities (labelled as inference).</td></tr><tr><td>Clarification questions</td><td>Numbered, quoting both clauses of each contradiction. Ready to send before the question deadline.</td></tr><tr><td>Compliance matrix</td><td>Every requirement <code>R-nn</code> → clause → weighting → answering section → status. Pass/fail rows first.</td></tr><tr><td>Response draft</td><td>Cover letter · understanding · methodology (longest where the weighting says so) · experience · team · social value · quality/risk/H&amp;S · fee · programme.</td></tr><tr><td>Before-issue checklist</td><td>Pass/fail risks first, then <code>[TBC]</code>s by tag, assumptions, formalities. Each an action with an owner.</td></tr></tbody></table></div>
+<p><strong>Tags — nothing untagged is a claim:</strong></p>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Tag</th><th>Routes to</th></tr></thead><tbody><tr><td><code>[TBC — supply]</code></td><td>A fact the practice holds but the pack doesn&#x27;t: contract values, dates, referees, PI figure, certificate numbers. Someone <strong>fetches</strong> it.</td></tr><tr><td><code>[TBC — decision]</code></td><td>A choice only the practice can make: the fee, the named team, an equivalence argument, positioning. Someone <strong>decides</strong> it.</td></tr><tr><td><code>[to verify]</code></td><td>An external figure, standard or policy named from context but not checked at source. Someone <strong>verifies</strong> it.</td></tr><tr><td><code>[Boilerplate — trim/tailor]</code></td><td>Reused pack text that still needs a human pass.</td></tr></tbody></table></div>
+<blockquote class="mdquote"><p>A draft that is honestly 15% placeholder is the correct output. A draft that is 100% confident and 15% fiction is a professional hazard — and it surfaces after award, in front of the client.</p></blockquote>
+<h2 id="what-it-will-not-do-by-design" class="md-h2">What it will not do — by design</h2>
+<ul class="md-list">
+<li><strong>Invent credentials.</strong> No fabricated referees, awards, contract values, completion dates, accreditations, insurance figures or client names. The test: could you evidence this sentence if the evaluator asked?</li>
+<li><strong>Upgrade the pack&#x27;s own words.</strong> &quot;Experience of listed buildings&quot; never becomes &quot;conservation-accredited&quot;; &quot;aligned with ISO 9001 principles&quot; never becomes &quot;ISO 9001 certified&quot;.</li>
+<li><strong>Set the fee.</strong> Structure, basis, assumptions and exclusions — yes. The number only from your explicit input, shown with its arithmetic.</li>
+<li><strong>Declare the submission compliant.</strong> The matrix maps requirements to answers; it does not certify that pass/fail criteria are met. Certificates do that.</li>
+<li><strong>Resolve RFP contradictions.</strong> Both clause refs recorded, question drafted, tighter reading drafted to. You decide what to ask.</li>
+<li><strong>Drop a requirement to fit a page limit silently.</strong> Cuts are declared and the matrix is re-checked.</li>
+<li><strong>Quote standards or statutory periods from memory.</strong> Named to check, marked <code>[to verify]</code>.</li>
+<li><strong>Web-search the client, site or competitors</strong> unless you ask; no client names in output filenames.</li>
+</ul>
+<h2 id="work-the-output" class="md-h2">Work the output</h2>
+<ol class="md-list">
+<li><strong>Before-issue checklist first, not last.</strong> Anything marked pass/fail is an exclusion risk — clear those before a word of prose is polished.</li>
+<li>Send the clarification questions today; the question deadline expires well before the tender does.</li>
+<li>Walk the compliance matrix with the RFP open. Confirm each target section <em>answers</em> the question rather than mentioning the topic — the skill re-checks, but only a human can judge sufficiency.</li>
+<li>Chase every <code>[TBC — supply]</code> as a batch: one email to the person who holds the certificates, one to whoever holds the case-study data.</li>
+<li>Take the <code>[TBC — decision]</code> list to a director — fee, named team, whether to make any equivalence argument. These are the commercial calls.</li>
+<li>Re-read every <code>[Boilerplate — trim/tailor]</code> passage against this client. Reused text that survives unedited is what makes a bid read generic.</li>
+<li>Do the page-count arithmetic yourself against the limit you confirmed, then re-check the matrix if anything was cut.</li>
+</ol>
+<hr class="divider md-hr">
+<p><strong>Remember:</strong> the skill drafts, the practice submits. Nothing here is signed off, and the checklist is the condition of issue, not a suggestion. Test drive: run it on the Redgate Street Baths sample RFP and materials pack, and score against the defect key.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="trigger">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Triggering</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">When Claude reaches for it.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">This is the description Claude itself reads to
+        decide whether the skill applies. It is worth knowing, because it tells you exactly how to
+        phrase the ask — and what the skill will decline.</p>
+      </div>
+      <div class="tpl-triggerbox card">
+        <p class="tpl-triggerbox__name"><code>rfp-response-builder</code></p>
+        <p>Turn an incoming RFP / ITT / tender invitation plus the practice&#x27;s standard bid materials (qualifications pack, CVs, case studies, rate card) into a compliant, client-specific tender response draft as an editable .docx — with a compliance matrix tracing every scored question to a response section, [TBC] placeholders wherever the materials don&#x27;t support a claim, and a before-issue checklist of everything a human must close before submission. Use this WHENEVER someone supplies tender documents and practice materials and asks to &quot;respond to this RFP&quot;, &quot;draft our tender response&quot;, &quot;write the bid&quot;, &quot;build the proposal&quot;, &quot;answer this ITT&quot;, &quot;put the submission together&quot;, &quot;draft the quality responses&quot;, &quot;assemble our return for [project]&quot;, or &quot;draft the methodology against the scored criteria&quot;. Do NOT use for digesting or deciding on an incoming tender — that is bid-summariser, which runs FIRST and feeds this. Do NOT use for client brief intake, appointment terms review, or marketing decks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="files">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Package</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Files it puts on your disk.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">2 files, 23.1 KB unzipped,
+        under <code>.claude/skills/rfp-response-builder/</code>. Reference material loads only when the skill
+        needs it &mdash; references/.</p>
+        <p><a class="btn btn--outline btn--mono btn--sm" href="../downloads/rfp-response-builder.skill" download>Download the package <span class="btn__arrow" aria-hidden="true">&#8595;</span></a></p>
+      </div>
+      <div class="tpl-tree card">
+        <p class="tpl-tree__root"><code>.claude/skills/rfp-response-builder/</code></p>
+        <ul class="tpl-tree__list"><li class="tpl-file" style="--d:1"><span class="tpl-file__name">response-templates.md</span><span class="tpl-file__dir">references/</span><span class="tpl-file__size">7.7 KB</span></li><li class="tpl-file" style="--d:0"><span class="tpl-file__name">SKILL.md</span><span class="tpl-file__dir"></span><span class="tpl-file__size">15.4 KB</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More in this category">
+      <a class="tpl-prevnext__item" href="../../resources/skills/bid-summariser.html"><span>Previous</span><strong>Bid Summariser</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/skills/bids-business.html">All Bids &amp; business</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/skills/pitch-deck-builder.html"><span>Next</span><strong>Pitch Deck Builder</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

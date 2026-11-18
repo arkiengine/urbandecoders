@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect Revit to Claude, through pyRevit — Urban Decoders</title>
+<meta name="description" content="Two routes into Revit — Autodesk&#x27;s own read-only server, and a pyRevit extension that runs Python against the Revit API. The second needs a config change nobody tells you about, and it can delete things.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/guides/mcp-revit-pyrevit.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Connect Revit to Claude, through pyRevit — Urban Decoders">
+<meta property="og:description" content="Two routes into Revit — Autodesk&#x27;s own read-only server, and a pyRevit extension that runs Python against the Revit API. The second needs a config change nobody tells you about, and it can delete things.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Connect Revit to Claude, through pyRevit",
+  "description": "Two routes into Revit — Autodesk&#x27;s own read-only server, and a pyRevit extension that runs Python against the Revit API. The second needs a config change nobody tells you about, and it can delete things.",
+  "url": "https://www.urbandecoders.com/resources/guides/mcp-revit-pyrevit.html",
+  "dateModified": "2026-11-16",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "publisher": { "@type": "Organization", "name": "Urban Decoders" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/guides/">Guides</a><span aria-hidden="true">/</span>
+      <span>MCP setup</span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">MCP setup</span>
+        <h1 class="display tpl-skilltitle">Connect Revit to Claude, through pyRevit</h1>
+        <p class="lead">Two routes into Revit — Autodesk&#x27;s own read-only server, and a pyRevit extension that runs Python against the Revit API. The second needs a config change nobody tells you about, and it can delete things.</p>
+      </div>
+      <dl class="tpl-meta card"><div><dt>Software</dt><dd>Revit · pyRevit</dd></div><div><dt>Level</dt><dd>Advanced</dd></div><div><dt>Reading</dt><dd>9 min</dd></div><div><dt>Updated</dt><dd>2026-11-16</dd></div></dl>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#route-a-autodesks-own-server-read-only">Route A — Autodesk&#x27;s own server (read-only)</a></li><li><a href="#route-b-the-pyrevit-extension-read-and-write">Route B — the pyRevit extension (read and write)</a></li><li><a href="#route-b-writes-to-your-model">Route B writes to your model</a></li><li><a href="#what-to-let-it-do">What to let it do</a></li><li><a href="#the-rule-that-matters">The rule that matters</a></li><li><a href="#expectations">Expectations</a></li><li><a href="#a-note-on-what-revit-data-can-and-cannot-tell-you">A note on what Revit data can and cannot tell you</a></li></ul>
+      </nav>
+      <div class="tpl-doc">
+        <figure class="guide-fig"><img src="../../assets/img/mcp/mcp-revit-pyrevit.svg" alt="Connect Revit to Claude, through pyRevit — connection diagram" width="1200" height="440" loading="eager" decoding="async"><figcaption>Claude talks to Revit · pyRevit over MCP: tool calls out, model state back. What installs where is in the steps below.</figcaption></figure>
+        <div class="md"><p>Revit is the hardest of these to connect and the one with the most to lose if it goes wrong. A live central file with six people in it is not a sandbox.</p>
+<p>There are two routes and they are <strong>not</strong> equivalent. Read <a href="mcp-what-it-is.html">What MCP actually is</a> first if you have not set up a server before.</p>
+<h2 id="route-a-autodesks-own-server-read-only" class="md-h2">Route A — Autodesk&#x27;s own server (read-only)</h2>
+<p>Autodesk ship an MCP server for recent Revit versions. On our machine it installs to:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>C:\Program Files\Autodesk\Revit &lt;version&gt; MCP Server Read-Tools Technical Preview\Autodesk.RevitMcpServer.Stdio.exe</code></pre></div>
+<p>The folder name tells you the two things that matter: it is a <strong>technical preview</strong>, and it is <strong>read-tools</strong>. It reads the model and does not write.</p>
+<p>That is a feature. For audits, takeoffs, schedule interrogation and &quot;what is actually in this model&quot; questions — which is most of what you want — read-only is exactly right, and it removes the entire category of risk.</p>
+<p><strong>Claude Desktop config:</strong></p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-json">{
+  &quot;mcpServers&quot;: {
+    &quot;revit-mcp&quot;: {
+      &quot;command&quot;: &quot;C:/Program Files/Autodesk/Revit 2027 MCP Server Read-Tools Technical Preview/Autodesk.RevitMcpServer.Stdio.exe&quot;,
+      &quot;args&quot;: []
+    }
+  }
+}</code></pre></div>
+<p>Adjust the version in the path. Forward slashes; the spaces are fine inside a JSON string.</p>
+<p><strong>Availability varies by Revit version and release channel.</strong> Look in <code>C:\Program Files\Autodesk\</code> for a folder with <code>MCP Server</code> in the name before assuming you have it. If it is not there, use Route B.</p>
+<h2 id="route-b-the-pyrevit-extension-read-and-write" class="md-h2">Route B — the pyRevit extension (read and write)</h2>
+<p>This runs an MCP server from a <strong>pyRevit extension</strong>, giving Claude a Python API into the running Revit session. More capable, and correspondingly more dangerous.</p>
+<p><strong>Source:</strong> the setup below follows <a href="https://www.bimpure.com/blog/pyrevit-mcp-claude-code-tutorial" target="_blank" rel="noopener">BIM Pure&#x27;s pyRevit MCP tutorial</a> and the extension at <a href="https://github.com/mcp-servers-for-revit/mcp-server-for-revit-python" target="_blank" rel="noopener">mcp-servers-for-revit/mcp-server-for-revit-python</a>.</p>
+<h3 id="what-you-need" class="md-h3">What you need</h3>
+<ul class="md-list">
+<li><strong>pyRevit</strong>, installed.</li>
+<li><strong>Git</strong> — <a href="https://git-scm.com/install/windows" target="_blank" rel="noopener">git-scm.com</a>. You may need to restart Windows afterwards.</li>
+<li><strong>uv</strong>, the Python package manager.</li>
+<li><strong>Admin rights</strong> on the machine.</li>
+<li>A Claude paid subscription, and Claude Code or Claude Desktop.</li>
+</ul>
+<h3 id="step-1-install-the-pyrevit-extension" class="md-h3">Step 1 — install the pyRevit extension</h3>
+<p>In Revit, open pyRevit&#x27;s <strong>Extensions</strong> menu, find <strong><code>mcp-server-for-revit-python</code></strong>, and click <strong>Install Extension</strong>.</p>
+<p>There is a <strong>Path</strong> field you can customise. <strong>Copy that path</strong> — you will need it for the Claude config.</p>
+<p>The extension lands under your pyRevit extensions folder. To find it:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-powershell">Get-ChildItem &quot;$env:APPDATA\pyRevit\Extensions&quot; -Directory</code></pre></div>
+<h3 id="step-2-turn-on-the-pyrevit-routes-server" class="md-h3">Step 2 — turn on the pyRevit Routes server</h3>
+<p>This is the step that is easy to miss and without which nothing works.</p>
+<p>Open <strong>pyRevit settings → Routes</strong>, and turn on <strong>Routes Server (beta)</strong>.</p>
+<h3 id="step-3-bind-it-to-localhost" class="md-h3">Step 3 — bind it to localhost</h3>
+<p><strong>Do not skip this.</strong> By default the Routes server binds to <strong><code>0.0.0.0</code></strong> — every network interface on the machine. That exposes an endpoint that can run Python inside Revit to anything that can reach your machine.</p>
+<p>Open <code>pyRevit_config.ini</code>, in:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>%APPDATA%\pyRevit</code></pre></div>
+<p>Find the <code>Routes</code> section and set:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-ini">server_host = &quot;127.0.0.1&quot;
+server_port = 48884</code></pre></div>
+<p>Save it, close it, and <strong>restart both Revit and Claude Code.</strong></p>
+<h3 id="step-4-the-claude-config" class="md-h3">Step 4 — the Claude config</h3>
+<p>The config points at the MCP executable inside the extension&#x27;s own virtual environment. On our machine:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-json">{
+  &quot;mcpServers&quot;: {
+    &quot;revit-connector&quot;: {
+      &quot;command&quot;: &quot;C:/Users/&lt;you&gt;/AppData/Roaming/pyRevit/Extensions/mcp-server-for-revit-python.extension/.venv/Scripts/mcp.exe&quot;,
+      &quot;args&quot;: [
+        &quot;run&quot;,
+        &quot;C:/Users/&lt;you&gt;/AppData/Roaming/pyRevit/Extensions/mcp-server-for-revit-python.extension/main.py&quot;
+      ]
+    }
+  }
+}</code></pre></div>
+<p><strong>Claude Code:</strong></p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-bash">claude mcp add revit-connector -- &quot;C:/Users/&lt;you&gt;/AppData/Roaming/pyRevit/Extensions/mcp-server-for-revit-python.extension/.venv/Scripts/mcp.exe&quot; run &quot;C:/Users/&lt;you&gt;/AppData/Roaming/pyRevit/Extensions/mcp-server-for-revit-python.extension/main.py&quot;</code></pre></div>
+<p>Reading that path: <code>.venv\Scripts\mcp.exe</code> is a <strong>Python virtual environment inside the extension</strong>, with the MCP tooling installed into it. Confirm it exists before you go looking for config problems:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-powershell">Test-Path &quot;$env:APPDATA\pyRevit\Extensions\mcp-server-for-revit-python.extension\.venv\Scripts\mcp.exe&quot;</code></pre></div>
+<p>If that returns <code>False</code>, the venv has not been created and Claude will fail silently with no server. The BIM Pure tutorial&#x27;s approach is to point Claude Code at the extension folder and have it do the install; follow the repo&#x27;s own README for the dependency steps rather than guessing them.</p>
+<h3 id="step-5-verify" class="md-h3">Step 5 — verify</h3>
+<p>Open a Revit model, then ask Claude Code to confirm the connection. The tutorial suggests being explicit about the endpoint, because the server will otherwise try <code>localhost</code> and may resolve it differently:</p>
+<blockquote class="mdquote"><p>My pyRevit Routes server uses host 127.0.0.1 and port 48884 — make the MCP server connect to exactly that, and use 127.0.0.1, not localhost.</p></blockquote>
+<p>Then something harmless:</p>
+<blockquote class="mdquote"><p>What Revit version is open, what&#x27;s the document name, and how many levels does it have?</p></blockquote>
+<p>A real answer means you are connected. A general explanation of Revit levels means you are not.</p>
+<h2 id="route-b-writes-to-your-model" class="md-h2">Route B writes to your model</h2>
+<p>The extension exposes <strong><code>execute_revit_code</code></strong>, which runs generated Python against the Revit API. The tutorial&#x27;s own demonstration prompt is:</p>
+<blockquote class="mdquote"><p>Delete all trees visible in the active view.</p></blockquote>
+<p>That is not a read-only tool, and the tutorial itself warns that running this kind of thing on an active project &quot;could be risky&quot;.</p>
+<h2 id="what-to-let-it-do" class="md-h2">What to let it do</h2>
+<p><strong>Yes, confidently:</strong></p>
+<ul class="md-list">
+<li>Reading model information — version, worksets, levels, grids, phases, design options, warnings.</li>
+<li>Interrogating categories and parameters: what exists, what is populated, what the fill rates are. This is where it earns its keep.</li>
+<li>Listing views and finding where an element appears.</li>
+<li>Producing the inputs for an audit. Our <a href="../skills/ifc-model-audit.html">IFC Model Audit</a> and <a href="../skills/area-schedule-audit.html">Area Schedule Audit</a> skills are built to consume exactly this.</li>
+</ul>
+<p><strong>No, or not without care:</strong></p>
+<ul class="md-list">
+<li><strong>Anything on a live central file.</strong> Detach a copy. Always.</li>
+<li><strong>Bulk parameter writes.</strong> A loop across 4,000 elements is one typo from a very long undo.</li>
+<li><strong>Deleting or purging.</strong> There is no scenario where you need Claude to purge a model unattended.</li>
+<li><strong>Syncing to central.</strong> Do that yourself, having looked at what changed.</li>
+</ul>
+<h2 id="the-rule-that-matters" class="md-h2">The rule that matters</h2>
+<p><strong>Detach, then play.</strong></p>
+<p>Open a detached copy, let Claude work on that, read what it did, and apply the finding to the live model yourself. Everything on the &quot;yes&quot; list works perfectly on a detached copy, because all of it is reading.</p>
+<p>The temptation is to skip this because the read-only work is obviously safe — and then one day you ask for &quot;a quick parameter fix&quot; on the model you happen to have open. <strong>The habit is the protection, not the risk assessment.</strong></p>
+<h2 id="expectations" class="md-h2">Expectations</h2>
+<p>The tutorial is candid about limits, and they match our experience: generated code &quot;might not work for more complex tasks&quot; — it managed a wall and failed on stairs — and the approach is slower than a purpose-built MCP server because Claude is writing Revit API code each time.</p>
+<p>On model choice: a smaller model for light tasks, a larger one for complex multi-step work, with the obvious token cost. And expect to restart Claude Desktop a few times during setup, and to approve access more than once.</p>
+<h2 id="a-note-on-what-revit-data-can-and-cannot-tell-you" class="md-h2">A note on what Revit data can and cannot tell you</h2>
+<p>A model answers what is <em>in</em> it. It will not tell you what is missing, and it will not flag a parameter that exists and was never populated — those come back as blanks, and <strong>a blank is the absence of data, not a value of none.</strong></p>
+<p>That distinction is the difference between a schedule you can rely on and one that quietly understates. It is why our model-audit skills report coverage as fill rates rather than present/absent, and it is worth carrying into anything you ask Claude to pull out of a model.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More guides">
+      <a class="tpl-prevnext__item" href="../../resources/guides/mcp-qgis.html"><span>Previous</span><strong>Connect QGIS to Claude</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/guides/">All guides</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/guides/mcp-rhino.html"><span>Next</span><strong>Connect Rhino to Claude</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

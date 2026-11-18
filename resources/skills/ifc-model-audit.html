@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IFC Model Audit — Claude skill for architecture — Urban Decoders</title>
+<meta name="description" content="Verdict-first forensics on an IFC: georeferencing, spatial structure, property coverage and GlobalId stability. Never modified.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/skills/ifc-model-audit.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="IFC Model Audit — Claude skill for architecture — Urban Decoders">
+<meta property="og:description" content="Verdict-first forensics on an IFC: georeferencing, spatial structure, property coverage and GlobalId stability. Never modified.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "IFC Model Audit",
+  "alternateName": "ifc-model-audit",
+  "description": "Verdict-first forensics on an IFC: georeferencing, spatial structure, property coverage and GlobalId stability. Never modified.",
+  "codeSampleType": "full solution",
+  "programmingLanguage": "Claude Skill",
+  "url": "https://www.urbandecoders.com/resources/skills/ifc-model-audit.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "license": "Proprietary",
+  "isPartOf": { "@type": "CollectionPage", "name": "Claude Skills for Architecture", "url": "https://www.urbandecoders.com/resources/skills/" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/">Skills</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/twins-data.html">Twins &amp; data</a><span aria-hidden="true">/</span>
+      <span><code>ifc-model-audit</code></span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Audit report</span>
+        <h1 class="display tpl-skilltitle">IFC Model Audit</h1>
+        <p class="lead">Verdict-first forensics on an IFC: georeferencing, spatial structure, property coverage and GlobalId stability. Never modified.</p>
+        <p class="tpl-callline">Once installed, Claude loads it on its own when the conversation
+        matches. You can also call it directly with <code>/ifc-model-audit</code>.</p>
+        <div class="wrap-btns">
+          <a class="btn btn--brand btn--mono" href="../downloads/ifc-model-audit.skill" download>Download .skill <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+          <a class="btn btn--outline btn--mono" href="#quick-reference">Read the quick reference</a>
+        </div>
+      </div>
+      <dl class="tpl-meta card">
+        <div><dt>Category</dt><dd><a href="../../resources/skills/twins-data.html">Twins &amp; data</a></dd></div>
+        <div><dt>Output</dt><dd>Audit report</dd></div>
+        <div><dt>Package</dt><dd>1 file &middot; 9.6 KB</dd></div>
+        <div><dt>Download</dt><dd>4.1 KB zip</dd></div>
+        <div><dt>Worked example</dt><dd><a href="../downloads/ifc-model-audit-example.zip" download>3 files &middot; 11.9 KB</a></dd></div>
+        <div><dt>Tags</dt><dd class="tpl-meta__tags"><span class="tag">IFC</span><span class="tag">BIM</span><span class="tag">Federation</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap"><div class="tpl-disclaimer" role="note">
+  <span class="tpl-disclaimer__tag">Read first</span>
+  <p>These skills assist qualified practitioners. They replace neither the architect of
+  record nor the approving authority. Every figure, clause and citation they surface is
+  marked for you to verify — treat an unverified output as a question, not an answer.</p>
+</div></div>
+</section>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Install just this one.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">Two routes. Both end with Claude loading the
+        skill by itself when your conversation matches.</p>
+      </div>
+      <div class="tpl-install">
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">A</span> Claude app, Chat or Cowork</h3>
+          <ol class="md-list">
+            <li>Download <code>ifc-model-audit.skill</code> below.</li>
+            <li>Open Claude, go to <strong>Settings &rarr; Capabilities &rarr; Skills</strong> and upload the file.</li>
+            <li>Start a conversation and attach your material. The skill loads itself on a match.</li>
+          </ol>
+          <a class="btn btn--ghost btn--mono btn--sm" href="../downloads/ifc-model-audit.skill" download>ifc-model-audit.skill &middot; 4.1 KB</a>
+        </div>
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">B</span> Claude Code, in your project</h3>
+          <p>Unzip the package into your skills folder, then restart Claude Code.</p>
+          <div class="codeblock">
+            <button class="codeblock__copy" type="button" data-copy>Copy</button>
+            <pre><code>mkdir -p .claude/skills &amp;&amp; unzip ifc-model-audit.skill -d .claude/skills/</code></pre>
+          </div>
+          <p class="tpl-fine">Use <code>~/.claude/skills/</code> instead to install it for every project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="at-a-glance">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">At a glance</span>
+      <h2 class="section-title">What it takes, what you get.</h2>
+    </div>
+    <div class="grid grid--3 tpl-glance">
+      <div class="card tpl-glance__box">
+        <h3>It takes</h3>
+        <p>An .ifc file — and ideally two versions, for the identity check</p>
+      </div>
+      <div class="card tpl-glance__box">
+        <h3>You get</h3>
+        <p>Schema and exporter provenance, georeferencing and units read first, spatial containment and orphans, property coverage as fill rates, GlobalId duplication and stability, quantity reliability, and risks ranked by downstream consequence.</p>
+      </div>
+      <div class="card tpl-glance__box tpl-glance__box--red">
+        <h3>It will not</h3>
+        <p>Modify or re-export the file, infer a CRS, present IFC base quantities as a reliable takeoff, or declare a model fit for purpose generically.</p>
+      </div>
+    </div>
+    <div class="tpl-example">
+      <span class="tag">Test drive</span>
+      <p>Dunsmere Point — a declared CRS with an all-zero map conversion. Run the skill on the example input, then score your output against the defect key &mdash; it lists what was planted and what a good run does with it.</p>
+      <a class="btn btn--outline btn--mono btn--sm" href="../downloads/ifc-model-audit-example.zip" download>Worked example <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="quick-reference">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#run-it">Run it</a></li><li><a href="#the-report">The report</a></li><li><a href="#georeferencing-read-this-first-every-time">Georeferencing — read this first, every time</a></li><li><a href="#what-it-will-not-do-by-design">What it will not do — by design</a></li><li><a href="#work-the-output">Work the output</a></li></ul>
+        <p class="tpl-toc__head tpl-toc__head--spaced">Jump to</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#files">Files on disk</a></li>
+          <li><a href="#trigger">When it triggers</a></li>
+        </ul>
+      </nav>
+      <div class="tpl-doc">
+        <span class="eyebrow">Quick reference</span>
+        <h2 class="section-title" style="margin:var(--space-4) 0 var(--space-6)">How to run it.</h2>
+        <div class="md"><p>Forensic health-check of an IFC before anyone federates, schedules or hands it downstream. <strong>Measures first, judges second, changes nothing.</strong> The file is a deliverable and a record; repair happens in the issuer&#x27;s authoring model.</p>
+<h2 id="run-it" class="md-h2">Run it</h2>
+<p>Attach the .ifc and say what it is for:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>Audit this IFC — we&#x27;re federating it with the structural model next week.
+Can we schedule doors and windows off this file?
+Check the georeferencing. We&#x27;re importing it into Unreal over a GIS basemap.
+This came from a consultant we haven&#x27;t worked with. What can we trust?
+Compare these two exports — did the GlobalIds survive?</code></pre></div>
+<p>Naming the destination changes the audit materially: a file that is fine for visual coordination can be unusable for a twin. Supplying <strong>two</strong> versions enables the GlobalId stability check — the single most valuable test for any twin workflow.</p>
+<h2 id="the-report" class="md-h2">The report</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Section</th><th>What it holds</th></tr></thead><tbody><tr><td>Verdict</td><td>What the file is, safe uses as-is, unsafe uses, the single biggest problem. First, always.</td></tr><tr><td>Provenance</td><td>Schema, exporter and version, authoring tool, export date, declared MVD, project and site names.</td></tr><tr><td><strong>Georeferencing &amp; units</strong></td><td>Method present or absent, map conversion values, true north, base/survey point relationship, coordinate magnitude, units and precision.</td></tr><tr><td>Spatial structure</td><td>Project / site / building / storey hierarchy, orphan elements, storey elevation consistency.</td></tr><tr><td>Entity census</td><td>Counts by IFC class, with type-vs-occurrence split.</td></tr><tr><td>Classification &amp; properties</td><td>Coverage as <strong>fill rates</strong>, not yes/no.</td></tr><tr><td>Identity &amp; stability</td><td>GlobalId duplication, nulls, and persistence across two exports.</td></tr><tr><td>Quantities</td><td>Base quantity presence and coverage, with the exporter-dependence warning.</td></tr><tr><td>Geometry</td><td>Representation types, elements with no geometry, anything that breaks a named consumer.</td></tr><tr><td>Ranked risks</td><td>High / Medium / Low / Info, each stating what it breaks downstream.</td></tr><tr><td>What was not checked</td><td>Always present.</td></tr></tbody></table></div>
+<p><strong>Tags:</strong> <code>[measured]</code> · <code>[inferred]</code> · <code>[verify manually]</code>.</p>
+<h2 id="georeferencing-read-this-first-every-time" class="md-h2">Georeferencing — read this first, every time</h2>
+<blockquote class="mdquote"><p>A present-but-empty map conversion is worse than none, because tools treat it as authoritative. And large true coordinates are correct in GIS and catastrophic in engines working in single precision — geometry jitters, snapping fails, and it reads as a modelling error.</p></blockquote>
+<p>Establish in order: the method and whether it is complete · origin, base point and survey point relationships · <strong>coordinate magnitude</strong> and its consequence for the named destination · units and length precision · whether a stated CRS is declared in the file or was told to you by a human (those are different, and the second is <code>[verify manually]</code>).</p>
+<h2 id="what-it-will-not-do-by-design" class="md-h2">What it will not do — by design</h2>
+<ul class="md-list">
+<li><strong>Touch the file.</strong> No repair, re-export or re-save. Remediation is prescribed, in the issuer&#x27;s authoring tool.</li>
+<li><strong>Assume or infer a CRS</strong>, or state what an EPSG code means from memory.</li>
+<li><strong>Convert units or coordinates.</strong></li>
+<li><strong>Present IFC base quantities as a reliable takeoff.</strong> What a quantity includes is exporter-dependent.</li>
+<li><strong>Judge design, coordination or compliance.</strong> Clashes and code are outside this audit entirely.</li>
+<li><strong>Treat an absent property as zero or false.</strong> A blank schedule cell usually means the exporter never wrote the property.</li>
+<li><strong>Assert GlobalId stability from a single export.</strong></li>
+<li><strong>Declare a model &quot;fit for purpose&quot; generically.</strong> Fitness is per purpose, and the verdict names purposes.</li>
+</ul>
+<h2 id="work-the-output" class="md-h2">Work the output</h2>
+<ol class="md-list">
+<li>Read the verdict. If a High says stop, stop before importing anything.</li>
+<li>Settle georeferencing with the issuer before any twin, GIS or engine import. Everything downstream inherits it and nothing downstream will warn you.</li>
+<li>Use fill rates, not presence, to decide whether you can schedule. &quot;412 of 1,284 doors carry the property&quot; is a decision; &quot;has property sets&quot; is not.</li>
+<li>Ask for a second export and re-run the identity check before building anything that joins on GlobalId.</li>
+<li>Send the ranked risks to the issuer as questions — they are their defects to fix in their model, not yours to patch in the export.</li>
+<li>File the not-checked list with the audit. It defines what is still owed before the model carries real weight.</li>
+</ol>
+<hr class="divider md-hr">
+<p><strong>Remember:</strong> the audit tests the file&#x27;s internal honesty, not the building. A clean audit means the model agrees with itself — whether it agrees with reality is still a survey.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="trigger">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Triggering</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">When Claude reaches for it.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">This is the description Claude itself reads to
+        decide whether the skill applies. It is worth knowing, because it tells you exactly how to
+        phrase the ask — and what the skill will decline.</p>
+      </div>
+      <div class="tpl-triggerbox card">
+        <p class="tpl-triggerbox__name"><code>ifc-model-audit</code></p>
+        <p>Forensic audit of an IFC file before anyone federates, schedules or hands it downstream: schema and exporter provenance, georeferencing and units, spatial containment, classification and property set coverage, GlobalId stability and duplication, type-vs-occurrence discipline, quantity reliability, and geometry representation — reported verdict-first with every claim tagged [measured], [inferred] or [verify manually]. The file is evidence and is never modified. Use this WHENEVER someone supplies an .ifc and asks to &quot;audit this IFC&quot;, &quot;can we trust this model&quot;, &quot;is this IFC fit for coordination&quot;, &quot;why don&#x27;t the quantities match&quot;, &quot;check the georeferencing&quot;, &quot;will this federate&quot;, &quot;can we schedule off this&quot;, or before importing an IFC into a twin, a viewer, a game engine or a takeoff. Do NOT use it to modify, repair or re-export IFC, to audit a native .rvt (revit-model-audit), to check design quality or regulatory compliance, or to convert geometry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="files">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Package</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Files it puts on your disk.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">1 file, 9.6 KB unzipped,
+        under <code>.claude/skills/ifc-model-audit/</code>. Reference material loads only when the skill
+        needs it &mdash; no subfolders.</p>
+        <p><a class="btn btn--outline btn--mono btn--sm" href="../downloads/ifc-model-audit.skill" download>Download the package <span class="btn__arrow" aria-hidden="true">&#8595;</span></a></p>
+      </div>
+      <div class="tpl-tree card">
+        <p class="tpl-tree__root"><code>.claude/skills/ifc-model-audit/</code></p>
+        <ul class="tpl-tree__list"><li class="tpl-file" style="--d:0"><span class="tpl-file__name">SKILL.md</span><span class="tpl-file__dir"></span><span class="tpl-file__size">9.6 KB</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More in this category">
+      <span></span>
+      <a class="tpl-prevnext__all" href="../../resources/skills/twins-data.html">All Twins &amp; data</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/skills/crs-georeference-check.html"><span>Next</span><strong>CRS &amp; Georeferencing Check</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From a product photo to an Unreal Engine prop — Urban Decoders</title>
+<meta name="description" content="Furniture you can find a photo of but not a model of, turned into textured meshes and bridged straight into an Unreal interior. Settings that matter, the multi-view trick, and when to switch on PBR.">
+<link rel="canonical" href="https://www.urbandecoders.com/blog/photo-to-unreal-ai-3d.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="From a product photo to an Unreal Engine prop — Urban Decoders">
+<meta property="og:description" content="Furniture you can find a photo of but not a model of, turned into textured meshes and bridged straight into an Unreal interior. Settings that matter, the multi-view trick, and when to switch on PBR.">
+<meta property="og:image" content="https://i.ytimg.com/vi/PxKgZGG_fEc/maxresdefault.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../assets/favicon-192.png">
+<link rel="stylesheet" href="../styles.css?v=20261117">
+<link rel="stylesheet" href="../resources/resources.css?v=20261117">
+<link rel="stylesheet" href="../blog/blog.css?v=20261117">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "From a product photo to an Unreal Engine prop",
+  "description": "Furniture you can find a photo of but not a model of, turned into textured meshes and bridged straight into an Unreal interior. Settings that matter, the multi-view trick, and when to switch on PBR.",
+  "image": "https://www.urbandecoders.com/assets/img/blog/photo-to-unreal-ai-3d/step-04.jpg",
+  "url": "https://www.urbandecoders.com/blog/photo-to-unreal-ai-3d.html",
+  "datePublished": "2026-04-09",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "publisher": { "@type": "Organization", "name": "Urban Decoders" },
+  "video": {
+    "@type": "VideoObject",
+    "name": "From a product photo to an Unreal Engine prop",
+    "thumbnailUrl": "https://i.ytimg.com/vi/PxKgZGG_fEc/maxresdefault.jpg",
+    "uploadDate": "2026-04-09",
+    "embedUrl": "https://www.youtube.com/embed/PxKgZGG_fEc"
+  }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../platform.html">Platform</a>
+      <a class="nav__link" href="../services.html">Services</a>
+      <a class="nav__link" href="../case-studies.html">Work</a>
+      <a class="nav__link" href="../courses.html">Courses</a>
+      <a class="nav__link" href="../resources/">Resources</a>
+      <a class="nav__link" href="../blog.html" aria-current="page">Blog</a>
+      <a class="nav__link" href="../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../blog.html">Blog</a><span aria-hidden="true">/</span>
+      <span>Visualisation</span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Visualisation</span>
+        <h1 class="display tpl-skilltitle">From a product photo to an Unreal Engine prop</h1>
+        <p class="lead">Furniture you can find a photo of but not a model of, turned into textured meshes and bridged straight into an Unreal interior. Settings that matter, the multi-view trick, and when to switch on PBR.</p>
+      </div>
+      <dl class="tpl-meta card"><div><dt>Published</dt><dd>9 April 2026</dd></div><div><dt>Tools</dt><dd>Tripo, Unreal Engine</dd></div><div><dt>Watch</dt><dd>8:01</dd></div><div><dt>Reading</dt><dd>6 min</dd></div></dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="post-video">
+      <a class="yt-facade" href="https://www.youtube.com/watch?v=PxKgZGG_fEc" target="_blank" rel="noopener" aria-label="Watch on YouTube: From a product photo to an Unreal Engine prop">
+        <img src="https://i.ytimg.com/vi/PxKgZGG_fEc/maxresdefault.jpg" alt="From a product photo to an Unreal Engine prop &mdash; watch on YouTube" loading="lazy" width="1280" height="720">
+        <span class="yt-play" aria-hidden="true"></span>
+      </a>
+      <p class="post-video__cap">Prefer to watch? This guide is the written version of
+      <a href="https://www.youtube.com/watch?v=PxKgZGG_fEc" target="_blank" rel="noopener">From a product photo to an Unreal Engine prop</a>
+      &mdash; 8:01 on the Urban Decoders channel.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#1-install-the-bridge-before-you-generate-anything">1. Install the bridge before you generate anything</a></li><li><a href="#2-generate-the-mesh">2. Generate the mesh</a></li><li><a href="#3-push-it-into-unreal-in-one-click">3. Push it into Unreal in one click</a></li><li><a href="#4-multi-view-for-anything-with-grain-or-direction">4. Multi-view, for anything with grain or direction</a></li><li><a href="#5-material-variants-through-image-editing">5. Material variants through image editing</a></li><li><a href="#6-when-to-turn-on-pbr">6. When to turn on PBR</a></li><li><a href="#where-this-fits">Where this fits</a></li></ul>
+      </nav>
+      <div class="tpl-doc">
+        <div class="md post-body"><p>The gap in every interior scene is the same: you can find a photograph of the chair the client wants, and you cannot find a model of it. Manufacturers publish catalogues, not geometry.</p>
+<p>This workflow closes that gap — reference image to a clean, textured, UV&#x27;d mesh, then straight into Unreal Engine through a bridge, with no export and import in between.</p>
+<h2 id="1-install-the-bridge-before-you-generate-anything" class="md-h2">1. Install the bridge before you generate anything</h2>
+<p>In the Tripo studio web app, top right, there is a <strong>DCC Bridge</strong> button. It lists the supported applications — Blender, 3ds Max, Unity, Unreal, Maya, with others listed as coming.</p>
+<figure class="post-fig"><img src="../assets/img/blog/photo-to-unreal-ai-3d/step-01.jpg" alt="The DCC Bridge menu. Install the plugin for your application before generating, not after." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">1:20</span>The DCC Bridge menu. Install the plugin for your application before generating, not after.</figcaption></figure>
+<p>Download the Unreal plugin and extract it. In your Unreal project folder, look for a <code>Plugins</code> folder — if there isn&#x27;t one, create it — and paste the extracted folder in. Restart Unreal.</p>
+<p>Each application has its own steps, but the pattern is the same, and the documentation covers them.</p>
+<h2 id="2-generate-the-mesh" class="md-h2">2. Generate the mesh</h2>
+<p>Upload a photo of the piece. One image is enough to start.</p>
+<figure class="post-fig"><img src="../assets/img/blog/photo-to-unreal-ai-3d/step-02.jpg" alt="The generation settings. Ultra mesh quality and 4K texture are the two that matter." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">2:22</span>The generation settings. Ultra mesh quality and 4K texture are the two that matter.</figcaption></figure>
+<p>Three settings are worth being deliberate about:</p>
+<ul class="md-list">
+<li><strong>Ultra</strong> mesh quality, not Standard.</li>
+<li><strong>4K texture</strong>, under texture settings.</li>
+<li><strong>Triangular</strong> topology for visualisation work.</li>
+</ul>
+<p>A minute or so later you have the piece from every angle, with textures matching the single photograph. If it is wrong, re-run it or add more angles — which is the next step.</p>
+<h2 id="3-push-it-into-unreal-in-one-click" class="md-h2">3. Push it into Unreal in one click</h2>
+<p>With the plugin installed, open the bridge panel again and toggle the Unreal connection. Your generated assets appear in a panel.</p>
+<figure class="post-fig"><img src="../assets/img/blog/photo-to-unreal-ai-3d/step-03.jpg" alt="The bridge panel with the connection live. One download button per asset." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">3:06</span>The bridge panel with the connection live. One download button per asset.</figcaption></figure>
+<p>Press the download button on an asset and it converts to an Unreal asset and lands in the content browser — a static mesh, a material instance and a texture, in a new <code>tripo models</code> folder. It also drops into the open scene automatically.</p>
+<p>One irritation: <strong>the assets are named randomly</strong>. Rename them as they arrive or the folder becomes unusable by the tenth piece.</p>
+<figure class="post-fig"><img src="../assets/img/blog/photo-to-unreal-ai-3d/step-04.jpg" alt="Placed in the scene. Scale, position and rotation are still manual — the generator has no idea how big a sofa is." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">3:42</span>Placed in the scene. Scale, position and rotation are still manual — the generator has no idea how big a sofa is.</figcaption></figure>
+<p>Scale, position and rotation are yours to set. Nothing in the pipeline knows real dimensions, so check against something you have modelled. Once placed, the asset picks up the scene&#x27;s lighting and post-processing like any other.</p>
+<h2 id="4-multi-view-for-anything-with-grain-or-direction" class="md-h2">4. Multi-view, for anything with grain or direction</h2>
+<p>The biggest accuracy gain for the least effort. If you can find front and side images of the same piece, select <strong>multi-view</strong> and load both.</p>
+<p>This matters most for materials with direction. Wooden slats come back with the grain running the right way, because it is reading the direction from your reference images rather than inventing it. For furniture in solid materials, this is the setting that makes the output usable rather than approximate.</p>
+<h2 id="5-material-variants-through-image-editing" class="md-h2">5. Material variants through image editing</h2>
+<p>If you want the same piece in a different finish, you do not need a second reference. Drop in your image, click <strong>edit image</strong>, and you have Nano Banana and similar models available in place.</p>
+<figure class="post-fig"><img src="../assets/img/blog/photo-to-unreal-ai-3d/step-05.jpg" alt="Editing the source image before generating. Two finishes from one reference photo." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">5:20</span>Editing the source image before generating. Two finishes from one reference photo.</figcaption></figure>
+<p>Prompt for a darker oak, keep both options, and generate 3D from each. Bad generations get free retries at no extra cost.</p>
+<p>Load both into Unreal and you have the basis of a <strong>product configurator</strong> — multiple objects, multiple finishes, switchable in a real-time scene. Also the basis of switchable furniture collections for virtual staging, which is where this gets genuinely commercial.</p>
+<h2 id="6-when-to-turn-on-pbr" class="md-h2">6. When to turn on PBR</h2>
+<p>With standard 4K textures, a complex grain looks fine until you get close, and then it does not.</p>
+<figure class="post-fig"><img src="../assets/img/blog/photo-to-unreal-ai-3d/step-06.jpg" alt="PBR on. Physically based materials pick up the bumps and surface imperfections that flat 4K textures flatten out." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">6:36</span>PBR on. Physically based materials pick up the bumps and surface imperfections that flat 4K textures flatten out.</figcaption></figure>
+<p>Under texture settings, tick <strong>PBR</strong> — physically based rendering materials, built to behave like real surfaces. The difference is obvious: imperfections, bumps, finer surface detail.</p>
+<p>Use it for hero pieces and anything the camera gets near. For background props it is not worth the generation time.</p>
+<h2 id="where-this-fits" class="md-h2">Where this fits</h2>
+<ul class="md-list">
+<li><strong>Aerials and mid-distance interiors:</strong> one image, ultra, 4K. Good enough.</li>
+<li><strong>Foreground and hero pieces:</strong> multi-view plus PBR.</li>
+<li><strong>Game, VR or AR:</strong> bridge to Unity instead and build smart low-poly meshes.</li>
+<li><strong>Needs editing:</strong> bridge to Blender or 3ds Max first, apply your modifiers, then move on.</li>
+</ul>
+<p>The real shift is not that you can generate a sofa. It is that <strong>you can use real products</strong> — the ones specified, from manufacturers who will never ship you a model — and have them in a real-time scene the same afternoon. Exterior work, urban furniture and landscape elements behave the same way.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More guides">
+      <a class="tpl-prevnext__item" href="../blog/accurate-stunning-maps-ai.html"><span>Newer</span><strong>Maps that are accurate and beautiful — do the GIS first</strong></a>
+      <a class="tpl-prevnext__all" href="../blog.html">All guides</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../blog/nano-banana-pro-google-earth.html"><span>Older</span><strong>Nano Banana Pro and Google Earth — eight things worth stealing</strong></a>
+    </nav>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="tpl-cta card card--emphasis">
+      <div>
+        <h2 class="section-title">Want this running on a real project?</h2>
+        <p class="lead">We build these pipelines for planning, development and design teams &mdash;
+        and the twins they feed. Tell us what you are working on.</p>
+      </div>
+      <a class="btn btn--primary btn--mono" href="../contact.html">Talk to the studio <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap"><div class="cta-band">
+    <span class="eyebrow eyebrow--plain" style="justify-content:center; display:flex">Stay in the loop</span>
+    <h2 class="section-title mt-6" style="max-width:22ch; margin-inline:auto">Learn the tools shaping tomorrow&rsquo;s cities.</h2>
+    <p class="lead mx-auto center mt-6" style="margin-inline:auto">Every guide here starts life as a video on the channel. Subscribe for new workflows on digital twins, AI and real-time visualisation &mdash; and see how Urban Decoders builds them.</p>
+    <div class="wrap-btns mt-7" style="justify-content:center">
+      <a class="btn btn--primary btn--lg" href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener">Subscribe on YouTube</a>
+      <a class="btn btn--outline btn--lg" href="../contact.html">Work with us</a>
+    </div>
+  </div></div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+        <div class="footer__badges"><img class="nv" src="../assets/logos/nvidia-inception.svg" alt="NVIDIA Inception Program member" width="93" height="40" loading="lazy"><img class="epic" src="../assets/logos/epic-megagrants.svg" alt="Epic MegaGrants Recipient" width="46" height="48" loading="lazy"></div>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../platform.html">Platform</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../case-studies.html">Work</a></li>
+          <li><a href="../courses.html">Courses</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../resources/">All resources</a></li>
+          <li><a href="../resources/skills/">Skills library</a></li>
+          <li><a href="../resources/guides/">Guides &amp; how-tos</a></li>
+          <li><a href="../contact.html">Book a scoping call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+      <div class="social">
+        <a href="https://www.instagram.com/urbandecoders/" target="_blank" rel="noopener" aria-label="Urban Decoders on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener" aria-label="Urban Decoders on YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.77-1.77C19.3 5.1 12 5.1 12 5.1s-7.3 0-8.83.43A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.77 1.77C4.7 18.9 12 18.9 12 18.9s7.3 0 8.83-.43a2.5 2.5 0 0 0 1.77-1.77C23 15.2 23 12 23 12ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../resources/resources.js?v=20261117" defer></script>
+</body>
+</html>

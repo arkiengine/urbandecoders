@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect Unreal Engine 5.8 to Claude — Urban Decoders</title>
+<meta name="description" content="Unreal 5.8 ships its own MCP server — two plugins, two console commands, no JSON to write. Plus Epic&#x27;s companion skills plugin for Claude Code, and the one setting that stops the server exposing any tools at all.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/guides/mcp-unreal.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Connect Unreal Engine 5.8 to Claude — Urban Decoders">
+<meta property="og:description" content="Unreal 5.8 ships its own MCP server — two plugins, two console commands, no JSON to write. Plus Epic&#x27;s companion skills plugin for Claude Code, and the one setting that stops the server exposing any tools at all.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Connect Unreal Engine 5.8 to Claude",
+  "description": "Unreal 5.8 ships its own MCP server — two plugins, two console commands, no JSON to write. Plus Epic&#x27;s companion skills plugin for Claude Code, and the one setting that stops the server exposing any tools at all.",
+  "url": "https://www.urbandecoders.com/resources/guides/mcp-unreal.html",
+  "dateModified": "2026-11-16",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "publisher": { "@type": "Organization", "name": "Urban Decoders" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/guides/">Guides</a><span aria-hidden="true">/</span>
+      <span>MCP setup</span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">MCP setup</span>
+        <h1 class="display tpl-skilltitle">Connect Unreal Engine 5.8 to Claude</h1>
+        <p class="lead">Unreal 5.8 ships its own MCP server — two plugins, two console commands, no JSON to write. Plus Epic&#x27;s companion skills plugin for Claude Code, and the one setting that stops the server exposing any tools at all.</p>
+      </div>
+      <dl class="tpl-meta card"><div><dt>Software</dt><dd>Unreal Engine 5.8</dd></div><div><dt>Level</dt><dd>Intermediate</dd></div><div><dt>Reading</dt><dd>7 min</dd></div><div><dt>Updated</dt><dd>2026-11-16</dd></div></dl>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#step-1-enable-the-plugins">Step 1 — enable the plugins</a></li><li><a href="#step-2-start-the-server">Step 2 — start the server</a></li><li><a href="#step-3-generate-the-client-config">Step 3 — generate the client config</a></li><li><a href="#step-4-the-claude-code-skills-plugin-optional-but-recommended">Step 4 — the Claude Code skills plugin (optional but recommended)</a></li><li><a href="#checking-it-worked">Checking it worked</a></li><li><a href="#a-contradiction-in-epics-own-readme">A contradiction in Epic&#x27;s own README</a></li><li><a href="#security">Security</a></li><li><a href="#where-this-fits-for-architectural-work">Where this fits for architectural work</a></li></ul>
+      </nav>
+      <div class="tpl-doc">
+        <figure class="guide-fig"><img src="../../assets/img/mcp/mcp-unreal.svg" alt="Connect Unreal Engine 5.8 to Claude — connection diagram" width="1200" height="440" loading="eager" decoding="async"><figcaption>Claude talks to Unreal Engine 5.8 over MCP: tool calls out, model state back. What installs where is in the steps below.</figcaption></figure>
+        <div class="md"><p>Unreal 5.8 is the only application in these guides where <strong>the MCP server ships with the software</strong>. There is nothing to download for the server itself — two plugins and two console commands and it is running.</p>
+<p>Epic also publish a <strong>companion Claude Code plugin</strong> that carries engine knowledge and a session hook. The two are separate things and it is worth being clear which is which:</p>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th></th><th>What it is</th></tr></thead><tbody><tr><td><strong>The MCP server</strong></td><td>Built into the engine. Plugins <code>ModelContextProtocol</code> and <code>AllToolsets</code>. This is what gives Claude tools.</td></tr><tr><td><strong><code>unreal-engine-skills-for-claude-code</code></strong></td><td>An Epic-maintained Claude Code plugin containing a skill and a session hook. It <strong>depends on</strong> the engine&#x27;s server; it is not the server.</td></tr></tbody></table></div>
+<p><strong>Sources:</strong> Epic&#x27;s <a href="https://github.com/epicgames/unreal-engine-skills-for-claude-code-plugin" target="_blank" rel="noopener">unreal-engine-skills-for-claude-code-plugin</a> README (MIT, EpicGames org). Epic&#x27;s engine documentation pages did not render when we checked them, so <strong>everything below comes from that README</strong> — verify against Epic&#x27;s own docs for your engine build.</p>
+<h2 id="step-1-enable-the-plugins" class="md-h2">Step 1 — enable the plugins</h2>
+<p>In the editor, <strong>Edit → Plugins</strong>, and enable both:</p>
+<ul class="md-list">
+<li><strong><code>ModelContextProtocol</code></strong></li>
+<li><strong><code>AllToolsets</code></strong></li>
+</ul>
+<p><strong>Both.</strong> Epic&#x27;s README is explicit about why: <em><code>AllToolsets</code> provides the tools; the server exposes none without it.</em> Enable only the first and you get a server that connects cleanly and can do nothing — which looks like a broken install and is not.</p>
+<p>Whether a restart is required is not stated in the README. Restart anyway.</p>
+<h2 id="step-2-start-the-server" class="md-h2">Step 2 — start the server</h2>
+<p>In the editor console:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>ModelContextProtocol.StartServer</code></pre></div>
+<p>It binds to <strong><code>localhost:8000</code></strong> with the URL path <strong><code>/mcp</code></strong>.</p>
+<p>To use a different port, pass it as an argument:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>ModelContextProtocol.StartServer 9000</code></pre></div>
+<p>To have it start on its own, the README points at a <code>bAutoStartServer</code> setting under <code>[/Script/ModelContextProtocolEngine.ModelContextProtocolSettings]</code>.</p>
+<h2 id="step-3-generate-the-client-config" class="md-h2">Step 3 — generate the client config</h2>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>ModelContextProtocol.GenerateClientConfig ClaudeCode</code></pre></div>
+<p>Epic&#x27;s README notes that the plugin <strong>does not ship a static <code>.mcp.json</code></strong> — this command generates the config from the server&#x27;s current port and URL. <strong>Re-run it after changing either.</strong></p>
+<p>The README does not name the file it writes or where it writes it. In practice look for a <code>.mcp.json</code> in your project folder.</p>
+<h2 id="step-4-the-claude-code-skills-plugin-optional-but-recommended" class="md-h2">Step 4 — the Claude Code skills plugin (optional but recommended)</h2>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>/plugin marketplace add anthropics/claude-plugins-official
+/plugin install unreal-engine-skills-for-claude-code@claude-plugins-official</code></pre></div>
+<p>For a team, add it to <code>.claude/settings.json</code> under <code>enabledPlugins</code>:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-json">&quot;unreal-engine-skills-for-claude-code@claude-plugins-official&quot;: true</code></pre></div>
+<p><strong>Windows note:</strong> the plugin&#x27;s session hook needs <strong>Git for Windows (Git Bash) or WSL</strong>. Native PowerShell has no bash, so the hook will not run — though the MCP tools still work fine without it.</p>
+<h2 id="checking-it-worked" class="md-h2">Checking it worked</h2>
+<ol class="md-list">
+<li><code>/plugin</code> — the Installed tab should show the plugin enabled.</li>
+<li><code>/mcp</code> — look for <code>unreal-mcp</code> (or <code>unreal-mcp-proxy</code>).</li>
+<li>Then actually exercise it:</li>
+</ol>
+<p>&gt; List all actors in the current level</p>
+<p><strong>Epic&#x27;s own warning is worth repeating:</strong> a connected proxy <strong>does not prove that Unreal is reachable</strong>. The optional proxy caches the native tool catalogue as a fallback, and <em>cached tools do not prove that live calls can succeed</em>. The only real test is a call that touches the level.</p>
+<p><strong>The editor must be running</strong>, with the server started, for any tool to execute. The proxy can hold the client connection open while the editor is stopped, but nothing runs.</p>
+<h2 id="a-contradiction-in-epics-own-readme" class="md-h2">A contradiction in Epic&#x27;s own README</h2>
+<p>The README says tools are <em>&quot;auto-discovered by Claude Code via MCP. No manual configuration needed&quot;</em> — and separately tells you to run <code>GenerateClientConfig</code>. Both statements are in the same document and it does not reconcile them.</p>
+<p>Practically: run <code>GenerateClientConfig</code>. If discovery turns out to have happened anyway, you have lost nothing.</p>
+<h2 id="security" class="md-h2">Security</h2>
+<p>Epic&#x27;s README has a security section, and it is more candid than most:</p>
+<ul class="md-list">
+<li>The server <strong>binds to <code>localhost:8000</code> with origin validation</strong>. Origin validation blocks browser tabs. It does <strong>not</strong> stop <strong>any process running as the same user on the same machine</strong> from connecting.</li>
+<li><strong>No authentication mechanism is described.</strong></li>
+<li>Do not run it on shared or untrusted machines, and do not expose the port beyond loopback.</li>
+<li><strong><code>ProgrammaticToolset.execute_tool_script</code> runs arbitrary Python inside the editor.</strong></li>
+<li>Epic advise <strong>against <code>--dangerously-skip-permissions</code></strong> with this plugin loaded, and recommend <strong>saving and committing before long MCP sessions</strong>.</li>
+</ul>
+<p>That last pair is the operative advice. Commit first. An agent with arbitrary Python in your editor and no permission prompts is a bad combination on a project you care about.</p>
+<h2 id="where-this-fits-for-architectural-work" class="md-h2">Where this fits for architectural work</h2>
+<p>Unreal is the end of the pipeline, not the start, and that shapes what this is useful for.</p>
+<p><strong>Good:</strong> interrogating a level — what actors exist, where, with what properties. Batch operations across many actors. Setting up sequences, lighting and cameras. The repetitive scene-assembly work that follows an import.</p>
+<p><strong>Not good:</strong> fixing an import that arrived wrong. If geometry is jittering, materials are missing or nothing has a usable identifier, <strong>the problem came from the authoring model and it has to be fixed there.</strong> No amount of editor-side scripting makes a model twin-ready if it arrived without stable identity or at the wrong origin.</p>
+<p>That is a specific enough problem that we wrote a skill for it — <a href="../skills/revit-unreal-handover.html">Revit → Unreal Handover</a> checks placement, identity, polygon budget and materials <strong>before</strong> anyone exports, which is the only point where any of it is cheap to fix.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More guides">
+      <a class="tpl-prevnext__item" href="../../resources/guides/mcp-sketchup.html"><span>Previous</span><strong>Connect SketchUp to Claude</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/guides/">All guides</a>
+      <span></span>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

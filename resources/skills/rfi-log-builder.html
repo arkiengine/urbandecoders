@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RFI Log Builder — Claude skill for architecture — Urban Decoders</title>
+<meta name="description" content="Triages RFIs by what they actually are, and drafts only the ones the issued documents already answer.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/skills/rfi-log-builder.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="RFI Log Builder — Claude skill for architecture — Urban Decoders">
+<meta property="og:description" content="Triages RFIs by what they actually are, and drafts only the ones the issued documents already answer.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "RFI Log Builder",
+  "alternateName": "rfi-log-builder",
+  "description": "Triages RFIs by what they actually are, and drafts only the ones the issued documents already answer.",
+  "codeSampleType": "full solution",
+  "programmingLanguage": "Claude Skill",
+  "url": "https://www.urbandecoders.com/resources/skills/rfi-log-builder.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "license": "Proprietary",
+  "isPartOf": { "@type": "CollectionPage", "name": "Claude Skills for Architecture", "url": "https://www.urbandecoders.com/resources/skills/" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/">Skills</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/contract-admin.html">Contract admin</a><span aria-hidden="true">/</span>
+      <span><code>rfi-log-builder</code></span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Log + draft pack</span>
+        <h1 class="display tpl-skilltitle">RFI Log Builder</h1>
+        <p class="lead">Triages RFIs by what they actually are, and drafts only the ones the issued documents already answer.</p>
+        <p class="tpl-callline">Once installed, Claude loads it on its own when the conversation
+        matches. You can also call it directly with <code>/rfi-log-builder</code>.</p>
+        <div class="wrap-btns">
+          <a class="btn btn--brand btn--mono" href="../downloads/rfi-log-builder.skill" download>Download .skill <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+          <a class="btn btn--outline btn--mono" href="#quick-reference">Read the quick reference</a>
+        </div>
+      </div>
+      <dl class="tpl-meta card">
+        <div><dt>Category</dt><dd><a href="../../resources/skills/contract-admin.html">Contract admin</a></dd></div>
+        <div><dt>Output</dt><dd>Log + draft pack</dd></div>
+        <div><dt>Package</dt><dd>1 file &middot; 9.1 KB</dd></div>
+        <div><dt>Download</dt><dd>3.8 KB zip</dd></div>
+        <div><dt>Worked example</dt><dd><a href="../downloads/rfi-log-builder-example.zip" download>3 files &middot; 10.2 KB</a></dd></div>
+        <div><dt>Tags</dt><dd class="tpl-meta__tags"><span class="tag">RFIs</span><span class="tag">CA</span><span class="tag">Triage</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap"><div class="tpl-disclaimer" role="note">
+  <span class="tpl-disclaimer__tag">Read first</span>
+  <p>These skills assist qualified practitioners. They replace neither the architect of
+  record nor the approving authority. Every figure, clause and citation they surface is
+  marked for you to verify — treat an unverified output as a question, not an answer.</p>
+</div></div>
+</section>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Install just this one.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">Two routes. Both end with Claude loading the
+        skill by itself when your conversation matches.</p>
+      </div>
+      <div class="tpl-install">
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">A</span> Claude app, Chat or Cowork</h3>
+          <ol class="md-list">
+            <li>Download <code>rfi-log-builder.skill</code> below.</li>
+            <li>Open Claude, go to <strong>Settings &rarr; Capabilities &rarr; Skills</strong> and upload the file.</li>
+            <li>Start a conversation and attach your material. The skill loads itself on a match.</li>
+          </ol>
+          <a class="btn btn--ghost btn--mono btn--sm" href="../downloads/rfi-log-builder.skill" download>rfi-log-builder.skill &middot; 3.8 KB</a>
+        </div>
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">B</span> Claude Code, in your project</h3>
+          <p>Unzip the package into your skills folder, then restart Claude Code.</p>
+          <div class="codeblock">
+            <button class="codeblock__copy" type="button" data-copy>Copy</button>
+            <pre><code>mkdir -p .claude/skills &amp;&amp; unzip rfi-log-builder.skill -d .claude/skills/</code></pre>
+          </div>
+          <p class="tpl-fine">Use <code>~/.claude/skills/</code> instead to install it for every project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="at-a-glance">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">At a glance</span>
+      <h2 class="section-title">What it takes, what you get.</h2>
+    </div>
+    <div class="grid grid--3 tpl-glance">
+      <div class="card tpl-glance__box">
+        <h3>It takes</h3>
+        <p>RFIs as emails, a portal export or a spreadsheet — plus the issued documents</p>
+      </div>
+      <div class="card tpl-glance__box">
+        <h3>You get</h3>
+        <p>A managed log classifying each RFI as information, design gap, substitution, instruction sought or record building; drafts citing sheet and clause for the first type only; an exposure register; and a pattern note.</p>
+      </div>
+      <div class="card tpl-glance__box tpl-glance__box--red">
+        <h3>It will not</h3>
+        <p>Answer from memory, issue anything, approve a substitution, instruct, or assess entitlement to time or money.</p>
+      </div>
+    </div>
+    <div class="tpl-example">
+      <span class="tag">Test drive</span>
+      <p>Garnett Street — twelve RFIs, eight of which must not be drafted. Run the skill on the example input, then score your output against the defect key &mdash; it lists what was planted and what a good run does with it.</p>
+      <a class="btn btn--outline btn--mono btn--sm" href="../downloads/rfi-log-builder-example.zip" download>Worked example <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="quick-reference">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#run-it">Run it</a></li><li><a href="#the-five-things-in-an-rfi-inbox">The five things in an RFI inbox</a></li><li><a href="#the-output">The output</a></li><li><a href="#what-it-will-not-do-by-design">What it will not do — by design</a></li><li><a href="#work-the-output">Work the output</a></li></ul>
+        <p class="tpl-toc__head tpl-toc__head--spaced">Jump to</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#files">Files on disk</a></li>
+          <li><a href="#trigger">When it triggers</a></li>
+        </ul>
+      </nav>
+      <div class="tpl-doc">
+        <span class="eyebrow">Quick reference</span>
+        <h2 class="section-title" style="margin:var(--space-4) 0 var(--space-6)">How to run it.</h2>
+        <div class="md"><p>Incoming RFIs become a managed log plus drafts for the ones already answered by the issued documents. <strong>Triage instrument, not a contract administrator. Never answers from memory, never instructs, never approves.</strong></p>
+<h2 id="run-it" class="md-h2">Run it</h2>
+<p>Attach the RFIs <strong>and the issued documents they refer to</strong>:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>Log and triage this week&#x27;s RFIs.
+Which of these are actually variations or substitutions? Don&#x27;t draft those.
+Draft responses for anything already answered in the issued drawings.
+Six RFIs on the same detail — what&#x27;s the underlying problem?</code></pre></div>
+<p>Without the issued documents it can classify but cannot tell an information request from a design gap — and it will say so rather than guess.</p>
+<h2 id="the-five-things-in-an-rfi-inbox" class="md-h2">The five things in an RFI inbox</h2>
+<p>They look identical and are not:</p>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Type</th><th>Signal</th><th>Handling</th></tr></thead><tbody><tr><td><code>information</code></td><td>The answer exists in issued documents.</td><td>Draft a response citing the source.</td></tr><tr><td><code>design gap</code></td><td>No issued document answers it.</td><td>Route to the designer. No draft.</td></tr><tr><td><code>substitution</code></td><td>&quot;Confirm acceptability&quot;, &quot;equal and approved&quot;.</td><td>Never drafted. An approval decision with specifier consequences.</td></tr><tr><td><code>instruction sought</code></td><td>&quot;Confirm we should proceed with…&quot;</td><td>Never drafted. A prose answer may <em>be</em> an instruction.</td></tr><tr><td><code>record building</code></td><td>Restates a delay, a late issue or a change.</td><td>Never drafted. Flag to the contract administrator.</td></tr><tr><td><code>unclear</code></td><td>Cannot be classified from what was supplied.</td><td>Query. Never guessed.</td></tr></tbody></table></div>
+<blockquote class="mdquote"><p>Where an RFI carries two types, the <strong>higher-consequence</strong> one governs. A substitution dressed as an information request is handled as a substitution, always.</p></blockquote>
+<h2 id="the-output" class="md-h2">The output</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Part</th><th>What it holds</th></tr></thead><tbody><tr><td>RFI log</td><td>Ref · Date · From · Subject · Type · Element · Drawing/clause · Owner · Status · Date required · Days outstanding · Exposure.</td></tr><tr><td>Triage summary</td><td>Counts by type, with items that must not be answered without a human decision listed first.</td></tr><tr><td>Draft responses</td><td>Only for <code>information</code> items. Each cites sheet, clause, revision and date. Each marked <strong>draft for review</strong>.</td></tr><tr><td>Exposure register</td><td>Items carrying cost, time, approval or scope consequence — consequence named, never quantified.</td></tr><tr><td>Pattern note</td><td>Where a cluster of RFIs points at one underlying problem.</td></tr><tr><td>Query list</td><td>What cannot be answered from the supplied documents, and what each needs.</td></tr></tbody></table></div>
+<p><strong>A drafted response has four parts and nothing else:</strong> the question restated in one line · the answer stated plainly · the source with revision and date · <code>draft for review — not issued</code>. No &quot;as you know&quot;, no &quot;we would suggest&quot;, no &quot;please proceed on the basis that&quot;. Each of those is a route to an instruction nobody priced.</p>
+<h2 id="what-it-will-not-do-by-design" class="md-h2">What it will not do — by design</h2>
+<ul class="md-list">
+<li><strong>Answer from memory or general construction knowledge.</strong> A plausible, correct-sounding answer that is not in the issued documents is the worst output this skill could produce.</li>
+<li><strong>Issue anything.</strong> Every draft is a draft.</li>
+<li><strong>Approve a substitution</strong> or express a view on an alternative product.</li>
+<li><strong>Instruct.</strong> No &quot;proceed&quot;, no &quot;confirmed&quot;, no phrasing readable as either.</li>
+<li><strong>Assess entitlement</strong> to time or money, estimate delay, or rate a claim&#x27;s strength.</li>
+<li><strong>Interpret a contract clause.</strong> The item is routed with the term named and nothing more.</li>
+<li><strong>Renumber the contractor&#x27;s references.</strong> The log must speak their language or the correspondence stops matching.</li>
+<li><strong>Soften a <code>record building</code> RFI</strong> into an information request because it is awkward.</li>
+</ul>
+<h2 id="work-the-output" class="md-h2">Work the output</h2>
+<ol class="md-list">
+<li>Read the triage summary before any draft. The items listed first are the ones that cause damage when answered casually.</li>
+<li>Check every <code>information</code> draft against the cited sheet yourself before issuing. The citation is the value; confirm it.</li>
+<li>Route substitutions to whoever holds specification authority — answering &quot;yes&quot; is an approval with professional consequences.</li>
+<li>Give <code>record building</code> items to the contract administrator the day they arrive, not at the end of the cycle.</li>
+<li>Act on the pattern note. Six RFIs on one junction is one detailing problem, and answering them individually guarantees a seventh.</li>
+<li>Watch the days-outstanding column. Late responses are the raw material of the claim the log is quietly recording.</li>
+</ol>
+<hr class="divider md-hr">
+<p><strong>Remember:</strong> the log is a record that will be read adversarially one day. Every classification quotes the sentence that produced it, so the triage can be defended three months later by someone who was not there.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="trigger">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Triggering</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">When Claude reaches for it.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">This is the description Claude itself reads to
+        decide whether the skill applies. It is worth knowing, because it tells you exactly how to
+        phrase the ask — and what the skill will decline.</p>
+      </div>
+      <div class="tpl-triggerbox card">
+        <p class="tpl-triggerbox__name"><code>rfi-log-builder</code></p>
+        <p>Turn incoming RFIs — emails, portal exports, a contractor&#x27;s spreadsheet — into a managed RFI log and a draft response pack: each RFI classified by what it actually is (information request, design gap, substitution, instruction in disguise, or a variation claim wearing a question mark), routed to the right responder, with the contractual and programme exposure flagged and a response drafted only where the supplied documents already answer it. Use this WHENEVER someone supplies RFIs and asks to &quot;log these RFIs&quot;, &quot;triage the RFIs&quot;, &quot;draft RFI responses&quot;, &quot;which of these are actually variations&quot;, &quot;build an RFI register&quot;, &quot;what are the contractor really asking&quot;, &quot;turn these emails into a log&quot;, or runs a weekly contract administration cycle. Do NOT use it to answer an RFI whose answer is not already in the supplied documents (it drafts from evidence, never from memory), to issue instructions, to assess entitlement to time or money, or to give contractual or legal advice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="files">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Package</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Files it puts on your disk.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">1 file, 9.1 KB unzipped,
+        under <code>.claude/skills/rfi-log-builder/</code>. Reference material loads only when the skill
+        needs it &mdash; no subfolders.</p>
+        <p><a class="btn btn--outline btn--mono btn--sm" href="../downloads/rfi-log-builder.skill" download>Download the package <span class="btn__arrow" aria-hidden="true">&#8595;</span></a></p>
+      </div>
+      <div class="tpl-tree card">
+        <p class="tpl-tree__root"><code>.claude/skills/rfi-log-builder/</code></p>
+        <ul class="tpl-tree__list"><li class="tpl-file" style="--d:0"><span class="tpl-file__name">SKILL.md</span><span class="tpl-file__dir"></span><span class="tpl-file__size">9.1 KB</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More in this category">
+      <span></span>
+      <a class="tpl-prevnext__all" href="../../resources/skills/contract-admin.html">All Contract admin</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/skills/monthly-progress-report.html"><span>Next</span><strong>Monthly Progress Report</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

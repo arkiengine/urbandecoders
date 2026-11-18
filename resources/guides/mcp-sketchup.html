@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect SketchUp to Claude — Urban Decoders</title>
+<meta name="description" content="A one-click Claude Desktop extension plus a Ruby bridge inside SketchUp. Genuinely well documented and actively developed — and young enough that you should read the maturity note before you install it.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/guides/mcp-sketchup.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Connect SketchUp to Claude — Urban Decoders">
+<meta property="og:description" content="A one-click Claude Desktop extension plus a Ruby bridge inside SketchUp. Genuinely well documented and actively developed — and young enough that you should read the maturity note before you install it.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Connect SketchUp to Claude",
+  "description": "A one-click Claude Desktop extension plus a Ruby bridge inside SketchUp. Genuinely well documented and actively developed — and young enough that you should read the maturity note before you install it.",
+  "url": "https://www.urbandecoders.com/resources/guides/mcp-sketchup.html",
+  "dateModified": "2026-11-16",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "publisher": { "@type": "Organization", "name": "Urban Decoders" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/guides/">Guides</a><span aria-hidden="true">/</span>
+      <span>MCP setup</span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">MCP setup</span>
+        <h1 class="display tpl-skilltitle">Connect SketchUp to Claude</h1>
+        <p class="lead">A one-click Claude Desktop extension plus a Ruby bridge inside SketchUp. Genuinely well documented and actively developed — and young enough that you should read the maturity note before you install it.</p>
+      </div>
+      <dl class="tpl-meta card"><div><dt>Software</dt><dd>SketchUp 2021+</dd></div><div><dt>Level</dt><dd>Intermediate</dd></div><div><dt>Reading</dt><dd>8 min</dd></div><div><dt>Updated</dt><dd>2026-11-16</dd></div></dl>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#maturity-read-this-first">Maturity — read this first</a></li><li><a href="#what-you-need">What you need</a></li><li><a href="#step-1-install-the-claude-desktop-extension">Step 1 — install the Claude Desktop extension</a></li><li><a href="#step-2-install-the-ruby-bridge-in-sketchup">Step 2 — install the Ruby bridge in SketchUp</a></li><li><a href="#step-3-alternative-claude-code">Step 3 (alternative) — Claude Code</a></li><li><a href="#checking-it-worked">Checking it worked</a></li><li><a href="#what-it-can-do">What it can do</a></li><li><a href="#security">Security</a></li><li><a href="#troubleshooting">Troubleshooting</a></li><li><a href="#working-with-it-sensibly">Working with it sensibly</a></li></ul>
+      </nav>
+      <div class="tpl-doc">
+        <figure class="guide-fig"><img src="../../assets/img/mcp/mcp-sketchup.svg" alt="Connect SketchUp to Claude — connection diagram" width="1200" height="440" loading="eager" decoding="async"><figcaption>Claude talks to SketchUp 2021+ over MCP: tool calls out, model state back. What installs where is in the steps below.</figcaption></figure>
+        <div class="md"><p>SketchUp has no first-party MCP integration. What exists is community work, and the one covered here — <a href="https://github.com/2ez4gcx/sketchup-mcp" target="_blank" rel="noopener">2ez4gcx/sketchup-mcp</a> — is the best-documented option we found: a packaged Claude Desktop extension, a Ruby bridge that installs itself, and 36 tools including quantity takeoff.</p>
+<p><strong>Read the maturity note below before you install it on anything that matters.</strong></p>
+<p>Read <a href="mcp-what-it-is.html">What MCP actually is</a> first if this is your first server.</p>
+<h2 id="maturity-read-this-first" class="md-h2">Maturity — read this first</h2>
+<p>We would rather be straight about this than have you find out later.</p>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>Maintainer</strong></td><td>One person</td></tr><tr><td><strong>Stars / forks</strong></td><td>8 / 0</td></tr><tr><td><strong>Commits</strong></td><td>15</td></tr><tr><td><strong>Licence</strong></td><td>MIT</td></tr><tr><td><strong>Last release</strong></td><td>v1.5.0, the day before this guide was written</td></tr><tr><td><strong>Tested on</strong></td><td>SketchUp 2023, Windows, per the release page</td></tr><tr><td><strong>Not tested</strong></td><td>macOS, SketchUp 2017–2022</td></tr><tr><td><strong>Signed?</strong></td><td>No. Neither the extension nor the Ruby plugin is code-signed</td></tr></tbody></table></div>
+<p>So: <strong>actively developed, well documented, and very young.</strong> It is not abandoned — there was a release yesterday — but it has almost no independent usage behind it, and no one else has reviewed the code in anger.</p>
+<p>Our read: fine for exploratory work on a copy of a model. Not something to put in a production workflow yet, and not something to install on a locked-down machine where unsigned extensions are a policy problem.</p>
+<h2 id="what-you-need" class="md-h2">What you need</h2>
+<ul class="md-list">
+<li><strong>SketchUp 2017 or later</strong> (README), though the release page states testing was on <strong>SketchUp 2023 on Windows</strong> only.</li>
+<li><strong>Claude Desktop</strong>, current enough to have <strong>Settings → Extensions</strong>.</li>
+<li>For Claude Code instead: <strong>Node.js 18+</strong> on your <code>PATH</code>.</li>
+</ul>
+<p><strong>Microsoft Store Claude Desktop:</strong> double-clicking a <code>.mcpb</code> will not open it. Install through Settings instead.</p>
+<h2 id="step-1-install-the-claude-desktop-extension" class="md-h2">Step 1 — install the Claude Desktop extension</h2>
+<ol class="md-list">
+<li>Download <code>sketchup-mcp-1.5.0.mcpb</code> from the <a href="https://github.com/2ez4gcx/sketchup-mcp/releases/latest" target="_blank" rel="noopener">releases page</a>. Check for a newer version rather than taking that filename as current.</li>
+<li>In Claude Desktop, open <strong>Settings → Extensions</strong>.</li>
+<li>Either <strong>drag the <code>.mcpb</code> into the window</strong>, or click <strong>Advanced settings → Install Extension…</strong> and pick the file.</li>
+<li>Click <strong>Install</strong>.</li>
+</ol>
+<p>The build is <strong>not code-signed</strong>, so Claude Desktop may warn you that it is unsigned. That warning is accurate; decide accordingly.</p>
+<p>Settings live at <strong>Settings → Extensions → SketchUp MCP → Configure</strong> — port (default <code>9876</code>) and per-command timeout (default 120 s).</p>
+<h2 id="step-2-install-the-ruby-bridge-in-sketchup" class="md-h2">Step 2 — install the Ruby bridge in SketchUp</h2>
+<p><strong>The easy way.</strong> In a new chat:</p>
+<blockquote class="mdquote"><p>Install SU MCP Bridge in SketchUp</p></blockquote>
+<p>Claude calls <code>install_sketchup_bridge</code> — click <strong>Allow</strong>. It copies the files into the Plugins folder of every SketchUp version that has been opened at least once, and reports what it changed. It supports a dry run if you want to see what it would do first.</p>
+<p><strong>The manual way.</strong> Download <code>su_mcp-1.5.0.rbz</code> from the same releases page, then in SketchUp: <strong>Extensions → Extension Manager → Install Extension</strong>, and select the <code>.rbz</code>. (SketchUp 2017–2020: <strong>Window → Extension Manager</strong>.)</p>
+<p><em>Note:</em> the README&#x27;s instructions say <code>su_mcp.rbz</code> while the release asset is named <code>su_mcp-1.5.0.rbz</code>. Same file, inconsistent naming.</p>
+<p>If SketchUp refuses to load it, the Extension Manager gear icon has an <strong>Extension Loading Policy</strong> — setting it to <em>Approve Unidentified Extensions</em> allows unsigned plugins, <strong>if your IT policy permits that.</strong> It may well not, and that is a reasonable policy.</p>
+<p>Then <strong>fully quit SketchUp and reopen it.</strong></p>
+<h2 id="step-3-alternative-claude-code" class="md-h2">Step 3 (alternative) — Claude Code</h2>
+<p>The <code>.mcpb</code> is a zip. Extract it, then register the Node server:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-powershell">tar -xf sketchup-mcp-1.5.0.mcpb -C C:\Tools\sketchup-mcp</code></pre></div>
+<p>Use <strong>Windows <code>tar</code></strong> — Git Bash&#x27;s <code>tar</code> cannot read it. Or rename the file to <code>.zip</code> and use Extract All.</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-bash">claude mcp add sketchup --scope user -e SKETCHUP_MCP_TIMEOUT=120 -- node C:/Tools/sketchup-mcp/server/index.mjs</code></pre></div>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-bash">claude mcp list</code></pre></div>
+<p>The server name goes <strong>before</strong> <code>-e</code>. Use <code>--scope project</code> to write a shared <code>.mcp.json</code> instead of a user-level entry.</p>
+<p>Environment variables: <code>SKETCHUP_MCP_PORT</code> (default <code>9876</code>), <code>SKETCHUP_MCP_TIMEOUT</code> (default <code>120</code>).</p>
+<h2 id="checking-it-worked" class="md-h2">Checking it worked</h2>
+<p>In SketchUp: <strong>Extensions → SU MCP Bridge → Status</strong> should read</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>SU MCP Bridge v1.5.0: RUNNING on 127.0.0.1:9876</code></pre></div>
+<p>In Claude:</p>
+<blockquote class="mdquote"><p>Ping SketchUp</p></blockquote>
+<p>No warning line means both halves are on matching versions.</p>
+<h2 id="what-it-can-do" class="md-h2">What it can do</h2>
+<p>36 tools, in five groups:</p>
+<ul class="md-list">
+<li><strong>Read and statistics (10)</strong> — <code>model_info</code>, <code>list_tags</code>, <code>list_components</code>, <code>list_materials</code>, <code>selection_info</code>, <strong><code>quantity_takeoff</code></strong>, <code>interior_takeoff</code>, <code>check_model</code>, <code>check_design</code>, <code>ping</code>.</li>
+<li><strong>Modelling and editing (15)</strong> — <code>create_box</code>, <code>create_shape</code>, <code>create_lines</code>, <code>insert_component</code>, <code>insert_furniture</code>, <code>transform_entities</code>, <code>set_material</code>, <code>set_tag</code>, <code>setup_tags</code>, <code>make_group</code>, <code>create_room</code>, <code>purge_unused</code>, <code>delete_entities</code>, <code>select_entities</code>, <code>undo</code>.</li>
+<li><strong>Views, images and files (9)</strong> — <code>set_view</code>, <code>create_scenes</code>, <code>screenshot</code>, <code>export_png</code>, <code>export_file</code>, <code>export_for_render</code>, <code>save_model</code>, <code>open_model</code>, <code>new_model</code>.</li>
+<li><strong>Ruby scripting (1)</strong> — <code>run_ruby</code>.</li>
+<li><strong>Setup (1)</strong> — <code>install_sketchup_bridge</code>.</li>
+</ul>
+<p>The read-and-statistics group is the interesting half for architectural work. <code>quantity_takeoff</code> and <code>check_model</code> are read-only and genuinely useful, and <code>screenshot</code> lets Claude see what it has done rather than guessing.</p>
+<p>Each edit lands as a single Undo step named <code>MCP: …</code>, which is a thoughtful touch and makes backing out one operation straightforward.</p>
+<h2 id="security" class="md-h2">Security</h2>
+<p><strong><code>run_ruby</code> executes arbitrary Ruby inside SketchUp</strong>, with your user&#x27;s permissions and <strong>no time limit</strong>. There is no setting to disable it. The only off switch is <strong>Extensions → SU MCP Bridge → Stop server</strong>, which lasts for the current session.</p>
+<p>So the control you have is <strong>Claude&#x27;s own tool approvals</strong>. The README lists the tools it says you should <em>not</em> mark &quot;Always allow&quot;:</p>
+<blockquote class="mdquote"><p><code>run_ruby</code>, <code>delete_entities</code>, <code>undo</code>, <code>save_model</code>, <code>open_model</code>, <code>new_model</code>, <code>export_file</code>, <code>export_png</code>, <code>export_for_render</code>, <code>interior_takeoff</code> (when it writes a CSV), <code>purge_unused</code>, <code>create_scenes</code></p></blockquote>
+<p>Take that list seriously, and add the geometry-editing tools to it on any model you care about.</p>
+<p>Two more:</p>
+<ul class="md-list">
+<li><strong>The socket has no authentication.</strong> It binds to <code>127.0.0.1</code> only, so other machines cannot reach it — but any program running on the same computer can send commands while the bridge is running.</li>
+<li><strong><code>save_model</code> without a path overwrites the file.</strong> On a model you have not copied, that is the whole guide in one line.</li>
+</ul>
+<h2 id="troubleshooting" class="md-h2">Troubleshooting</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Symptom</th><th>Cause</th></tr></thead><tbody><tr><td><strong>Cannot connect to 127.0.0.1:9876</strong></td><td>SketchUp not open, bridge not installed, or Status shows STOPPED — click Start server.</td></tr><tr><td><strong>Every tool appears twice</strong></td><td>An older <code>sketchup</code> entry is still in <code>claude_desktop_config.json</code>. Remove it via Settings → Developer → Edit Config.</td></tr><tr><td><strong>&quot;Port 9876 is used by another SketchUp window&quot;</strong></td><td>Two SketchUp windows are open. Claude controls the first.</td></tr><tr><td><strong>&quot;Windows does not allow port 9876&quot;</strong></td><td>Reserved-range clash. Use <strong>Extensions → SU MCP Bridge → Change port…</strong>, set the same port in Claude&#x27;s Configure, restart SketchUp.</td></tr><tr><td><strong>Ping warns the bridge is older</strong></td><td>Version mismatch. Install the new <code>.mcpb</code>, re-run <code>install_sketchup_bridge</code>, restart SketchUp. <strong>Always update both halves.</strong></td></tr><tr><td><strong>A command timed out</strong></td><td>The README is explicit: a timed-out editing command <strong>may have already run</strong>. <strong>Check the model — do not just repeat it.</strong></td></tr><tr><td><strong>SketchUp frozen</strong></td><td><code>run_ruby</code> has no time limit, so an infinite loop will hang it.</td></tr></tbody></table></div>
+<h2 id="working-with-it-sensibly" class="md-h2">Working with it sensibly</h2>
+<p><strong>Work on a copy.</strong> Every integration in these guides gets this advice; here it carries extra weight, because <code>save_model</code> can overwrite in place and <code>run_ruby</code> has no time limit.</p>
+<p>The read-only tools — model info, takeoffs, checks, screenshots — are where the value is and they carry none of that risk. If you want to try this out, start by asking it to <em>tell</em> you things about a model rather than change them. That is a genuinely useful afternoon and it cannot cost you anything.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More guides">
+      <a class="tpl-prevnext__item" href="../../resources/guides/mcp-rhino.html"><span>Previous</span><strong>Connect Rhino to Claude</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/guides/">All guides</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/guides/mcp-unreal.html"><span>Next</span><strong>Connect Unreal Engine 5.8 to Claude</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

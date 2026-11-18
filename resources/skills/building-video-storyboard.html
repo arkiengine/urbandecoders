@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building Video Storyboard — Claude skill for architecture — Urban Decoders</title>
+<meta name="description" content="Project assets become a shot list with timings, camera moves and per-clip video prompts.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/skills/building-video-storyboard.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Building Video Storyboard — Claude skill for architecture — Urban Decoders">
+<meta property="og:description" content="Project assets become a shot list with timings, camera moves and per-clip video prompts.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "Building Video Storyboard",
+  "alternateName": "building-video-storyboard",
+  "description": "Project assets become a shot list with timings, camera moves and per-clip video prompts.",
+  "codeSampleType": "full solution",
+  "programmingLanguage": "Claude Skill",
+  "url": "https://www.urbandecoders.com/resources/skills/building-video-storyboard.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "license": "Proprietary",
+  "isPartOf": { "@type": "CollectionPage", "name": "Claude Skills for Architecture", "url": "https://www.urbandecoders.com/resources/skills/" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/">Skills</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/visuals-diagrams.html">Visuals &amp; diagrams</a><span aria-hidden="true">/</span>
+      <span><code>building-video-storyboard</code></span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Storyboard</span>
+        <h1 class="display tpl-skilltitle">Building Video Storyboard</h1>
+        <p class="lead">Project assets become a shot list with timings, camera moves and per-clip video prompts.</p>
+        <p class="tpl-callline">Once installed, Claude loads it on its own when the conversation
+        matches. You can also call it directly with <code>/building-video-storyboard</code>.</p>
+        <div class="wrap-btns">
+          <a class="btn btn--brand btn--mono" href="../downloads/building-video-storyboard.skill" download>Download .skill <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+          <a class="btn btn--outline btn--mono" href="#quick-reference">Read the quick reference</a>
+        </div>
+      </div>
+      <dl class="tpl-meta card">
+        <div><dt>Category</dt><dd><a href="../../resources/skills/visuals-diagrams.html">Visuals &amp; diagrams</a></dd></div>
+        <div><dt>Output</dt><dd>Storyboard</dd></div>
+        <div><dt>Package</dt><dd>2 files &middot; 21.4 KB</dd></div>
+        <div><dt>Download</dt><dd>10.2 KB zip</dd></div>
+        <div><dt>Worked example</dt><dd><a href="../downloads/building-video-storyboard-example.zip" download>3 files &middot; 12.2 KB</a></dd></div>
+        <div><dt>Tags</dt><dd class="tpl-meta__tags"><span class="tag">Film</span><span class="tag">Runway/Kling</span><span class="tag">Keyframes</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap"><div class="tpl-disclaimer" role="note">
+  <span class="tpl-disclaimer__tag">Read first</span>
+  <p>These skills assist qualified practitioners. They replace neither the architect of
+  record nor the approving authority. Every figure, clause and citation they surface is
+  marked for you to verify — treat an unverified output as a question, not an answer.</p>
+</div></div>
+</section>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Install just this one.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">Two routes. Both end with Claude loading the
+        skill by itself when your conversation matches.</p>
+      </div>
+      <div class="tpl-install">
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">A</span> Claude app, Chat or Cowork</h3>
+          <ol class="md-list">
+            <li>Download <code>building-video-storyboard.skill</code> below.</li>
+            <li>Open Claude, go to <strong>Settings &rarr; Capabilities &rarr; Skills</strong> and upload the file.</li>
+            <li>Start a conversation and attach your material. The skill loads itself on a match.</li>
+          </ol>
+          <a class="btn btn--ghost btn--mono btn--sm" href="../downloads/building-video-storyboard.skill" download>building-video-storyboard.skill &middot; 10.2 KB</a>
+        </div>
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">B</span> Claude Code, in your project</h3>
+          <p>Unzip the package into your skills folder, then restart Claude Code.</p>
+          <div class="codeblock">
+            <button class="codeblock__copy" type="button" data-copy>Copy</button>
+            <pre><code>mkdir -p .claude/skills &amp;&amp; unzip building-video-storyboard.skill -d .claude/skills/</code></pre>
+          </div>
+          <p class="tpl-fine">Use <code>~/.claude/skills/</code> instead to install it for every project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="at-a-glance">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">At a glance</span>
+      <h2 class="section-title">What it takes, what you get.</h2>
+    </div>
+    <div class="grid grid--3 tpl-glance">
+      <div class="card tpl-glance__box">
+        <h3>It takes</h3>
+        <p>Photos, CGIs or a written project pack, plus a rough film idea</p>
+      </div>
+      <div class="card tpl-glance__box">
+        <h3>You get</h3>
+        <p>A shot-by-shot storyboard — default 30 seconds as three 10-second clips — with timings, keyframe image prompts, per-clip motion and camera directions written for image-to-video models, and stitching and export notes.</p>
+      </div>
+      <div class="card tpl-glance__box tpl-glance__box--red">
+        <h3>It will not</h3>
+        <p>Generate the images or the video; design or improve the building; claim a clip exists before you confirm it.</p>
+      </div>
+    </div>
+    <div class="tpl-example">
+      <span class="tag">Test drive</span>
+      <p>Lantern Barn film pack — the reference run ships two frames as placeholders. Run the skill on the example input, then score your output against the defect key &mdash; it lists what was planted and what a good run does with it.</p>
+      <a class="btn btn--outline btn--mono btn--sm" href="../downloads/building-video-storyboard-example.zip" download>Worked example <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="quick-reference">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#run-it">Run it</a></li><li><a href="#the-deliverable">The deliverable</a></li><li><a href="#what-it-will-not-do-by-design">What it will not do — by design</a></li><li><a href="#work-the-output">Work the output</a></li></ul>
+        <p class="tpl-toc__head tpl-toc__head--spaced">Jump to</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#files">Files on disk</a></li>
+          <li><a href="#trigger">When it triggers</a></li>
+        </ul>
+      </nav>
+      <div class="tpl-doc">
+        <span class="eyebrow">Quick reference</span>
+        <h2 class="section-title" style="margin:var(--space-4) 0 var(--space-6)">How to run it.</h2>
+        <div class="md"><p>Turns building references (photos, CGIs, or a written project pack) into a shot-by-shot storyboard for a short film — default 30s as three 10-second clips with shared boundary frames, keyframe image prompts, per-clip camera directions for image-to-video tools, and stitch notes. <strong>It directs cameras at the scheme as evidenced — it never invents architecture.</strong></p>
+<h2 id="run-it" class="md-h2">Run it</h2>
+<p>Attach references (min. one exterior + one interior, or a project pack) and ask:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>Storyboard a 30-second film of this house — slow dusk reveal.
+Here&#x27;s the film pack for [project] — build the shot list and keyframe prompts.
+Turn these renders into a reel for the website. Keyframes for Kling.</code></pre></div>
+<p>It asks 4–8 numbered questions first (each with a default — reply &quot;use defaults&quot;), then delivers. <strong>&quot;Use defaults&quot; answers preferences, not evidence gaps</strong> — a frame with no reference stays a placeholder whatever you reply.</p>
+<h2 id="the-deliverable" class="md-h2">The deliverable</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Section</th><th>What it holds</th></tr></thead><tbody><tr><td>Concept</td><td>The arc in 1–2 lines.</td></tr><tr><td>Shot-list overview</td><td>Clip / time / location / camera move / transition out.</td></tr><tr><td>Global continuity block</td><td>One block appended to every keyframe prompt — same building, same day.</td></tr><tr><td>Clips A–C</td><td>3 keyframe prompts each (Start/Mid/End) + one motion direction + transition. Shared boundary frames marked &quot;render once, reuse&quot;.</td></tr><tr><td>Frame checklist</td><td>F1–F7 (+F8 hold) — exactly what to render, what to reuse.</td></tr><tr><td>Stitching &amp; export</td><td>Straight cuts on shared frames; overlays done in the edit; timings summed.</td></tr><tr><td>Source map</td><td>Every frame tagged: Reference-matched / Relit / Composed / <strong>Placeholder</strong>.</td></tr><tr><td>Queries &amp; placeholders log</td><td>Every gap raised, its status, the frames it touches.</td></tr></tbody></table></div>
+<p><strong>The frame math:</strong> 3 clips × 3 keyframes, but consecutive clips share their boundary frame — the End of A <em>is</em> the Start of B, the identical still, rendered once. That reuse is what makes the joins invisible: 7 unique frames, not 9.</p>
+<h2 id="what-it-will-not-do-by-design" class="md-h2">What it will not do — by design</h2>
+<ul class="md-list">
+<li><strong>Invent design features.</strong> A feature mentioned but not shown in any reference becomes <code>[PLACEHOLDER — see Qn]</code>, never a described guess.</li>
+<li><strong>Redesign the building.</strong> Camera, framing and (approved) light are its only variables.</li>
+<li><strong>Resolve conflicting references silently.</strong> Old CGI vs current photo? It asks which governs and records your designation.</li>
+<li><strong>Relight without telling you.</strong> Dusk brief + midday references = a declared departure, tagged <code>Relit</code> in the source map.</li>
+<li><strong>Assert planning or compliance status.</strong> Your captions go in verbatim, marked <code>[to verify]</code>, applied in the edit — never baked into frames.</li>
+<li><strong>Claim tool features from memory.</strong> Clip caps and keyframe support are <code>[to verify]</code> against the named tool&#x27;s docs; otherwise tool-agnostic.</li>
+<li><strong>Put text or logos in generated frames</strong> — typography belongs in the edit.</li>
+<li><strong>Depict real people or pets</strong>, or web-search your client/site; no client names in filenames. It will remind you once that sending references to third-party generators is a disclosure to those services.</li>
+</ul>
+<h2 id="work-the-output" class="md-h2">Work the output</h2>
+<ol class="md-list">
+<li>Read the <strong>queries log</strong> first — answer the open ones; each unlocks a placeholder frame as a drop-in fix (timings and moves don&#x27;t change). If the scheme is in Rhino/Revit/SketchUp or a real-time renderer, the fastest fix for a placeholder is a viewport render at the camera position the storyboard specifies — minutes of work, and it counts as evidence.</li>
+<li>Generate keyframes in checklist order; refine prompts through your image prompt skill/tool. Render shared frames <strong>once</strong>; reuse the identical file.</li>
+<li>Feed each clip&#x27;s Start/End frames and its motion direction to the video tool; one camera idea per clip — resist adding more.</li>
+<li>Assemble with straight cuts on the shared frames. If a join flickers, fix the frame reuse — don&#x27;t dissolve over it.</li>
+<li>Add overlays, captions (verify them first) and licensed audio in the edit.</li>
+<li>Check the <strong>source map</strong> before the film goes to a client or committee — know which frames are photographs, which are relit, which are composed.</li>
+</ol>
+<hr class="divider md-hr">
+<p><strong>Remember:</strong> the storyboard is a draft for you to direct, not a locked edit. A thin reference set correctly produces a short film and a long query list — that is the skill working. Test drive: run it on the Lantern Barn sample pack and score against its defect key.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="trigger">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Triggering</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">When Claude reaches for it.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">This is the description Claude itself reads to
+        decide whether the skill applies. It is worth knowing, because it tells you exactly how to
+        phrase the ask — and what the skill will decline.</p>
+      </div>
+      <div class="tpl-triggerbox card">
+        <p class="tpl-triggerbox__name"><code>building-video-storyboard</code></p>
+        <p>Turn building reference material — photos, CGIs, or a written project pack — into a shot-by-shot storyboard for a short architectural film (default 30 seconds as three 10-second clips): shot list with timings, keyframe image-generation prompts, per-clip motion and camera directions written for image-to-video models, and stitching/export notes. Use this WHENEVER an architect, urban designer or visualiser asks for a &quot;video storyboard&quot;, &quot;30-second film of this scheme&quot;, &quot;flythrough&quot;, &quot;reel of the project&quot;, &quot;shot list&quot;, &quot;keyframes for Runway/Kling/Luma/Veo&quot;, &quot;image-to-video prompts&quot;, &quot;turn these renders into a film&quot;, or supplies references plus a rough film idea (&quot;a slow dusk reveal of this barn&quot;). Also trigger for films for a client presentation, website, planning exhibition or social media. Do NOT use to generate the images or video itself, and do NOT use it to design, redesign or &quot;improve&quot; the building — this skill directs cameras at the scheme as evidenced; it never invents architecture.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="files">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Package</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Files it puts on your disk.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">2 files, 21.4 KB unzipped,
+        under <code>.claude/skills/building-video-storyboard/</code>. Reference material loads only when the skill
+        needs it &mdash; references/.</p>
+        <p><a class="btn btn--outline btn--mono btn--sm" href="../downloads/building-video-storyboard.skill" download>Download the package <span class="btn__arrow" aria-hidden="true">&#8595;</span></a></p>
+      </div>
+      <div class="tpl-tree card">
+        <p class="tpl-tree__root"><code>.claude/skills/building-video-storyboard/</code></p>
+        <ul class="tpl-tree__list"><li class="tpl-file" style="--d:1"><span class="tpl-file__name">prompt-blocks.md</span><span class="tpl-file__dir">references/</span><span class="tpl-file__size">4.3 KB</span></li><li class="tpl-file" style="--d:0"><span class="tpl-file__name">SKILL.md</span><span class="tpl-file__dir"></span><span class="tpl-file__size">17.0 KB</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More in this category">
+      <a class="tpl-prevnext__item" href="../../resources/skills/nano-banana-prompt-builder.html"><span>Previous</span><strong>Nano Banana Prompt Builder</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/skills/visuals-diagrams.html">All Visuals &amp; diagrams</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/skills/site-diagram-matrix-builder.html"><span>Next</span><strong>Site Diagram Matrix Builder</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

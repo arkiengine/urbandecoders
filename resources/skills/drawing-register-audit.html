@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drawing Register Audit — Claude skill for architecture — Urban Decoders</title>
+<meta name="description" content="Reconciles register, title block and filename — the three sources that are supposed to agree and routinely do not.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/skills/drawing-register-audit.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Drawing Register Audit — Claude skill for architecture — Urban Decoders">
+<meta property="og:description" content="Reconciles register, title block and filename — the three sources that are supposed to agree and routinely do not.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "Drawing Register Audit",
+  "alternateName": "drawing-register-audit",
+  "description": "Reconciles register, title block and filename — the three sources that are supposed to agree and routinely do not.",
+  "codeSampleType": "full solution",
+  "programmingLanguage": "Claude Skill",
+  "url": "https://www.urbandecoders.com/resources/skills/drawing-register-audit.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "license": "Proprietary",
+  "isPartOf": { "@type": "CollectionPage", "name": "Claude Skills for Architecture", "url": "https://www.urbandecoders.com/resources/skills/" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/">Skills</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/drawings-spec.html">Drawings &amp; spec</a><span aria-hidden="true">/</span>
+      <span><code>drawing-register-audit</code></span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Verdict-first audit</span>
+        <h1 class="display tpl-skilltitle">Drawing Register Audit</h1>
+        <p class="lead">Reconciles register, title block and filename — the three sources that are supposed to agree and routinely do not.</p>
+        <p class="tpl-callline">Once installed, Claude loads it on its own when the conversation
+        matches. You can also call it directly with <code>/drawing-register-audit</code>.</p>
+        <div class="wrap-btns">
+          <a class="btn btn--brand btn--mono" href="../downloads/drawing-register-audit.skill" download>Download .skill <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+          <a class="btn btn--outline btn--mono" href="#quick-reference">Read the quick reference</a>
+        </div>
+      </div>
+      <dl class="tpl-meta card">
+        <div><dt>Category</dt><dd><a href="../../resources/skills/drawings-spec.html">Drawings &amp; spec</a></dd></div>
+        <div><dt>Output</dt><dd>Verdict-first audit</dd></div>
+        <div><dt>Package</dt><dd>1 file &middot; 8.5 KB</dd></div>
+        <div><dt>Download</dt><dd>3.6 KB zip</dd></div>
+        <div><dt>Worked example</dt><dd><a href="../downloads/drawing-register-audit-example.zip" download>3 files &middot; 8.4 KB</a></dd></div>
+        <div><dt>Tags</dt><dd class="tpl-meta__tags"><span class="tag">Issue</span><span class="tag">Revisions</span><span class="tag">QA</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap"><div class="tpl-disclaimer" role="note">
+  <span class="tpl-disclaimer__tag">Read first</span>
+  <p>These skills assist qualified practitioners. They replace neither the architect of
+  record nor the approving authority. Every figure, clause and citation they surface is
+  marked for you to verify — treat an unverified output as a question, not an answer.</p>
+</div></div>
+</section>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Install just this one.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">Two routes. Both end with Claude loading the
+        skill by itself when your conversation matches.</p>
+      </div>
+      <div class="tpl-install">
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">A</span> Claude app, Chat or Cowork</h3>
+          <ol class="md-list">
+            <li>Download <code>drawing-register-audit.skill</code> below.</li>
+            <li>Open Claude, go to <strong>Settings &rarr; Capabilities &rarr; Skills</strong> and upload the file.</li>
+            <li>Start a conversation and attach your material. The skill loads itself on a match.</li>
+          </ol>
+          <a class="btn btn--ghost btn--mono btn--sm" href="../downloads/drawing-register-audit.skill" download>drawing-register-audit.skill &middot; 3.6 KB</a>
+        </div>
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">B</span> Claude Code, in your project</h3>
+          <p>Unzip the package into your skills folder, then restart Claude Code.</p>
+          <div class="codeblock">
+            <button class="codeblock__copy" type="button" data-copy>Copy</button>
+            <pre><code>mkdir -p .claude/skills &amp;&amp; unzip drawing-register-audit.skill -d .claude/skills/</code></pre>
+          </div>
+          <p class="tpl-fine">Use <code>~/.claude/skills/</code> instead to install it for every project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="at-a-glance">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">At a glance</span>
+      <h2 class="section-title">What it takes, what you get.</h2>
+    </div>
+    <div class="grid grid--3 tpl-glance">
+      <div class="card tpl-glance__box">
+        <h3>It takes</h3>
+        <p>A drawing register or issue sheet, plus the drawing files or a listing of them</p>
+      </div>
+      <div class="card tpl-glance__box">
+        <h3>You get</h3>
+        <p>A three-column reconciliation per drawing, missing and orphan lists, revision regressions, the numbering convention inferred from the set and every departure from it, and status codes that contradict the issue purpose.</p>
+      </div>
+      <div class="card tpl-glance__box tpl-glance__box--red">
+        <h3>It will not</h3>
+        <p>Rename, renumber or re-issue anything; check drawing content; state what a suitability code means from memory; declare a set complete.</p>
+      </div>
+    </div>
+    <div class="tpl-example">
+      <span class="tag">Test drive</span>
+      <p>Shotley Bank tender issue — two superseded files sitting in the folder. Run the skill on the example input, then score your output against the defect key &mdash; it lists what was planted and what a good run does with it.</p>
+      <a class="btn btn--outline btn--mono btn--sm" href="../downloads/drawing-register-audit-example.zip" download>Worked example <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="quick-reference">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#run-it">Run it</a></li><li><a href="#the-report">The report</a></li><li><a href="#the-findings-that-cost-money">The findings that cost money</a></li><li><a href="#what-it-will-not-do-by-design">What it will not do — by design</a></li><li><a href="#work-the-output">Work the output</a></li></ul>
+        <p class="tpl-toc__head tpl-toc__head--spaced">Jump to</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#files">Files on disk</a></li>
+          <li><a href="#trigger">When it triggers</a></li>
+        </ul>
+      </nav>
+      <div class="tpl-doc">
+        <span class="eyebrow">Quick reference</span>
+        <h2 class="section-title" style="margin:var(--space-4) 0 var(--space-6)">How to run it.</h2>
+        <div class="md"><p>Reconciles three sources that are supposed to agree — register, title block, filename — and reports where they do not. <strong>Read-only. Never renames, renumbers or re-issues anything.</strong></p>
+<h2 id="run-it" class="md-h2">Run it</h2>
+<p>Attach the register and the drawing files (or a listing), and say what the issue is for:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>Audit this register against the folder before we issue for tender.
+Do the revisions match the title blocks? We&#x27;ve had a claim on a superseded sheet.
+Check this issue — something&#x27;s missing and I can&#x27;t see what.
+We&#x27;ve inherited this set. What&#x27;s the numbering convention and where does it break?</code></pre></div>
+<p>The issue purpose governs which findings are High. A &quot;Preliminary&quot; status is unremarkable in a coordination issue and serious in a construction issue.</p>
+<h2 id="the-report" class="md-h2">The report</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Section</th><th>What it holds</th></tr></thead><tbody><tr><td>Verdict</td><td>Safe to send? The single biggest problem, and what would have to change. First, always.</td></tr><tr><td>Reconciliation</td><td>One row per drawing, three columns of truth: Register · Title block · Filename.</td></tr><tr><td>Missing &amp; orphans</td><td>On the register but absent; present but unlisted — including superseded sheets dragged back in.</td></tr><tr><td>Revision integrity</td><td>Mismatches, regressions (a lower rev issued after a higher one), revisions with no register entry.</td></tr><tr><td>Numbering</td><td>Convention inferred from the set, every departure, and sequence gaps split into withdrawn / unexplained / reused.</td></tr><tr><td>Status &amp; suitability</td><td>Codes present, consistency with each other and with the issue purpose.</td></tr><tr><td>Ranked findings</td><td>High / Medium / Low / Info, each naming what it breaks.</td></tr><tr><td>What was not checked</td><td>Always present.</td></tr></tbody></table></div>
+<p><strong>Evidence tags:</strong> <code>[register]</code> · <code>[title block]</code> · <code>[filename]</code> · <code>[inferred]</code> · <code>[verify manually]</code>.</p>
+<blockquote class="mdquote"><p>Where the three sources disagree the report never picks a winner. It quotes all three and marks the row <code>conflict</code>. Which is correct is a question about what was actually drawn.</p></blockquote>
+<h2 id="the-findings-that-cost-money" class="md-h2">The findings that cost money</h2>
+<ul class="md-list">
+<li><strong>Revision regression</strong> — a lower revision issued after a higher one.</li>
+<li><strong>A superseded sheet still in the issue folder</strong> — the number looks right, so nobody checks. A contractor building to it has a claim, evidenced by your own issue sheet.</li>
+<li><strong>A number reused for a different drawing.</strong> Always High.</li>
+<li><strong>Systematic drift</strong> — every title block one revision behind the register. Reported as a pattern, which is a different problem from scattered errors.</li>
+</ul>
+<h2 id="what-it-will-not-do-by-design" class="md-h2">What it will not do — by design</h2>
+<ul class="md-list">
+<li><strong>Modify anything.</strong> No renaming, renumbering, editing or re-issuing. An annotated register adds columns and leaves originals untouched.</li>
+<li><strong>Check drawing content.</strong> Whether the drawing is right, coordinated or buildable is outside this audit entirely.</li>
+<li><strong>Fill a title-block field from the register.</strong> That circularity would destroy the only independent check the audit has.</li>
+<li><strong>State what a suitability or status code means from memory.</strong> Practices and protocols use the same letters differently.</li>
+<li><strong>Assume a numbering standard.</strong> It infers the convention in use, states it, then tests the set against it.</li>
+<li><strong>Declare a set complete.</strong> It can say the register and the files agree. That is a much smaller claim and is phrased as one.</li>
+</ul>
+<h2 id="work-the-output" class="md-h2">Work the output</h2>
+<ol class="md-list">
+<li>Read the verdict. If a High says do not issue, stop the issue before reading further.</li>
+<li>Hunt the orphans first — a stale superseded sheet in the folder is the finding most likely to end up in a dispute.</li>
+<li>Resolve three-way conflicts with the drawing author, not in the register. The register is the record of what you sent, not the place to make it look right.</li>
+<li>Decide sequence gaps deliberately: withdraw formally or reuse the number never.</li>
+<li>Define your suitability codes somewhere the audit can read them, and the status findings sharpen from &quot;code present&quot; to &quot;code wrong&quot;.</li>
+<li>Re-run immediately before issue, not the day before. Registers drift in hours.</li>
+</ol>
+<hr class="divider md-hr">
+<p><strong>Remember:</strong> this audit tests whether the paperwork agrees with itself. Whether the drawings are any good is a different review, and no register audit will ever catch a wrong detail.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="trigger">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Triggering</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">When Claude reaches for it.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">This is the description Claude itself reads to
+        decide whether the skill applies. It is worth knowing, because it tells you exactly how to
+        phrase the ask — and what the skill will decline.</p>
+      </div>
+      <div class="tpl-triggerbox card">
+        <p class="tpl-triggerbox__name"><code>drawing-register-audit</code></p>
+        <p>Audit a drawing register or issue sheet against the files actually present: missing drawings, files not on the register, revision mismatches between register, title block and filename, numbering convention breaks, gaps in the number sequence, superseded sheets still in the issue, and status/suitability codes that contradict the issue purpose. Returns a verdict-first report; it never renames, renumbers or re-issues anything. Use this WHENEVER someone asks to &quot;check the drawing register&quot;, &quot;audit this issue&quot;, &quot;is this set complete&quot;, &quot;do the revisions match&quot;, &quot;what&#x27;s missing from this issue&quot;, &quot;check the drawing numbers&quot;, &quot;reconcile the register against the folder&quot;, or before any formal issue to a client, contractor or authority. Do NOT use it to check drawing content or quality, to cross-check drawings against a specification (spec-drawing-crosscheck), to transcribe a register from an image (screenshot-to-editable-table), or to modify files.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="files">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Package</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Files it puts on your disk.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">1 file, 8.5 KB unzipped,
+        under <code>.claude/skills/drawing-register-audit/</code>. Reference material loads only when the skill
+        needs it &mdash; no subfolders.</p>
+        <p><a class="btn btn--outline btn--mono btn--sm" href="../downloads/drawing-register-audit.skill" download>Download the package <span class="btn__arrow" aria-hidden="true">&#8595;</span></a></p>
+      </div>
+      <div class="tpl-tree card">
+        <p class="tpl-tree__root"><code>.claude/skills/drawing-register-audit/</code></p>
+        <ul class="tpl-tree__list"><li class="tpl-file" style="--d:0"><span class="tpl-file__name">SKILL.md</span><span class="tpl-file__dir"></span><span class="tpl-file__size">8.5 KB</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More in this category">
+      <span></span>
+      <a class="tpl-prevnext__all" href="../../resources/skills/drawings-spec.html">All Drawings &amp; spec</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/skills/spec-drawing-crosscheck.html"><span>Next</span><strong>Spec / Drawing Cross-check</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

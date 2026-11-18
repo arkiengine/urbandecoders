@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One sketch to a Blender model, a web app and an Unreal walkthrough — Urban Decoders</title>
+<meta name="description" content="A hand sketch and a room schedule, turned into a scaled Blender model in fifteen minutes, then an interactive React app, then a first-person Unreal scene. The exact prompt, the settings, and where the token budget goes.">
+<link rel="canonical" href="https://www.urbandecoders.com/blog/gpt-astra-sketch-to-3d.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="One sketch to a Blender model, a web app and an Unreal walkthrough — Urban Decoders">
+<meta property="og:description" content="A hand sketch and a room schedule, turned into a scaled Blender model in fifteen minutes, then an interactive React app, then a first-person Unreal scene. The exact prompt, the settings, and where the token budget goes.">
+<meta property="og:image" content="https://i.ytimg.com/vi/SsBLhNgqTqQ/maxresdefault.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../assets/favicon-192.png">
+<link rel="stylesheet" href="../styles.css?v=20261117">
+<link rel="stylesheet" href="../resources/resources.css?v=20261117">
+<link rel="stylesheet" href="../blog/blog.css?v=20261117">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "One sketch to a Blender model, a web app and an Unreal walkthrough",
+  "description": "A hand sketch and a room schedule, turned into a scaled Blender model in fifteen minutes, then an interactive React app, then a first-person Unreal scene. The exact prompt, the settings, and where the token budget goes.",
+  "image": "https://www.urbandecoders.com/assets/img/blog/gpt-astra-sketch-to-3d/step-02.jpg",
+  "url": "https://www.urbandecoders.com/blog/gpt-astra-sketch-to-3d.html",
+  "datePublished": "2026-09-13",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "publisher": { "@type": "Organization", "name": "Urban Decoders" },
+  "video": {
+    "@type": "VideoObject",
+    "name": "One sketch to a Blender model, a web app and an Unreal walkthrough",
+    "thumbnailUrl": "https://i.ytimg.com/vi/SsBLhNgqTqQ/maxresdefault.jpg",
+    "uploadDate": "2026-09-13",
+    "embedUrl": "https://www.youtube.com/embed/SsBLhNgqTqQ"
+  }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../platform.html">Platform</a>
+      <a class="nav__link" href="../services.html">Services</a>
+      <a class="nav__link" href="../case-studies.html">Work</a>
+      <a class="nav__link" href="../courses.html">Courses</a>
+      <a class="nav__link" href="../resources/">Resources</a>
+      <a class="nav__link" href="../blog.html" aria-current="page">Blog</a>
+      <a class="nav__link" href="../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../blog.html">Blog</a><span aria-hidden="true">/</span>
+      <span>Modelling</span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Modelling</span>
+        <h1 class="display tpl-skilltitle">One sketch to a Blender model, a web app and an Unreal walkthrough</h1>
+        <p class="lead">A hand sketch and a room schedule, turned into a scaled Blender model in fifteen minutes, then an interactive React app, then a first-person Unreal scene. The exact prompt, the settings, and where the token budget goes.</p>
+      </div>
+      <dl class="tpl-meta card"><div><dt>Published</dt><dd>13 September 2026</dd></div><div><dt>Tools</dt><dd>Blender, Codex, Unreal Engine</dd></div><div><dt>Watch</dt><dd>10:24</dd></div><div><dt>Reading</dt><dd>7 min</dd></div></dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="post-video">
+      <a class="yt-facade" href="https://www.youtube.com/watch?v=SsBLhNgqTqQ" target="_blank" rel="noopener" aria-label="Watch on YouTube: One sketch to a Blender model, a web app and an Unreal walkthrough">
+        <img src="https://i.ytimg.com/vi/SsBLhNgqTqQ/maxresdefault.jpg" alt="One sketch to a Blender model, a web app and an Unreal walkthrough &mdash; watch on YouTube" loading="lazy" width="1280" height="720">
+        <span class="yt-play" aria-hidden="true"></span>
+      </a>
+      <p class="post-video__cap">Prefer to watch? This guide is the written version of
+      <a href="https://www.youtube.com/watch?v=SsBLhNgqTqQ" target="_blank" rel="noopener">One sketch to a Blender model, a web app and an Unreal walkthrough</a>
+      &mdash; 10:24 on the Urban Decoders channel.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#the-key-decision-scripts-not-mcp">The key decision: scripts, not MCP</a></li><li><a href="#1-set-up-a-clean-folder-and-one-sketch">1. Set up a clean folder and one sketch</a></li><li><a href="#2-let-it-plan-then-watch-the-renders-arrive">2. Let it plan, then watch the renders arrive</a></li><li><a href="#3-open-the-file-and-check-it-properly">3. Open the file and check it properly</a></li><li><a href="#4-turn-the-model-into-an-interactive-app">4. Turn the model into an interactive app</a></li><li><a href="#5-unreal-where-mcp-earns-its-cost">5. Unreal, where MCP earns its cost</a></li><li><a href="#what-to-take-from-this">What to take from this</a></li></ul>
+      </nav>
+      <div class="tpl-doc">
+        <div class="md post-body"><p>The input was deliberately thin: <strong>one hand sketch and a list of rooms with target areas</strong>. No plans, no sections, no elevations. The question was how far a current model can take that before it needs real drawings.</p>
+<p>Further than expected — and the useful part is not the model. It is that the same source produced three different deliverables: a Blender file, an interactive web app, and a first-person walkthrough in Unreal Engine.</p>
+<h2 id="the-key-decision-scripts-not-mcp" class="md-h2">The key decision: scripts, not MCP</h2>
+<p>There are two ways to let AI drive 3D software. It can <strong>control the application directly</strong> through an MCP server, or it can <strong>write scripts against the API</strong> and check its own work from rendered screenshots.</p>
+<p>For the Blender stage this used the second. The model never sees the live viewport; it writes <code>bpy</code> scripts, runs them headlessly, renders, looks at the render, and iterates. It is dramatically cheaper in tokens, and for a model of this complexity it is entirely sufficient.</p>
+<p>Save MCP for the parts that genuinely need to see and manipulate a live scene. That is the trade-off in one line: <strong>scripting for generation, MCP for manipulation.</strong></p>
+<h2 id="1-set-up-a-clean-folder-and-one-sketch" class="md-h2">1. Set up a clean folder and one sketch</h2>
+<p>Make an empty project folder. Everything generated — scripts, renders, screenshots, the <code>.blend</code> — lands there, and that is also how the model checks itself. Drop in the sketch and have the room schedule ready.</p>
+<p>Then this prompt, run through Codex:</p>
+<figure class="post-fig"><img src="../assets/img/blog/gpt-astra-sketch-to-3d/step-01.jpg" alt="The actual prompt. Note the last two sentences — they do most of the work." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">1:55</span>The actual prompt. Note the last two sentences — they do most of the work.</figcaption></figure>
+<blockquote class="mdquote"><p>Build a Japanese contemporary Villa in Blender. Base it off the reference sketch in the folder and the space details. Try to keep to the proportions of the sketch. Find other references for contemporary Japanese style villa details from famous architects to use. Focus on realism, details, form scaling and proportion. Maintain the contemporary Japanese style, add materials and close surrounding outdoor spaces, not the mountains landscape. Create this using the Blender API headlessly and write a bpy script to create the blender file. Take screenshots to confirm progress and iterate until accurate. Create a plan to model this first before starting in Blender.</p></blockquote>
+<p>Two instructions in there are doing the heavy lifting: <strong>use the API headlessly and take screenshots to confirm progress</strong>, which makes it self-correcting, and <strong>create a plan first</strong>, which gives it room to research and reason before it commits.</p>
+<p>This ran on the plus plan with Astra on a lower usage setting. You do not need to max the budget for this method.</p>
+<h2 id="2-let-it-plan-then-watch-the-renders-arrive" class="md-h2">2. Let it plan, then watch the renders arrive</h2>
+<p>The planning pass searches for references, works out plausible room sizes, and decides what the villa should be. That matters most when your input is thin — as here. Give it scaled drawings instead and it will use those and be far more literal.</p>
+<figure class="post-fig"><img src="../assets/img/blog/gpt-astra-sketch-to-3d/step-02.jpg" alt="Not an AI image — an actual Cycles render of the model it just built, written back into the project folder as its own progress check." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">3:22</span>Not an AI image — an actual Cycles render of the model it just built, written back into the project folder as its own progress check.</figcaption></figure>
+<p>The images that appear are <strong>renders of the model</strong>, not generated pictures. That distinction is the whole method: because it cannot see Blender, it renders and looks.</p>
+<p>Fifteen minutes, start to finish. Roughly half of a five-hour window, about ten per cent of a week&#x27;s usage.</p>
+<h2 id="3-open-the-file-and-check-it-properly" class="md-h2">3. Open the file and check it properly</h2>
+<figure class="post-fig"><img src="../assets/img/blog/gpt-astra-sketch-to-3d/step-03.jpg" alt="Roof hidden. Structure, joinery, tatami and a simple roof structure — modelled, not implied." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">4:41</span>Roof hidden. Structure, joinery, tatami and a simple roof structure — modelled, not implied.</figcaption></figure>
+<p>Clean geometry, furniture, a lighting setup, and extra assets it was not asked for — trees, fences, paths, individual floorboards, roof tiles. Hide the roof and there is a structure, furniture and tatami underneath.</p>
+<p>Most importantly it is <strong>to scale and it follows the area schedule</strong>. That is the claim worth testing on your own brief, and the one that makes this relevant to early-stage work rather than to mood boards.</p>
+<p>Doors were missing and furniture arrangement needed a pass. Both are prompts, not problems.</p>
+<h2 id="4-turn-the-model-into-an-interactive-app" class="md-h2">4. Turn the model into an interactive app</h2>
+<p>Once there is geometry you are not limited to stills. The next prompt asked it to use the Blender API to <strong>export a glTF plus the room data as JSON</strong>, then build a React app around both.</p>
+<p>The glTF is what the web can read; the JSON is what makes rooms selectable and labelled rather than just visible.</p>
+<figure class="post-fig"><img src="../assets/img/blog/gpt-astra-sketch-to-3d/step-04.jpg" alt="The generated React app. Room list with areas on the left, level and element toggles on the right, first-person mode available." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">6:30</span>The generated React app. Room list with areas on the left, level and element toggles on the right, first-person mode available.</figcaption></figure>
+<p>About twenty minutes. It hit the five-hour limit mid-build and finished after the reset. The result navigates between views, toggles levels and elements, lists every room with its area, moves the camera to a selected space, and drops into first person.</p>
+<p>Materials are flat — nothing was supplied. That is a straightforward fix, and it is a far better client-facing artefact than a folder of renders.</p>
+<h2 id="5-unreal-where-mcp-earns-its-cost" class="md-h2">5. Unreal, where MCP earns its cost</h2>
+<p>For realism and a genuine first-person experience, this is where MCP makes sense. The Unreal MCP plugin is free and the documentation covers the setup. Open the project folder in Explorer, right-click, open PowerShell, type <code>codex</code>.</p>
+<p><strong>Start from a sample scene with an existing landscape</strong>, not an empty level. The point is to import the villa and then have it procedurally adjust the surrounding context — trees, rocks, paths — through PCG graphs. Starting from nothing means having no assets to work with.</p>
+<figure class="post-fig"><img src="../assets/img/mcp/mcp-unreal.svg" alt="Unreal 5.8 ships the server itself — two plugins and two console commands, no JSON. This is the connection the rest of the section is talking to." loading="lazy" width="1200" height="440" decoding="async"><figcaption>Unreal 5.8 ships the server itself — two plugins and two console commands, no JSON. This is the connection the rest of the section is talking to.</figcaption></figure>
+<figure class="post-fig"><img src="../assets/img/blog/gpt-astra-sketch-to-3d/step-05.jpg" alt="The villa in Unreal, with camera sequences and a first-person blueprint set up through conversational prompting." loading="lazy" width="800" height="450" decoding="async"><figcaption><span class="post-fig__t">9:52</span>The villa in Unreal, with camera sequences and a first-person blueprint set up through conversational prompting.</figcaption></figure>
+<p>With MCP you converse rather than write one long prompt: import the villa near the lake, add procedural forest and rocks, swap materials for Unreal ones, update the lighting, add first and third-person blueprints, set up camera sequences.</p>
+<p>Two hours over two sessions, including iteration. <strong>Use MCP for the technical parts</strong> — graph setup, blueprint creation, complex placement — rather than trying to generate every detail through it. That is where the cost sits.</p>
+<h2 id="what-to-take-from-this" class="md-h2">What to take from this</h2>
+<ul class="md-list">
+<li><strong>A sketch and an area schedule is a viable starting point.</strong> Not a substitute for drawings, but enough for a scaled, organised concept model.</li>
+<li><strong>Scripting beats MCP for generation</strong>, by a wide margin, on cost.</li>
+<li><strong>Ask for a plan first.</strong> Every time.</li>
+<li><strong>The model is the beginning, not the deliverable.</strong> The same source feeding a web app and a real-time scene is the part that changes how you present work.</li>
+</ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More guides">
+      <a class="tpl-prevnext__item" href="../blog/gpt-astra-real-building.html"><span>Newer</span><strong>Modelling a real building with GPT Astra, Rhino and Revit</strong></a>
+      <a class="tpl-prevnext__all" href="../blog.html">All guides</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../blog/claude-for-architects-guide.html"><span>Older</span><strong>Claude for architects — the parts of it worth setting up</strong></a>
+    </nav>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="tpl-cta card card--emphasis">
+      <div>
+        <h2 class="section-title">Want this running on a real project?</h2>
+        <p class="lead">We build these pipelines for planning, development and design teams &mdash;
+        and the twins they feed. Tell us what you are working on.</p>
+      </div>
+      <a class="btn btn--primary btn--mono" href="../contact.html">Talk to the studio <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap"><div class="cta-band">
+    <span class="eyebrow eyebrow--plain" style="justify-content:center; display:flex">Stay in the loop</span>
+    <h2 class="section-title mt-6" style="max-width:22ch; margin-inline:auto">Learn the tools shaping tomorrow&rsquo;s cities.</h2>
+    <p class="lead mx-auto center mt-6" style="margin-inline:auto">Every guide here starts life as a video on the channel. Subscribe for new workflows on digital twins, AI and real-time visualisation &mdash; and see how Urban Decoders builds them.</p>
+    <div class="wrap-btns mt-7" style="justify-content:center">
+      <a class="btn btn--primary btn--lg" href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener">Subscribe on YouTube</a>
+      <a class="btn btn--outline btn--lg" href="../contact.html">Work with us</a>
+    </div>
+  </div></div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+        <div class="footer__badges"><img class="nv" src="../assets/logos/nvidia-inception.svg" alt="NVIDIA Inception Program member" width="93" height="40" loading="lazy"><img class="epic" src="../assets/logos/epic-megagrants.svg" alt="Epic MegaGrants Recipient" width="46" height="48" loading="lazy"></div>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../platform.html">Platform</a></li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../case-studies.html">Work</a></li>
+          <li><a href="../courses.html">Courses</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../resources/">All resources</a></li>
+          <li><a href="../resources/skills/">Skills library</a></li>
+          <li><a href="../resources/guides/">Guides &amp; how-tos</a></li>
+          <li><a href="../contact.html">Book a scoping call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+      <div class="social">
+        <a href="https://www.instagram.com/urbandecoders/" target="_blank" rel="noopener" aria-label="Urban Decoders on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@Urban_Decoders" target="_blank" rel="noopener" aria-label="Urban Decoders on YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.77-1.77C19.3 5.1 12 5.1 12 5.1s-7.3 0-8.83.43A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.77 1.77C4.7 18.9 12 18.9 12 18.9s7.3 0 8.83-.43a2.5 2.5 0 0 0 1.77-1.77C23 15.2 23 12 23 12ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../resources/resources.js?v=20261117" defer></script>
+</body>
+</html>

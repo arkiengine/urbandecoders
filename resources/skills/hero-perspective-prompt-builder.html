@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Perspective Prompt Builder — Claude skill for architecture — Urban Decoders</title>
+<meta name="description" content="Project material becomes a hero-shot brief and prompt variants. The design is fixed; the camera is what varies.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/skills/hero-perspective-prompt-builder.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hero Perspective Prompt Builder — Claude skill for architecture — Urban Decoders">
+<meta property="og:description" content="Project material becomes a hero-shot brief and prompt variants. The design is fixed; the camera is what varies.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "Hero Perspective Prompt Builder",
+  "alternateName": "hero-perspective-prompt-builder",
+  "description": "Project material becomes a hero-shot brief and prompt variants. The design is fixed; the camera is what varies.",
+  "codeSampleType": "full solution",
+  "programmingLanguage": "Claude Skill",
+  "url": "https://www.urbandecoders.com/resources/skills/hero-perspective-prompt-builder.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "license": "Proprietary",
+  "isPartOf": { "@type": "CollectionPage", "name": "Claude Skills for Architecture", "url": "https://www.urbandecoders.com/resources/skills/" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/">Skills</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/visuals-diagrams.html">Visuals &amp; diagrams</a><span aria-hidden="true">/</span>
+      <span><code>hero-perspective-prompt-builder</code></span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Shot brief + prompts</span>
+        <h1 class="display tpl-skilltitle">Hero Perspective Prompt Builder</h1>
+        <p class="lead">Project material becomes a hero-shot brief and prompt variants. The design is fixed; the camera is what varies.</p>
+        <p class="tpl-callline">Once installed, Claude loads it on its own when the conversation
+        matches. You can also call it directly with <code>/hero-perspective-prompt-builder</code>.</p>
+        <div class="wrap-btns">
+          <a class="btn btn--brand btn--mono" href="../downloads/hero-perspective-prompt-builder.skill" download>Download .skill <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+          <a class="btn btn--outline btn--mono" href="#quick-reference">Read the quick reference</a>
+        </div>
+      </div>
+      <dl class="tpl-meta card">
+        <div><dt>Category</dt><dd><a href="../../resources/skills/visuals-diagrams.html">Visuals &amp; diagrams</a></dd></div>
+        <div><dt>Output</dt><dd>Shot brief + prompts</dd></div>
+        <div><dt>Package</dt><dd>2 files &middot; 22.1 KB</dd></div>
+        <div><dt>Download</dt><dd>10.4 KB zip</dd></div>
+        <div><dt>Worked example</dt><dd><a href="../downloads/hero-perspective-prompt-builder-example.zip" download>3 files &middot; 17.2 KB</a></dd></div>
+        <div><dt>Tags</dt><dd class="tpl-meta__tags"><span class="tag">Hero shot</span><span class="tag">Nano Banana</span><span class="tag">CGI</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap"><div class="tpl-disclaimer" role="note">
+  <span class="tpl-disclaimer__tag">Read first</span>
+  <p>These skills assist qualified practitioners. They replace neither the architect of
+  record nor the approving authority. Every figure, clause and citation they surface is
+  marked for you to verify — treat an unverified output as a question, not an answer.</p>
+</div></div>
+</section>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Install just this one.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">Two routes. Both end with Claude loading the
+        skill by itself when your conversation matches.</p>
+      </div>
+      <div class="tpl-install">
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">A</span> Claude app, Chat or Cowork</h3>
+          <ol class="md-list">
+            <li>Download <code>hero-perspective-prompt-builder.skill</code> below.</li>
+            <li>Open Claude, go to <strong>Settings &rarr; Capabilities &rarr; Skills</strong> and upload the file.</li>
+            <li>Start a conversation and attach your material. The skill loads itself on a match.</li>
+          </ol>
+          <a class="btn btn--ghost btn--mono btn--sm" href="../downloads/hero-perspective-prompt-builder.skill" download>hero-perspective-prompt-builder.skill &middot; 10.4 KB</a>
+        </div>
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">B</span> Claude Code, in your project</h3>
+          <p>Unzip the package into your skills folder, then restart Claude Code.</p>
+          <div class="codeblock">
+            <button class="codeblock__copy" type="button" data-copy>Copy</button>
+            <pre><code>mkdir -p .claude/skills &amp;&amp; unzip hero-perspective-prompt-builder.skill -d .claude/skills/</code></pre>
+          </div>
+          <p class="tpl-fine">Use <code>~/.claude/skills/</code> instead to install it for every project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="at-a-glance">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">At a glance</span>
+      <h2 class="section-title">What it takes, what you get.</h2>
+    </div>
+    <div class="grid grid--3 tpl-glance">
+      <div class="card tpl-glance__box">
+        <h3>It takes</h3>
+        <p>Plans, massing notes, elevation notes, materials schedule, site orientation, audience</p>
+      </div>
+      <div class="card tpl-glance__box">
+        <h3>You get</h3>
+        <p>A traceable hero-shot brief plus copy-paste prompt variants — camera, lens, light, mood, entourage — with every visual claim traced to the source or flagged, and entourage kept honest for the stated audience.</p>
+      </div>
+      <div class="card tpl-glance__box tpl-glance__box--red">
+        <h3>It will not</h3>
+        <p>Invent materials or context; produce a Verified View or AVR (it flags when one is needed); polish a single rough prompt.</p>
+      </div>
+    </div>
+    <div class="tpl-example">
+      <span class="tag">Test drive</span>
+      <p>Tanyard Green project pack. Run the skill on the example input, then score your output against the defect key &mdash; it lists what was planted and what a good run does with it.</p>
+      <a class="btn btn--outline btn--mono btn--sm" href="../downloads/hero-perspective-prompt-builder-example.zip" download>Worked example <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="quick-reference">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#run-it">Run it</a></li><li><a href="#the-deliverable">The deliverable</a></li><li><a href="#context-honesty-rules-applied-to-every-prompt">Context honesty rules — applied to every prompt</a></li><li><a href="#what-it-will-not-do-by-design">What it will not do — by design</a></li><li><a href="#not-this-skill">Not this skill</a></li><li><a href="#work-the-output">Work the output</a></li></ul>
+        <p class="tpl-toc__head tpl-toc__head--spaced">Jump to</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#files">Files on disk</a></li>
+          <li><a href="#trigger">When it triggers</a></li>
+        </ul>
+      </nav>
+      <div class="tpl-doc">
+        <span class="eyebrow">Quick reference</span>
+        <h2 class="section-title" style="margin:var(--space-4) 0 var(--space-6)">How to run it.</h2>
+        <div class="md"><p>Turns project material — plans, massing, elevations, materials schedule, site notes, comms brief — into a <strong>hero shot brief</strong> with copy-paste render prompts (camera, lens, light, mood, entourage). <strong>Every visual claim traces to a source or is flagged; the setting stays honest.</strong> It is the money-shot workflow, not a general prompt polisher.</p>
+<h2 id="run-it" class="md-h2">Run it</h2>
+<p>Attach the project material (pack, brief, plan image, schedules) and ask:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>Build the hero shot for the DAS cover from this pack.
+Money shot for the consultation boards — here&#x27;s the massing and materials.
+Six hero perspectives from this plan, for the competition board.
+Batch: use defaults, log them, give me the brief.</code></pre></div>
+<p>It reads everything, builds a fact base, asks a short numbered interview (each with a default — reply &quot;use defaults&quot;), then works <strong>one shot per turn</strong>: options A/B/C → your choice → that shot&#x27;s prompts. <strong>&quot;Use defaults&quot; answers preferences, not evidence gaps</strong> — an unstated feature stays out of the prompt whatever you reply.</p>
+<h2 id="the-deliverable" class="md-h2">The deliverable</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Section</th><th>What it holds</th></tr></thead><tbody><tr><td>Header</td><td>Sources with revision/date, audience, and the illustrative-not-verified statement.</td></tr><tr><td>Interview record</td><td>Every question, the answer or the default applied, what&#x27;s still open.</td></tr><tr><td>Source fact base</td><td>Each fact tagged <strong>Stated</strong> / <strong>Inferred</strong> / <strong>[not stated]</strong>, with the source.</td></tr><tr><td>Flags &amp; queries</td><td>Contradictions, context-honesty flags, declined requests, <code>[to verify]</code> items. Logged, never resolved.</td></tr><tr><td>Geometry lock</td><td>The fixed facts every prompt obeys; conflicts carried as labelled conservative readings.</td></tr><tr><td>Shot list</td><td>Number, title, purpose, audience, status.</td></tr><tr><td>Per shot</td><td>Purpose · options A/B/C + recommendation · camera spec · light spec <strong>with the orientation reasoning shown</strong> · mood · entourage spec · <strong>baseline + atmosphere variant</strong> prompts · provenance footnotes.</td></tr><tr><td>Consistency checklist</td><td>Materials, storeys, planting, neighbours, sun logic held constant across the set.</td></tr></tbody></table></div>
+<p><strong>Two variants per shot, always: baseline and one atmosphere variant.</strong> Different light, weather or hour — <strong>never different facts.</strong> Both obey the same lock.</p>
+<h2 id="context-honesty-rules-applied-to-every-prompt" class="md-h2">Context honesty rules — applied to every prompt</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Rule</th><th>In practice</th></tr></thead><tbody><tr><td>No borrowed geography</td><td>No water, hills, parks or landmarks the site doesn&#x27;t have. 240 m away isn&#x27;t &quot;canalside&quot;.</td></tr><tr><td>Neighbours stay, at true scale</td><td>Framing past one is a recorded decision; deleting or shrinking one is not.</td></tr><tr><td>Planting at honest establishment</td><td>Planted spec, not year 10. A year-10 image is a separately labelled variant only.</td></tr><tr><td>People at plausible density</td><td>Render the occupancy the scheme can generate. 46 homes don&#x27;t bustle.</td></tr><tr><td>Sun where the sun goes</td><td>Light must match real orientation — a north elevation gets no golden hour. <code>[to verify against a sun study]</code>.</td></tr><tr><td>Unconsented stays out</td><td>Phase 2, aspirational public realm, third-party land — excluded unless explicitly asked and labelled <em>indicative</em>.</td></tr><tr><td>Features must exist in the source</td><td>No invented fenestration, roof terraces or storeys. <code>[not stated]</code> goes out of frame or stays generic and footnoted.</td></tr></tbody></table></div>
+<h2 id="what-it-will-not-do-by-design" class="md-h2">What it will not do — by design</h2>
+<ul class="md-list">
+<li><strong>Invent building features.</strong> If the pack doesn&#x27;t say it, the prompt doesn&#x27;t contain it — this is the whole point.</li>
+<li><strong>Resolve source contradictions.</strong> Two storey counts, two bricks: both logged, the conservative reading labelled, the choice yours.</li>
+<li><strong>Quietly comply with a misleading request.</strong> Decline-or-flag, in writing, in the brief — with the honest version offered alongside.</li>
+<li><strong>Produce a verified view or AVR.</strong> Illustrative CGI only; it names the methodology (LI TGN 06/19 <code>[to verify]</code>) and tells you when you need a specialist.</li>
+<li><strong>Redesign.</strong> Camera, light and atmosphere are the only variables.</li>
+<li><strong>Dump all six prompts at once</strong> in an interactive run — the A/B/C choice per shot is where your judgement enters. Batch mode is the documented exception.</li>
+<li><strong>Web-search your client or site</strong>, or put client names in filenames.</li>
+</ul>
+<h2 id="not-this-skill" class="md-h2">Not this skill</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>You want</th><th>Use</th></tr></thead><tbody><tr><td>Polish one rough prompt, or edit/transform an existing image</td><td><code>nano-banana-prompt-builder</code></td></tr><tr><td>Brick vs fibre cement at a fixed camera; bay and proportion studies</td><td><code>facade-maker</code></td></tr><tr><td>Plan-evolution or site-analysis diagram sets</td><td>the site matrix diagram builders</td></tr><tr><td>A surveyed, committee-grade verified view</td><td>an AVR consultant, not an image model</td></tr></tbody></table></div>
+<h2 id="work-the-output" class="md-h2">Work the output</h2>
+<ol class="md-list">
+<li>Read <strong>Flags &amp; queries</strong> first — that&#x27;s the deliverable most likely to save you. Answer the numbered items; each unlocks a prompt.</li>
+<li>Check the <strong>fact base</strong> for Inferred rows: those are the assumptions your image rests on. Orientation is usually the dangerous one.</li>
+<li>Generate the baseline before the atmosphere variant, and confirm the geometry before you fall in love with the light.</li>
+<li>Re-prompt, don&#x27;t crop, for a different aspect ratio — the lens choice was made for that frame.</li>
+<li>Run the <strong>consistency checklist</strong> across the finished set before it goes on a board. One image showing established trees undoes the other five.</li>
+<li>Caption every image &quot;Illustrative visualisation — not a verified view&quot;, and carry any <em>indicative / not consented</em> label onto the file itself.</li>
+</ol>
+<hr class="divider md-hr">
+<p><strong>Remember:</strong> the brief equips your decision; it doesn&#x27;t make it. Thin material correctly produces a short fact base and a long flags table — that is the skill working, not failing. Test drive: run it on the Tanyard Green sample pack and score against its defect key.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="trigger">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Triggering</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">When Claude reaches for it.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">This is the description Claude itself reads to
+        decide whether the skill applies. It is worth knowing, because it tells you exactly how to
+        phrase the ask — and what the skill will decline.</p>
+      </div>
+      <div class="tpl-triggerbox card">
+        <p class="tpl-triggerbox__name"><code>hero-perspective-prompt-builder</code></p>
+        <p>Turn project material — plans, massing descriptions, elevation notes, materials schedules, site orientation, audience notes — into a traceable hero shot brief plus copy-paste render-prompt variants (camera, lens, light, mood, entourage) for Nano Banana / Gemini or another image generator. Every visual claim is traced to the source or flagged; entourage and context are kept honest for the stated audience. Use this WHENEVER an architect wants the money shot: &quot;hero shot&quot;, &quot;hero perspective&quot;, &quot;key view&quot;, &quot;cover image for the planning submission / DAS / competition board&quot;, &quot;marketing CGI of the scheme&quot;, &quot;six hero perspectives from this plan&quot;, &quot;build render prompts from this project pack&quot;. Do NOT use for polishing a single rough prompt or general archviz prompt engineering (nano-banana-prompt-builder), for camera-locked facade or cladding comparison sets (facade-maker), or to produce verified views / AVRs — it can only flag when one is needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="files">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Package</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Files it puts on your disk.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">2 files, 22.1 KB unzipped,
+        under <code>.claude/skills/hero-perspective-prompt-builder/</code>. Reference material loads only when the skill
+        needs it &mdash; references/.</p>
+        <p><a class="btn btn--outline btn--mono btn--sm" href="../downloads/hero-perspective-prompt-builder.skill" download>Download the package <span class="btn__arrow" aria-hidden="true">&#8595;</span></a></p>
+      </div>
+      <div class="tpl-tree card">
+        <p class="tpl-tree__root"><code>.claude/skills/hero-perspective-prompt-builder/</code></p>
+        <ul class="tpl-tree__list"><li class="tpl-file" style="--d:1"><span class="tpl-file__name">shot-vocabulary.md</span><span class="tpl-file__dir">references/</span><span class="tpl-file__size">5.8 KB</span></li><li class="tpl-file" style="--d:0"><span class="tpl-file__name">SKILL.md</span><span class="tpl-file__dir"></span><span class="tpl-file__size">16.3 KB</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More in this category">
+      <span></span>
+      <a class="tpl-prevnext__all" href="../../resources/skills/visuals-diagrams.html">All Visuals &amp; diagrams</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/skills/facade-maker.html"><span>Next</span><strong>Facade Maker</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

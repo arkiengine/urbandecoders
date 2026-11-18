@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Installing a skill from this library — Urban Decoders</title>
+<meta name="description" content="What a Claude skill actually is, the two ways to install one, where the files land, and how to tell whether it loaded.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/guides/install-claude-skills.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Installing a skill from this library — Urban Decoders">
+<meta property="og:description" content="What a Claude skill actually is, the two ways to install one, where the files land, and how to tell whether it loaded.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Installing a skill from this library",
+  "description": "What a Claude skill actually is, the two ways to install one, where the files land, and how to tell whether it loaded.",
+  "url": "https://www.urbandecoders.com/resources/guides/install-claude-skills.html",
+  "dateModified": "2026-11-16",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "publisher": { "@type": "Organization", "name": "Urban Decoders" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/guides/">Guides</a><span aria-hidden="true">/</span>
+      <span>Start here</span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Start here</span>
+        <h1 class="display tpl-skilltitle">Installing a skill from this library</h1>
+        <p class="lead">What a Claude skill actually is, the two ways to install one, where the files land, and how to tell whether it loaded.</p>
+      </div>
+      <dl class="tpl-meta card"><div><dt>Software</dt><dd>Claude</dd></div><div><dt>Level</dt><dd>Start here</dd></div><div><dt>Reading</dt><dd>5 min</dd></div><div><dt>Updated</dt><dd>2026-11-16</dd></div></dl>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#what-a-skill-is">What a skill is</a></li><li><a href="#route-1-the-claude-app">Route 1 — the Claude app</a></li><li><a href="#route-2-claude-code">Route 2 — Claude Code</a></li><li><a href="#checking-it-loaded">Checking it loaded</a></li><li><a href="#test-driving-before-you-trust-it">Test-driving before you trust it</a></li><li><a href="#editing-a-skill">Editing a skill</a></li></ul>
+      </nav>
+      <div class="tpl-doc">
+        
+        <div class="md"><p>Every skill in our <a href="../skills/">library</a> downloads as a <code>.skill</code> file. This page covers what that file is and the two ways to get it into Claude.</p>
+<h2 id="what-a-skill-is" class="md-h2">What a skill is</h2>
+<p>A skill is a folder of instructions Claude reads <strong>when your conversation matches it</strong>. It is not a plugin, not an app, and not something that runs code on your behalf. At minimum it contains one file:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>skill-name/
+└── SKILL.md</code></pre></div>
+<p><code>SKILL.md</code> has a frontmatter block with a <code>name</code> and a <code>description</code>, then the instructions themselves. <strong>The description is the important part</strong> — it is what Claude reads to decide whether the skill applies, which is why the ones in our library are written as long, explicit statements of when to use the skill and when not to.</p>
+<p>Larger skills add two conventional folders:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>skill-name/
+├── SKILL.md
+├── references/      loaded only when the skill needs the detail
+└── scripts/         deterministic steps run as code, not improvised</code></pre></div>
+<p>A <code>.skill</code> file is just a <strong>zip of that folder</strong>. You can rename it to <code>.zip</code> and look inside before installing it, and you should.</p>
+<h2 id="route-1-the-claude-app" class="md-h2">Route 1 — the Claude app</h2>
+<ol class="md-list">
+<li>Download the <code>.skill</code> file from the skill&#x27;s page.</li>
+<li>Open Claude, go to <strong>Settings → Capabilities → Skills</strong>, and upload it.</li>
+<li>Start a conversation and attach your material.</li>
+</ol>
+<p>The skill loads itself when the conversation matches. You can also invoke it directly by name.</p>
+<h2 id="route-2-claude-code" class="md-h2">Route 2 — Claude Code</h2>
+<p>Unzip the package into a skills folder:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-bash">mkdir -p .claude/skills &amp;&amp; unzip skill-name.skill -d .claude/skills/</code></pre></div>
+<p>Then restart Claude Code.</p>
+<p><strong>Two locations, and the difference matters:</strong></p>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Location</th><th>Scope</th></tr></thead><tbody><tr><td><code>.claude/skills/</code></td><td>This project only</td></tr><tr><td><code>~/.claude/skills/</code></td><td>Every project</td></tr></tbody></table></div>
+<p>Project-scoped is the better default. A skill in <code>.claude/skills/</code> can be committed to the repository, which means the whole team gets it and it is versioned with the work. A skill in <code>~/.claude/skills/</code> exists only on your machine and will quietly diverge from everyone else&#x27;s.</p>
+<p>Check it landed:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-bash">ls .claude/skills/</code></pre></div>
+<p>You should see the skill folder with <code>SKILL.md</code> inside it. If you see the <code>.skill</code> file instead, the unzip did not run.</p>
+<h2 id="checking-it-loaded" class="md-h2">Checking it loaded</h2>
+<p>Start a conversation and describe the task in your own words — the way you would to a colleague. If the skill&#x27;s description matches, Claude picks it up.</p>
+<p>If it does not load when you expected it to, the usual causes are:</p>
+<ol class="md-list">
+<li><strong>Claude Code was not restarted</strong> after the files were added.</li>
+<li><strong>The folder structure is wrong.</strong> <code>SKILL.md</code> must be inside a folder inside <code>skills/</code>, not loose in <code>skills/</code> itself.</li>
+<li><strong>The conversation does not match the description.</strong> Read the skill&#x27;s trigger description — every page in our library prints it in full, under <em>When Claude reaches for it</em>. It tells you exactly how to phrase the ask, and what the skill will decline.</li>
+</ol>
+<p>That third one is not a failure. A skill that declines to run on the wrong task is working.</p>
+<h2 id="test-driving-before-you-trust-it" class="md-h2">Test-driving before you trust it</h2>
+<p>Every skill in our library ships a <strong>worked example</strong>: a fictional project with defects deliberately planted in it, a reference answer, and a key listing what was planted and what a good run does with each one.</p>
+<p>Download it from the skill&#x27;s page, run the skill on the example input, and score your output against the key.</p>
+<p>This takes ten minutes and tells you more than any description. In particular it tells you whether the skill <strong>refuses the things it should refuse</strong> — most of ours are built to decline a request rather than produce a confident answer from insufficient evidence, and that behaviour is the whole point. If your run produces a tidy, complete, confident output where the key says it should have produced gaps and questions, something is wrong.</p>
+<h2 id="editing-a-skill" class="md-h2">Editing a skill</h2>
+<p>They are markdown. Open <code>SKILL.md</code> and change it.</p>
+<p>Two things worth knowing before you do:</p>
+<ul class="md-list">
+<li><strong>The description controls triggering.</strong> Shortening it to something tidy is the quickest way to stop a skill loading when you need it.</li>
+<li><strong>The refusals are load-bearing.</strong> Most of the &quot;will not do&quot; lists in our skills exist because the alternative is a plausible, well-formatted, wrong answer. Removing a refusal usually does not make a skill more helpful; it makes it more confident.</li>
+</ul>
+<p>If you change one substantially, re-run it on the worked example and score it again.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More guides">
+      <span></span>
+      <a class="tpl-prevnext__all" href="../../resources/guides/">All guides</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/guides/mcp-what-it-is.html"><span>Next</span><strong>What MCP actually is, and where Claude keeps its config</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

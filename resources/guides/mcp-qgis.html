@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect QGIS to Claude — Urban Decoders</title>
+<meta name="description" content="A working QGIS MCP setup using uvx, with the exact config we run, what Claude can then do to a project, and why you should keep a checkpoint before you let it.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/guides/mcp-qgis.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Connect QGIS to Claude — Urban Decoders">
+<meta property="og:description" content="A working QGIS MCP setup using uvx, with the exact config we run, what Claude can then do to a project, and why you should keep a checkpoint before you let it.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Connect QGIS to Claude",
+  "description": "A working QGIS MCP setup using uvx, with the exact config we run, what Claude can then do to a project, and why you should keep a checkpoint before you let it.",
+  "url": "https://www.urbandecoders.com/resources/guides/mcp-qgis.html",
+  "dateModified": "2026-11-16",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "publisher": { "@type": "Organization", "name": "Urban Decoders" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/guides/">Guides</a><span aria-hidden="true">/</span>
+      <span>MCP setup</span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">MCP setup</span>
+        <h1 class="display tpl-skilltitle">Connect QGIS to Claude</h1>
+        <p class="lead">A working QGIS MCP setup using uvx, with the exact config we run, what Claude can then do to a project, and why you should keep a checkpoint before you let it.</p>
+      </div>
+      <dl class="tpl-meta card"><div><dt>Software</dt><dd>QGIS</dd></div><div><dt>Level</dt><dd>Intermediate</dd></div><div><dt>Reading</dt><dd>7 min</dd></div><div><dt>Updated</dt><dd>2026-11-16</dd></div></dl>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#what-you-get">What you get</a></li><li><a href="#what-you-need">What you need</a></li><li><a href="#claude-desktop">Claude Desktop</a></li><li><a href="#claude-code">Claude Code</a></li><li><a href="#a-note-on-pulling-from-a-branch-archive">A note on pulling from a branch archive</a></li><li><a href="#checking-it-worked">Checking it worked</a></li><li><a href="#before-you-let-it-loose">Before you let it loose</a></li><li><a href="#what-it-is-good-at">What it is good at</a></li><li><a href="#what-to-keep-away-from-it">What to keep away from it</a></li></ul>
+      </nav>
+      <div class="tpl-doc">
+        <figure class="guide-fig"><img src="../../assets/img/mcp/mcp-qgis.svg" alt="Connect QGIS to Claude — connection diagram" width="1200" height="440" loading="eager" decoding="async"><figcaption>Claude talks to QGIS over MCP: tool calls out, model state back. What installs where is in the steps below.</figcaption></figure>
+        <div class="md"><p>This is the setup we run in the studio. The config below is the one in our own <code>claude_desktop_config.json</code>, with personal paths generalised.</p>
+<p>If you have not set up an MCP server before, read <a href="mcp-what-it-is.html">What MCP actually is</a> first — it covers where the config file lives and the three mistakes that account for most failures.</p>
+<h2 id="what-you-get" class="md-h2">What you get</h2>
+<p>Once connected, Claude can work with a <strong>running QGIS instance</strong>: list and add layers, inspect CRS and extents, run Processing algorithms, read and edit attributes, build layouts, and export. It is a genuine two-way connection, not a file converter.</p>
+<p>That cuts both ways. It can also edit your layers. See <a href="#before-you-let-it-loose">Before you let it loose</a>.</p>
+<h2 id="what-you-need" class="md-h2">What you need</h2>
+<ul class="md-list">
+<li><strong>QGIS</strong>, installed and running.</li>
+<li><strong><code>uv</code></strong> — the Python toolchain from Astral that provides <code>uvx</code>. <code>uvx</code> runs a Python tool without you installing it into an environment first, which is what makes this config a single line.</li>
+<li><strong>The QGIS MCP server.</strong> We use the one at <code>github.com/nkarasiak/qgis-mcp</code>, run directly from its archive.</li>
+</ul>
+<p>Install <code>uv</code> from the official instructions at <code>docs.astral.sh/uv</code>. Afterwards, check it resolves:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-bash">uvx --version</code></pre></div>
+<p>Note where it lives — on Windows it commonly lands in <code>C:\Users\&lt;you&gt;\.local\bin\uvx.exe</code>. You may need the full path in the config if that directory is not on Claude&#x27;s <code>PATH</code>.</p>
+<h2 id="claude-desktop" class="md-h2">Claude Desktop</h2>
+<p>Open <code>%APPDATA%\Claude\claude_desktop_config.json</code> and add:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-json">{
+  &quot;mcpServers&quot;: {
+    &quot;qgis&quot;: {
+      &quot;command&quot;: &quot;uvx&quot;,
+      &quot;args&quot;: [
+        &quot;--from&quot;,
+        &quot;https://github.com/nkarasiak/qgis-mcp/archive/refs/heads/main.zip&quot;,
+        &quot;qgis-mcp-server&quot;
+      ]
+    }
+  }
+}</code></pre></div>
+<p>If Claude cannot find <code>uvx</code>, replace <code>&quot;uvx&quot;</code> with its absolute path, using forward slashes:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-json">&quot;command&quot;: &quot;C:/Users/&lt;you&gt;/.local/bin/uvx.exe&quot;</code></pre></div>
+<p><strong>Quit Claude Desktop completely and reopen it.</strong> On Windows, check the system tray — closing the window is not enough.</p>
+<h2 id="claude-code" class="md-h2">Claude Code</h2>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-bash">claude mcp add qgis -- uvx --from https://github.com/nkarasiak/qgis-mcp/archive/refs/heads/main.zip qgis-mcp-server</code></pre></div>
+<p>Then:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-bash">claude mcp list</code></pre></div>
+<h2 id="a-note-on-pulling-from-a-branch-archive" class="md-h2">A note on pulling from a branch archive</h2>
+<p>That URL points at the <strong><code>main</code> branch archive</strong>, so every time the server starts you get whatever is on <code>main</code> at that moment. It is convenient and it is not reproducible.</p>
+<p>If you want the behaviour to stay still, point <code>--from</code> at a tagged release or a specific commit archive instead, and note which one you pinned. On a project where the GIS work matters, pin it.</p>
+<h2 id="checking-it-worked" class="md-h2">Checking it worked</h2>
+<p>Start QGIS, open a project, then ask Claude:</p>
+<blockquote class="mdquote"><p>What layers are in my QGIS project, and what CRS is each one in?</p></blockquote>
+<p>If the connection is live you get an answer about your actual project. If you get a general explanation of what layers are, the server did not connect — see the troubleshooting section of the <a href="mcp-what-it-is.html#checking-it-worked">MCP primer</a>.</p>
+<h2 id="before-you-let-it-loose" class="md-h2">Before you let it loose</h2>
+<p>This server can <strong>modify your project</strong>. Layers can be added, fields calculated, features edited, styles changed.</p>
+<p>Three habits worth forming:</p>
+<ol class="md-list">
+<li><strong>Create a checkpoint first.</strong> The server exposes checkpoint and restore operations — use them at the start of a session, not after something goes wrong.</li>
+<li><strong>Work on a copy of the project file</strong> for anything exploratory.</li>
+<li><strong>Watch the CRS.</strong> The quickest way to produce confident nonsense is to let a layer land in the wrong projection and carry on. Ask for the CRS of everything before you ask for analysis, and check that answer yourself.</li>
+</ol>
+<p>That third one is not hypothetical. A reprojection performed on an assumed source CRS produces output that carries a confident declaration and is wrong in a way nobody can later unpick. If your datasets disagree about what frame they are in, resolve that before you automate anything on top of them — our <a href="../skills/crs-georeference-check.html">CRS &amp; Georeferencing Check</a> skill exists for exactly that problem.</p>
+<h2 id="what-it-is-good-at" class="md-h2">What it is good at</h2>
+<ul class="md-list">
+<li><strong>Reading a project and telling you what is actually in it</strong> — layer list, CRS per layer, extents, feature counts, field names. This is the single most useful thing it does and it is entirely read-only.</li>
+<li><strong>Running Processing algorithms</strong> without you remembering the parameter names.</li>
+<li><strong>Attribute work</strong> — field calculator expressions, joins, statistics.</li>
+<li><strong>Layouts</strong> — adding maps, legends, scale bars and labels, then exporting.</li>
+</ul>
+<h2 id="what-to-keep-away-from-it" class="md-h2">What to keep away from it</h2>
+<ul class="md-list">
+<li><strong>Anything you have not backed up.</strong></li>
+<li><strong>Deciding a CRS.</strong> It can read what a layer declares. It cannot tell you what a layer that declares nothing ought to be, and neither can anyone else without asking the supplier.</li>
+<li><strong>Interpreting the result.</strong> It will run a buffer and a zonal statistic happily. Whether the answer means anything is still yours.</li>
+</ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More guides">
+      <a class="tpl-prevnext__item" href="../../resources/guides/mcp-blender.html"><span>Previous</span><strong>Connect Blender to Claude</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/guides/">All guides</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/guides/mcp-revit-pyrevit.html"><span>Next</span><strong>Connect Revit to Claude, through pyRevit</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

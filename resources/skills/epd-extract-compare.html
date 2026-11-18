@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EPD Extract &amp; Compare — Claude skill for architecture — Urban Decoders</title>
+<meta name="description" content="Pulls declared data out of EPDs and compares only the pairs that genuinely compare, with the reason named for the rest.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/skills/epd-extract-compare.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="EPD Extract &amp; Compare — Claude skill for architecture — Urban Decoders">
+<meta property="og:description" content="Pulls declared data out of EPDs and compares only the pairs that genuinely compare, with the reason named for the rest.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "EPD Extract &amp; Compare",
+  "alternateName": "epd-extract-compare",
+  "description": "Pulls declared data out of EPDs and compares only the pairs that genuinely compare, with the reason named for the rest.",
+  "codeSampleType": "full solution",
+  "programmingLanguage": "Claude Skill",
+  "url": "https://www.urbandecoders.com/resources/skills/epd-extract-compare.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "license": "Proprietary",
+  "isPartOf": { "@type": "CollectionPage", "name": "Claude Skills for Architecture", "url": "https://www.urbandecoders.com/resources/skills/" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/">Skills</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/carbon-performance.html">Carbon &amp; performance</a><span aria-hidden="true">/</span>
+      <span><code>epd-extract-compare</code></span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Extraction table</span>
+        <h1 class="display tpl-skilltitle">EPD Extract &amp; Compare</h1>
+        <p class="lead">Pulls declared data out of EPDs and compares only the pairs that genuinely compare, with the reason named for the rest.</p>
+        <p class="tpl-callline">Once installed, Claude loads it on its own when the conversation
+        matches. You can also call it directly with <code>/epd-extract-compare</code>.</p>
+        <div class="wrap-btns">
+          <a class="btn btn--brand btn--mono" href="../downloads/epd-extract-compare.skill" download>Download .skill <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+          <a class="btn btn--outline btn--mono" href="#quick-reference">Read the quick reference</a>
+        </div>
+      </div>
+      <dl class="tpl-meta card">
+        <div><dt>Category</dt><dd><a href="../../resources/skills/carbon-performance.html">Carbon &amp; performance</a></dd></div>
+        <div><dt>Output</dt><dd>Extraction table</dd></div>
+        <div><dt>Package</dt><dd>1 file &middot; 7.9 KB</dd></div>
+        <div><dt>Download</dt><dd>3.4 KB zip</dd></div>
+        <div><dt>Worked example</dt><dd><a href="../downloads/epd-extract-compare-example.zip" download>3 files &middot; 8.3 KB</a></dd></div>
+        <div><dt>Tags</dt><dd class="tpl-meta__tags"><span class="tag">EPD</span><span class="tag">Products</span><span class="tag">Specification</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap"><div class="tpl-disclaimer" role="note">
+  <span class="tpl-disclaimer__tag">Read first</span>
+  <p>These skills assist qualified practitioners. They replace neither the architect of
+  record nor the approving authority. Every figure, clause and citation they surface is
+  marked for you to verify — treat an unverified output as a question, not an answer.</p>
+</div></div>
+</section>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Install just this one.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">Two routes. Both end with Claude loading the
+        skill by itself when your conversation matches.</p>
+      </div>
+      <div class="tpl-install">
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">A</span> Claude app, Chat or Cowork</h3>
+          <ol class="md-list">
+            <li>Download <code>epd-extract-compare.skill</code> below.</li>
+            <li>Open Claude, go to <strong>Settings &rarr; Capabilities &rarr; Skills</strong> and upload the file.</li>
+            <li>Start a conversation and attach your material. The skill loads itself on a match.</li>
+          </ol>
+          <a class="btn btn--ghost btn--mono btn--sm" href="../downloads/epd-extract-compare.skill" download>epd-extract-compare.skill &middot; 3.4 KB</a>
+        </div>
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">B</span> Claude Code, in your project</h3>
+          <p>Unzip the package into your skills folder, then restart Claude Code.</p>
+          <div class="codeblock">
+            <button class="codeblock__copy" type="button" data-copy>Copy</button>
+            <pre><code>mkdir -p .claude/skills &amp;&amp; unzip epd-extract-compare.skill -d .claude/skills/</code></pre>
+          </div>
+          <p class="tpl-fine">Use <code>~/.claude/skills/</code> instead to install it for every project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="at-a-glance">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">At a glance</span>
+      <h2 class="section-title">What it takes, what you get.</h2>
+    </div>
+    <div class="grid grid--3 tpl-glance">
+      <div class="card tpl-glance__box">
+        <h3>It takes</h3>
+        <p>Environmental Product Declarations as supplied files</p>
+      </div>
+      <div class="card tpl-glance__box">
+        <h3>You get</h3>
+        <p>Declared unit, module scope, service life, standard, PCR, validity and impacts as printed; a comparability verdict per pair before any comparison; a like-for-like table; and what data would be needed to compare the rest.</p>
+      </div>
+      <div class="card tpl-glance__box tpl-glance__box--red">
+        <h3>It will not</h3>
+        <p>Supply EPD data from memory, source EPDs, declare a winner, normalise between declared units, or let `[not declared]` read as zero.</p>
+      </div>
+    </div>
+    <div class="tpl-example">
+      <span class="tag">Test drive</span>
+      <p>Bramhope Gate — three EPDs, three declared units, no comparable pair. Run the skill on the example input, then score your output against the defect key &mdash; it lists what was planted and what a good run does with it.</p>
+      <a class="btn btn--outline btn--mono btn--sm" href="../downloads/epd-extract-compare-example.zip" download>Worked example <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="quick-reference">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#run-it">Run it</a></li><li><a href="#the-output">The output</a></li><li><a href="#why-two-real-published-verified-numbers-still-dont-compare">Why two real, published, verified numbers still don&#x27;t compare</a></li><li><a href="#what-it-will-not-do-by-design">What it will not do — by design</a></li><li><a href="#work-the-output">Work the output</a></li></ul>
+        <p class="tpl-toc__head tpl-toc__head--spaced">Jump to</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#files">Files on disk</a></li>
+          <li><a href="#trigger">When it triggers</a></li>
+        </ul>
+      </nav>
+      <div class="tpl-doc">
+        <span class="eyebrow">Quick reference</span>
+        <h2 class="section-title" style="margin:var(--space-4) 0 var(--space-6)">How to run it.</h2>
+        <div class="md"><p>Declared data pulled out of supplied EPDs and laid side by side <strong>only where the comparison is fair</strong>. Every mismatch that makes two EPDs non-comparable is flagged before any comparison is shown.</p>
+<h2 id="run-it" class="md-h2">Run it</h2>
+<p>Attach the EPDs:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>Extract and compare these three insulation EPDs.
+Are these two actually comparable? The supplier says theirs is lower.
+Pull the declared data out of these EPDs into a table for the spec.
+Which of these are still valid, and what would we need to compare the rest properly?</code></pre></div>
+<p>Say what the comparison is for — specification, a certification credit, a client question. The caveats are written against that use.</p>
+<h2 id="the-output" class="md-h2">The output</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Part</th><th>What it holds</th></tr></thead><tbody><tr><td>Extraction table</td><td>One column per EPD: operator, number, dates, standard, PCR, manufacturer, type, declared unit, modules, RSL, impacts <strong>as printed</strong>.</td></tr><tr><td><strong>Comparability verdict</strong></td><td>Per pair: comparable / comparable with conditions / not comparable, reason named. <strong>Before any comparison.</strong></td></tr><tr><td>Validity check</td><td>Current, expired, expiring soon.</td></tr><tr><td>Like-for-like table</td><td>Only the subset that genuinely compares, on their shared basis.</td></tr><tr><td>Normalisation requirement</td><td>What product data would be needed to compare the rest, and who supplies it.</td></tr><tr><td>Caveats</td><td>What a specifier must know before using any of it.</td></tr></tbody></table></div>
+<p><strong>Tags:</strong> <code>[as printed]</code> · <code>[not declared]</code> · <code>[unreadable]</code> · <code>[expired]</code> · <code>[to verify]</code>.</p>
+<blockquote class="mdquote"><p><strong><code>[not declared]</code> is never shown as zero, a dash, or a blank that reads as zero.</strong> A module nobody assessed is not a module with no impact. That substitution is the most consequential silent error in this whole domain.</p></blockquote>
+<h2 id="why-two-real-published-verified-numbers-still-dont-compare" class="md-h2">Why two real, published, verified numbers still don&#x27;t compare</h2>
+<ul class="md-list">
+<li><strong>Different declared units</strong> — per m², per kg, per m³, per &quot;1 m² at 100 mm with a 60-year RSL&quot;.</li>
+<li><strong>Different module scope</strong> — A1–A3 against A1–A5 is not a fair fight.</li>
+<li><strong>Different EPD type</strong> — product-specific against industry-average.</li>
+<li><strong>Different PCR, standard version or geography.</strong></li>
+<li><strong>Expired</strong> — an EPD past its validity date is not data, it is history.</li>
+</ul>
+<h2 id="what-it-will-not-do-by-design" class="md-h2">What it will not do — by design</h2>
+<ul class="md-list">
+<li><strong>Supply EPD data or a GWP figure from memory.</strong> If it was not in a supplied document, it does not exist here.</li>
+<li><strong>Find or source EPDs</strong> unless you ask and supply the route.</li>
+<li><strong>Declare a winner or rank by impact.</strong> Products are chosen on performance, availability, cost, buildability and appearance too — none of which is in an EPD.</li>
+<li><strong>Normalise between declared units.</strong> Normalising needs density, thickness, coverage and service life — specification questions, not arithmetic ones.</li>
+<li><strong>Sum modules</strong> the EPD presents separately, or merge biogenic carbon into GWP where the EPD separates them.</li>
+<li><strong>Present an expired EPD as current.</strong></li>
+<li><strong>Compare across declared units with a caveat.</strong> A caveated wrong comparison still gets quoted without the caveat.</li>
+<li><strong>State what a standard or PCR requires from memory.</strong></li>
+</ul>
+<h2 id="work-the-output" class="md-h2">Work the output</h2>
+<ol class="md-list">
+<li>Read the comparability verdict before the numbers. If the pair fails the gate, the numbers beside each other mean nothing.</li>
+<li>Supply the normalisation inputs yourself — specified thickness, density, coverage, agreed service life — then the arithmetic runs with your inputs attributed to you.</li>
+<li>Check EPD type on anything heading into a specification. An industry average does not describe the product you will actually buy.</li>
+<li>Watch the validity dates. Re-run before any submission that relies on them.</li>
+<li>Keep <code>[not declared]</code> visible in anything you pass on. The moment it becomes a blank cell in someone&#x27;s summary, it becomes a zero.</li>
+<li>Treat the extraction as product data, not building data. For a building-level answer use <strong>embodied-carbon-takeoff</strong>, and give the assessor these EPDs.</li>
+</ol>
+<hr class="divider md-hr">
+<p><strong>Remember:</strong> the supplier quoting the lowest number is usually quoting a different unit, a shorter module scope, or an expired declaration. The gate exists to find out which.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="trigger">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Triggering</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">When Claude reaches for it.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">This is the description Claude itself reads to
+        decide whether the skill applies. It is worth knowing, because it tells you exactly how to
+        phrase the ask — and what the skill will decline.</p>
+      </div>
+      <div class="tpl-triggerbox card">
+        <p class="tpl-triggerbox__name"><code>epd-extract-compare</code></p>
+        <p>Extract the declared data from supplied Environmental Product Declarations and lay several side by side honestly: declared unit, scope and modules, reference service life, standard and PCR, validity dates, programme operator, and the declared impact figures as printed — with every mismatch that makes two EPDs non-comparable flagged before any comparison is shown. Use this WHENEVER someone supplies EPDs and asks to &quot;compare these EPDs&quot;, &quot;which product has lower embodied carbon&quot;, &quot;pull the GWP out of these&quot;, &quot;are these comparable&quot;, &quot;extract the EPD data into a table&quot;, &quot;check this EPD is still valid&quot;, or is selecting between products on environmental grounds. Do NOT use it to supply EPD or carbon data from memory, to find EPDs (it reads what you supply), to declare a winner or recommend a product, to normalise figures between different declared units, or to perform a building-level assessment (embodied-carbon-takeoff).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="files">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Package</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Files it puts on your disk.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">1 file, 7.9 KB unzipped,
+        under <code>.claude/skills/epd-extract-compare/</code>. Reference material loads only when the skill
+        needs it &mdash; no subfolders.</p>
+        <p><a class="btn btn--outline btn--mono btn--sm" href="../downloads/epd-extract-compare.skill" download>Download the package <span class="btn__arrow" aria-hidden="true">&#8595;</span></a></p>
+      </div>
+      <div class="tpl-tree card">
+        <p class="tpl-tree__root"><code>.claude/skills/epd-extract-compare/</code></p>
+        <ul class="tpl-tree__list"><li class="tpl-file" style="--d:0"><span class="tpl-file__name">SKILL.md</span><span class="tpl-file__dir"></span><span class="tpl-file__size">7.9 KB</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More in this category">
+      <a class="tpl-prevnext__item" href="../../resources/skills/embodied-carbon-takeoff.html"><span>Previous</span><strong>Embodied Carbon Takeoff</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/skills/carbon-performance.html">All Carbon &amp; performance</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/skills/overheating-evidence-pack.html"><span>Next</span><strong>Overheating Evidence Pack</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

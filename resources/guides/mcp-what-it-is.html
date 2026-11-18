@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What MCP actually is, and where Claude keeps its config — Urban Decoders</title>
+<meta name="description" content="The Model Context Protocol in plain terms, the two places Claude reads server config from, and the JSON shape every setup guide assumes you already know.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/guides/mcp-what-it-is.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="What MCP actually is, and where Claude keeps its config — Urban Decoders">
+<meta property="og:description" content="The Model Context Protocol in plain terms, the two places Claude reads server config from, and the JSON shape every setup guide assumes you already know.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "What MCP actually is, and where Claude keeps its config",
+  "description": "The Model Context Protocol in plain terms, the two places Claude reads server config from, and the JSON shape every setup guide assumes you already know.",
+  "url": "https://www.urbandecoders.com/resources/guides/mcp-what-it-is.html",
+  "dateModified": "2026-11-16",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "publisher": { "@type": "Organization", "name": "Urban Decoders" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/guides/">Guides</a><span aria-hidden="true">/</span>
+      <span>Start here</span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Start here</span>
+        <h1 class="display tpl-skilltitle">What MCP actually is, and where Claude keeps its config</h1>
+        <p class="lead">The Model Context Protocol in plain terms, the two places Claude reads server config from, and the JSON shape every setup guide assumes you already know.</p>
+      </div>
+      <dl class="tpl-meta card"><div><dt>Software</dt><dd>All</dd></div><div><dt>Level</dt><dd>Start here</dd></div><div><dt>Reading</dt><dd>6 min</dd></div><div><dt>Updated</dt><dd>2026-11-16</dd></div></dl>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#what-mcp-is">What MCP is</a></li><li><a href="#the-two-config-files">The two config files</a></li><li><a href="#the-json-shape">The JSON shape</a></li><li><a href="#pinning-versions">Pinning versions</a></li><li><a href="#checking-it-worked">Checking it worked</a></li><li><a href="#a-note-on-trust">A note on trust</a></li></ul>
+      </nav>
+      <div class="tpl-doc">
+        <figure class="guide-fig"><img src="../../assets/img/mcp/mcp-what-it-is.svg" alt="What MCP actually is, and where Claude keeps its config — connection diagram" width="1200" height="440" loading="eager" decoding="async"><figcaption>Claude talks to All over MCP: tool calls out, model state back. What installs where is in the steps below.</figcaption></figure>
+        <div class="md"><p>Every MCP setup guide on the internet starts at step three. It hands you a block of JSON and assumes you know which file it goes in, which Claude reads it, and what to do when nothing happens. This page is steps one and two.</p>
+<h2 id="what-mcp-is" class="md-h2">What MCP is</h2>
+<p>The Model Context Protocol lets Claude talk to a program running on your machine. Claude is not reaching into Rhino or QGIS directly — it is sending messages to a small <strong>server</strong> process, and that server is the thing that knows how to drive the application.</p>
+<p>So every working setup has three parts, and when something breaks it is almost always obvious which one:</p>
+<ol class="md-list">
+<li><strong>The application</strong> — Rhino, Revit, QGIS, Blender. Usually it needs to be <strong>running</strong>, and often it needs an add-on or plugin installed that opens a listening port.</li>
+<li><strong>The MCP server</strong> — a separate process, started by Claude, that translates between Claude and the application.</li>
+<li><strong>Claude</strong> — Desktop or Code, which launches the server and reads the tools it offers.</li>
+</ol>
+<p>The commonest failure is not a broken config. It is <strong>the application not being open</strong>, or the add-on not enabled inside it. Check that first, every time.</p>
+<h2 id="the-two-config-files" class="md-h2">The two config files</h2>
+<p>Claude Desktop and Claude Code are separate products with separate configuration. Setting one up does not set up the other.</p>
+<h3 id="claude-desktop" class="md-h3">Claude Desktop</h3>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Platform</th><th>File</th></tr></thead><tbody><tr><td>Windows</td><td><code>%APPDATA%\Claude\claude_desktop_config.json</code></td></tr><tr><td>macOS</td><td><code>~/Library/Application Support/Claude/claude_desktop_config.json</code></td></tr></tbody></table></div>
+<p>On Windows you can paste <code>%APPDATA%\Claude</code> into the Explorer address bar and it will resolve.</p>
+<p><strong>Claude Desktop reads this file at launch.</strong> After editing it you must quit Claude completely — not just close the window — and reopen it. On Windows, check the system tray.</p>
+<h3 id="claude-code" class="md-h3">Claude Code</h3>
+<p>Claude Code stores servers in <code>~/.claude.json</code>, but <strong>you should not edit that file by hand.</strong> Use the CLI:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>claude mcp add &lt;name&gt; -- &lt;command&gt; &lt;args...&gt;
+claude mcp list
+claude mcp remove &lt;name&gt;</code></pre></div>
+<p>The <code>--</code> matters. Everything after it is the command Claude runs, passed through verbatim.</p>
+<p>Claude Code also supports a <strong><code>.mcp.json</code> in a project directory</strong>, which is how you share a server configuration with a team through version control.</p>
+<h2 id="the-json-shape" class="md-h2">The JSON shape</h2>
+<p>A Claude Desktop config is one object with one key you care about:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-json">{
+  &quot;mcpServers&quot;: {
+    &quot;my-server&quot;: {
+      &quot;command&quot;: &quot;path-or-name-of-executable&quot;,
+      &quot;args&quot;: [&quot;first-argument&quot;, &quot;second-argument&quot;],
+      &quot;env&quot;: {
+        &quot;SOME_API_KEY&quot;: &quot;value&quot;
+      }
+    }
+  }
+}</code></pre></div>
+<ul class="md-list">
+<li><strong><code>command</code></strong> is the executable. It can be a bare name if it is on your <code>PATH</code> (<code>npx</code>, <code>uvx</code>, <code>python</code>), or a full absolute path.</li>
+<li><strong><code>args</code></strong> is an array of strings. Not one string with spaces in it — <strong>an array</strong>. This is the single most common syntax error.</li>
+<li><strong><code>env</code></strong> is optional and holds environment variables the server needs, typically API keys.</li>
+</ul>
+<h3 id="three-things-that-will-bite-you-on-windows" class="md-h3">Three things that will bite you on Windows</h3>
+<p><strong>Backslashes in JSON.</strong> In JSON a backslash starts an escape sequence, so a Windows path needs either <strong>forward slashes</strong> or <strong>doubled backslashes</strong>. The first and third lines below are valid. The second is not, and it is the one everybody writes:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-json">&quot;command&quot;: &quot;C:/Users/you/tools/server.exe&quot;
+&quot;command&quot;: &quot;C:\Users\you\tools\server.exe&quot;
+&quot;command&quot;: &quot;C:\\Users\\you\\tools\\server.exe&quot;</code></pre></div>
+<p>Use forward slashes. They work on Windows, and you will never miscount a backslash again.</p>
+<p><strong><code>npx</code> needs a shim.</strong> On Windows, <code>npx</code> is a batch script rather than an executable, and Claude often cannot launch it directly. The working pattern is to call it through the command processor:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-json">{
+  &quot;command&quot;: &quot;cmd&quot;,
+  &quot;args&quot;: [&quot;/c&quot;, &quot;npx&quot;, &quot;-y&quot;, &quot;some-package@1.2.3&quot;]
+}</code></pre></div>
+<p><strong>Trailing commas.</strong> JSON does not allow them. A trailing comma after the last entry in an object will silently stop the whole file from loading, and Claude will start with no servers at all and no error.</p>
+<h2 id="pinning-versions" class="md-h2">Pinning versions</h2>
+<p>If a server is published to npm or PyPI, pin the version:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code class="lang-json">&quot;args&quot;: [&quot;/c&quot;, &quot;npx&quot;, &quot;-y&quot;, &quot;some-package@0.6.9&quot;]</code></pre></div>
+<p>Without a version you get whatever was published this morning. MCP servers are young software and breaking changes are frequent. Pin it, note the version, and upgrade deliberately.</p>
+<h2 id="checking-it-worked" class="md-h2">Checking it worked</h2>
+<p><strong>Claude Code:</strong> <code>claude mcp list</code> shows configured servers and whether they connected.</p>
+<p><strong>Claude Desktop:</strong> open a new conversation and ask Claude what tools it has. If the server connected, its tools appear with names like <code>mcp__qgis__*</code>.</p>
+<p><strong>If the server is not there:</strong></p>
+<ol class="md-list">
+<li>Is the application running, with its add-on enabled?</li>
+<li>Did you fully quit and reopen Claude Desktop?</li>
+<li>Is the JSON valid? Paste it into any JSON validator. A trailing comma or a stray backslash is usually the answer.</li>
+<li>Can you run the <code>command</code> and <code>args</code> yourself in a terminal? If it fails there, it will fail for Claude, and the terminal will tell you why. Claude will not.</li>
+</ol>
+<p>That last one resolves most problems. <strong>Run the command by hand first.</strong></p>
+<h2 id="a-note-on-trust" class="md-h2">A note on trust</h2>
+<p>An MCP server is a program that runs on your machine with your permissions, and most of them are community projects. Before installing one:</p>
+<ul class="md-list">
+<li>Read what it actually does. A server that can drive your CAD application can usually also write files.</li>
+<li>Prefer servers that are read-only, or that say clearly what they modify.</li>
+<li>Pin the version, so an update cannot change behaviour under you.</li>
+<li>Keep API keys in <code>env</code>, never in <code>args</code> — <code>args</code> are far more likely to end up in a log.</li>
+</ul>
+<p>None of this is paranoia about any particular project. It is the same care you would take with any plugin that can touch a live model.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More guides">
+      <a class="tpl-prevnext__item" href="../../resources/guides/install-claude-skills.html"><span>Previous</span><strong>Installing a skill from this library</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/guides/">All guides</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/guides/mcp-blender.html"><span>Next</span><strong>Connect Blender to Claude</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

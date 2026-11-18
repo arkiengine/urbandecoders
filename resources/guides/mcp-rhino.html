@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect Rhino to Claude — Urban Decoders</title>
+<meta name="description" content="McNeel&#x27;s own Rhino MCP Platform — a Yak plugin plus a one-click Claude Desktop connector. The only setup here with a first-party vendor behind it, and the easiest to install.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/guides/mcp-rhino.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Connect Rhino to Claude — Urban Decoders">
+<meta property="og:description" content="McNeel&#x27;s own Rhino MCP Platform — a Yak plugin plus a one-click Claude Desktop connector. The only setup here with a first-party vendor behind it, and the easiest to install.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Connect Rhino to Claude",
+  "description": "McNeel&#x27;s own Rhino MCP Platform — a Yak plugin plus a one-click Claude Desktop connector. The only setup here with a first-party vendor behind it, and the easiest to install.",
+  "url": "https://www.urbandecoders.com/resources/guides/mcp-rhino.html",
+  "dateModified": "2026-11-16",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "publisher": { "@type": "Organization", "name": "Urban Decoders" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/guides/">Guides</a><span aria-hidden="true">/</span>
+      <span>MCP setup</span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">MCP setup</span>
+        <h1 class="display tpl-skilltitle">Connect Rhino to Claude</h1>
+        <p class="lead">McNeel&#x27;s own Rhino MCP Platform — a Yak plugin plus a one-click Claude Desktop connector. The only setup here with a first-party vendor behind it, and the easiest to install.</p>
+      </div>
+      <dl class="tpl-meta card"><div><dt>Software</dt><dd>Rhino 8</dd></div><div><dt>Level</dt><dd>Beginner</dd></div><div><dt>Reading</dt><dd>6 min</dd></div><div><dt>Updated</dt><dd>2026-11-16</dd></div></dl>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#what-you-need">What you need</a></li><li><a href="#step-1-install-the-rhino-plugin">Step 1 — install the Rhino plugin</a></li><li><a href="#step-2a-claude-desktop">Step 2a — Claude Desktop</a></li><li><a href="#step-2b-claude-code">Step 2b — Claude Code</a></li><li><a href="#checking-it-worked">Checking it worked</a></li><li><a href="#targeting-rhino-9-wipbeta">Targeting Rhino 9 WIP/BETA</a></li><li><a href="#what-it-does">What it does</a></li><li><a href="#working-with-it-sensibly">Working with it sensibly</a></li><li><a href="#where-to-get-help">Where to get help</a></li></ul>
+      </nav>
+      <div class="tpl-doc">
+        <figure class="guide-fig"><img src="../../assets/img/mcp/mcp-rhino.svg" alt="Connect Rhino to Claude — connection diagram" width="1200" height="440" loading="eager" decoding="async"><figcaption>Claude talks to Rhino 8 over MCP: tool calls out, model state back. What installs where is in the steps below.</figcaption></figure>
+        <div class="md"><p>Of the five applications covered in these guides, Rhino is the one with <strong>first-party support</strong>. McNeel maintain the Rhino MCP Platform themselves, and it shows: the install is a package-manager command and a drag-and-drop, with no JSON to edit.</p>
+<p>If you have not set up an MCP server before, read <a href="mcp-what-it-is.html">What MCP actually is</a> first.</p>
+<p><strong>Source:</strong> McNeel&#x27;s documentation at <a href="https://mcneel.github.io/RhinoAI/docs/getting-started/connector/" target="_blank" rel="noopener">mcneel.github.io/RhinoAI</a>. Check it before you install — versions move.</p>
+<h2 id="what-you-need" class="md-h2">What you need</h2>
+<ul class="md-list">
+<li><strong>Rhino 8.</strong> The plugin is Rhino 8 only. The documentation&#x27;s own heading says so: <em>&quot;Install the Rhino plugin (Rhino 8 only!)&quot;</em>. Rhino 9 WIP/BETA is supported as a target, but the plugin installs into 8.</li>
+<li><strong>Claude Desktop</strong>, or Claude Code. Both routes are documented; Desktop is the easier one and McNeel recommend starting there.</li>
+</ul>
+<p><strong>Not supported</strong>, per McNeel&#x27;s troubleshooting page: <strong>Intel Macs</strong>, and .NET Framework builds. Update Rhino to the latest release if the plugin does not appear in the package manager.</p>
+<h2 id="step-1-install-the-rhino-plugin" class="md-h2">Step 1 — install the Rhino plugin</h2>
+<p>In Rhino 8, run:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>PackageManager</code></pre></div>
+<p>Search for <strong><code>Rhino-MCP-Platform</code></strong> and install it. Restart Rhino.</p>
+<p>McNeel also publish a deep link that opens the package manager straight at it — <code>rhino8://package/search?name=Rhino-MCP-Platform</code> — which works only where the Rhino 8 protocol handler is registered. The <code>PackageManager</code> route always works.</p>
+<p><strong>Command-line alternative.</strong> Yak is Rhino&#x27;s package manager and can be driven directly:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>yak install Rhino-MCP-Platform</code></pre></div>
+<p>Yak lives at:</p>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Platform</th><th>Path</th></tr></thead><tbody><tr><td>Windows</td><td><code>C:\Program Files\Rhino 8\System\Yak.exe</code></td></tr><tr><td>macOS</td><td><code>/Applications/Rhino 8.app/Contents/Resources/bin/yak</code></td></tr></tbody></table></div>
+<p><code>yak update</code> and <code>yak uninstall</code> take the same package name.</p>
+<p>Confirm the plugin loaded by running this in Rhino:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>MCPStart</code></pre></div>
+<h2 id="step-2a-claude-desktop" class="md-h2">Step 2a — Claude Desktop</h2>
+<p>The Desktop route uses a packaged extension, not a config file.</p>
+<ol class="md-list">
+<li>Download <code>connector.mcpb</code> from the <a href="https://github.com/mcneel/RhinoAI/releases" target="_blank" rel="noopener">RhinoAI releases page</a>. At the time of writing the current file is <code>connector-v0.1.6/connector.mcpb</code> — <strong>check the releases page for the latest</strong> rather than hard-coding that version.</li>
+<li>In Claude Desktop, go to <strong>Settings → Extensions → Advanced settings</strong>.</li>
+<li>Click <strong>Install Extension</strong> and select the downloaded <code>.mcpb</code>.</li>
+<li>Click <strong>Install</strong> to confirm.</li>
+</ol>
+<p>That is the whole setup. There is no <code>claude_desktop_config.json</code> to edit.</p>
+<h2 id="step-2b-claude-code" class="md-h2">Step 2b — Claude Code</h2>
+<p>The Claude Code route does not use the <code>.mcpb</code>. Instead:</p>
+<ol class="md-list">
+<li>In Rhino, run:</li>
+</ol>
+<p>``<code> MCPConnect </code>``</p>
+<ol class="md-list">
+<li>Copy the prompt it produces and paste it into a new Claude Code session.</li>
+<li>Restart Claude Code if it asks you to.</li>
+</ol>
+<p><strong>Note:</strong> McNeel&#x27;s documentation describes this step but does not publish the text of the prompt — you get it from <code>MCPConnect</code> itself. If you are working from a guide (including this one) rather than from the command, you do not have it.</p>
+<h2 id="checking-it-worked" class="md-h2">Checking it worked</h2>
+<p><strong>Claude Desktop:</strong> Settings → Extensions should list the Rhino3d connector as connected.</p>
+<p><strong>Either client</strong>, the end-to-end test McNeel suggest:</p>
+<blockquote class="mdquote"><p>Open a fresh Rhino doc and make me a box.</p></blockquote>
+<p>Rhino launches if it is not already running, a box appears, and Claude tells you what it did.</p>
+<h2 id="targeting-rhino-9-wipbeta" class="md-h2">Targeting Rhino 9 WIP/BETA</h2>
+<p>The router defaults to Rhino 8.</p>
+<ul class="md-list">
+<li><strong>Claude Desktop:</strong> open the connector&#x27;s settings and change 8 to 9.</li>
+<li><strong>Claude Code or a custom config:</strong> add <code>&quot;args&quot;: [&quot;-v&quot;, &quot;9&quot;]</code> to the <code>rhino</code> entry under <code>mcpServers</code> in <code>~/.claude.json</code>.</li>
+</ul>
+<p><strong>Grasshopper 2 tools (<code>gh2_</code>) require Rhino 9 WIP/BETA.</strong> If Grasshopper tools are not working, that is usually why — tell the agent to use Rhino WIP.</p>
+<h2 id="what-it-does" class="md-h2">What it does</h2>
+<p><strong>This is not read-only.</strong> McNeel present it as an assistant <em>making</em> geometry: Rhino and Grasshopper both, creating and modifying. Their documented examples include modelling from an image, building Grasshopper definitions, assigning layers, and upgrading GH1 definitions to GH2.</p>
+<p>Which individual tools read and which write is not published, so assume any of them may change the document.</p>
+<h2 id="working-with-it-sensibly" class="md-h2">Working with it sensibly</h2>
+<p><strong>Save first, and work in a file you are willing to lose.</strong> The same advice as every other integration in this series, and for the same reason: the tools that make it useful are the tools that can overwrite your afternoon.</p>
+<p>Three failure modes from McNeel&#x27;s own troubleshooting, worth knowing before they happen:</p>
+<ul class="md-list">
+<li><strong>&quot;My agent doesn&#x27;t see Rhino at all.&quot;</strong> Usually the connection was not made at startup. Quit and reopen the assistant, confirm the plugin installed via <code>PackageManager</code>, and check Settings → Extensions.</li>
+<li><strong>&quot;Rhino just crashed mid-conversation.&quot;</strong> The connector notices and tells Claude, which can offer to relaunch and retry. If the same prompt crashes Rhino every time, that is a bug worth filing.</li>
+<li><strong>&quot;It says it did something and I can&#x27;t see it.&quot;</strong> Check you are looking at the right Rhino window — it may have edited another open one. Then View → Zoom → Zoom Extents, then the layers panel for hidden layers.</li>
+</ul>
+<p>That last one is worth dwelling on. <strong>Claude can act on a different open document than the one you are looking at</strong>, which means &quot;nothing happened&quot; and &quot;something happened somewhere else&quot; look identical. Close the Rhino windows you are not using.</p>
+<h2 id="where-to-get-help" class="md-h2">Where to get help</h2>
+<ul class="md-list">
+<li>GitHub issues: <a href="https://github.com/mcneel/RhinoAI/issues" target="_blank" rel="noopener">github.com/mcneel/RhinoAI/issues</a></li>
+<li>Rhino Discourse, AI category: <a href="https://discourse.mcneel.com/c/rhino/artificial-intelligence-rhino/162" target="_blank" rel="noopener">discourse.mcneel.com</a></li>
+</ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More guides">
+      <a class="tpl-prevnext__item" href="../../resources/guides/mcp-revit-pyrevit.html"><span>Previous</span><strong>Connect Revit to Claude, through pyRevit</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/guides/">All guides</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/guides/mcp-sketchup.html"><span>Next</span><strong>Connect SketchUp to Claude</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

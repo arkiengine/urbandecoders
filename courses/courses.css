@@ -1,0 +1,170 @@
+/* Courses — track cards, curriculum, waiting list.
+   Builds on styles.css + resources/resources.css; site tokens only. */
+
+/* ------------------------------------------------------------- status note */
+.course-note {
+  display: flex; gap: var(--space-4, 18px); align-items: flex-start;
+  padding: 22px 26px;
+}
+.course-note p { color: var(--body); font-size: 15px; margin: 0; max-width: 78ch; }
+.course-note .tag { flex: 0 0 auto; margin-top: 2px; }
+
+/* --------------------------------------------------------------- the cards */
+.course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5, 24px); }
+
+.course-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+
+.course-card__shot {
+  display: block; position: relative; aspect-ratio: 16 / 9;
+  background: #0d0f12; overflow: hidden;
+  border-bottom: 1px solid var(--hairline);
+}
+.course-card__shot img {
+  width: 100%; height: 100%; object-fit: cover; opacity: 0.86;
+  transition: transform 520ms cubic-bezier(.2,.7,.2,1), opacity 220ms ease;
+}
+.course-card:hover .course-card__shot img,
+.course-card:focus-within .course-card__shot img { transform: scale(1.04); opacity: 1; }
+
+.course-card__no {
+  position: absolute; left: 14px; bottom: 10px;
+  font-family: var(--font-display); font-size: 42px; line-height: 1;
+  color: #fff; opacity: .92; text-shadow: 0 2px 18px rgba(0,0,0,.55);
+}
+
+.course-card__body { padding: 24px; display: flex; flex-direction: column; flex: 1; gap: 14px; }
+.course-card__title { font-family: var(--font-display); font-size: 22px; line-height: 1.2; }
+.course-card__title a { color: inherit; }
+.course-card__title a:hover { color: var(--brand-teal); }
+.course-card__blurb { color: var(--charcoal); font-size: 15px; }
+
+.course-card__meta { display: grid; gap: 10px; margin-top: 2px; }
+.course-card__meta > div { display: grid; grid-template-columns: 74px 1fr; gap: 12px; align-items: baseline; }
+.course-card__meta dt {
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ash);
+}
+.course-card__meta dd { color: var(--body); font-size: 13.5px; line-height: 1.45; }
+.course-card__foot { margin-top: auto; padding-top: 6px; }
+
+/* ----------------------------------------------------------------- format */
+.fmt { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5, 24px); }
+.fmt__item {
+  border: 1px solid var(--hairline); border-radius: var(--radius-card);
+  padding: 22px; background: var(--surface-card);
+}
+.fmt__item h3 { font-family: var(--font-display); font-size: 17px; margin-bottom: 8px; }
+.fmt__item p { color: var(--charcoal); font-size: 14px; }
+
+/* -------------------------------------------------------------------- why */
+.course-why {
+  display: grid; grid-template-columns: 1.6fr auto; gap: var(--space-6, 28px);
+  align-items: center; padding: 36px;
+}
+.course-why__links { display: grid; gap: 12px; }
+
+/* --------------------------------------------------------- course page bits */
+.course-hero {
+  width: 100%; height: auto; display: block;
+  border: 1px solid var(--hairline); border-radius: var(--radius-card);
+  background: #0d0f12;
+}
+
+.out, .who { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-5, 24px); }
+.out__item, .who__item {
+  border: 1px solid var(--hairline); border-radius: var(--radius-card);
+  padding: 24px; background: var(--surface-card);
+}
+.out__item h3, .who__item h3 { font-family: var(--font-display); font-size: 18px; margin-bottom: 10px; }
+.out__item p, .who__item p { color: var(--charcoal); font-size: 14.5px; }
+
+.course-prereq {
+  margin-top: var(--space-5, 24px);
+  display: flex; gap: 18px; align-items: flex-start; padding: 20px 24px;
+}
+.course-prereq p { color: var(--body); font-size: 14.5px; margin: 0; max-width: 76ch; }
+.course-prereq .tag { flex: 0 0 auto; margin-top: 2px; }
+
+/* --------------------------------------------------------------- curriculum */
+.mods { list-style: none; display: grid; gap: 2px; counter-reset: none; }
+.mod {
+  display: grid; grid-template-columns: 64px 1fr; gap: 20px;
+  padding: 24px 0; border-top: 1px solid var(--hairline);
+}
+.mod:last-child { border-bottom: 1px solid var(--hairline); }
+.mod__no {
+  font-family: var(--font-mono); font-size: 13px; color: var(--emphasis-red-bright);
+  padding-top: 3px;
+}
+.mod__body h3 { font-family: var(--font-display); font-size: 19px; margin-bottom: 12px; }
+.mod__body ul { display: grid; gap: 7px; list-style: none; }
+.mod__body li {
+  color: var(--charcoal); font-size: 14.5px; line-height: 1.5;
+  padding-left: 18px; position: relative;
+}
+.mod__body li::before {
+  content: ""; position: absolute; left: 0; top: .62em;
+  width: 6px; height: 1px; background: var(--ash);
+}
+
+/* ------------------------------------------------------------- waiting list */
+.wl { display: grid; grid-template-columns: 1fr 1.15fr; gap: var(--space-7, 36px); align-items: start; }
+.wl__intro { position: sticky; top: 96px; }
+.wl__points { display: grid; gap: 10px; list-style: none; margin-top: 4px; }
+.wl__points li {
+  color: var(--body); font-size: 15px; padding-left: 22px; position: relative;
+}
+.wl__points li::before {
+  content: ""; position: absolute; left: 0; top: .5em;
+  width: 8px; height: 8px; border-radius: 50%;
+  border: 1px solid var(--brand-teal);
+}
+.wl__alt { color: var(--ash); font-size: 14px; }
+.wl__alt a { color: var(--brand-teal); text-decoration: underline; text-underline-offset: 3px; }
+
+.wl__form { padding: 32px; }
+.wl__form h3 { font-family: var(--font-display); font-size: 22px; margin-bottom: 22px; }
+.wl__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 24px; }
+.wl__span { grid-column: 1 / -1; }
+
+.wl__form fieldset { border: 0; padding: 0; margin: 0; }
+.wl__form legend {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ash); margin-bottom: 12px; padding: 0;
+}
+.wl__checks { display: grid; gap: 10px; }
+.wl-check {
+  display: flex; gap: 11px; align-items: center; cursor: pointer;
+  border: 1px solid var(--hairline); border-radius: 8px;
+  padding: 11px 14px; transition: border-color 160ms ease, background 160ms ease;
+}
+.wl-check:hover { border-color: var(--hairline-strong); }
+.wl-check:has(input:checked) { border-color: var(--brand-teal); background: rgba(255,255,255,.02); }
+.wl-check input { width: 16px; height: 16px; accent-color: var(--brand-teal); flex: 0 0 auto; }
+.wl-check span { color: var(--body); font-size: 14.5px; }
+
+/* consent sits full width and wraps, so align to the top of the text */
+.wl-consent { align-items: flex-start; }
+.wl-consent input { margin-top: 2px; }
+.wl-consent span { font-size: 13.5px; line-height: 1.5; color: var(--charcoal); }
+
+.opt {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--ash); margin-left: 6px;
+}
+.wl__small { font-size: 12px; margin-top: 14px; }
+
+/* ------------------------------------------------------------------ mobile */
+@media (max-width: 1020px) {
+  .course-grid, .fmt { grid-template-columns: repeat(2, 1fr); }
+  .wl { grid-template-columns: 1fr; }
+  .wl__intro { position: static; }
+}
+@media (max-width: 820px) {
+  .course-grid, .fmt, .out, .who { grid-template-columns: 1fr; }
+  .course-why { grid-template-columns: 1fr; }
+  .course-why__links { grid-auto-flow: column; justify-content: start; }
+  .wl__grid { grid-template-columns: 1fr; }
+  .mod { grid-template-columns: 44px 1fr; gap: 14px; }
+  .course-note, .course-prereq { flex-direction: column; gap: 12px; }
+}
