@@ -39,9 +39,9 @@
       <a class="nav__link" href="platform.html">Platform</a>
       <a class="nav__link" href="services.html">Services</a>
       <a class="nav__link" href="case-studies.html" aria-current="page">Work</a>
-      <a class="nav__link" href="masterplans/">Masterplans</a>
-      <a class="nav__link" href="lab.html">Lab</a>
-      <a class="nav__link" href="blog.html">Insights</a>
+      <a class="nav__link" href="courses.html">Courses</a>
+      <a class="nav__link" href="resources/">Resources</a>
+      <a class="nav__link" href="blog.html">Blog</a>
       <a class="nav__link" href="about.html">About</a>
     </nav>
     <div class="nav__cta">
@@ -88,6 +88,26 @@
         </div>
       </article>
 
+      <article class="wcard" id="cs-8" data-video="assets/tokyo/tokyo-time-of-day.mp4" tabindex="0">
+        <div class="wcard__img"><img src="assets/tokyo/caps/tokyo-time-of-day.jpg" alt="Central Tokyo in the twin, the sun moving across Chiyoda, Chuo and Minato" loading="lazy" width="640" height="360"></div>
+        <div class="wcard__body">
+          <div class="badge-row"><span class="pill pill--brand">City twin</span><span class="pill">Tokyo &middot; PLATEAU</span></div>
+          <h3>Tokyo Digital Twin</h3>
+          <p><strong style="color:var(--ink)">What it does.</strong> Central Tokyo assembled from PLATEAU city data and photogrammetric context. Chiyoda, Chuo and Minato wards carry their own boundaries at admin level 7; land use, transport and four POI categories sit on the same base; and every building holds the record it came with.</p>
+          <p><strong style="color:var(--ink)">What it returns.</strong> Click a block and the record opens &mdash; Shiodome City Center, code 13103-bldg-21730, 225.8 m, status existing, the PLATEAU id printed under it. Sun hours run over a 130 m square to a Ladybug ramp; a viewshed from standing eye height reports what fills the cone. Hover to play the day running across the city.</p>
+          <div class="wcard__data">Chiyoda &middot; Chuo &middot; Minato<i>&middot;</i>PLATEAU building records<i>&middot;</i>Unreal Engine 5<i>&middot;</i>boundaries, POIs, transport<i>&middot;</i>sun, weather, viewshed</div>
+        </div>
+      </article>
+      <article class="wcard" id="cs-9" data-video="assets/tokyo/tokyo-ai-chat.mp4" tabindex="0">
+        <div class="wcard__img"><img src="assets/tokyo/caps/tokyo-ai-chat.jpg" alt="Ask the model panel rebuilding the Nakagin Capsule Tower in the Tokyo twin" loading="lazy" width="640" height="360"></div>
+        <div class="wcard__body">
+          <div class="badge-row"><span class="pill pill--brand">Configurator</span><span class="pill">Tokyo landmarks</span></div>
+          <h3>Metabolist Landmark Configurators</h3>
+          <p><strong style="color:var(--ink)">What it does.</strong> Three Metabolist landmarks rebuilt as live definitions on their real sites: the Nakagin Capsule Tower, the Shizuoka Press and Broadcasting Tower and the Takara Beautilion. Tower floors, core offset, podium, rotation, capsule fill, orientation variation and taper all on sliders, with a lighting pass for the night views.</p>
+          <p><strong style="color:var(--ink)">What it returns.</strong> The capsule tower reports 177 capsules over 1,421.1 m&sup2;, towers at 61 m and 49.8 m joined by three bridges. The Shizuoka tower returns 18 modules on a 63 m core, 72 m overall, 840.9 m&sup2; of offices. Type &ldquo;create 20 stories for the capsule tower&rdquo; and it re-solves in 21.9 s at 264 capsules.</p>
+          <div class="wcard__data">Nakagin &middot; Shizuoka Press &middot; Takara Beautilion<i>&middot;</i>Arki Engine<i>&middot;</i>4,850 elements indexed<i>&middot;</i>solved in the twin</div>
+        </div>
+      </article>
       <article class="wcard" id="cs-2">
         <div class="wcard__img"><img src="assets/img/work-masterplan.jpg" alt="Arki Engine masterplan configurator parcel study at FAR 1" loading="lazy" width="720" height="405"></div>
         <div class="wcard__body">
@@ -133,9 +153,88 @@
       </article>
 
     </div>
-    <p class="muted mt-6" style="font-size:13px">The configurators live in the <a href="lab.html">Lab</a>, with the Grasshopper definitions behind them.</p>
+    <p class="muted mt-6" style="font-size:13px">Every configurator here runs on Arki Engine, with the Grasshopper definitions behind it.</p>
   </div>
 </section>
+
+<!-- INSIDE THE TOKYO TWIN -->
+<section class="section glow-top" id="tokyo">
+  <div class="wrap">
+    <div class="stack" style="max-width:58ch; margin-bottom:var(--space-6)">
+      <span class="eyebrow">Inside the Tokyo twin</span>
+      <h2 class="section-title">Central Tokyo, tool by tool.</h2>
+      <p class="lead">Open city data on the model, three Metabolist landmarks rebuilt as live definitions, and the analysis that runs on top of both. Play the full run-through below, or hover a tile for the tool on its own.</p>
+    </div>
+    <button class="yt-facade" type="button" data-video="assets/tokyo/tokyo-demo.mp4" aria-label="Play the Tokyo Digital Twin demo, one minute thirty-one" style="margin-bottom:var(--space-6)">
+      <img src="assets/tokyo/posters/tokyo-demo.jpg" alt="The Tokyo twin with the transport layer open: bus stops, rail stations and a minimap over Shimbashi" loading="lazy" width="1344" height="720">
+      <span class="yt-play" aria-hidden="true"></span>
+      <span class="yt-facade__cap"><span class="tag">Play &middot; 1:31</span><span style="color:#fff; font-family:var(--font-display); font-size:16px">The Tokyo twin, end to end</span></span>
+    </button>
+    <div class="caps">
+      <div class="cap" tabindex="0" role="button" aria-label="Ask the model: play demo clip" data-video="assets/tokyo/tokyo-ai-chat.mp4">
+        <div class="cap__media"><img src="assets/tokyo/caps/tokyo-ai-chat.jpg" alt="Ask the model panel driving the capsule tower configurator" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">Ask and generate</span><b>Ask the model</b><span>&ldquo;Create 20 stories&rdquo; &mdash; two controls set, re-solved in 21.9 s.</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="Capsule Tower configurator: play demo clip" data-video="assets/tokyo/tokyo-capsule-config.mp4">
+        <div class="cap__media"><img src="assets/tokyo/caps/tokyo-capsule-config.jpg" alt="Nakagin Capsule Tower configurator running on its real site" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">Landmark</span><b>Nakagin Capsule Tower</b><span>Capsule fill, orientation and taper on sliders; 177 capsules, 1,421.1 m&sup2;.</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="Shizuoka Tower configurator: play demo clip" data-video="assets/tokyo/tokyo-shizuoka-config.mp4">
+        <div class="cap__media"><img src="assets/tokyo/caps/tokyo-shizuoka-config.jpg" alt="Shizuoka Press and Broadcasting Tower configurator" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">Landmark</span><b>Shizuoka Press Tower</b><span>18 modules on a 63 m core, 72 m overall, 840.9 m&sup2; of offices.</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="Takara Beautilion configurator: play demo clip" data-video="assets/tokyo/tokyo-pavilion-config.mp4">
+        <div class="cap__media"><img src="assets/tokyo/caps/tokyo-pavilion-config.jpg" alt="Takara Beautilion pavilion configurator" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">Landmark</span><b>Takara Beautilion</b><span>The pipe frame regenerating bay by bay, with its lighting pass.</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="Open city data: play demo clip" data-video="assets/tokyo/tokyo-gis.mp4">
+        <div class="cap__media"><img src="assets/tokyo/caps/tokyo-gis.jpg" alt="Ward boundaries drawn over central Tokyo" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">Data</span><b>Ward boundaries</b><span>Chiyoda, Chuo and Minato at admin level 7, labels and borders on demand.</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="City-scale POIs: play demo clip" data-video="assets/tokyo/tokyo-poi.mp4">
+        <div class="cap__media"><img src="assets/tokyo/caps/tokyo-poi.jpg" alt="Points of interest filtered by category across central Tokyo" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">Data</span><b>City-scale POIs</b><span>Healthcare, historic, leisure and tourism, searchable and numbered.</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="Viewshed analysis: play demo clip" data-video="assets/tokyo/tokyo-viewshed.mp4">
+        <div class="cap__media"><img src="assets/tokyo/caps/tokyo-viewshed.jpg" alt="Viewshed cone cast down a Tokyo street" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">Analysis</span><b>Viewshed from the street</b><span>Standing eye height, a 60&deg; cone to 252 m, with the view broken down by surface.</span></div>
+      </div>
+      <div class="cap" tabindex="0" role="button" aria-label="Weather states: play demo clip" data-video="assets/tokyo/tokyo-weather.mp4">
+        <div class="cap__media"><img src="assets/tokyo/caps/tokyo-weather.jpg" alt="Weather states changing over the Tokyo twin" loading="lazy" width="640" height="360"></div>
+        <div class="cap__body"><span class="cap__g">Analysis</span><b>Weather and dynamic sun</b><span>Clear to snow, cloud, fog and wind, with the date and hour on a slider.</span></div>
+      </div>
+    </div>
+
+    <div class="grid grid--3" style="margin-top:var(--space-6)">
+      <div class="media" style="aspect-ratio:16/9">
+        <img src="assets/img/tokyo/building-record.jpg" alt="Building record panel open on Shiodome City Center in the Tokyo twin" loading="lazy" width="1400" height="788">
+        <div class="media__cap-static"><div class="tag">Open data</div><div style="font-family:var(--font-display); font-size:16px; margin-top:4px; color:#fff">Every block carries its record</div></div>
+      </div>
+      <div class="media" style="aspect-ratio:16/9">
+        <img src="assets/img/tokyo/sun-hours.jpg" alt="Sun-hours heatmap over a 130 m square with a Ladybug colour ramp" loading="lazy" width="1400" height="788">
+        <div class="media__cap-static"><div class="tag">Sun hours</div><div style="font-family:var(--font-display); font-size:16px; margin-top:4px; color:#fff">21 Mar, up to 11.8 h</div></div>
+      </div>
+      <div class="media" style="aspect-ratio:16/9">
+        <img src="assets/img/tokyo/viewshed.jpg" alt="Viewshed cone and visibility breakdown cast down a Tokyo street" loading="lazy" width="1400" height="788">
+        <div class="media__cap-static"><div class="tag">Viewshed</div><div style="font-family:var(--font-display); font-size:16px; margin-top:4px; color:#fff">Sky 13%, facade 32%</div></div>
+      </div>
+      <div class="media" style="aspect-ratio:16/9">
+        <img src="assets/img/tokyo/ai-chat.jpg" alt="Ask the model panel setting both capsule towers to twenty floors" loading="lazy" width="1400" height="788">
+        <div class="media__cap-static"><div class="tag">Ask the model</div><div style="font-family:var(--font-display); font-size:16px; margin-top:4px; color:#fff">Plain language, real controls</div></div>
+      </div>
+      <div class="media" style="aspect-ratio:16/9">
+        <img src="assets/img/tokyo/takara-interior.jpg" alt="Inside the Takara Beautilion pipe frame at dusk" loading="lazy" width="1400" height="788">
+        <div class="media__cap-static"><div class="tag">First person</div><div style="font-family:var(--font-display); font-size:16px; margin-top:4px; color:#fff">Inside the Beautilion</div></div>
+      </div>
+      <div class="media" style="aspect-ratio:16/9">
+        <img src="assets/img/tokyo/weather-snow.jpg" alt="The capsule tower under snow in the Tokyo twin" loading="lazy" width="1400" height="788">
+        <div class="media__cap-static"><div class="tag">Weather</div><div style="font-family:var(--font-display); font-size:16px; margin-top:4px; color:#fff">Clear to snow in eight seconds</div></div>
+      </div>
+    </div>
+    <p class="muted mt-4" style="font-size:13px">Building records come from Project PLATEAU (MLIT). Figures shown are the ones the twin reported in the clips above.</p>
+  </div>
+</section>
+
 
 <section class="section">
   <div class="wrap"><div class="cta-band">
@@ -165,16 +264,18 @@
           <li><a href="platform.html">Platform</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="case-studies.html">Work</a></li>
-          <li><a href="lab.html">Lab</a></li>
+          <li><a href="courses.html">Courses</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
       </div>
       <div>
         <h4>Resources</h4>
         <ul>
-          <li><a href="blog.html">Insights</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="resources/">All resources</a></li>
+          <li><a href="resources/skills/">Skills library</a></li>
+          <li><a href="resources/guides/">Guides &amp; how-tos</a></li>
           <li><a href="platform.html#capabilities">Capabilities</a></li>
-          <li><a href="platform.html#scope">Scope estimator</a></li>
           <li><a href="contact.html">Book a scoping call</a></li>
         </ul>
       </div>
@@ -203,6 +304,7 @@
     </div>
   </div>
 </footer>
+<script src="js/facade.js?v=20261009" defer></script>
 <script src="js/caps.js?v=20261009" defer></script>
 </body>
 </html>

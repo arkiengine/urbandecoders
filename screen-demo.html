@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Screen component — clips playing in a monitor</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="styles.css?v=20261029b">
+<style>
+  .demo { padding: var(--space-8) 0; }
+  .demo + .demo { border-top: 1px solid var(--hairline); }
+  .demo__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-7); align-items: center; }
+  @media (min-width: 900px) { .demo__grid { grid-template-columns: 0.8fr 1.2fr; } }
+  pre { background: var(--surface-card); border: 1px solid var(--hairline); border-radius: var(--radius-card);
+        padding: var(--space-5); overflow-x: auto; font-family: var(--font-mono); font-size: 12px; color: var(--brand-cyan); }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <section class="demo">
+    <p class="eyebrow">Mode 1</p>
+    <h1 class="section-title">CSS panel — no still needed</h1>
+    <p class="lead">What NCA actually does: the monitor is drawn in CSS, so it stays crisp at any size and the clip lands in the glass exactly. Three clips cross-fade into each other.</p>
+    <div class="demo__grid mt-8">
+      <div>
+        <pre>&lt;div class="screen screen--css"
+     data-clips="a.mp4|b.mp4|c.mp4"&gt;
+  &lt;div class="screen__panel"&gt;
+    &lt;div class="screen__frame"&gt;
+      &lt;div class="screen__port"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="screen__stand"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+      <div class="screen screen--css"
+           data-clips="assets/twin/stockport-east-overview.mp4|assets/twin/solar.mp4|assets/twin/urban-night.mp4"
+           role="button" tabindex="0" aria-label="Digital twin clips playing on a monitor">
+        <div class="screen__panel">
+          <div class="screen__frame">
+            <div class="screen__port"></div>
+          </div>
+        </div>
+        <div class="screen__stand"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="demo">
+    <p class="eyebrow">Mode 2</p>
+    <h2 class="section-title">Pinned to a photo</h2>
+    <p class="lead">A still of a real screen, with the clip corner-pinned onto the glass. The four corners are percentages of the image; the transform is solved from them, so any angle lines up.</p>
+    <div class="demo__grid mt-8">
+      <div>
+        <pre>&lt;div class="screen screen--pin"
+     data-clips="a.mp4"
+     data-corners="25.00,7.52 88.36,0.63 88.36,69.92 25.00,68.42"
+     data-aspect="1.7778"&gt;
+  &lt;img class="screen__still" src="still.jpg" alt=""&gt;
+  &lt;div class="screen__port"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+        <p class="mt-6" style="color:var(--charcoal); font-size:14px;">Corners come from <code>tools/screen-calibrate.html</code> — drag four handles, copy the attribute.</p>
+      </div>
+      <div class="screen screen--pin"
+           data-clips="assets/twin/urban-gis.mp4|assets/twin/viewshed.mp4"
+           data-corners="25.00,7.52 88.36,0.63 88.36,69.92 25.00,68.42"
+           data-aspect="1.7778"
+           role="button" tabindex="0" aria-label="Digital twin clips playing on the committee-room screen">
+        <img class="screen__still" src="assets/img/touch-committee.jpg" alt="Committee room with the twin on a wall screen">
+        <div class="screen__port"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script src="js/screen.js?v=20261029b" defer></script>
+</body>
+</html>

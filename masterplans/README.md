@@ -1,50 +1,59 @@
-# GM Masterplans Twin
+# Greater Manchester Masterplans
 
-Static MapLibre web app mapping the large masterplan / regeneration schemes across Greater Manchester (status as of 27 Sep 2026), in the Urban Decoders house style (Inter / JetBrains Mono, gold accent). No API keys. Basemaps: OpenFreeMap Liberty, Positron, Dark, Fiord; CARTO Dark Matter ("Black"); a custom monochrome "Blueprint" GIS style built on OpenMapTiles; Esri World Imagery. 3D buildings extrude from whichever OpenMapTiles-schema source the style carries. The chosen basemap is remembered per browser.
+Interactive map of 66 major masterplan and regeneration schemes across Greater Manchester's ten boroughs, published at **urbandecoders.com/masterplans**. Each scheme has a sourced boundary, status, homes, jobs, lead partners, a dated stage timeline and curated proposal imagery. Status is as of `meta.asOf` in the data (currently 27 Sep 2026).
 
-## Run
+Static site: plain HTML, CSS and one ES module. No build step, no API keys, no backend.
+
+## What it does
+
+- **Map.** MapLibre GL with seven basemaps (OpenFreeMap Liberty, Positron, Dark, Fiord; CARTO Dark Matter as "Black"; a custom monochrome "Blueprint"; Esri imagery) and 3D buildings extruded from the basemap's OpenMapTiles source. Boundaries are coloured by category. A solid outline means a sourced red line, a dashed one a partial or illustrative boundary.
+- **Sidebar.** Search, filter chips by borough, status and category, running totals, and a list sorted by homes.
+- **Detail panel.** Facts, latest milestone, a vertical stage timeline, scale in football pitches, links and an image gallery led by a full-width hero.
+- **Year scrubber.** A slider and play button that recolour every scheme by the stage it had reached in a given month, from 2002 to the 2040s.
+- **Programme drawer.** A Gantt view of every filtered scheme. Drag across its year axis to brush a date range, which filters the map, list and totals.
+- **Tour.** Flies through the filtered schemes one by one.
+
+## Run locally
+
+Any static server from this folder works:
 
 ```bash
-node server.mjs
+python -m http.server 8000
 ```
 
-then open http://localhost:5181 (or any static server — it's plain HTML/JS).
+Then open http://localhost:8000. From the website repo root, the `site` preview config in `.claude/launch.json` serves the whole site on port 8765, so the app is at `/masterplans/`.
 
-## Data
+## Files
 
-`data/schemes.geojson` — one Feature per scheme, WGS84 (EPSG:4326).
+| Path | What it is |
+|---|---|
+| `index.html` | Page shell: site nav, toolbar, sidebar, map, detail panel, scrubber, programme drawer, legends |
+| `js/app.js` | The whole app: data load, map layers, filters, detail panel, timeline, scrubber, Gantt, tour |
+| `css/app.css` | House-style tokens mirrored from `../styles.css`, plus all app styling |
+| `data/schemes.geojson` | The dataset, WGS84 (EPSG:4326). One feature per scheme |
+| `assets/images/<id>/NN.jpg` | Scheme imagery, max 1600 px JPEG |
+| `tools/validate.py` | Checks the dataset before publishing |
+| `tools/curate_images.py` | Stages, reviews and applies proposal imagery |
 
-- Boundaries are sourced where public geometry exists; `properties.boundary_source` and `confidence` say which:
-  - `allocation-boundary` — Places for Everyone 2024 allocations shapefile (GMCA, OGL v3)
-  - `statutory-boundary` / `proposed-boundary` — Mayoral Development Corporations feature service (GMCA, OGL v3, Sep 2026)
-  - `land-supply-site` / `land-supply-plots` — GMCA 2025 housing / industrial / offices land supply (OGL v3); plots dissolved per scheme
-  - `srf-georeferenced` — Strangeways–Cambridge (2025 SRF Fig 1.1), NOMA (2020 plot plan), First Street (2020 framework plan), Great Jackson Street (May 2018 SRF site plan), St John's (Nov 2016 SRF site plan), and Mayfield / Sister / Kampus / East Village from the Piccadilly SRF Update 2018 Appendix 1 aerial: council PDFs in `qgis/source/mcc/`, georeferenced in QGIS (similarity/affine on 2–4 GCPs, ~30 m) and auto-traced; `srf-georeferenced-partial` = Piccadilly SRF (union of study sub-areas, outer 150 ha scope not closed on the plan) and Water Street (Jul 2026 SRF Fig 1.01, red line open on the east so a concave hull of the line)
-  - `osm-site` — OpenStreetMap (© OpenStreetMap contributors, ODbL): Middlewood Locks, Etihad Campus
-  - `spd-georeferenced` — Crescent, Greengate, Salford Central: boundary plans from the council's framework PDFs (in `qgis/source/`) georeferenced in QGIS (GCP affine / area-constrained scale) and auto-traced from the red line; check renders in `qgis/source/pages/check_*.png`
-  - `proposals-map-wms` — Broadway Green: Oldham Local Plan Proposals Map WMS (`map.oldham.gov.uk/api/GetWMSInfo`, EPSG:27700 GetMap rasters polygonised) unioned with the land-supply plots; raw tiles in `qgis/source/oldham/`
-  - `boundary-indicative` — none remaining
-  - `point-estimate` — centroid only
-- Raw sources are in `qgis/source/`; `qgis/gm_masterplans.qgz` (EPSG:27700) holds the styled project and `qgis/gm_masterplans.gpkg` the `boundaries` + `sites` layers. Solid outline = sourced, dashed = illustrative/indicative.
-- `properties`: `id`, `name`, `borough`, `category` (housing | mixed | employment | framework | infrastructure | civic), `status` (on-site | consented | framework | proposed | at-risk | delivered), `lead`, `architects`, `stated_area_ha`, `homes`, `jobs`, `commercial`, `investment`, `milestone`, `milestone_date`, `summary`, `links[]`, `images[]`, `confidence`, `timeline[]`.
-- `timeline[]` — dated stage events per scheme, `{ date, stage, label }` with `date` as `YYYY` or `YYYY-MM` and `stage` one of framework | consent | start | delivery | complete | target. Events dated after `meta.asOf` are expected / target dates and render hollow or dashed. Compiled from the summaries, milestones and public sources as of `meta.asOf`; entries marked "unverified" in the label are unconfirmed. Drives the stage timeline in the detail panel and the **Timeline** programme (Gantt) drawer.
-- **Year scrubber** (top-left of the map): drag the slider or press play to recolour every scheme by the stage it had reached in that month; unstarted schemes fade out and the list shows the stage reached. **Now** returns to current status.
-- **Brushing**: drag across the year axis of the Timeline drawer to keep only schemes with an event in that range (map, list and totals follow); click the axis or the range chip to clear.
+## Documentation
 
-### Images / renders
+- [docs/DATA.md](docs/DATA.md): dataset schema, boundary sources and confidence, known caveats
+- [docs/TIMELINE.md](docs/TIMELINE.md): stage model, detail timeline, year scrubber, programme drawer and brushing
+- [docs/IMAGES.md](docs/IMAGES.md): how scheme imagery is sourced, reviewed and credited, and the rights position
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): how `app.js` is organised, map layers, state, and the relationship to the source app in `D:\Claude Apps`
+- [docs/MAINTAINING.md](docs/MAINTAINING.md): updating schemes, adding a scheme, release checklist
 
-`python tools/fetch_images.py [scheme-id ...]` pulls up to 3 images per scheme (og:image from the dataset's source links, Wikipedia page image, Wikimedia Commons search with licence metadata), resizes to 1600 px into `assets/images/<id>/NN.jpg` and writes the `images` array with `caption`, `credit`, `source_url`, `licence`. The panel shows credit and a source link under every image. Press/developer images are © their owners (research use with attribution — clear before publishing); Commons entries carry their CC licence. Or add files by hand and list them:
-   ```json
-   "images": [{ "src": "assets/images/mayfield/park.jpg", "caption": "Mayfield Park", "credit": "Studio Egret West" }]
-   ```
+## Deep links and keys
 
-Since Sep 2026 the images are curated proposal imagery (aerial CGIs, illustrative masterplans, hero renders, drone photos of delivered phases) sourced from developer, architect, council and trade-press pages. Each carries `kind` (aerial-cgi | masterplan | render | aerial-photo | photo), credit and source page, and the first image shows as the full-width hero. Simister/Bowlee, Stakehill and Ashton Moss West keep their older images because no proposal imagery is published outside PDFs.
+`#<id>` selects and flies to a scheme, for example `index.html#old-trafford-wharfside`.
 
-Renders are copyright of the respective practices/developers — clear usage before sharing.
+| Key | Action |
+|---|---|
+| `←` `→` (or `↑` `↓`) | Previous / next scheme in the filtered list |
+| `Esc` | Close the detail panel |
+| `T` | Toggle the programme drawer |
+| `P` | Play / pause the year scrubber |
 
-## Deep links
+## Rights
 
-`#<id>` selects and flies to a scheme, e.g. `index.html#old-trafford-wharfside`.
-
-## Keys
-
-`←/→` previous/next scheme · `Esc` close · `T` toggle the programme timeline · `P` play/pause the year scrubber · **Tour** cycles through the filtered list.
+Boundary data is OGL v3 (GMCA, councils) or ODbL (OpenStreetMap). Most scheme imagery is copyright of the developers, architects or visualisers credited under each image, used for research with attribution. Clear image rights with the owners before promoting the page. See [docs/IMAGES.md](docs/IMAGES.md).
