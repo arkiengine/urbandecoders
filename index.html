@@ -178,6 +178,21 @@
         <a class="offer__link" href="services.html#interactive-mapping">More &rarr;</a>
       </div>
     </div>
+    <div class="screen screen--css mt-8" role="button" tabindex="0"
+         data-clips="assets/twin/urban-gis.mp4|assets/twin/solar.mp4|assets/twin/urban-night.mp4"
+         aria-label="Stockport East digital twin running on screen — click to pause">
+      <div class="screen__panel">
+        <div class="screen__frame">
+          <div class="screen__port"></div>
+        </div>
+      </div>
+      <div class="screen__stand"></div>
+    </div>
+    <p class="screen__cap">
+      <span class="tag">On screen</span>
+      <span>Stockport East · GIS layers, solar, after dark</span>
+      <a class="btn btn--outline btn--sm btn--mono" href="case-studies.html#cs-5">Full film · 1:39</a>
+    </p>
     <div class="wrap-btns mt-6">
       <a class="btn btn--outline btn--mono" href="services.html#interactive">All four in detail <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
     </div>
@@ -334,21 +349,6 @@
         <div class="cap__body"><span class="cap__g">Data on the model</span><b>City-scale POIs</b><span>Hundreds of amenities, shrines and landmarks, filtered by category and searchable.</span></div>
       </div>
     </div>
-    <div class="screen screen--css mt-8" role="button" tabindex="0"
-         data-clips="assets/twin/urban-gis.mp4|assets/twin/solar.mp4|assets/twin/urban-night.mp4"
-         aria-label="Stockport East digital twin running on screen — click to pause">
-      <div class="screen__panel">
-        <div class="screen__frame">
-          <div class="screen__port"></div>
-        </div>
-      </div>
-      <div class="screen__stand"></div>
-    </div>
-    <p class="screen__cap">
-      <span class="tag">On screen</span>
-      <span>Stockport East · GIS layers, solar, after dark</span>
-      <a class="btn btn--outline btn--sm btn--mono" href="case-studies.html#cs-5">Full film · 1:39</a>
-    </p>
   </div>
 </section>
 
@@ -424,14 +424,20 @@
       </div>
     </div>
 
+    <!-- Pipeline diagram — full width -->
+    <figure class="arki__flow mt-8">
+      <img src="assets/arki/arkiengine-flow.png" alt="Arki Engine pipeline: named Grasshopper sliders feed the solve, which returns a JSON metrics payload and a capsule tower mesh, rebuilt live in the Unreal configurator" loading="lazy" width="1214" height="610">
+      <figcaption>Named <code>RH_IN</code> sliders → Grasshopper solve → mesh and JSON metrics → live in the Unreal configurator</figcaption>
+    </figure>
+
     <!-- 3D coverflow gallery -->
     <div class="coverflow-wrap mt-8">
       <div class="coverflow" id="cf-gallery" tabindex="0" role="group" aria-label="Arki Engine project gallery. Scroll, drag or use the arrow keys to rotate through the renders">
         <div class="coverflow__stage">
         <figure class="cf-card"><img src="assets/arki/pav1.png" alt="Timber pavilion generated in the Arki Engine pavilion configurator" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Timber Pavilion</h4><p>755-component aggregation</p></figcaption></figure>
         <figure class="cf-card"><img src="assets/arki/tower1.png" alt="Parametric office tower massing over the London skyline" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Office Tower T46</h4><p>Parametric massing study</p></figcaption></figure>
-        <figure class="cf-card"><img src="assets/arki/plan2.png" alt="Data-driven district masterplan in Arki Engine" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>District Masterplan</h4><p>Data-driven parcel layout</p></figcaption></figure>
-        <figure class="cf-card"><img src="assets/arki/tower5.png" alt="Residential tower facade study rendered in real time" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Residential Tower</h4><p>Real-time facade study</p></figcaption></figure>
+        <figure class="cf-card"><img src="assets/tokyo/posters/tokyo-gis.jpg" alt="Ward boundaries and open city data over central Tokyo" loading="lazy" width="1280" height="686"><figcaption class="cf-card__cap"><h4>Central Tokyo</h4><p>PLATEAU city data on the model</p></figcaption></figure>
+        <figure class="cf-card"><img src="assets/tokyo/posters/tokyo-shizuoka-config.jpg" alt="Shizuoka Press and Broadcasting Tower configurator on its real site" loading="lazy" width="1280" height="686"><figcaption class="cf-card__cap"><h4>Shizuoka Press Tower</h4><p>18 modules on a 63 m core</p></figcaption></figure>
         <figure class="cf-card"><img src="assets/arki/pav3.png" alt="Generative canopy pavilion structure" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Canopy Pavilion</h4><p>Generative structure</p></figcaption></figure>
         <figure class="cf-card"><img src="assets/arki/plan4.png" alt="Urban plan with context and zoning layers" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Urban Plan</h4><p>Context + zoning layers</p></figcaption></figure>
         <figure class="cf-card"><img src="assets/arki/tower3.png" alt="Mixed-use tower with configurable geometry" loading="lazy" width="720" height="450"><figcaption class="cf-card__cap"><h4>Mixed-Use Tower</h4><p>Configurable geometry</p></figcaption></figure>
@@ -623,7 +629,7 @@
           <li><a href="blog.html">Blog</a></li>
           <li><a href="resources/">All resources</a></li>
           <li><a href="resources/skills/">Skills library</a></li>
-          <li><a href="resources/guides/">Guides &amp; how-tos</a></li>
+          <li><a href="resources/guides/">MCP installations &amp; guides</a></li>
           <li><a href="platform.html#capabilities">Capabilities</a></li>
           <li><a href="contact.html">Book a scoping call</a></li>
         </ul>

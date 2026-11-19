@@ -75,7 +75,9 @@
 /* Reset                                                              */
 /* ------------------------------------------------------------------ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+/* Nav wraps to two rows below 1210px, so anchors need a deeper offset there */
+@media (max-width: 1210px) { html { scroll-padding-top: 104px; } }
 body {
   background: var(--canvas);
   color: var(--ink);
@@ -609,6 +611,24 @@ h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
 .media:hover .media__cap, .media:focus-within .media__cap { opacity: 1; transform: translateY(0); }
 .media__cap-static { position: absolute; inset: auto 0 0 0; padding: var(--space-4) var(--space-5);
   background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); }
+
+/* Diagram plate — light ground, nothing cropped, no hover zoom */
+.media--diagram { background: #fff; }
+.media--diagram img { object-fit: contain; transition: none; }
+.media--diagram:hover img, .media--diagram:focus-within img { transform: none; }
+
+/* Arki pipeline diagram — full width, light plate on the dark section */
+.arki__flow { margin: 0; }
+.arki__flow img {
+  display: block; width: 100%; height: auto;
+  background: #fff; border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius-card);
+}
+.arki__flow figcaption {
+  margin-top: var(--space-3); font-family: var(--font-mono);
+  font-size: 12px; letter-spacing: 0.04em; color: var(--mute); line-height: 1.6;
+}
+.arki__flow code { font-family: var(--font-mono); color: var(--charcoal); }
 
 /* Filmstrip — CSS scroll-snap, no JS */
 .filmstrip {
