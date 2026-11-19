@@ -1347,6 +1347,7 @@ h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
 .orb__tile:hover { border-color: var(--c); box-shadow: 0 10px 30px rgba(0,0,0,0.55), 0 0 24px color-mix(in srgb, var(--c) 45%, transparent); }
 .orb__mark { display: grid; place-items: center; width: 40px; height: 40px; }
 .orb__mark span { font-family: var(--font-display); font-weight: 700; font-size: 19px; letter-spacing: -0.02em; color: var(--c); }
+.orb__mark svg { width: 27px; height: 27px; display: block; color: var(--c); }
 .orb__label {
   position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%); white-space: nowrap;
   font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mute);
@@ -1355,7 +1356,7 @@ h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
 .orb__tile:hover .orb__label { opacity: 1; }
 .orbit-list { display: grid; gap: 8px; font-size: 14px; color: var(--charcoal); }
 .orbit-list b { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-cyan); font-weight: 500; margin-right: 8px; }
-@media (max-width: 960px) { .orbit-scene { width: min(100%, 380px); } .orb__tile { width: 52px; height: 52px; border-radius: 12px; } .orb__mark { width: 32px; height: 32px; } .orb__mark span { font-size: 16px; } }
+@media (max-width: 960px) { .orbit-scene { width: min(100%, 380px); } .orb__tile { width: 52px; height: 52px; border-radius: 12px; } .orb__mark { width: 32px; height: 32px; } .orb__mark span { font-size: 16px; } .orb__mark svg { width: 22px; height: 22px; } }
 @media (prefers-reduced-motion: reduce) { .orbit, .orb__tile, .orbit__core { animation: none; } }
 
 /* Key/value lists in service blocks */

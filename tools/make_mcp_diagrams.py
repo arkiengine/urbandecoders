@@ -7,7 +7,7 @@ Writes assets/img/mcp/<slug>.svg — one per guide: Claude on the left, the MCP
 connector in the middle, the application on the right, with the real transport
 and the real plugin names from each guide.
 
-Marks are drawn, not vendor logos: abstract geometry plus the product name.
+Each application's mark is filled with that vendor's own brand colour (BRAND).
 """
 from __future__ import annotations
 
@@ -28,6 +28,20 @@ CARD = "#101012"
 LINE = "rgba(255,255,255,0.14)"
 SANS = "IBM Plex Sans, Segoe UI, Helvetica Neue, Arial, sans-serif"
 MONO = "JetBrains Mono, Consolas, ui-monospace, monospace"
+
+# Each vendor's own mark colour. Two are lifted off the official value so the
+# mark still reads on the near-black card: SketchUp's #005F9E and Autodesk's
+# navy are both under 3:1 against CARD. Marks that are white in the original
+# (Rhino on its slate tile, Unreal) stay white.
+BRAND = {
+    "blender": "#EA7600",
+    "rhinoceros": "#FFFFFF",
+    "qgis": "#93B023",
+    "autodesk": "#1E7BF5",
+    "sketchup": "#1C7FC4",
+    "unrealengine": "#FFFFFF",
+    "claude": RED,
+}
 
 E = html.escape
 
@@ -160,7 +174,7 @@ def svg(a: dict) -> str:
     </marker>
   </defs>
 {node(lx, ny, rw, nh, logo("claude", RED), RED, a["client"], a["client_note"])}
-{node(rx, ny, rw, nh, logo(a["logo"], TEAL) if a["logo"] else mark_stack(TEAL), TEAL, a["app"], "the application")}
+{node(rx, ny, rw, nh, logo(a["logo"], BRAND.get(a["logo"], TEAL)) if a["logo"] else mark_stack(TEAL), TEAL, a["app"], "the application")}
 
   <text x="{mid_c:.0f}" y="{ny + 36}" text-anchor="middle" font-family="{MONO}"
         font-size="15" fill="{MUTE}">{E(a['down'])}</text>
