@@ -26,3 +26,6 @@ Desktop.ini
 *.swp
 *~
 .claude/launch.json
+
+# Python bytecode from tools/
+__pycache__/

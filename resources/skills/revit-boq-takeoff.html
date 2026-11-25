@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revit BoQ Takeoff — Claude skill for architecture — Urban Decoders</title>
+<meta name="description" content="Model quantities plus a specification become an auditable draft takeoff — every line traced to element IDs, no rates, ever.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/skills/revit-boq-takeoff.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Revit BoQ Takeoff — Claude skill for architecture — Urban Decoders">
+<meta property="og:description" content="Model quantities plus a specification become an auditable draft takeoff — every line traced to element IDs, no rates, ever.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "Revit BoQ Takeoff",
+  "alternateName": "revit-boq-takeoff",
+  "description": "Model quantities plus a specification become an auditable draft takeoff — every line traced to element IDs, no rates, ever.",
+  "codeSampleType": "full solution",
+  "programmingLanguage": "Claude Skill",
+  "url": "https://www.urbandecoders.com/resources/skills/revit-boq-takeoff.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "license": "Proprietary",
+  "isPartOf": { "@type": "CollectionPage", "name": "Claude Skills for Architecture", "url": "https://www.urbandecoders.com/resources/skills/" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/">Skills</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/bim-authoring.html">BIM authoring</a><span aria-hidden="true">/</span>
+      <span><code>revit-boq-takeoff</code></span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">.xlsx takeoff</span>
+        <h1 class="display tpl-skilltitle">Revit BoQ Takeoff</h1>
+        <p class="lead">Model quantities plus a specification become an auditable draft takeoff — every line traced to element IDs, no rates, ever.</p>
+        <p class="tpl-callline">Once installed, Claude loads it on its own when the conversation
+        matches. You can also call it directly with <code>/revit-boq-takeoff</code>.</p>
+        <div class="wrap-btns">
+          <a class="btn btn--brand btn--mono" href="../downloads/revit-boq-takeoff.skill" download>Download .skill <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+          <a class="btn btn--outline btn--mono" href="#quick-reference">Read the quick reference</a>
+        </div>
+      </div>
+      <dl class="tpl-meta card">
+        <div><dt>Category</dt><dd><a href="../../resources/skills/bim-authoring.html">BIM authoring</a></dd></div>
+        <div><dt>Software</dt><dd class="tpl-meta__tags"><a class="tag tag--sw" href="../../resources/skills/?sw=revit">Revit</a><a class="tag tag--sw" href="../../resources/skills/?sw=excel">Excel</a></dd></div>
+        <div><dt>Output</dt><dd>.xlsx takeoff</dd></div>
+        <div><dt>Package</dt><dd>6 files &middot; 58.9 KB</dd></div>
+        <div><dt>Download</dt><dd>38.9 KB zip</dd></div>
+        <div><dt>Worked example</dt><dd>Not bundled</dd></div>
+        <div><dt>Tags</dt><dd class="tpl-meta__tags"><span class="tag">NRM2</span><span class="tag">Quantities</span><span class="tag">QS</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap"><div class="tpl-disclaimer" role="note">
+  <span class="tpl-disclaimer__tag">Read first</span>
+  <p>These skills assist qualified practitioners. They replace neither the architect of
+  record nor the approving authority. Every figure, clause and citation they surface is
+  marked for you to verify — treat an unverified output as a question, not an answer.</p>
+</div></div>
+</section>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Install just this one.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">Two routes. Both end with Claude loading the
+        skill by itself when your conversation matches.</p>
+      </div>
+      <div class="tpl-install">
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">A</span> Claude app, Chat or Cowork</h3>
+          <ol class="md-list">
+            <li>Download <code>revit-boq-takeoff.skill</code> below.</li>
+            <li>Open Claude, go to <strong>Settings &rarr; Capabilities &rarr; Skills</strong> and upload the file.</li>
+            <li>Start a conversation and attach your material. The skill loads itself on a match.</li>
+          </ol>
+          <a class="btn btn--ghost btn--mono btn--sm" href="../downloads/revit-boq-takeoff.skill" download>revit-boq-takeoff.skill &middot; 38.9 KB</a>
+        </div>
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">B</span> Claude Code, in your project</h3>
+          <p>Unzip the package into your skills folder, then restart Claude Code.</p>
+          <div class="codeblock">
+            <button class="codeblock__copy" type="button" data-copy>Copy</button>
+            <pre><code>mkdir -p .claude/skills &amp;&amp; unzip revit-boq-takeoff.skill -d .claude/skills/</code></pre>
+          </div>
+          <p class="tpl-fine">Use <code>~/.claude/skills/</code> instead to install it for every project.</p>
+        </div>
+      </div>
+    </div>
+    <div class="tpl-swneed card">
+      <div class="tpl-swneed__head">
+        <span class="eyebrow">What you need open</span>
+        <p>Beyond Claude itself and the material you are working from.</p>
+      </div>
+      <dl class="tpl-swlegend tpl-swlegend--tight"><div class="tpl-swrow"><dt>Revit</dt><dd>Works on a live model through the Revit MCP connector, or on schedule exports.</dd></div><div class="tpl-swrow"><dt>Excel</dt><dd>Returns an .xlsx workbook. Google Sheets or LibreOffice open them too.</dd></div></dl>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="at-a-glance">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">At a glance</span>
+      <h2 class="section-title">What it takes, what you get.</h2>
+    </div>
+    <div class="grid grid--3 tpl-glance">
+      <div class="card tpl-glance__box">
+        <h3>It takes</h3>
+        <p>A live Revit model or schedule exports, plus the specification and a measurement standard</p>
+      </div>
+      <div class="card tpl-glance__box">
+        <h3>You get</h3>
+        <p>A quantity register as the audit layer, work-section tabs in the standard's own order with spec wording and source element IDs on every line, Rate and £ columns left empty, an exclusions list, and a numbered query sheet for the QS.</p>
+      </div>
+      <div class="card tpl-glance__box tpl-glance__box--red">
+        <h3>It will not</h3>
+        <p>Attach a rate or a cost; invent waste, lap or working-space allowances; reconcile a spec/model conflict silently; present itself as tender-ready.</p>
+      </div>
+    </div>
+    <div class="tpl-example">
+      <span class="tag">Test drive</span>
+      <p>Meadow Lane spec and a mock Revit export, with seven faults planted. The example ships inside the .skill itself, under examples/ — ask for the worked example and the skill runs on it, then tell it to score itself against the seven faults.</p>
+      
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="quick-reference">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#run-it">Run it</a></li><li><a href="#the-workbook">The workbook</a></li><li><a href="#the-pre-flight-that-saves-the-takeoff">The pre-flight that saves the takeoff</a></li><li><a href="#what-it-will-not-do-by-design">What it will not do — by design</a></li><li><a href="#work-the-output">Work the output</a></li></ul>
+        <p class="tpl-toc__head tpl-toc__head--spaced">Jump to</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#files">Files on disk</a></li>
+          <li><a href="#trigger">When it triggers</a></li>
+        </ul>
+      </nav>
+      <div class="tpl-doc">
+        <span class="eyebrow">Quick reference</span>
+        <h2 class="section-title" style="margin:var(--space-4) 0 var(--space-6)">How to run it.</h2>
+        <div class="md"><p>Model quantities plus a specification become an auditable <strong>draft takeoff</strong> — a measuring register a QS can check, not a bill you can tender on. Every line traces to source Element IDs. Every gap, guess and convention is tagged rather than silently absorbed. <strong>No rates, no prices, ever.</strong></p>
+<h2 id="run-it" class="md-h2">Run it</h2>
+<p>Connect Revit (or attach the schedule exports) with the specification:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>BoQ takeoff from this model — spec attached, NRM2.
+Quantify this model for the QS. We only have the schedule exports.
+Material takeoff for the cost plan — which units does NRM2 want?
+Bill of quantities for plot 1. Spec is the Meadow Lane outline.
+Run the worked example so I can see what it does.</code></pre></div>
+<p>Say the <strong>phase and design option</strong> being measured — mixed phases double-count silently. With no live connection and no exports, it still builds the workbook structure with empty quantity columns, as a measuring list.</p>
+<h2 id="the-workbook" class="md-h2">The workbook</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Tab</th><th>What it holds</th></tr></thead><tbody><tr><td><strong>Cover &amp; Basis</strong></td><td>Project, model filename, phase and option measured, extraction date, MCP server and tool used, measurement standard, units — and in bold: <em>DRAFT TAKEOFF FOR VERIFICATION — NOT FOR TENDER.</em> Then the exclusions and assumptions list in full.</td></tr><tr><td><strong>Quantity Register</strong></td><td>The raw extract, one row per element or type: Element ID, UniqueId / IFC GUID, category, family, type, level, phase, count, length, area, volume, materials, key parameters, and a <code>Source</code> column naming the tool call that produced it. Untouched by mapping logic — this is the audit layer.</td></tr><tr><td>Work sections</td><td>One tab per work section (NRM2 order by default): Ref · Description in the spec&#x27;s own wording · Spec clause · Unit · Qty · Rate · £ · Source Element IDs · Notes / Tags. Rate and £ present and <strong>empty</strong>. Qty cells reference the register by formula where practical, so the trail stays live.</td></tr><tr><td><strong>Queries for QS</strong></td><td>Every tagged line collected as a numbered query list. Usually the most valuable sheet in the file.</td></tr></tbody></table></div>
+<p><strong>Tags:</strong> <code>[to verify]</code> · <code>[assumed: …]</code> · <code>[not modelled]</code> · <code>[not in spec]</code> · <code>[check — implausible value]</code> · <code>[to verify — spec/model conflict]</code>.</p>
+<h2 id="the-pre-flight-that-saves-the-takeoff" class="md-h2">The pre-flight that saves the takeoff</h2>
+<blockquote class="mdquote"><p>Model faults become quantity faults. Six things corrupt counts and areas before any BoQ logic runs, and none of them announce themselves in a schedule.</p></blockquote>
+<p>Identical instances in the same place (duplicates double-count) · duplicate or empty <strong>Marks</strong> (the trail to the door and window schedules) · <strong>links</strong> — elements in linked RVT or IFC are not in host schedules, so they are <code>[not measured — linked]</code> and never mixed in silently · groups and nested shared families counted once each · in-place families, which usually carry no Assembly Code and report one lumped volume · curtain walls, where panels and mullions are separate categories and the host wall area must not be measured again on top. Missing Assembly Codes or inconsistent type naming is the single biggest accuracy risk — it is reported as a finding, not a footnote. Where a <code>revit-model-audit</code> report exists, its findings are reused.</p>
+<h2 id="what-it-will-not-do-by-design" class="md-h2">What it will not do — by design</h2>
+<ul class="md-list">
+<li><strong>Attach a rate, a price or a cost</strong>, even casually. Pricing sits with the QS; the columns stay blank.</li>
+<li><strong>Invent an allowance.</strong> No waste percentages, no laps, no &quot;add 10%&quot;. Formwork, temporary works, scaffolding, builder&#x27;s work and commissioning appear as prompts with the quantity blank.</li>
+<li><strong>Reconcile spec against model.</strong> 140 mm in the spec and 100 mm in the wall type both get quoted, at the modelled quantity, tagged as a conflict.</li>
+<li><strong>Measure in the unit Revit happens to give</strong> where the standard wants another. The conversion basis goes in the Notes column.</li>
+<li><strong>Correct an implausible value.</strong> A 2,000 m³ door is tagged, not fixed.</li>
+<li><strong>Touch the model.</strong> No transactions, no colour splash, no purge, no save, no sync. A takeoff that changes what it measures cannot be audited.</li>
+<li><strong>Claim compliance with a measurement standard.</strong> Clauses applied are cited and tagged <code>[to verify]</code>.</li>
+<li><strong>Answer access questions</strong> — those go to <code>part-m-revit-check</code>.</li>
+</ul>
+<h2 id="work-the-output" class="md-h2">Work the output</h2>
+<ol class="md-list">
+<li>Read the Cover tab&#x27;s exclusions before the quantities. What is missing shapes the number more than what is there.</li>
+<li>Work the Queries tab with the design team first. It is the list that decides how much of the takeoff survives.</li>
+<li>Fix model hygiene in the model, then re-extract. Patching quantities in the spreadsheet breaks the audit trail you just paid for.</li>
+<li>Spot-check ten lines by Element ID with Select by ID in Revit. If they reconcile, the register is doing its job.</li>
+<li>Hand it to the QS as a draft with the standard named. Only their review can answer whether it is accurate enough to tender.</li>
+<li>For a formal cost plan, cross-check against a Revit-native material takeoff schedule — two independent extractions catch each other&#x27;s errors.</li>
+</ol>
+<hr class="divider md-hr">
+<p><strong>Remember:</strong> a model gives net modelled quantities. A bill contains judgement the model cannot supply. This closes the first gap and names the second.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="trigger">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Triggering</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">When Claude reaches for it.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">This is the description Claude itself reads to
+        decide whether the skill applies. It is worth knowing, because it tells you exactly how to
+        phrase the ask — and what the skill will decline.</p>
+      </div>
+      <div class="tpl-triggerbox card">
+        <p class="tpl-triggerbox__name"><code>revit-boq-takeoff</code></p>
+        <p>Turn Revit model data (via a Revit MCP connection, or exported schedules) plus a specification into a draft Bill of Quantities takeoff — an editable .xlsx quantity register mapped to spec clauses, structured to a stated measurement standard (NRM2 default), every line traceable to source element IDs, every assumption tagged [to verify], [assumed], [not modelled] or [not in spec]. A draft takeoff and query sheet for a QS to check — never a tender-ready BoQ, never a cost estimate. Use this WHENEVER someone asks for a &quot;BoQ&quot;, &quot;bill of quantities&quot;, &quot;quantity takeoff&quot;, &quot;material takeoff&quot;, &quot;quantify this model&quot;, &quot;quantities for the QS&quot;, &quot;cost plan quantities&quot;, &quot;NRM2 takeoff&quot;, &quot;schedule of quantities&quot;, or wants quantities pulled from Revit/BIM via MCP and matched to a spec — even with only a schedule export, no live connection. Do NOT use for pricing, rates or cost advice (quantities only), nor for access reviews (part-m-drawing-check, part-m-revit-check) or model health (revit-model-audit).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="files">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Package</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Files it puts on your disk.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">6 files, 58.9 KB unzipped,
+        under <code>.claude/skills/revit-boq-takeoff/</code>. Reference material loads only when the skill
+        needs it &mdash; examples/, references/.</p>
+        <p><a class="btn btn--outline btn--mono btn--sm" href="../downloads/revit-boq-takeoff.skill" download>Download the package <span class="btn__arrow" aria-hidden="true">&#8595;</span></a></p>
+      </div>
+      <div class="tpl-tree card">
+        <p class="tpl-tree__root"><code>.claude/skills/revit-boq-takeoff/</code></p>
+        <ul class="tpl-tree__list"><li class="tpl-file" style="--d:1"><span class="tpl-file__name">mock-revit-schedule-export-plot1.xlsx</span><span class="tpl-file__dir">examples/</span><span class="tpl-file__size">11.9 KB</span></li><li class="tpl-file" style="--d:1"><span class="tpl-file__name">README.md</span><span class="tpl-file__dir">examples/</span><span class="tpl-file__size">4.1 KB</span></li><li class="tpl-file" style="--d:1"><span class="tpl-file__name">sample-specification-meadow-lane.docx</span><span class="tpl-file__dir">examples/</span><span class="tpl-file__size">15.0 KB</span></li><li class="tpl-file" style="--d:1"><span class="tpl-file__name">bim-connections.md</span><span class="tpl-file__dir">references/</span><span class="tpl-file__size">6.8 KB</span></li><li class="tpl-file" style="--d:1"><span class="tpl-file__name">measurement-standards.md</span><span class="tpl-file__dir">references/</span><span class="tpl-file__size">8.5 KB</span></li><li class="tpl-file" style="--d:0"><span class="tpl-file__name">SKILL.md</span><span class="tpl-file__dir"></span><span class="tpl-file__size">12.7 KB</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More in this category">
+      <a class="tpl-prevnext__item" href="../../resources/skills/revit-model-audit.html"><span>Previous</span><strong>Revit Model Audit</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/skills/bim-authoring.html">All BIM authoring</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/skills/image-to-revit-family.html"><span>Next</span><strong>Image to Revit Family</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

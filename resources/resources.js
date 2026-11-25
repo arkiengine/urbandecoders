@@ -41,16 +41,20 @@
     var count = document.getElementById('tpl-count');
     var empty = document.getElementById('tpl-empty');
     var reset = document.getElementById('tpl-reset');
-    var chips = Array.prototype.slice.call(document.querySelectorAll('.tpl-chips .chip'));
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.tpl-chips .chip[data-filter]'));
+    var swchips = Array.prototype.slice.call(document.querySelectorAll('.tpl-chips .chip[data-sw]'));
     var cat = 'all';
+    var sw = 'all';
 
     function apply() {
       var term = (q && q.value || '').trim().toLowerCase();
       var shown = 0;
       cards.forEach(function (c) {
         var okCat = cat === 'all' || c.dataset.cat === cat;
+        var okSw = sw === 'all' ||
+          (' ' + (c.dataset.sw || '') + ' ').indexOf(' ' + sw + ' ') !== -1;
         var okTerm = !term || (c.dataset.search || '').indexOf(term) !== -1;
-        var show = okCat && okTerm;
+        var show = okCat && okSw && okTerm;
         c.hidden = !show;
         if (show) shown++;
       });
@@ -81,12 +85,22 @@
       });
     });
 
+    swchips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        sw = chip.dataset.sw;
+        swchips.forEach(function (c) { c.setAttribute('aria-pressed', String(c === chip)); });
+        apply();
+      });
+    });
+
     if (q) q.addEventListener('input', apply);
     if (sort) sort.addEventListener('change', function () { order(); apply(); });
     if (reset) reset.addEventListener('click', function () {
       if (q) q.value = '';
       cat = 'all';
+      sw = 'all';
       chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c.dataset.filter === 'all')); });
+      swchips.forEach(function (c) { c.setAttribute('aria-pressed', String(c.dataset.sw === 'all')); });
       apply();
       if (q) q.focus();
     });
@@ -102,11 +116,25 @@
       q.select();
     });
 
-    /* deep link: templates/#library?cat=slug or ?cat= on the URL */
-    var pre = new URLSearchParams(location.search).get('cat');
+    /* deep link: ?cat=slug and/or ?sw=slug on the URL */
+    var params = new URLSearchParams(location.search);
+    var pre = params.get('cat');
     if (pre) {
       var match = chips.filter(function (c) { return c.dataset.filter === pre; })[0];
       if (match) match.click();
+    }
+    var presw = params.get('sw');
+    if (presw) {
+      var swmatch = swchips.filter(function (c) { return c.dataset.sw === presw; })[0];
+      if (swmatch) {
+        swmatch.click();
+        /* After a frame, so the hidden cards have already shortened the page —
+           scrolling before that lands short of the library. */
+        var lib = document.getElementById('library');
+        if (lib && !location.hash) {
+          requestAnimationFrame(function () { lib.scrollIntoView(); });
+        }
+      }
     }
 
     apply();

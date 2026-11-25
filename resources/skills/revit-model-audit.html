@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revit Model Audit — Claude skill for architecture — Urban Decoders</title>
+<meta name="description" content="Verdict-first forensics on a live Revit model: coordinates, worksharing, warnings, annotation integrity, element identity. Never modified.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/skills/revit-model-audit.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Revit Model Audit — Claude skill for architecture — Urban Decoders">
+<meta property="og:description" content="Verdict-first forensics on a live Revit model: coordinates, worksharing, warnings, annotation integrity, element identity. Never modified.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "Revit Model Audit",
+  "alternateName": "revit-model-audit",
+  "description": "Verdict-first forensics on a live Revit model: coordinates, worksharing, warnings, annotation integrity, element identity. Never modified.",
+  "codeSampleType": "full solution",
+  "programmingLanguage": "Claude Skill",
+  "url": "https://www.urbandecoders.com/resources/skills/revit-model-audit.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "license": "Proprietary",
+  "isPartOf": { "@type": "CollectionPage", "name": "Claude Skills for Architecture", "url": "https://www.urbandecoders.com/resources/skills/" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/">Skills</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/bim-authoring.html">BIM authoring</a><span aria-hidden="true">/</span>
+      <span><code>revit-model-audit</code></span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">Audit report</span>
+        <h1 class="display tpl-skilltitle">Revit Model Audit</h1>
+        <p class="lead">Verdict-first forensics on a live Revit model: coordinates, worksharing, warnings, annotation integrity, element identity. Never modified.</p>
+        <p class="tpl-callline">Once installed, Claude loads it on its own when the conversation
+        matches. You can also call it directly with <code>/revit-model-audit</code>.</p>
+        <div class="wrap-btns">
+          <a class="btn btn--brand btn--mono" href="../downloads/revit-model-audit.skill" download>Download .skill <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+          <a class="btn btn--outline btn--mono" href="#quick-reference">Read the quick reference</a>
+        </div>
+      </div>
+      <dl class="tpl-meta card">
+        <div><dt>Category</dt><dd><a href="../../resources/skills/bim-authoring.html">BIM authoring</a></dd></div>
+        <div><dt>Software</dt><dd class="tpl-meta__tags"><a class="tag tag--sw" href="../../resources/skills/?sw=revit">Revit</a><a class="tag tag--sw" href="../../resources/skills/?sw=ifc">IFC / BIM</a></dd></div>
+        <div><dt>Output</dt><dd>Audit report</dd></div>
+        <div><dt>Package</dt><dd>1 file &middot; 4.6 KB</dd></div>
+        <div><dt>Download</dt><dd>2.3 KB zip</dd></div>
+        <div><dt>Worked example</dt><dd>Not bundled</dd></div>
+        <div><dt>Tags</dt><dd class="tpl-meta__tags"><span class="tag">Revit</span><span class="tag">Model QA</span><span class="tag">Coordinates</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap"><div class="tpl-disclaimer" role="note">
+  <span class="tpl-disclaimer__tag">Read first</span>
+  <p>These skills assist qualified practitioners. They replace neither the architect of
+  record nor the approving authority. Every figure, clause and citation they surface is
+  marked for you to verify — treat an unverified output as a question, not an answer.</p>
+</div></div>
+</section>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Install just this one.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">Two routes. Both end with Claude loading the
+        skill by itself when your conversation matches.</p>
+      </div>
+      <div class="tpl-install">
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">A</span> Claude app, Chat or Cowork</h3>
+          <ol class="md-list">
+            <li>Download <code>revit-model-audit.skill</code> below.</li>
+            <li>Open Claude, go to <strong>Settings &rarr; Capabilities &rarr; Skills</strong> and upload the file.</li>
+            <li>Start a conversation and attach your material. The skill loads itself on a match.</li>
+          </ol>
+          <a class="btn btn--ghost btn--mono btn--sm" href="../downloads/revit-model-audit.skill" download>revit-model-audit.skill &middot; 2.3 KB</a>
+        </div>
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">B</span> Claude Code, in your project</h3>
+          <p>Unzip the package into your skills folder, then restart Claude Code.</p>
+          <div class="codeblock">
+            <button class="codeblock__copy" type="button" data-copy>Copy</button>
+            <pre><code>mkdir -p .claude/skills &amp;&amp; unzip revit-model-audit.skill -d .claude/skills/</code></pre>
+          </div>
+          <p class="tpl-fine">Use <code>~/.claude/skills/</code> instead to install it for every project.</p>
+        </div>
+      </div>
+    </div>
+    <div class="tpl-swneed card">
+      <div class="tpl-swneed__head">
+        <span class="eyebrow">What you need open</span>
+        <p>Beyond Claude itself and the material you are working from.</p>
+      </div>
+      <dl class="tpl-swlegend tpl-swlegend--tight"><div class="tpl-swrow"><dt>Revit</dt><dd>Works on a live model through the Revit MCP connector, or on schedule exports.</dd></div><div class="tpl-swrow"><dt>IFC / BIM</dt><dd>Reads an .ifc export from any authoring tool.</dd></div></dl>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="at-a-glance">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">At a glance</span>
+      <h2 class="section-title">What it takes, what you get.</h2>
+    </div>
+    <div class="grid grid--3 tpl-glance">
+      <div class="card tpl-glance__box">
+        <h3>It takes</h3>
+        <p>A live model through the Revit MCP connector — or exported schedules and a warnings list</p>
+      </div>
+      <div class="card tpl-glance__box">
+        <h3>You get</h3>
+        <p>Version and provenance, worksharing and link status, base point / survey point / internal origin with the distances between them, warnings grouped by type, levels, grids, worksets, phases and options, overridden dimensions, and element data down to ElementId, UniqueId and IFC GUID — ranked by what each breaks.</p>
+      </div>
+      <div class="card tpl-glance__box tpl-glance__box--red">
+        <h3>It will not</h3>
+        <p>Edit, purge, save, sync or relinquish; infer a coordinate system from where the building appears to be; declare a model fit for purpose generically.</p>
+      </div>
+    </div>
+    <div class="tpl-example">
+      <span class="tag">Design note</span>
+      <p>The real test is the next consultant model you receive, read before anyone trusts it. No worked example is bundled with this one yet; run it on live project material.</p>
+      
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="quick-reference">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#run-it">Run it</a></li><li><a href="#the-report">The report</a></li><li><a href="#coordinates-read-this-first-every-time">Coordinates — read this first, every time</a></li><li><a href="#what-it-will-not-do-by-design">What it will not do — by design</a></li><li><a href="#work-the-output">Work the output</a></li></ul>
+        <p class="tpl-toc__head tpl-toc__head--spaced">Jump to</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#files">Files on disk</a></li>
+          <li><a href="#trigger">When it triggers</a></li>
+        </ul>
+      </nav>
+      <div class="tpl-doc">
+        <span class="eyebrow">Quick reference</span>
+        <h2 class="section-title" style="margin:var(--space-4) 0 var(--space-6)">How to run it.</h2>
+        <div class="md"><p>Forensic health-check of a Revit model before anyone coordinates, schedules, exports or builds a twin off it. <strong>Measures first, judges second, changes nothing.</strong> The model is evidence and a record; repair happens in the issuer&#x27;s file, by the issuer.</p>
+<h2 id="run-it" class="md-h2">Run it</h2>
+<p>Connect Revit (or attach the schedule and warnings exports) and say what the model is for:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>Audit this Revit model — we&#x27;re issuing it for coordination on Friday.
+A consultant just sent this RVT. What can we trust?
+Check the coordinates. We&#x27;re exporting to IFC and importing into Unreal.
+Model health check before we start the takeoff.
+Is this model fit for a digital twin, or is it a visualisation model?</code></pre></div>
+<p>Naming the destination changes the audit materially: a model that is fine for plan production can be unusable for IFC, a takeoff or a game engine. Where a central file is involved, it is opened <strong>detached</strong> or read from a local copy — never synced, never relinquished.</p>
+<h2 id="the-report" class="md-h2">The report</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Section</th><th>What it holds</th></tr></thead><tbody><tr><td>Verdict</td><td>What the model is, what it can be used for as-is, what it can&#x27;t without manual checks, and the single biggest problem. First, always.</td></tr><tr><td>Provenance</td><td>Revit version saved in, workshared state (central / local / detached), issue or stage, file size, project units and rounding.</td></tr><tr><td>Links</td><td>RVT, IFC, CAD and point-cloud links with load status, attachment vs overlay, and anything reporting <em>Not Found</em>. Imported (not linked) CAD called out separately.</td></tr><tr><td><strong>Geometry frame</strong></td><td>Project base point, survey point and internal origin with the distances between them, geometry beyond ~20 miles (32 km) of the origin, shared coordinates acquired or published and from which link, true vs project north, elevation base, site location or EPSG.</td></tr><tr><td>Model structure</td><td>Levels and grids (duplicates, unpinned, levels with no views), worksets with counts and open state, phases and phase filters, design options and which is primary, groups and nesting depth, in-place families.</td></tr><tr><td>Warnings</td><td>The warnings list grouped by type with counts — several hundred of one kind is one finding, not several hundred.</td></tr><tr><td>Annotation integrity</td><td>Dimensions with overridden text, text notes hard-coding a number a parameter should hold, tags reporting blank or stale values, element-by-element graphic overrides, title-block scales disagreeing with the placed view.</td></tr><tr><td>Extractable data</td><td>Instances with family, type, Mark, level, room, key parameters, <strong>ElementId, UniqueId and IFC GUID</strong> — plus duplicate Marks, empty Marks, coincident instances and orphaned hosted elements.</td></tr><tr><td>Ranked risks</td><td>High / Medium / Low / Info, each stating what it breaks downstream and what to do.</td></tr><tr><td>What was not checked</td><td>Always present.</td></tr></tbody></table></div>
+<p><strong>Tags:</strong> <code>[measured]</code> · <code>[inferred]</code> · <code>[verify manually]</code>. Every element-level finding carries its <strong>ElementId</strong>, so it can be found with Select by ID.</p>
+<h2 id="coordinates-read-this-first-every-time" class="md-h2">Coordinates — read this first, every time</h2>
+<blockquote class="mdquote"><p>An overridden dimension means nothing on that sheet can be trusted without checking the model. And geometry far from the internal origin is correct in survey terms and catastrophic in a single-precision engine — faces jitter, snapping fails, and it reads as a modelling error.</p></blockquote>
+<p>Establish in order: base point, survey point and internal origin and the distances between them · whether shared coordinates were <strong>acquired or published</strong>, and from which link · coordinate magnitude and its consequence for the stated destination · true north vs project north · whether a stated EPSG was read from the file or told to you by a human. Those last two are different, and the second is <code>[verify manually]</code>.</p>
+<h2 id="what-it-will-not-do-by-design" class="md-h2">What it will not do — by design</h2>
+<ul class="md-list">
+<li><strong>Touch the model.</strong> No transactions, no edits, no view overrides, no colour splash, no purge, no save, no sync with central.</li>
+<li><strong>Infer a coordinate system</strong> from where the building appears to be, or state what an EPSG code means from memory.</li>
+<li><strong>Fix anything.</strong> Remediation is prescribed, for the issuer to carry out in their own file.</li>
+<li><strong>Treat a blank parameter as zero or false.</strong> A missing Mark usually means nobody filled it, not that the element has none.</li>
+<li><strong>Judge design, clashes or compliance.</strong> Part M goes to <code>part-m-revit-check</code>; quantities go to <code>revit-boq-takeoff</code>.</li>
+<li><strong>Count warnings as severity.</strong> Volume and consequence are different things.</li>
+<li><strong>Declare a model &quot;fit for purpose&quot; generically.</strong> Fitness is per purpose, and the verdict names purposes.</li>
+</ul>
+<h2 id="work-the-output" class="md-h2">Work the output</h2>
+<ol class="md-list">
+<li>Read the verdict. If a High says stop, stop before exporting, federating or measuring anything.</li>
+<li>Settle the geometry frame with the issuer before any IFC, GIS or engine import. Everything downstream inherits it and nothing downstream will warn you.</li>
+<li>Treat overridden dimensions as a drawing-wide finding, not a sheet-level one. Re-check the affected sheets against the model.</li>
+<li>Before building anything that joins on identity, confirm Marks are unique and capture UniqueId or IFC GUID — ElementIds do not survive a recreate or an upgrade.</li>
+<li>Send the ranked risks to the issuer as questions. They are defects in their model, not yours to patch downstream.</li>
+<li>File the not-checked list with the audit. It defines what is still owed before the model carries real weight.</li>
+</ol>
+<hr class="divider md-hr">
+<p><strong>Remember:</strong> the audit tests whether the model agrees with itself. Whether it agrees with the building is still a survey.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="trigger">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Triggering</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">When Claude reaches for it.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">This is the description Claude itself reads to
+        decide whether the skill applies. It is worth knowing, because it tells you exactly how to
+        phrase the ask — and what the skill will decline.</p>
+      </div>
+      <div class="tpl-triggerbox card">
+        <p class="tpl-triggerbox__name"><code>revit-model-audit</code></p>
+        <p>&#x27;Audit a Revit model (live via the Revit MCP connector, or from exported schedules and warnings) for fitness for use: version and provenance, worksharing and links, base point / survey point / internal origin and shared coordinates, warnings by type, levels, grids, worksets, phases, options, rooms, overridden dimensions, and element data (Mark, ElementId, UniqueId, IFC GUID). Read-only; never edits, purges, saves or syncs. Returns a verdict-first report with ranked findings tagged [measured], [inferred] or [verify manually]. Use WHENEVER someone asks to &quot;audit this Revit model&quot;, &quot;model health check&quot;, &quot;check this RVT&quot;, &quot;model QA&quot;, &quot;is this model fit for IFC / coordination / Unreal&quot;, &quot;check coordinates in Revit&quot;, or receives a consultant model and asks what can be trusted. Do NOT use for DXF/DWG files, Part M reviews (part-m-revit-check) or quantity takeoffs (revit-boq-takeoff).&#x27;</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="files">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Package</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Files it puts on your disk.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">1 file, 4.6 KB unzipped,
+        under <code>.claude/skills/revit-model-audit/</code>. Reference material loads only when the skill
+        needs it &mdash; no subfolders.</p>
+        <p><a class="btn btn--outline btn--mono btn--sm" href="../downloads/revit-model-audit.skill" download>Download the package <span class="btn__arrow" aria-hidden="true">&#8595;</span></a></p>
+      </div>
+      <div class="tpl-tree card">
+        <p class="tpl-tree__root"><code>.claude/skills/revit-model-audit/</code></p>
+        <ul class="tpl-tree__list"><li class="tpl-file" style="--d:0"><span class="tpl-file__name">SKILL.md</span><span class="tpl-file__dir"></span><span class="tpl-file__size">4.6 KB</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More in this category">
+      <span></span>
+      <a class="tpl-prevnext__all" href="../../resources/skills/bim-authoring.html">All BIM authoring</a>
+      <a class="tpl-prevnext__item tpl-prevnext__item--next" href="../../resources/skills/revit-boq-takeoff.html"><span>Next</span><strong>Revit BoQ Takeoff</strong></a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

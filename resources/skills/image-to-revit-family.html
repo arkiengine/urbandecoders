@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image to Revit Family — Claude skill for architecture — Urban Decoders</title>
+<meta name="description" content="A product photo becomes a native parametric family — reference planes, labelled dimensions, materials and a passing flex test. Never a mesh.">
+<link rel="canonical" href="https://www.urbandecoders.com/resources/skills/image-to-revit-family.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Image to Revit Family — Claude skill for architecture — Urban Decoders">
+<meta property="og:description" content="A product photo becomes a native parametric family — reference planes, labelled dimensions, materials and a passing flex test. Never a mesh.">
+<meta property="og:image" content="https://www.urbandecoders.com/assets/img/og-work.jpg">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../assets/favicon-192.png">
+<link rel="stylesheet" href="../../styles.css?v=20261116">
+<link rel="stylesheet" href="../../resources/resources.css?v=20261116">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "Image to Revit Family",
+  "alternateName": "image-to-revit-family",
+  "description": "A product photo becomes a native parametric family — reference planes, labelled dimensions, materials and a passing flex test. Never a mesh.",
+  "codeSampleType": "full solution",
+  "programmingLanguage": "Claude Skill",
+  "url": "https://www.urbandecoders.com/resources/skills/image-to-revit-family.html",
+  "author": { "@type": "Organization", "name": "Urban Decoders" },
+  "license": "Proprietary",
+  "isPartOf": { "@type": "CollectionPage", "name": "Claude Skills for Architecture", "url": "https://www.urbandecoders.com/resources/skills/" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+      <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="../../platform.html">Platform</a>
+      <a class="nav__link" href="../../services.html">Services</a>
+      <a class="nav__link" href="../../case-studies.html">Work</a>
+      <a class="nav__link" href="../../courses.html">Courses</a>
+      <a class="nav__link" href="../../resources/" aria-current="page">Resources</a>
+      <a class="nav__link" href="../../blog.html">Blog</a>
+      <a class="nav__link" href="../../about.html">About</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm btn--mono" href="../../contact.html">Start a twin <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head glow-top tpl-head tpl-head--skill">
+  <div class="wrap">
+    <nav class="tpl-crumb" aria-label="Breadcrumb">
+      <a href="../../resources/">Free resources</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/">Skills</a><span aria-hidden="true">/</span>
+      <a href="../../resources/skills/bim-authoring.html">BIM authoring</a><span aria-hidden="true">/</span>
+      <span><code>image-to-revit-family</code></span>
+    </nav>
+    <div class="tpl-skillhead">
+      <div class="stack">
+        <span class="eyebrow">.rfa family</span>
+        <h1 class="display tpl-skilltitle">Image to Revit Family</h1>
+        <p class="lead">A product photo becomes a native parametric family — reference planes, labelled dimensions, materials and a passing flex test. Never a mesh.</p>
+        <p class="tpl-callline">Once installed, Claude loads it on its own when the conversation
+        matches. You can also call it directly with <code>/image-to-revit-family</code>.</p>
+        <div class="wrap-btns">
+          <a class="btn btn--brand btn--mono" href="../downloads/image-to-revit-family.skill" download>Download .skill <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>
+          <a class="btn btn--outline btn--mono" href="#quick-reference">Read the quick reference</a>
+        </div>
+      </div>
+      <dl class="tpl-meta card">
+        <div><dt>Category</dt><dd><a href="../../resources/skills/bim-authoring.html">BIM authoring</a></dd></div>
+        <div><dt>Software</dt><dd class="tpl-meta__tags"><a class="tag tag--sw" href="../../resources/skills/?sw=revit">Revit</a></dd></div>
+        <div><dt>Output</dt><dd>.rfa family</dd></div>
+        <div><dt>Package</dt><dd>3 files &middot; 35.8 KB</dd></div>
+        <div><dt>Download</dt><dd>14.8 KB zip</dd></div>
+        <div><dt>Worked example</dt><dd>Not bundled</dd></div>
+        <div><dt>Tags</dt><dd class="tpl-meta__tags"><span class="tag">Revit</span><span class="tag">Families</span><span class="tag">Parametric</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap"><div class="tpl-disclaimer" role="note">
+  <span class="tpl-disclaimer__tag">Read first</span>
+  <p>These skills assist qualified practitioners. They replace neither the architect of
+  record nor the approving authority. Every figure, clause and citation they surface is
+  marked for you to verify — treat an unverified output as a question, not an answer.</p>
+</div></div>
+</section>
+
+<section class="section" id="install">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Install just this one.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">Two routes. Both end with Claude loading the
+        skill by itself when your conversation matches.</p>
+      </div>
+      <div class="tpl-install">
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">A</span> Claude app, Chat or Cowork</h3>
+          <ol class="md-list">
+            <li>Download <code>image-to-revit-family.skill</code> below.</li>
+            <li>Open Claude, go to <strong>Settings &rarr; Capabilities &rarr; Skills</strong> and upload the file.</li>
+            <li>Start a conversation and attach your material. The skill loads itself on a match.</li>
+          </ol>
+          <a class="btn btn--ghost btn--mono btn--sm" href="../downloads/image-to-revit-family.skill" download>image-to-revit-family.skill &middot; 14.8 KB</a>
+        </div>
+        <div class="tpl-install__block">
+          <h3><span class="tpl-install__n">B</span> Claude Code, in your project</h3>
+          <p>Unzip the package into your skills folder, then restart Claude Code.</p>
+          <div class="codeblock">
+            <button class="codeblock__copy" type="button" data-copy>Copy</button>
+            <pre><code>mkdir -p .claude/skills &amp;&amp; unzip image-to-revit-family.skill -d .claude/skills/</code></pre>
+          </div>
+          <p class="tpl-fine">Use <code>~/.claude/skills/</code> instead to install it for every project.</p>
+        </div>
+      </div>
+    </div>
+    <div class="tpl-swneed card">
+      <div class="tpl-swneed__head">
+        <span class="eyebrow">What you need open</span>
+        <p>Beyond Claude itself and the material you are working from.</p>
+      </div>
+      <dl class="tpl-swlegend tpl-swlegend--tight"><div class="tpl-swrow"><dt>Revit</dt><dd>Works on a live model through the Revit MCP connector, or on schedule exports.</dd></div></dl>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="at-a-glance">
+  <div class="wrap">
+    <div class="stack" style="max-width:52ch; margin-bottom:40px">
+      <span class="eyebrow">At a glance</span>
+      <h2 class="section-title">What it takes, what you get.</h2>
+    </div>
+    <div class="grid grid--3 tpl-glance">
+      <div class="card tpl-glance__box">
+        <h3>It takes</h3>
+        <p>One or two images of the object, at least one real dimension or a data sheet, and a destination folder</p>
+      </div>
+      <div class="card tpl-glance__box">
+        <h3>You get</h3>
+        <p>A family spec you confirm before anything is built, then the family itself: parameters, planes, locked geometry, materials and subcategories — plus a flex table proving every parameter moves. Balustrades become a Railing type you draw as a line; rows of objects become a line-based repeater.</p>
+      </div>
+      <div class="card tpl-glance__box tpl-glance__box--red">
+        <h3>It will not</h3>
+        <p>Import a mesh, DWG or AI-generated model; claim parametric without a passing flex test; touch your project without a yes; certify guarding or make a manufacturer claim.</p>
+      </div>
+    </div>
+    <div class="tpl-example">
+      <span class="tag">Design note</span>
+      <p>A product photo and one known dimension is all it needs to run end to end. No worked example is bundled with this one yet; run it on live project material.</p>
+      
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="quick-reference">
+  <div class="wrap">
+    <div class="tpl-doclayout">
+      <nav class="tpl-toc" aria-label="On this page">
+        <p class="tpl-toc__head">On this page</p>
+        <ul><li><a href="#run-it">Run it</a></li><li><a href="#the-route-it-takes">The route it takes</a></li><li><a href="#the-spec-it-proposes-then-stops">The spec it proposes — then stops</a></li><li><a href="#the-flex-test">The flex test</a></li><li><a href="#what-it-will-not-do-by-design">What it will not do — by design</a></li><li><a href="#work-the-output">Work the output</a></li></ul>
+        <p class="tpl-toc__head tpl-toc__head--spaced">Jump to</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#files">Files on disk</a></li>
+          <li><a href="#trigger">When it triggers</a></li>
+        </ul>
+      </nav>
+      <div class="tpl-doc">
+        <span class="eyebrow">Quick reference</span>
+        <h2 class="section-title" style="margin:var(--space-4) 0 var(--space-6)">How to run it.</h2>
+        <div class="md"><p>A photo of an object becomes a <strong>native, parametric, flex-tested</strong> Revit family — forms locked to reference planes and driven by named parameters. Never an imported mesh. It proposes the spec, waits for your yes, builds, then proves the parameters work before calling anything parametric.</p>
+<h2 id="run-it" class="md-h2">Run it</h2>
+<p>Attach the image, give <strong>one real dimension</strong>, and say where the <code>.rfa</code> goes:</p>
+<div class="codeblock"><button class="codeblock__copy" type="button" data-copy>Copy</button><pre><code>Make this sofa into a Revit family. Overall width is 2100.
+Family from this photo — it&#x27;s a bollard, 1100 high, and they repeat at 1500.
+Turn this balustrade into a railing type. Top rail at 1100.
+Parametric family from this image. I only have the front view.
+No Revit connection here — give me the script to run in pyRevit.</code></pre></div>
+<p>A straight-on front or side view is worth more than a perspective hero shot; a second view is asked for when depth or the back is hidden. Without a dimension or a data sheet it proceeds on stated defaults, every one tagged <code>[assumed default]</code>.</p>
+<h2 id="the-route-it-takes" class="md-h2">The route it takes</h2>
+<div class="tablewrap"><table class="mdtable"><thead><tr><th>Object</th><th>Route</th><th>Template</th></tr></thead><tbody><tr><td>Sofa, chair, table, bed, cabinet</td><td>Loadable family</td><td><code>Metric Furniture.rft</code></td></tr><tr><td>Desks and workstation systems</td><td>Loadable family</td><td><code>Metric Furniture System.rft</code></td></tr><tr><td>Light fitting</td><td>Loadable family</td><td><code>Metric Lighting Fixture.rft</code> (or the ceiling- / wall-based variant)</td></tr><tr><td>Tree, shrub, planter with planting</td><td>Loadable family</td><td><code>Metric Planting.rft</code></td></tr><tr><td>Bin, bench, sculpture, kiosk</td><td>Loadable family</td><td><code>Metric Generic Model.rft</code> / <code>Metric Specialty Equipment.rft</code></td></tr><tr><td>Bollards, fins, louvres, posts in a row</td><td>Line-based repeater</td><td><code>Metric Generic Model line based.rft</code></td></tr><tr><td>Balustrade, railing, handrail, glass guard</td><td><strong>Railing system type</strong></td><td><code>Metric Baluster.rft</code>, <code>-Post.rft</code>, <code>-Panel.rft</code>, <code>Metric Profile-Rail.rft</code></td></tr></tbody></table></div>
+<p><strong>Why a balustrade becomes a Railing type, not a wall.</strong> A railing type is what gives you &quot;sketch a line and it repeats at increments&quot;: a path, a baluster pattern at a set spacing, start, end and corner posts, justification and excess-length fill. It follows stairs and ramps, schedules as Railings and exports as IfcRailing. A curtain-wall balustrade draws like a wall, exports as IfcCurtainWall and cannot host to stairs — offered only if you explicitly want wall behaviour.</p>
+<h2 id="the-spec-it-proposes-then-stops" class="md-h2">The spec it proposes — then stops</h2>
+<p>Nothing is built until you confirm: route, template and family name · the <strong>parameter table</strong> (name, type or instance, group, default, formula, flex range, source tag — sizes and materials as type parameters, derived values as formulas) · the <strong>geometry recipe</strong>, each component with its primitive and the reference planes it locks to · types or type-catalogue rows · for railings, the RailingType spec with heights, baluster pattern, posts, rail profiles and justification · and <strong>what the image could not tell you</strong>, each with the default chosen.</p>
+<p><strong>Dimension tags:</strong> <code>[user given]</code> · <code>[from data sheet]</code> · <code>[estimated from image]</code> · <code>[assumed default]</code>.</p>
+<h2 id="the-flex-test" class="md-h2">The flex test</h2>
+<blockquote class="mdquote"><p>&quot;Fully editable&quot; is a claim, and it has to be proven. Nothing is called parametric until this passes.</p></blockquote>
+<p>Every driving parameter is set to its minimum, default and maximum and committed, and the result recorded: ok · constraint failure with Revit&#x27;s own message · or geometry that didn&#x27;t follow, caught by checking the bounding box against the parameter. Arrays flex to their minimum count; every catalogue row is loaded. Failures are fixed and re-run, and reported rather than hidden. Railings get a test run in a <strong>scratch project</strong> — a straight run, a 90° corner and an arc — to check post placement, end spacing and rail joins.</p>
+<h2 id="what-it-will-not-do-by-design" class="md-h2">What it will not do — by design</h2>
+<ul class="md-list">
+<li><strong>Import geometry.</strong> No DWG, SAT, OBJ or mesh, and no AI-generated 3D model wrapped in a family. They are heavy, cannot flex, and break schedules and IFC.</li>
+<li><strong>Build before you confirm the spec.</strong></li>
+<li><strong>Claim &quot;fully parametric&quot;</strong> without a passing flex test.</li>
+<li><strong>Touch your project.</strong> Families are built in new documents and tested in a scratch project. Loading into your model or creating types there needs an explicit yes. Nothing is overwritten — an existing file gets a version suffix and you are told.</li>
+<li><strong>Read size off an image.</strong> An image is evidence of shape and proportion only.</li>
+<li><strong>Make a manufacturer claim.</strong> A recognisable product is named generically; Manufacturer, Model and URL stay blank unless you supply them. Geometry is a lookalike at LOD 200–300.</li>
+<li><strong>Certify guarding.</strong> Balustrade heights, gaps and loads are parameters with defaults tagged <code>[verify against Part K / project spec]</code>.</li>
+<li><strong>Model buildings, or audit models</strong> — that is <code>revit-model-audit</code>.</li>
+</ul>
+<h2 id="work-the-output" class="md-h2">Work the output</h2>
+<ol class="md-list">
+<li>Read the &quot;what the image could not tell you&quot; list before the geometry. Those are the decisions you are inheriting.</li>
+<li>Check the flex-test table row by row. A failure there is a family that will break the first time somebody edits a type.</li>
+<li>Open the <code>.rfa</code> and flex it yourself once, in your own units. Two minutes.</li>
+<li>Fill Assembly Code and Keynote — left blank <code>[to fill]</code> on purpose, so <code>revit-boq-takeoff</code> can map the family later.</li>
+<li>For railings, bring the type into your project with Transfer Project Standards from the scratch <code>.rvt</code>.</li>
+<li>For balustrades and guards, check height and gaps against Part K and the project spec before anybody draws with it.</li>
+</ol>
+<hr class="divider md-hr">
+<p><strong>Remember:</strong> with no live connection it hands you the spec plus a runnable IronPython script per family — and says plainly that the scripts have not been run.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="trigger">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Triggering</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">When Claude reaches for it.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">This is the description Claude itself reads to
+        decide whether the skill applies. It is worth knowing, because it tells you exactly how to
+        phrase the ask — and what the skill will decline.</p>
+      </div>
+      <div class="tpl-triggerbox card">
+        <p class="tpl-triggerbox__name"><code>image-to-revit-family</code></p>
+        <p>Turn a photo or image of an object (sofa, chair, table, light, planter, bollard, balustrade, railing, glass guard) into a native, parametric, flex-tested Revit family built through the Revit MCP connector, or an IronPython script when no connection exists. Loose objects become loadable families with reference planes, labelled dimensions, material and size parameters and a type catalogue. Balustrades become a Railing type with baluster, post, panel and rail-profile families, so the user sketches a line and balusters repeat at the set spacing. Rows of repeating objects become a line-based array family. Proposes a spec from the image and builds only after the user confirms. Use WHENEVER someone says &quot;make this into a Revit family&quot;, &quot;model this sofa in Revit&quot;, &quot;family from this photo&quot;, &quot;turn this balustrade into a railing type&quot;, &quot;parametric family from this image&quot;, or uploads a product photo and wants it in Revit. Do NOT use for whole buildings, mesh or photogrammetry import, or model audits (revit-model-audit).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="files">
+  <div class="wrap">
+    <div class="tpl-twocol">
+      <div>
+        <span class="eyebrow">Package</span>
+        <h2 class="section-title" style="margin-top:var(--space-4)">Files it puts on your disk.</h2>
+        <p class="lead" style="margin-top:var(--space-4)">3 files, 35.8 KB unzipped,
+        under <code>.claude/skills/image-to-revit-family/</code>. Reference material loads only when the skill
+        needs it &mdash; references/.</p>
+        <p><a class="btn btn--outline btn--mono btn--sm" href="../downloads/image-to-revit-family.skill" download>Download the package <span class="btn__arrow" aria-hidden="true">&#8595;</span></a></p>
+      </div>
+      <div class="tpl-tree card">
+        <p class="tpl-tree__root"><code>.claude/skills/image-to-revit-family/</code></p>
+        <ul class="tpl-tree__list"><li class="tpl-file" style="--d:1"><span class="tpl-file__name">loadable-family-recipe.md</span><span class="tpl-file__dir">references/</span><span class="tpl-file__size">15.2 KB</span></li><li class="tpl-file" style="--d:1"><span class="tpl-file__name">railing-recipe.md</span><span class="tpl-file__dir">references/</span><span class="tpl-file__size">9.6 KB</span></li><li class="tpl-file" style="--d:0"><span class="tpl-file__name">SKILL.md</span><span class="tpl-file__dir"></span><span class="tpl-file__size">10.9 KB</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <nav class="tpl-prevnext" aria-label="More in this category">
+      <a class="tpl-prevnext__item" href="../../resources/skills/revit-boq-takeoff.html"><span>Previous</span><strong>Revit BoQ Takeoff</strong></a>
+      <a class="tpl-prevnext__all" href="../../resources/skills/bim-authoring.html">All BIM authoring</a>
+      <span></span>
+    </nav>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html" aria-label="Urban Decoders home">
+          <img class="brand__wordmark" src="../../assets/ud-wordmark%20NEW.png" alt="Urban Decoders" width="786" height="120">
+        </a>
+        <p>Urban digital twin studio for planning, development and design. Stockport, Greater Manchester, working across the UK and internationally.</p>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../../platform.html">Platform</a></li>
+          <li><a href="../../services.html">Services</a></li>
+          <li><a href="../../case-studies.html">Work</a></li>
+          <li><a href="../../courses.html">Courses</a></li>
+          <li><a href="../../about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__skills">
+        <h4>Free resources</h4>
+        <ul>
+          <li><a href="../../resources/">All resources</a></li>
+          <li><a href="../../resources/skills/">Skills library</a></li>
+          <li><a href="../../resources/guides/">Guides &amp; how-tos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@urbandecoders.com">info@urbandecoders.com</a></li>
+          <li><span style="color:var(--ash)">45 Middle Hillgate<br>Stockport<br>Greater Manchester<br>SK1 3DG</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Urban Decoders. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../resources/resources.js?v=20261116" defer></script>
+</body>
+</html>

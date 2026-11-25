@@ -171,6 +171,17 @@
 .tpl-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-5); }
 .tpl-chips .chip__n { font-family: var(--font-mono); font-size: 10.5px; opacity: 0.65; }
 
+/* Two filter dimensions stacked, each labelled — without the labels the second
+   row reads as more categories. */
+.tpl-filter { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: var(--space-4); align-items: start; }
+.tpl-filter__label {
+  font-family: var(--font-mono); font-size: 10.5px;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--ash);
+  padding-top: 8px;
+}
+.tpl-chips--sw .chip { border: 1px solid var(--hairline-strong); }
+.tpl-chips--sw .chip[aria-pressed="true"] { border-color: var(--ink); }
+
 .tpl-count {
   font-family: var(--font-mono); font-size: 11px;
   letter-spacing: 0.07em; text-transform: uppercase;
@@ -222,6 +233,7 @@
 /* A bare .tag is a single label in the house system; a list of them needs
    edges or it reads as one run-on string. Scoped to the library only. */
 .tpl-card__tags .tag,
+.tpl-card__sw .tag,
 .tpl-meta__tags .tag {
   font-size: 10px;
   color: var(--mute);
@@ -231,6 +243,36 @@
   line-height: 1.4;
   white-space: nowrap;
 }
+
+/* Software is the one thing on a card that answers "can I even run this today",
+   so it gets the brand colour and sits above the tag row. */
+.tpl-card__sw { display: flex; flex-wrap: wrap; gap: 6px; }
+.tpl-card__sw:empty { display: none; }
+.tpl-card__sw .tag--sw,
+.tpl-meta__tags .tag--sw {
+  color: var(--brand-teal-light);
+  border-color: color-mix(in srgb, var(--brand-teal-light) 38%, transparent);
+}
+.tpl-meta__tags a.tag--sw:hover { color: var(--ink); border-color: var(--ink); }
+
+/* ------------------------------------------------------- software legend */
+.tpl-swlegend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4) var(--space-7); }
+.tpl-swrow {
+  display: grid; grid-template-columns: 136px minmax(0, 1fr); gap: var(--space-4);
+  align-items: baseline;
+  padding-bottom: var(--space-4); border-bottom: 1px solid var(--divider-soft);
+}
+.tpl-swrow dt {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.07em; text-transform: uppercase; color: var(--brand-teal-light);
+}
+.tpl-swrow dt span { color: var(--ash); opacity: 0.8; }
+.tpl-swrow dd { color: var(--mute); font-size: 14px; }
+
+.tpl-swneed { margin-top: var(--space-6); padding: var(--space-5); display: grid; gap: var(--space-5); }
+.tpl-swneed__head p { color: var(--mute); font-size: 14px; margin-top: var(--space-2); }
+.tpl-swlegend--tight { grid-template-columns: 1fr; gap: var(--space-3); }
+.tpl-swlegend--tight .tpl-swrow:last-child { padding-bottom: 0; border-bottom: 0; }
 
 .tpl-pillrow { display: flex; flex-wrap: wrap; gap: var(--space-2); }
 .tpl-pillrow .pill span { font-family: var(--font-mono); font-size: 10.5px; opacity: 0.7; }
@@ -497,6 +539,7 @@
   .tpl-skillhead, .tpl-twocol { grid-template-columns: 1fr; gap: var(--space-6); }
   .tpl-rules { grid-template-columns: 1fr; }
   .tpl-glance { grid-template-columns: 1fr; }
+  .tpl-swlegend { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 760px) {
@@ -509,6 +552,9 @@
   .tpl-toolbar { flex-direction: column; align-items: stretch; }
   .tpl-sort { justify-content: space-between; }
   .tpl-meta > div { grid-template-columns: 1fr; gap: var(--space-2); }
+  .tpl-filter { grid-template-columns: 1fr; gap: var(--space-2); }
+  .tpl-filter__label { padding-top: 0; }
+  .tpl-swrow { grid-template-columns: 1fr; gap: var(--space-2); }
 }
 
 /* --- setup-guide connection diagram ---------------------------- */

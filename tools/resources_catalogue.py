@@ -110,6 +110,16 @@ CATEGORIES = [
                 "a twin or a disappointment.",
         "blurb": "IFC audits, CRS reconciliation, engine handover.",
     },
+    {
+        "slug": "bim-authoring",
+        "title": "BIM authoring",
+        "nav": "BIM authoring",
+        "display": ("BIM ", "authoring."),
+        "lede": "Inside the authoring model, through the Revit connector. Families built from "
+                "geometry rather than imported as mesh, models audited before they are trusted, "
+                "and quantities measured with the element ID still attached.",
+        "blurb": "Revit families, model audits, quantity takeoff.",
+    },
 ]
 
 # Display order on the index, the rail and the "suggested" sort — the arc of a
@@ -124,7 +134,38 @@ CATEGORY_ORDER = [
     "carbon-performance",
     "contract-admin",
     "bids-business",
+    "bim-authoring",
     "twins-data",
+]
+
+# ---------------------------------------------------------------- software
+# Which application a skill actually sits beside, so the library can be filtered
+# by what you have open. Order here is the order of the filter row. Every skill
+# carries at least one; the first in its list is the badge shown on its card.
+SOFTWARE = [
+    {"slug": "claude", "title": "Claude only", "label": "Claude only",
+     "note": "Runs on attached files or pasted text. No other software needed."},
+    {"slug": "excel", "title": "Excel", "label": "Excel",
+     "note": "Returns an .xlsx workbook. Google Sheets or LibreOffice open them too."},
+    {"slug": "word", "title": "Word", "label": "Word",
+     "note": "Returns an editable .docx."},
+    {"slug": "powerpoint", "title": "PowerPoint", "label": "PowerPoint",
+     "note": "Returns an editable .pptx."},
+    {"slug": "revit", "title": "Revit", "label": "Revit",
+     "note": "Works on a live model through the Revit MCP connector, or on schedule exports."},
+    {"slug": "cad", "title": "CAD / DXF", "label": "CAD / DXF",
+     "note": "Reads a DXF or DWG-derived export. AutoCAD, BricsCAD or Rhino can produce one."},
+    {"slug": "ifc", "title": "IFC / BIM", "label": "IFC / BIM",
+     "note": "Reads an .ifc export from any authoring tool."},
+    {"slug": "gis", "title": "QGIS / GIS", "label": "QGIS / GIS",
+     "note": "Takes GeoJSON or shapefile-derived data. QGIS is the usual source."},
+    {"slug": "unreal", "title": "Unreal Engine", "label": "Unreal Engine",
+     "note": "Prepares or checks a handover into a real-time engine."},
+    {"slug": "imagegen", "title": "Image / video AI", "label": "Image / video AI",
+     "note": "Returns prompts for Nano Banana, Gemini, Midjourney, Runway or Kling. "
+             "The skill writes the prompt; you run the model."},
+    {"slug": "web", "title": "Web search", "label": "Web search",
+     "note": "Needs live web or portal access — every claim is cited to a retrieved source."},
 ]
 
 # key = source folder name under SOURCE_ROOT
@@ -133,6 +174,7 @@ SKILLS = {
     "Client Brief Intake": {
         "title": "Client Brief Intake",
         "category": "briefs-records",
+        "software": ["excel", "claude"],
         "blurb": "A client brief becomes a traceable requirements register, schedule of "
                  "accommodation and query sheet.",
         "output": ".xlsx register",
@@ -148,6 +190,7 @@ SKILLS = {
     "Executive Summary Builder": {
         "title": "Executive Summary Builder",
         "category": "briefs-records",
+        "software": ["word", "claude"],
         "blurb": "A long report becomes a one-page summary in which the caveats survive and "
                  "conflicting figures are never quietly reconciled.",
         "output": "One-page summary",
@@ -161,6 +204,7 @@ SKILLS = {
     "Meeting Summariser": {
         "title": "Meeting Summariser",
         "category": "briefs-records",
+        "software": ["word", "claude"],
         "blurb": "A transcript becomes minutes that separate decisions from discussion and flag "
                  "verbal instructions and scope creep.",
         "output": "Draft minutes",
@@ -175,6 +219,7 @@ SKILLS = {
     "Site Visit Report from Photos": {
         "title": "Site Visit Report from Photos",
         "category": "briefs-records",
+        "software": ["word", "claude"],
         "blurb": "Site photos and narration become an observation report where visible and "
                  "inferred are tagged differently.",
         "output": ".docx report",
@@ -188,6 +233,7 @@ SKILLS = {
     "Screenshot to Editable Table": {
         "title": "Screenshot to Editable Table",
         "category": "briefs-records",
+        "software": ["excel", "claude"],
         "blurb": "A photo of a schedule becomes a faithful .xlsx — original order kept, unreadable "
                  "cells flagged, printed totals never corrected.",
         "output": ".xlsx transcription",
@@ -203,6 +249,7 @@ SKILLS = {
     "Part M Drawing Check": {
         "title": "Part M Drawing Check",
         "category": "compliance-files",
+        "software": ["excel", "claude"],
         "blurb": "A drawing becomes a measuring worksheet: what to check, where, against which "
                  "AD M clause. You record the finding.",
         "output": ".xlsx worksheet",
@@ -217,6 +264,7 @@ SKILLS = {
     "DXF Audit": {
         "title": "DXF Audit",
         "category": "compliance-files",
+        "software": ["cad", "claude"],
         "blurb": "Verdict-first forensics on a CAD file: units, scale, origin, layers, blocks, "
                  "hygiene. The file is evidence and is never modified.",
         "output": "Audit report",
@@ -234,6 +282,7 @@ SKILLS = {
     "Bid Summariser": {
         "title": "Bid Summariser",
         "category": "bids-business",
+        "software": ["claude"],
         "blurb": "An incoming ITT becomes dates, scope, submission mechanics, easy misses and the "
                  "go/no-go decision. Run it before you respond.",
         "output": "Bid summary",
@@ -249,6 +298,7 @@ SKILLS = {
     "RFP Response Builder": {
         "title": "RFP Response Builder",
         "category": "bids-business",
+        "software": ["word", "claude"],
         "blurb": "RFP plus practice material becomes a response draft with a compliance matrix. "
                  "Gaps stay [TBC] rather than becoming invented credentials.",
         "output": ".docx draft",
@@ -263,6 +313,7 @@ SKILLS = {
     "Pitch Deck Builder": {
         "title": "Pitch Deck Builder",
         "category": "bids-business",
+        "software": ["powerpoint", "claude"],
         "blurb": "A project pack becomes a real .pptx pitch deck with image placeholders and an "
                  "internal gap slide.",
         "output": ".pptx deck",
@@ -278,6 +329,7 @@ SKILLS = {
     "BD Market Research": {
         "title": "BD Market Research",
         "category": "bids-business",
+        "software": ["web", "excel"],
         "blurb": "A sector and geography become developer profiles with a citation slot on every "
                  "line. Nothing from memory.",
         "output": "Profile set",
@@ -294,6 +346,7 @@ SKILLS = {
     "Planning Pipeline Research": {
         "title": "Planning Pipeline Research",
         "category": "bids-business",
+        "software": ["web", "excel"],
         "blurb": "An area becomes a planning pipeline with precise status language — validated is "
                  "not approved — and a cited source per claim.",
         "output": "Pipeline sweep",
@@ -310,6 +363,7 @@ SKILLS = {
     "Hero Perspective Prompt Builder": {
         "title": "Hero Perspective Prompt Builder",
         "category": "visuals-diagrams",
+        "software": ["imagegen"],
         "blurb": "Project material becomes a hero-shot brief and prompt variants. The design is "
                  "fixed; the camera is what varies.",
         "output": "Shot brief + prompts",
@@ -325,6 +379,7 @@ SKILLS = {
     "Facade Maker": {
         "title": "Facade Maker",
         "category": "visuals-diagrams",
+        "software": ["imagegen"],
         "blurb": "A facade intent pack becomes coordinated bay, material and proportion study "
                  "prompts. The camera is fixed; the cladding is what varies.",
         "output": "Prompt set",
@@ -340,6 +395,7 @@ SKILLS = {
     "Nano Banana Prompt Builder": {
         "title": "Nano Banana Prompt Builder",
         "category": "visuals-diagrams",
+        "software": ["imagegen"],
         "blurb": "General Gemini / Nano Banana prompt engineering for archviz, including edit and "
                  "transform chains.",
         "output": "Prompt + edit chain",
@@ -355,6 +411,7 @@ SKILLS = {
     "Building Video Storyboard": {
         "title": "Building Video Storyboard",
         "category": "visuals-diagrams",
+        "software": ["imagegen"],
         "blurb": "Project assets become a shot list with timings, camera moves and per-clip video "
                  "prompts.",
         "output": "Storyboard",
@@ -370,6 +427,7 @@ SKILLS = {
     "Site Diagram Matrix Builder": {
         "title": "Site Diagram Matrix Builder",
         "category": "visuals-diagrams",
+        "software": ["imagegen"],
         "blurb": "A site becomes four coordinated analysis figures: roads, buildings, greenery, "
                  "radius rings. One moment, four layers.",
         "output": "4 diagram prompts",
@@ -385,6 +443,7 @@ SKILLS = {
     "Site Matrix Diagram Builder": {
         "title": "Site Matrix Diagram Builder",
         "category": "visuals-diagrams",
+        "software": ["imagegen"],
         "blurb": "A site becomes a six-frame concept evolution, with A/B/C options at each frame. "
                  "You choose before it moves on.",
         "output": "6 frame prompts",
@@ -400,6 +459,7 @@ SKILLS = {
     "GIS Interactive Map": {
         "title": "GIS Interactive Map",
         "category": "visuals-diagrams",
+        "software": ["gis", "claude"],
         "blurb": "Site data becomes one self-contained interactive HTML map, with unverified layers "
                  "visibly dashed.",
         "output": "Single .html map",
@@ -416,6 +476,7 @@ SKILLS = {
     "Site Constraints Register": {
         "title": "Site Constraints Register",
         "category": "site-context",
+        "software": ["claude", "excel"],
         "blurb": "Site evidence becomes a traceable register: constraint, source, extent, "
                  "confidence, and the decision it blocks.",
         "output": "Constraints register",
@@ -431,6 +492,7 @@ SKILLS = {
     "Planning Policy Extract": {
         "title": "Planning Policy Extract",
         "category": "site-context",
+        "software": ["claude"],
         "blurb": "Policy documents become a clause-by-clause extract with the modal verb "
                  "preserved and the force of each requirement marked.",
         "output": "Policy extract",
@@ -446,6 +508,7 @@ SKILLS = {
     "Daylight Sunlight Screener": {
         "title": "Daylight & Sunlight Screener",
         "category": "site-context",
+        "software": ["claude"],
         "blurb": "Scopes the assessment a consultant will run: which receptors, which "
                  "methodology, what geometry is needed.",
         "output": "Screening worksheet",
@@ -462,6 +525,7 @@ SKILLS = {
     "Area Schedule Audit": {
         "title": "Area Schedule Audit",
         "category": "programme-area",
+        "software": ["excel", "claude"],
         "blurb": "Recomputes every total, finds mixed measurement bases and unit drift, and "
                  "reconciles the mix against the brief.",
         "output": "Verdict-first audit",
@@ -477,6 +541,7 @@ SKILLS = {
     "Occupancy Egress Takeoff": {
         "title": "Occupancy & Egress Takeoff",
         "category": "programme-area",
+        "software": ["excel", "claude"],
         "blurb": "Plans become a measuring and query sheet for the fire engineer, with every "
                  "code figure left as a named clause.",
         "output": ".xlsx takeoff",
@@ -492,6 +557,7 @@ SKILLS = {
     "Adjacency Matrix Builder": {
         "title": "Adjacency Matrix Builder",
         "category": "programme-area",
+        "software": ["excel", "claude"],
         "blurb": "A brief becomes a relationship matrix where every rating is traced and every "
                  "unstated pair stays visibly blank.",
         "output": "Matrix + query sheet",
@@ -508,6 +574,7 @@ SKILLS = {
     "Drawing Register Audit": {
         "title": "Drawing Register Audit",
         "category": "drawings-spec",
+        "software": ["claude", "excel"],
         "blurb": "Reconciles register, title block and filename — the three sources that are "
                  "supposed to agree and routinely do not.",
         "output": "Verdict-first audit",
@@ -523,6 +590,7 @@ SKILLS = {
     "Spec Drawing Crosscheck": {
         "title": "Spec / Drawing Cross-check",
         "category": "drawings-spec",
+        "software": ["claude", "excel"],
         "blurb": "Every specified item traced to the drawings and back, with orphans both ways "
                  "and conflicts quoted side by side.",
         "output": "Coverage matrix",
@@ -538,6 +606,7 @@ SKILLS = {
     "Detail Callout Audit": {
         "title": "Detail Callout Audit",
         "category": "drawings-spec",
+        "software": ["claude"],
         "blurb": "Resolves the cross-reference graph of a technical package: dangling callouts, "
                  "orphan details, and junctions drawn nowhere.",
         "output": "Callout map",
@@ -554,6 +623,7 @@ SKILLS = {
     "RFI Log Builder": {
         "title": "RFI Log Builder",
         "category": "contract-admin",
+        "software": ["excel", "claude"],
         "blurb": "Triages RFIs by what they actually are, and drafts only the ones the issued "
                  "documents already answer.",
         "output": "Log + draft pack",
@@ -569,6 +639,7 @@ SKILLS = {
     "Monthly Progress Report": {
         "title": "Monthly Progress Report",
         "category": "contract-admin",
+        "software": ["word", "claude"],
         "blurb": "A month's material becomes a draft client report — assembled from sources, "
                  "never recalled, with risk movement visible.",
         "output": ".docx report",
@@ -584,6 +655,7 @@ SKILLS = {
     "Variation Instruction Log": {
         "title": "Variation & Instruction Log",
         "category": "contract-admin",
+        "software": ["excel", "claude"],
         "blurb": "Finds the moments in correspondence where a change may have been created, and "
                  "quotes the exact sentence.",
         "output": "Change register",
@@ -599,6 +671,7 @@ SKILLS = {
     "Fee Proposal Builder": {
         "title": "Fee Proposal Builder",
         "category": "contract-admin",
+        "software": ["word", "claude"],
         "blurb": "Scope in deliverables, exclusions written as carefully as inclusions, and a "
                  "build-up from your own rates only.",
         "output": ".docx proposal",
@@ -615,6 +688,7 @@ SKILLS = {
     "Embodied Carbon Takeoff": {
         "title": "Embodied Carbon Takeoff",
         "category": "carbon-performance",
+        "software": ["excel", "ifc"],
         "blurb": "An auditable quantity register for a carbon assessment, with scope written "
                  "first and every factor slot left empty.",
         "output": "Quantity register",
@@ -630,6 +704,7 @@ SKILLS = {
     "EPD Extract Compare": {
         "title": "EPD Extract & Compare",
         "category": "carbon-performance",
+        "software": ["claude"],
         "blurb": "Pulls declared data out of EPDs and compares only the pairs that genuinely "
                  "compare, with the reason named for the rest.",
         "output": "Extraction table",
@@ -645,6 +720,7 @@ SKILLS = {
     "Overheating Evidence Pack": {
         "title": "Overheating Evidence Pack",
         "category": "carbon-performance",
+        "software": ["claude"],
         "blurb": "Assembles what a thermal modeller needs — including whether the windows can "
                  "actually be opened.",
         "output": "Evidence pack",
@@ -661,6 +737,7 @@ SKILLS = {
     "IFC Model Audit": {
         "title": "IFC Model Audit",
         "category": "twins-data",
+        "software": ["ifc", "claude"],
         "blurb": "Verdict-first forensics on an IFC: georeferencing, spatial structure, property "
                  "coverage and GlobalId stability. Never modified.",
         "output": "Audit report",
@@ -676,6 +753,7 @@ SKILLS = {
     "CRS Georeference Check": {
         "title": "CRS & Georeferencing Check",
         "category": "twins-data",
+        "software": ["gis", "ifc", "cad"],
         "blurb": "Every dataset's CRS, datum, units and origin in one register — with the "
                  "symptom each disagreement would produce.",
         "output": "Georeferencing register",
@@ -691,6 +769,7 @@ SKILLS = {
     "Revit Unreal Handover": {
         "title": "Revit → Unreal Handover",
         "category": "twins-data",
+        "software": ["revit", "unreal"],
         "blurb": "What a real-time engine actually needs, checked before anyone exports: "
                  "placement, identity, weight, materials.",
         "output": "Readiness report",
@@ -702,6 +781,60 @@ SKILLS = {
         "wont": "Modify the model, run the export, write engine-side code, state a polygon budget "
                 "from memory, promise a frame rate, or treat a visualisation model as twin-ready.",
         "example": "Priory Fields — 68 classrooms, 22 with a BMS key",
+    },
+    # --------------------------------------------------------- BIM authoring
+    "Revit Model Audit": {
+        "title": "Revit Model Audit",
+        "category": "bim-authoring",
+        "software": ["revit", "ifc"],
+        "blurb": "Verdict-first forensics on a live Revit model: coordinates, worksharing, "
+                 "warnings, annotation integrity, element identity. Never modified.",
+        "output": "Audit report",
+        "tags": ["Revit", "Model QA", "Coordinates"],
+        "takes": "A live model through the Revit MCP connector — or exported schedules and a warnings list",
+        "gives": "Version and provenance, worksharing and link status, base point / survey point / "
+                 "internal origin with the distances between them, warnings grouped by type, "
+                 "levels, grids, worksets, phases and options, overridden dimensions, and element "
+                 "data down to ElementId, UniqueId and IFC GUID — ranked by what each breaks.",
+        "wont": "Edit, purge, save, sync or relinquish; infer a coordinate system from where the "
+                "building appears to be; declare a model fit for purpose generically.",
+        "example": "The real test is the next consultant model you receive, read before anyone trusts it",
+    },
+    "Revit BoQ Takeoff": {
+        "title": "Revit BoQ Takeoff",
+        "category": "bim-authoring",
+        "software": ["revit", "excel"],
+        "blurb": "Model quantities plus a specification become an auditable draft takeoff — every "
+                 "line traced to element IDs, no rates, ever.",
+        "output": ".xlsx takeoff",
+        "tags": ["NRM2", "Quantities", "QS"],
+        "takes": "A live Revit model or schedule exports, plus the specification and a measurement standard",
+        "gives": "A quantity register as the audit layer, work-section tabs in the standard's own "
+                 "order with spec wording and source element IDs on every line, Rate and £ columns "
+                 "left empty, an exclusions list, and a numbered query sheet for the QS.",
+        "wont": "Attach a rate or a cost; invent waste, lap or working-space allowances; reconcile "
+                "a spec/model conflict silently; present itself as tender-ready.",
+        "example": "Meadow Lane spec and a mock Revit export, with seven faults planted",
+        "example_note": "The example ships inside the .skill itself, under examples/ — ask for the "
+                        "worked example and the skill runs on it, then tell it to score itself "
+                        "against the seven faults.",
+    },
+    "Image to Revit Family": {
+        "title": "Image to Revit Family",
+        "category": "bim-authoring",
+        "software": ["revit"],
+        "blurb": "A product photo becomes a native parametric family — reference planes, labelled "
+                 "dimensions, materials and a passing flex test. Never a mesh.",
+        "output": ".rfa family",
+        "tags": ["Revit", "Families", "Parametric"],
+        "takes": "One or two images of the object, at least one real dimension or a data sheet, and a destination folder",
+        "gives": "A family spec you confirm before anything is built, then the family itself: "
+                 "parameters, planes, locked geometry, materials and subcategories — plus a flex "
+                 "table proving every parameter moves. Balustrades become a Railing type you draw "
+                 "as a line; rows of objects become a line-based repeater.",
+        "wont": "Import a mesh, DWG or AI-generated model; claim parametric without a passing flex "
+                "test; touch your project without a yes; certify guarding or make a manufacturer claim.",
+        "example": "A product photo and one known dimension is all it needs to run end to end",
     },
 }
 

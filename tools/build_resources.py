@@ -24,10 +24,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from resources_catalogue import (  # noqa: E402
-    CATEGORIES, CATEGORY_ORDER, HOUSE_RULES, SITE_ROOT, SKILLS, SOURCE_ROOT,
+    CATEGORIES, CATEGORY_ORDER, HOUSE_RULES, SITE_ROOT, SKILLS, SOFTWARE, SOURCE_ROOT,
 )
 
 CATEGORIES = sorted(CATEGORIES, key=lambda c: CATEGORY_ORDER.index(c["slug"]))
+SOFTWARE_BY = {w["slug"]: w for w in SOFTWARE}
 
 SITE = Path(SITE_ROOT)
 SRC = Path(SOURCE_ROOT)
@@ -431,16 +432,33 @@ def footer(up: str) -> str:
 # --------------------------------------------------------------------------- #
 # cards
 # --------------------------------------------------------------------------- #
+def software_of(s: dict) -> list[dict]:
+    """The software entries a skill sits beside, in SOFTWARE order, first one primary."""
+    slugs = s.get("software") or ["claude"]
+    unknown = [w for w in slugs if w not in SOFTWARE_BY]
+    if unknown:
+        raise SystemExit(f"{s['title']}: unknown software {unknown}")
+    return [SOFTWARE_BY[w] for w in slugs]
+
+
 def card(s: dict, up: str, cat_title: str) -> str:
+    sw = software_of(s)
     tags = "".join(f'<span class="tag">{E(t)}</span>' for t in s["tags"][:2])
-    haystack = " ".join([s["title"], s["blurb"], s["output"], *s["tags"], cat_title]).lower()
-    return f"""<article class="tpl-card card card--glow" data-cat="{s['category']}" data-title="{E(s['title'].lower())}" data-search="{E(haystack)}">
+    swpills = "".join(
+        f'<span class="tag tag--sw" data-sw="{w["slug"]}">{E(w["label"])}</span>' for w in sw[:2]
+    )
+    haystack = " ".join(
+        [s["title"], s["blurb"], s["output"], *s["tags"], cat_title,
+         *(w["title"] for w in sw)]
+    ).lower()
+    return f"""<article class="tpl-card card card--glow" data-cat="{s['category']}" data-sw="{" ".join(w["slug"] for w in sw)}" data-title="{E(s['title'].lower())}" data-search="{E(haystack)}">
   <div class="tpl-card__top">
     <span class="tpl-card__type">{E(s['output'])}</span>
     <span class="tpl-card__cat">{E(cat_title)}</span>
   </div>
   <h3 class="tpl-card__title"><a href="{up}resources/skills/{s['slug']}.html">{E(s['title'])}</a></h3>
   <p class="tpl-card__blurb">{E(s['blurb'])}</p>
+  <div class="tpl-card__sw">{swpills}</div>
   <div class="tpl-card__foot">
     <div class="tpl-card__tags">{tags}</div>
     <a class="btn btn--outline btn--mono btn--sm" href="{up}resources/skills/{s['slug']}.html">Open <span class="btn__arrow" aria-hidden="true">&#8599;</span></a>
@@ -467,6 +485,23 @@ def build_index(skills: list[dict], counts: dict) -> str:
         '<button class="chip" type="button" data-filter="{slug}" aria-pressed="false"><i aria-hidden="true"></i>{t} <span class="chip__n">{n}</span></button>'.format(
             slug=c["slug"], t=E(c["title"]), n=counts[c["slug"]])
         for c in CATEGORIES
+    )
+
+    swcounts = {
+        w["slug"]: sum(1 for s in skills if w["slug"] in (s.get("software") or ["claude"]))
+        for w in SOFTWARE
+    }
+    swtabs = '<button class="chip chip--sw" type="button" data-sw="all" aria-pressed="true">Any software <span class="chip__n">%d</span></button>' % len(skills)
+    swtabs += "".join(
+        '<button class="chip chip--sw" type="button" data-sw="{slug}" aria-pressed="false" title="{note}">{t} <span class="chip__n">{n}</span></button>'.format(
+            slug=w["slug"], t=E(w["title"]), n=swcounts[w["slug"]], note=E(w["note"]))
+        for w in SOFTWARE if swcounts[w["slug"]]
+    )
+
+    swlegend = "".join(
+        f'<div class="tpl-swrow"><dt>{E(w["title"])} <span>{swcounts[w["slug"]]}</span></dt>'
+        f"<dd>{E(w['note'])}</dd></div>"
+        for w in SOFTWARE if swcounts[w["slug"]]
     )
 
     cards = "".join(card(s, up, cat_title[s["category"]]) for s in skills)
@@ -533,7 +568,8 @@ def build_index(skills: list[dict], counts: dict) -> str:
     <div class="stack" style="max-width:52ch; margin-bottom:40px">
       <span class="eyebrow">By the work</span>
       <h2 class="section-title">What are you working on?</h2>
-      <p class="lead">Four parts of the week. Pick the one you are in.</p>
+      <p class="lead">{ncat} parts of the week. Pick the one you are in &mdash; or filter the
+      library below by the software you already have open.</p>
     </div>
     <div class="grid grid--4 tpl-catgrid">{cat_cards}</div>
   </div>
@@ -599,14 +635,36 @@ def build_index(skills: list[dict], counts: dict) -> str:
           </div>
         </div>
 
-        <div class="tpl-chips" role="group" aria-label="Filter by category">{tabs}</div>
+        <div class="tpl-filter">
+          <p class="tpl-filter__label" id="tpl-filter-cat">By the work</p>
+          <div class="tpl-chips" role="group" aria-labelledby="tpl-filter-cat">{tabs}</div>
+        </div>
+        <div class="tpl-filter">
+          <p class="tpl-filter__label" id="tpl-filter-sw">By software</p>
+          <div class="tpl-chips tpl-chips--sw" role="group" aria-labelledby="tpl-filter-sw">{swtabs}</div>
+        </div>
 
-        <p class="tpl-count" id="tpl-count" aria-live="polite">19 skills</p>
+        <p class="tpl-count" id="tpl-count" aria-live="polite">{n} skills</p>
 
         <div class="grid grid--2 tpl-grid" id="tpl-grid">{cards}</div>
         <p class="tpl-empty" id="tpl-empty" hidden>Nothing matches that. <button type="button" id="tpl-reset" class="tpl-linkbtn">Clear the filters</button></p>
       </div>
     </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="software">
+  <div class="wrap">
+    <div class="stack" style="max-width:56ch; margin-bottom:40px">
+      <span class="eyebrow">By software</span>
+      <h2 class="section-title">What you need open.</h2>
+      <p class="lead">Every skill names the software it sits beside, so you can filter the library
+      by what is already on your machine. Most need nothing but Claude and the file you already
+      have. Nothing here requires an API key.</p>
+    </div>
+    <dl class="tpl-swlegend">{swlegend}</dl>
   </div>
 </section>
 
@@ -740,6 +798,15 @@ def build_skill(s: dict, skills: list[dict]) -> str:
     body, toc = md_to_html(s["qr_md"])
     toc_html = "".join(f'<li><a href="#{i}">{t}</a></li>' for i, t in toc)
 
+    sw = software_of(s)
+    swpills = "".join(
+        f'<a class="tag tag--sw" href="{up}resources/skills/?sw={w["slug"]}">{E(w["label"])}</a>'
+        for w in sw
+    )
+    swnotes = "".join(
+        f'<div class="tpl-swrow"><dt>{E(w["title"])}</dt><dd>{E(w["note"])}</dd></div>' for w in sw
+    )
+
     dl = f"../downloads/{s['slug']}.skill"
     dirs = sorted({f.rsplit("/", 1)[0] for f, _ in s["files"] if "/" in f})
     dirnote = ", ".join(E(d) + "/" for d in dirs) if dirs else "no subfolders"
@@ -790,6 +857,7 @@ def build_skill(s: dict, skills: list[dict]) -> str:
       </div>
       <dl class="tpl-meta card">
         <div><dt>Category</dt><dd><a href="{up}resources/skills/{cat['slug']}.html">{E(cat['title'])}</a></dd></div>
+        <div><dt>Software</dt><dd class="tpl-meta__tags">{swpills}</dd></div>
         <div><dt>Output</dt><dd>{E(s['output'])}</dd></div>
         <div><dt>Package</dt><dd>{plural(len(s['files']), 'file')} &middot; {human_kb(s['bytes'])}</dd></div>
         <div><dt>Download</dt><dd>{human_kb(s['zip_bytes'])} zip</dd></div>
@@ -834,6 +902,13 @@ def build_skill(s: dict, skills: list[dict]) -> str:
         </div>
       </div>
     </div>
+    <div class="tpl-swneed card">
+      <div class="tpl-swneed__head">
+        <span class="eyebrow">What you need open</span>
+        <p>Beyond Claude itself and the material you are working from.</p>
+      </div>
+      <dl class="tpl-swlegend tpl-swlegend--tight">{swnotes}</dl>
+    </div>
   </div>
 </section>
 
@@ -860,8 +935,8 @@ def build_skill(s: dict, skills: list[dict]) -> str:
       </div>
     </div>
     <div class="tpl-example">
-      <span class="tag">{'Test drive' if s['has_example'] else 'Design note'}</span>
-      <p>{E(s['example'])}{'. Run the skill on the example input, then score your output against the defect key &mdash; it lists what was planted and what a good run does with it.' if s['has_example'] else '. No worked example is bundled with this one yet; run it on live project material.'}</p>
+      <span class="tag">{'Test drive' if (s['has_example'] or s.get('example_note')) else 'Design note'}</span>
+      <p>{E(s['example'])}{'. ' + E(s['example_note']) if s.get('example_note') else ('. Run the skill on the example input, then score your output against the defect key &mdash; it lists what was planted and what a good run does with it.' if s['has_example'] else '. No worked example is bundled with this one yet; run it on live project material.')}</p>
       {f'<a class="btn btn--outline btn--mono btn--sm" href="../downloads/{s["slug"]}-example.zip" download>Worked example <span class="btn__arrow" aria-hidden="true">&#8595;</span></a>' if s['has_example'] else ''}
     </div>
   </div>
